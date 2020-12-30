@@ -5,8 +5,8 @@
 
 <% posts.forEach(function (post) { %>
     <div class="post">
-        <h1> <%= post.title %> </h1>
-        <p> <%= post.content.substring(0,100) + ("...") %> 
+        <h1> <%= post.blogTitle %> </h1>
+        <p> <%= post.blogContent.substring(0,100) + ("...") %> 
             <span><a href="posts/ + <%= post.title %>" >Read More</a></span>
         </p>
     </div>
