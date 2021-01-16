@@ -1,6 +1,6 @@
 <div align="center">
   <h1>BlogSite</h1>
-  <img src="assets/banner.png" />
+  <img src="assets/banner1.png" />
 </div>
 
 ## About-
@@ -82,8 +82,7 @@ http://localhost:3000/
 * You can learn more about EJS template engine and its syntax to know how we can use it inside our HTML using the [documentation](https://ejs.co/#docs)
 <br/>
 
-* Now you are all set to this project.
-<br/>
+* Now you are all set to use this project.
 
 #### Some useful Mongo DB commands if you are using the terminal instead of the GUI-
 ```
