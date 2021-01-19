@@ -35,7 +35,6 @@ app.get("/", function(req, res){
   Blog.find({}, function(err, foundBlogs){
     if(!err){
       if(foundBlogs){
-        console.log(foundBlogs);
         res.render("home", {
           homeStartingContent: homeStartingContent,
           posts: foundBlogs,
@@ -76,13 +75,20 @@ app.post("/compose", function(req, res){
 //Get request for posts page-
 app.get("/posts/:postName", function(req, res){
   const requestedTitle = _.lowerCase(req.params.postName);
-  posts.forEach(function(post){
-    const storedTitle = _.lowerCase(post.title);
-    if(storedTitle === requestedTitle){
-      res.render("post", {
-        title: post.title,
-        content: post.content,
+  Blog.find({}, function(err, posts){
+    if(!err){
+      posts.forEach(function(post){
+        const storedTitle = _.lowerCase(post.blogTitle);
+        if(storedTitle === requestedTitle){
+          res.render("post", {
+            title: post.blogTitle,
+            content: post.blogContent,
+          });
+        }
       });
+    }
+    else{
+      console.log(err);
     }
   });
 });
