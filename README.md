@@ -31,11 +31,9 @@
 * Download [Node Js and npm(Node package manager)](https://nodejs.org/en/) (when you download Node, npm also gets installed by default)
 <br/>
 
-* Mongo DB community editition is free and a great software in order to work with MongoDB applications. [Download Mongo DB community editition](https://docs.mongodb.com/manual/administration/install-community/)
+* MongoDB Atlas is the global cloud database service for modern applications. . [Signup to MongoDB Atlas](https://account.mongodb.com/account/register?signedOut=true)
 <br/>
 
-* Robo 3T is a desktop graphical user interface (GUI) for Mongo DB. It can help to skip running all the Mongo DB commands manually every time we want to access the data. [Download Robo 3T](https://robomongo.org/download) **(optional)**
-<br/>
 
 * Clone the repository by running command
 ```
@@ -61,15 +59,26 @@ All the current dependencies -
 ```
 <br/>
 
-* Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
+* Go to [MongoDB Atlas](https://account.mongodb.com/account/login).
+* Create a cluster and whitelist your IP address.
+* Click on connect from cluster section and setup username and password (save for later).
+* Click on connect and in "Choose a connection method" select "Connect your application".
+* You'll get a url as below called as ConnectionURL.
 ```
-mongod
+mongodb+srv://<username>:<password>@cluster0.ueivc.mongodb.net/<dbname>?retryWrites=true&w=majority
 ```
+* Replace the username and password with the credentials you created previously and set dbname as blogDB.
+* So your final string looks like :
+```
+mongodb+srv://yourUserName:yourPassword@cluster0.ueivc.mongodb.net/blogDB?retryWrites=true&w=majority
+```
+* Use this string and place it inbetween ' ' on line 22 in app.js
+
 <br/>
 
 * Run this command to start the project on local host 3000.
 ```
-npm start
+node app
 ```
 <br/>
 
@@ -83,11 +92,3 @@ http://localhost:3000/
 <br/>
 
 * Now you are all set to use this project.
-
-#### Some useful Mongo DB commands if you are using the terminal instead of the GUI-
-```
-show dbs
-use db <db name>
-show collections
-<db name> .find()
-```

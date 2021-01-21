@@ -18,8 +18,21 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+//mongoURL 
+const Mongo_url = 'Your_URL_String';
+
+/*
+example url string is 'mongodb+srv://<username>:<password>@cluster0.ueivc.mongodb.net/<database_name>?retryWrites=true&w=majority'
+UserName and Password should be set by user. Database name is blogDB
+so your final statement of 22 looks like
+
+const Mongo_url = 'mongodb+srv://<username>:<password>@cluster0.ueivc.mongodb.net/blogDB?retryWrites=true&w=majority'
+where you put in your username and password in respective positions.
+*/
+
+
 //Connecting to Mongo Database using ODM Mongoose-
-mongoose.connect('mongodb://localhost:27017/blogDB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(Mongo_url, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Setting up schema for the collection-
 const blogSchema = {
