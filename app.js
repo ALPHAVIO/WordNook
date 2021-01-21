@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require("lodash");
+const dotenv = require('dotenv');
 
 //Default Texts-
 const homeStartingContent = "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
@@ -18,8 +19,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+dotenv.config({path:'./.env'})
+
 //Connecting to Mongo Database using ODM Mongoose-
-mongoose.connect('mongodb://localhost:27017/blogDB', {useNewUrlParser: true, useUnifiedTopology: true});
+const URL = process.env.URL;
+mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Setting up schema for the collection-
 const blogSchema = {

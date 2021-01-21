@@ -61,7 +61,8 @@ All the current dependencies -
 ```
 <br/>
 
-* Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
+* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default). You need to change the url to 'mongodb://localhost:27017/dbname'; 
+
 ```
 mongod
 ```
@@ -69,7 +70,7 @@ mongod
 
 * Run this command to start the project on local host 3000.
 ```
-npm start
+node app
 ```
 <br/>
 
