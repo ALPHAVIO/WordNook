@@ -3,7 +3,12 @@
 <h2>Hey there!</h2>
 <p> <%= homeStartingContent %> </p> 
 
-
+<form action="/search" method="POST">
+    <div class="form-group">
+        <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"></input>
+    </div>
+    <button class="btn btn-primary" type="submit" name="search">Search</button>
+</form>
 <% posts.forEach(function (post) { %>
     <div class="post">
         <h1> <%= post.blogTitle %> </h1>
