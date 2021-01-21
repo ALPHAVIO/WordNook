@@ -3,5 +3,9 @@
 <h1> <%= title %> </h1>
 
 <p> <%= content %> </p> 
+<form  action="/posts/<%=title%>" method="post" >
+    <input class="myButton" type="submit" value="Delete">
+</form>
 
 <%- include("partials/footer") -%>
+
