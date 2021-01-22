@@ -3,19 +3,43 @@
   <img src="assets/banner1.png" />
 </div>
 
-## About-
+<hr>
+
+## 📌 About-
 - 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
 <br/>
 
 - This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).
 
+<hr>
+
 ## Tech Stack-
-- HTML
-- CSS
-- EJS template engine
-- Node JS
-- Express JS
-- Mongoose
+- ![Generic badge](https://img.shields.io/badge/Structure-HTML-blue.svg)
+- ![Generic badge](https://img.shields.io/badge/Styling-CSS-red.svg)
+- ![Generic badge](https://img.shields.io/badge/Template_Engine-EJS-yellow.svg)
+- ![Generic badge](https://img.shields.io/badge/Backend-Node_JS-lightgreen.svg)
+- ![Generic badge](https://img.shields.io/badge/MiddleWare-Express-orange.svg)
+- ![Generic badge](https://img.shields.io/badge/Object_Modelling-Mongoose-purple.svg)
+- ![Generic badge](https://img.shields.io/badge/Database-MongoDB-darkgreen.svg)
+
+<hr>
+
+## Screenshots -
+
+<div align="center">
+  <h3>Home Page</h3>
+  <img src="assets/home.png" />
+  <hr>
+  <h3>Journal Page</h3>
+  <img src="assets/blogpage.png" />
+  <hr>
+  <h3>About Page</h3>
+  <img src="assets/about.png" />
+  <hr>
+  <h3>Contact Page</h3>
+  <img src="assets/contact.png" />
+  <hr>
+</div>
 
 ## Environment Setup-
 
@@ -36,6 +60,10 @@
 
 * Robo 3T is a desktop graphical user interface (GUI) for Mongo DB. It can help to skip running all the Mongo DB commands manually every time we want to access the data. [Download Robo 3T](https://robomongo.org/download) **(optional)**
 <br/>
+
+<hr>
+
+## ⭐ Getting Started
 
 * Clone the repository by running command
 ```
@@ -92,3 +120,13 @@ use db <db name>
 show collections
 <db name> .find()
 ```
+<hr>
+
+## 📢  Open Source Program
+
+<div align="center">
+  <h1>JWOC</h1>
+  <img src="assets/jwoc.jpg" />
+  <p>JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into Open Source contribution and get the realm of Software Development.</p>
+</div>
+
