@@ -1,6 +1,6 @@
 <div align="center">
   <h1>BlogSite</h1>
-  <img src="assets/banner1.png" />
+  <img src="assets/New Banner.jpg" />
 </div>
 
 ## About-
