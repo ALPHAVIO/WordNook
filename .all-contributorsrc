@@ -18,22 +18,15 @@
         "mentoring"
       ]
     },
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    {
+      "login": "karunkarthik-git",
+      "name": "Karun Karthik",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58992593?v=4",
+      "profile": "https://karunkarthik-portfolio.netlify.app/",
+      "contributions": [
+        "code"
+      ]
+    },
     {
       "login": "pankajkumarbij",
       "name": "pankaj kumar bijarniya",
