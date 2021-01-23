@@ -56,7 +56,6 @@
 * Robo 3T is a desktop graphical user interface (GUI) for Mongo DB. It can help to skip running all the Mongo DB commands manually every time we want to access the data. [Download Robo 3T](https://robomongo.org/download) **(optional)**
 * ### How to connect to local database while contributing
   * Mongo DB community edition and Node JS required to contribute.
-  <br>
   * Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
   
     ```
@@ -64,11 +63,11 @@
     ```
     
   * You need to change the URL to 'mongodb://localhost:27017/blogDB'
-  <br>
     ```
-    const URL = 'mongodb://localhost:27017/blogDB'
+    const URL = "mongodb://localhost:27017/blogDB"
     ```
   * Run this command to start the project on local host 3000.
+
     ```
     node app
     ```
