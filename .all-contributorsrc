@@ -17,6 +17,15 @@
         "maintenance",
         "mentoring"
       ]
+    },
+    {
+      "login": "sahilsaha7773",
+      "name": "Sahil Saha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35343652?v=4",
+      "profile": "http://sahilsaha.me",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
