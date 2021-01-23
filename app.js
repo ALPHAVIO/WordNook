@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require("lodash");
-const dotenv = require('dotenv');
+const PORT = process.env.PORT || 3000;
 
 //Default Texts-
 const homeStartingContent = "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
@@ -19,7 +19,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-dotenv.config({path:'./.env'})
+//When in development mode then only require the dotenv module
+if(process.env.NODE_ENV !== 'production'){
+  const dotenv = require('dotenv');
+  dotenv.config({path:'./.env'});
+}
 
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
@@ -127,7 +131,7 @@ app.post('/posts/:postName', (req, res, next) => {
     }
   );
 });
-//Launching the server on port 3000-
-app.listen(3000, function() {
+//Launching the server on port 3000 in development mode-
+app.listen(PORT, function() {
   console.log("Server started on port 3000");
 });
