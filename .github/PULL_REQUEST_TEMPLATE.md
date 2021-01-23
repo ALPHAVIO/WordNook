@@ -8,7 +8,7 @@ issue: #issue_number
 Remove this line and tell us how the code was tested.
 
 ## Checklist:
-Before you create this PR, confirm all the requirements listed below by checking the checkboxes (`[x]`):
+Before you create this PR, confirm all the requirements listed below by checking the checkboxes `[x]`:
 
 - [] Have you followed the [Contribution Guidelines](https://github.com/ALPHAVIO/BlogSite/blob/master/CONTRIBUTING.md) while contributing.
 - [] Have you checked there aren't other open [Pull Requests](https://github.com/ALPHAVIO/BlogSite/pulls) for the same update/change?
