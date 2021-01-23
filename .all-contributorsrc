@@ -18,6 +18,31 @@
         "mentoring"
       ]
     },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    {
+      "login": "pankajkumarbij",
+      "name": "pankaj kumar bijarniya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59636849?v=4",
+      "profile": "https://indiancovid19tracker.herokuapp.com/",
+      "contributions": [
+        "doc"
+      ]
+    },
     {
       "login": "luckykumarirai",
       "name": "Lucky kumari",
@@ -25,6 +50,33 @@
       "profile": "https://indiancovid19tracker.herokuapp.com/",
       "contributions": [
         "doc"
+      ]
+    },
+    {
+      "login": "sahilsaha7773",
+      "name": "Sahil Saha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35343652?v=4",
+      "profile": "http://sahilsaha.me",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "uttu2",
+      "name": "uttu2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47916726?v=4",
+      "profile": "https://github.com/uttu2",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "anubhab1710",
+      "name": "Anubhab Sarkar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76936580?v=4",
+      "profile": "https://www.linkedin.com/in/anubhab-sarkar-webwriter/",
+      "contributions": [
+        "design"
       ]
     }
   ],
