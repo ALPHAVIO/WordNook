@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "pranav016",
+      "name": "Pranav",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54665036?v=4",
+      "profile": "https://www.linkedin.com/in/pranav-mendiratta-89713a173/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "BlogSite",
+  "projectOwner": "ALPHAVIO",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
