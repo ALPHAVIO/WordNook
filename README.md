@@ -6,7 +6,7 @@
 ## About-
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 - 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
@@ -108,6 +108,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://www.linkedin.com/in/pranav-mendiratta-89713a173/"><img src="https://avatars.githubusercontent.com/u/54665036?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pranav</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=pranav016" title="Code">💻</a> <a href="#projectManagement-pranav016" title="Project Management">📆</a> <a href="https://github.com/ALPHAVIO/BlogSite/commits?author=pranav016" title="Documentation">📖</a> <a href="#maintenance-pranav016" title="Maintenance">🚧</a> <a href="#mentoring-pranav016" title="Mentoring">🧑‍🏫</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/anubhab-sarkar-webwriter/"><img src="https://avatars.githubusercontent.com/u/76936580?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anubhab Sarkar</b></sub></a><br /><a href="#design-anubhab1710" title="Design">🎨</a></td>
   </tr>
 </table>
 
