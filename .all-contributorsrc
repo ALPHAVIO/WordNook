@@ -17,6 +17,15 @@
         "maintenance",
         "mentoring"
       ]
+    },
+    {
+      "login": "anubhab1710",
+      "name": "Anubhab Sarkar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76936580?v=4",
+      "profile": "https://www.linkedin.com/in/anubhab-sarkar-webwriter/",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
