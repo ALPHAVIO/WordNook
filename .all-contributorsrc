@@ -11,7 +11,11 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/54665036?v=4",
       "profile": "https://www.linkedin.com/in/pranav-mendiratta-89713a173/",
       "contributions": [
-        "code"
+        "code",
+        "projectManagement",
+        "doc",
+        "maintenance",
+        "mentoring"
       ]
     }
   ],

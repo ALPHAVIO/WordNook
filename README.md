@@ -107,7 +107,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/pranav-mendiratta-89713a173/"><img src="https://avatars.githubusercontent.com/u/54665036?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pranav</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=pranav016" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/pranav-mendiratta-89713a173/"><img src="https://avatars.githubusercontent.com/u/54665036?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pranav</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=pranav016" title="Code">💻</a> <a href="#projectManagement-pranav016" title="Project Management">📆</a> <a href="https://github.com/ALPHAVIO/BlogSite/commits?author=pranav016" title="Documentation">📖</a> <a href="#maintenance-pranav016" title="Maintenance">🚧</a> <a href="#mentoring-pranav016" title="Mentoring">🧑‍🏫</a></td>
   </tr>
 </table>
 
