@@ -17,4 +17,4 @@ Before you create this PR, confirm all the requirements listed below by checking
 - [] Have you tested the code before submission?
 
 ## Screenshots or Video:
-Add a screenshot or demo video is appropriate.
+Add a screenshot or demo video if appropriate.
