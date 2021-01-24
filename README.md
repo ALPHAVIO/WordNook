@@ -15,12 +15,30 @@
 - This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).
 
 ## Tech Stack-
-- HTML
-- CSS
-- EJS template engine
-- Node JS
-- Express JS
-- Mongoose
+- ![Generic badge](https://img.shields.io/badge/Structure-HTML-blue.svg)
+- ![Generic badge](https://img.shields.io/badge/Styling-CSS-red.svg)
+- ![Generic badge](https://img.shields.io/badge/Template_Engine-EJS-yellow.svg)
+- ![Generic badge](https://img.shields.io/badge/Backend-Node_JS-lightgreen.svg)
+- ![Generic badge](https://img.shields.io/badge/MiddleWare-Express-orange.svg)
+- ![Generic badge](https://img.shields.io/badge/Object_Modelling-Mongoose-purple.svg)
+- ![Generic badge](https://img.shields.io/badge/Database-MongoDB-darkgreen.svg)
+
+## Screenshots -
+
+<div align="center">
+  <h3>Home Page</h3>
+  <img src="assets/home.png" />
+  <hr>
+  <h3>Journal Page</h3>
+  <img src="assets/blogpage.png" />
+  <hr>
+  <h3>About Page</h3>
+  <img src="assets/about.png" />
+  <hr>
+  <h3>Contact Page</h3>
+  <img src="assets/contact.png" />
+  <hr>
+</div>
 
 ## Environment Setup-
 
@@ -40,7 +58,38 @@
 <br/>
 
 * Robo 3T is a desktop graphical user interface (GUI) for Mongo DB. It can help to skip running all the Mongo DB commands manually every time we want to access the data. [Download Robo 3T](https://robomongo.org/download) **(optional)**
+* ### How to connect to local database while contributing
+  * Mongo DB community edition and Node JS required to contribute.
+  * Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
+  
+    ```
+    mongod
+    ```
+    
+  * You need to change the URL to 'mongodb://localhost:27017/blogDB'
+    ```
+    const URL = "mongodb://localhost:27017/blogDB"
+    ```
+  * Run this command to start the project on local host 3000.
+
+    ```
+    node app
+    ```
+  * Open the link in your browser.
+    ```
+    http://localhost:3000/
+    ```
 <br/>
+
+<hr>
+
+## ⭐ Getting Started
+
+* [Contribution guidelines for this project](/CONTRIBUTING.md) which should be followed strictly.
+<br/>
+
+* Fork the repository to your github account. 
+<br>
 
 * Clone the repository by running command
 ```
@@ -66,25 +115,15 @@ All the current dependencies -
 ```
 <br/>
 
-* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default). You need to change the url to 'mongodb://localhost:27017/dbname'; 
-
-```
-mongod
-```
-<br/>
-
 * Run this command to start the project on local host 3000.
 ```
 node app
 ```
-<br/>
 
 * Open link to view the website in your browser window if it doesn't open automatically.
 ```
 http://localhost:3000/
 ```
-<br/>
-
 * You can learn more about EJS template engine and its syntax to know how we can use it inside our HTML using the [documentation](https://ejs.co/#docs)
 <br/>
 
@@ -97,6 +136,15 @@ use db <db name>
 show collections
 <db name> .find()
 ```
+<hr>
+
+## 📢  Open Source Program
+
+<div align="center">
+  <h1>JWOC</h1>
+  <img src="assets/jwoc.jpg" />
+  <p>JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into Open Source contribution and get the realm of Software Development.</p>
+</div>
 
 ## Contributors ✨
 
