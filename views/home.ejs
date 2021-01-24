@@ -5,10 +5,24 @@
 
 <form action="/search" method="POST">
     <div class="form-group">
-        <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"></input>
+        <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
     </div>
     <button class="btn btn-primary" type="submit" name="search">Search</button>
 </form>
+<% if(search!="") {%>
+    <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+        <label for="quantity">Number of posts to display on this page:</label>
+        <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
+        <input type="submit">
+    </form>
+<% } else { %>
+    <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+        <label for="quantity">Number of posts to display on this page:</label>
+        <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
+        <input type="submit">
+    </form>
+<% } %>
+    
 <% posts.forEach(function (post) { %>
     <div class="post">
         <h1> <%= post.blogTitle %> </h1>
@@ -17,5 +31,61 @@
         </p>
     </div>
 <% }); %>
-
+<% if(search!="") {%>
+    <% if (pages > 0) { %>
+    <ul class="pagination text-center">
+        <% if (current == 1) { %>
+            <li class="disabled"><a>First</a></li>
+        <% } else { %>
+            <li><a href="/search/<%= search %>/1/<%= perPage %>">First</a></li>
+        <% } %>
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% if (i == current) { %>
+                <li class="active"><a><%= i %></a></li>
+            <% } else { %>
+                <li><a href="/search/<%= search %>/<%= i %>/<%= perPage %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+        <% } %>
+        <% if (current == pages) { %>
+            <li class="disabled"><a>Last</a></li>
+        <% } else { %>
+            <li><a href="/search/<%= search %>/<%= pages %>/<%= perPage %>">Last</a></li>
+        <% } %>
+    </ul>
+<% }} else { %>
+<% if (pages > 0) { %>
+    <ul class="pagination text-center">
+        <% if (current == 1) { %>
+            <li class="disabled"><a>First</a></li>
+        <% } else { %>
+            <li><a href="/page/1/<%= perPage %>">First</a></li>
+        <% } %>
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% if (i == current) { %>
+                <li class="active"><a><%= i %></a></li>
+            <% } else { %>
+                <li><a href="/page/<%= i %>/<%= perPage %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+        <% } %>
+        <% if (current == pages) { %>
+            <li class="disabled"><a>Last</a></li>
+        <% } else { %>
+            <li><a href="/page/<%= pages %>/<%= perPage %>">Last</a></li>
+        <% } %>
+    </ul>
+<% } }%>
 <%- include("partials/footer") -%>
