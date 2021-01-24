@@ -1,73 +1,80 @@
 .container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 .navbar {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    font-size: 12px;
-    letter-spacing: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
 }
-.navbar-nav  li a:hover {
-    color: #1abc9c !important;
+.navbar-nav li a:hover {
+  color: #1abc9c !important;
 }
 
 .footer-padding {
-	padding-bottom: 60px;
+  padding-bottom: 60px;
 }
 
 .footer {
-	position: fixed;
-	text-align: center;
-	bottom: 0;
-	width: 100%;
-	height: 60px;
-	background-color: #1abc9c;
-	z-index: 100;
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #1abc9c;
+  z-index: 100;
 }
 
 .footer p {
-	margin-top: 25px;
-	font-size: 12px;
-  	color: #fff;
+  margin-top: 25px;
+  font-size: 12px;
+  color: #fff;
 }
-
 
 .myButton {
-	box-shadow:inset 0px 1px 0px 0px #f29c93;
-	background:linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
-	background-color:#fe1a00;
-	border-radius:6px;
-	border:1px solid #d83526;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:21px;
-	font-weight:bold;
-	padding:5px 19px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #b23e35;
+  box-shadow: inset 0px 1px 0px 0px #f29c93;
+  background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+  background-color: #fe1a00;
+  border-radius: 6px;
+  border: 1px solid #d83526;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 21px;
+  font-weight: bold;
+  padding: 5px 19px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #b23e35;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
-	background-color:#ce0100;
+  background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+  background-color: #ce0100;
 }
 .myButton:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
 .comment {
-	border: 2px solid rgb(223, 220, 220);
-	border-radius: 5px;
-	padding:20px;
-	margin-bottom: 20px;
-	box-shadow: 0px 0px 1px 0px;
+  border: 2px solid rgb(223, 220, 220);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 1px 0px;
 }
 
 .quantityForm {
-	margin-top: 20px;
+  margin-top: 20px;
+}
+.darkmode-layer,
+.darkmode-toggle {
+  z-index: 500;
+  bottom: 15px !important;
+}
+.darkmode--activated #nav-id {
+  background-color: #d3d3d3 !important;
 }
