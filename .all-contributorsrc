@@ -40,6 +40,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "pankajkumarbij",
+      "name": "pankaj kumar bijarniya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59636849?v=4",
+      "profile": "https://indiancovid19tracker.herokuapp.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
