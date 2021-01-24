@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "anubhab1710",
+      "name": "Anubhab Sarkar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76936580?v=4",
+      "profile": "https://www.linkedin.com/in/anubhab-sarkar-webwriter/",
+      "contributions": [
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "BlogSite",
+  "projectOwner": "ALPHAVIO",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
