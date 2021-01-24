@@ -29,25 +29,6 @@
       ]
     },
     {
-      "login": "mak-ux",
-      "name": "kanhaiya lal",
-      "avatar_url": "https://avatars.githubusercontent.com/u/58850584?v=4",
-      "profile": "https://kanhaiyalal.000webhostapp.com/Kanhaiya.html",
-      "contributions": [
-        "code"
-      ]
-      ]
-    },
-    {
-      "login": "Niveditha18",
-      "name": "Niveditha Palli",
-      "avatar_url": "https://avatars.githubusercontent.com/u/59333801?v=4",
-      "profile": "https://github.com/Niveditha18",
-      "contributions": [
-        "content"
-      ]
-    },
-    {
       "login": "pankajkumarbij",
       "name": "pankaj kumar bijarniya",
       "avatar_url": "https://avatars.githubusercontent.com/u/59636849?v=4",
@@ -74,26 +55,8 @@
         "code"
       ]
     },
-    {
-      "login": "uttu2",
-      "name": "uttu2",
-      "avatar_url": "https://avatars.githubusercontent.com/u/47916726?v=4",
-      "profile": "https://github.com/uttu2",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "anubhab1710",
-      "name": "Anubhab Sarkar",
-      "avatar_url": "https://avatars.githubusercontent.com/u/76936580?v=4",
-      "profile": "https://www.linkedin.com/in/anubhab-sarkar-webwriter/",
-      "contributions": [
-        "design"
-      ]
-    }
   ],
-  "contributorsPerLine": 7,
+  "contributorsPerLine": 6,
   "projectName": "BlogSite",
   "projectOwner": "ALPHAVIO",
   "repoType": "github",
