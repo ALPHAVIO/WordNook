@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require("lodash");
-const dotenv = require('dotenv');
+const PORT = process.env.PORT || 3000;
 
 //Default Texts-
 const homeStartingContent = "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
@@ -19,7 +19,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-dotenv.config({path:'./.env'})
+//When in development mode then only require the dotenv module
+if(process.env.NODE_ENV !== 'production'){
+  const dotenv = require('dotenv');
+  dotenv.config({path:'./.env'});
+}
 
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
@@ -36,18 +40,34 @@ const blogSchema = {
 const Blog = new mongoose.model("Blog", blogSchema);
 
 //Get request for home route-
-app.get("/", function(req, res){
-  Blog.find({}, function(err, foundBlogs){
-    if(!err){
-      if(foundBlogs){
-        res.render("home", {
-          homeStartingContent: homeStartingContent,
-          posts: foundBlogs,
-        });
-      }
-    }
-  });
+app.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], function(req, res){
+  var perPage = parseInt(req.params.perPage) || 5;
+  if(req.query.perPage>0)
+    perPage =  parseInt(req.query.perPage);
+  const currentPage = req.params.page || 1;
+
+  Blog
+    .find({})
+    .skip((perPage * currentPage) - perPage)
+    .limit(perPage)
+    .exec(function(err, foundBlogs) {
+      Blog.count().exec(function(err, count) {
+        if(err)
+          console.log(err);
+        else {
+          res.render("home", {
+            homeStartingContent: homeStartingContent,
+            posts: foundBlogs,
+            current: currentPage,
+            pages: Math.ceil(count/perPage),
+            search: "",
+            perPage: perPage
+          });
+        }
+      })
+    });
 });
+
 
 //Get request for about page-
 app.get("/about", function(req, res){
@@ -79,7 +99,7 @@ app.post("/compose", function(req, res){
 });
 
 //Get request for posts page-
-app.get("/posts/:postName", function(req, res){
+app.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:postName", "/search/:query/posts/:postName", "/search/:query/:page/posts/:postName"], function(req, res){
   const requestedTitle = _.lowerCase(req.params.postName);
   Blog.find({}, function(err, posts){
     if(!err){
@@ -125,15 +145,52 @@ app.post("/posts/:postName/comment", async function(req, res) {
 });
 
 //Post request to search by title
-app.post("/search", function(req, res){
-  const query = req.body.query;
-  Blog.find({blogTitle: { "$regex": query, "$options": "i" }}, function(err, posts){
-    if(!err){
-      res.render('home', {
+app.post(["/search"], function(req, res){
+  const query = req.body.query || req.params.query;
+  var perPage = 5;
+  const currentPage = req.params.page || 1;
+
+  Blog.find({blogTitle: { "$regex": query, "$options": "i" }})
+  .skip((perPage * currentPage) - perPage)
+  .limit(perPage)
+  .exec( function(err, posts) {
+    Blog.countDocuments({blogTitle: { "$regex": query, "$options": "i" }}, function(err, count) {
+      res.render("home", {
         homeStartingContent: homeStartingContent,
-        posts: posts
-      })
-    }
+        posts: posts,
+        current: currentPage,
+        pages: Math.ceil(count/perPage),
+        search: query,
+        perPage: perPage,
+      });
+    })
+    
+  })
+})
+
+// GET request for search to support pagination
+app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPage", "/search/:query"], function(req, res){
+  const query = req.params.query;
+  var perPage = parseInt(req.params.perPage) || 5;
+  if(req.query.perPage>0)
+    perPage =  parseInt(req.query.perPage);
+  const currentPage = req.params.page || 1;
+
+  Blog.find({blogTitle: { "$regex": query, "$options": "i" }})
+  .skip((perPage * currentPage) - perPage)
+  .limit(perPage)
+  .exec( function(err, posts) {
+    Blog.countDocuments({blogTitle: { "$regex": query, "$options": "i" }}, function(err, count) {
+      res.render("home", {
+        homeStartingContent: homeStartingContent,
+        posts: posts,
+        current: currentPage,
+        pages: Math.ceil(count/perPage),
+        search: query,
+        perPage: perPage
+      });
+    })
+    
   })
 })
 
@@ -153,7 +210,7 @@ app.post('/posts/:postName', (req, res, next) => {
     }
   );
 });
-//Launching the server on port 3000-
-app.listen(3000, function() {
+//Launching the server on port 3000 in development mode-
+app.listen(PORT, function() {
   console.log("Server started on port 3000");
 });
