@@ -33,6 +33,7 @@ mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true});
 const blogSchema = {
   blogTitle: String,
   blogContent: String,
+  comments: Array
 }
 
 //Making a MongoDB model for the schema-
@@ -74,6 +75,7 @@ app.post("/compose", function(req, res){
   const blog = new Blog({
     blogTitle: postTitle,
     blogContent: postContent,
+    comments: []
   })
   console.log(blog);
   blog.save();
@@ -88,10 +90,13 @@ app.get("/posts/:postName", function(req, res){
       posts.forEach(function(post){
         const storedTitle = _.lowerCase(post.blogTitle);
         if(storedTitle === requestedTitle){
+          //Sort the comments to show the recent one
+          post.comments = post.comments.sort((a,b) =>  ((a.timestamps > b.timestamps) ? -1 : ((a.timestamps < b.timestamps) ? 1 : 0)));
           res.render("post", {
             title: post.blogTitle,
             content: post.blogContent,
-            id:post._id
+            id:post._id,
+            comments: post.comments
           });
         }
       });
@@ -101,6 +106,28 @@ app.get("/posts/:postName", function(req, res){
     }
   });
 });
+
+//Post request to create a comment
+app.post("/posts/:postName/comment", async function(req, res) {
+  const {name, content} = req.body;
+  //Server side form validation
+  if(name ==="" || content===""){
+    res.redirect(`/posts/${req.params.postName}`);
+  }
+  else {
+    const doc = await Blog.findOne({blogTitle: req.params.postName});
+    doc.comments.push({'name': name, 
+                       'content': content, 
+                       'timestamps': Math.floor(Date.now() / 1000)});
+                       
+    await Blog.updateOne({blogTitle: req.params.postName}, {comments: doc.comments}, function(err, doc) {
+      if(err)
+        console.log(err);
+    })
+    res.redirect(`/posts/${req.params.postName}`);
+  }
+});
+
 //Post request to search by title
 app.post("/search", function(req, res){
   const query = req.body.query;
@@ -115,7 +142,6 @@ app.post("/search", function(req, res){
 })
 
 //delete post route
-
 app.post('/posts/:postName', (req, res, next) => {
   const requestedTitle = req.params.postName;
   console.log(requestedTitle)

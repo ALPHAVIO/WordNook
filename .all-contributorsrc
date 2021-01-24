@@ -1,0 +1,101 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "pranav016",
+      "name": "Pranav",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54665036?v=4",
+      "profile": "https://www.linkedin.com/in/pranav-mendiratta-89713a173/",
+      "contributions": [
+        "code",
+        "projectManagement",
+        "doc",
+        "maintenance",
+        "mentoring"
+      ]
+    },
+    {
+      "login": "karunkarthik-git",
+      "name": "Karun Karthik",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58992593?v=4",
+      "profile": "https://karunkarthik-portfolio.netlify.app/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mak-ux",
+      "name": "kanhaiya lal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58850584?v=4",
+      "profile": "https://kanhaiyalal.000webhostapp.com/Kanhaiya.html",
+      "contributions": [
+        "code"
+      ]
+      ]
+    },
+    {
+      "login": "Niveditha18",
+      "name": "Niveditha Palli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59333801?v=4",
+      "profile": "https://github.com/Niveditha18",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "pankajkumarbij",
+      "name": "pankaj kumar bijarniya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59636849?v=4",
+      "profile": "https://indiancovid19tracker.herokuapp.com/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "luckykumarirai",
+      "name": "Lucky kumari",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59636719?v=4",
+      "profile": "https://indiancovid19tracker.herokuapp.com/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "sahilsaha7773",
+      "name": "Sahil Saha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35343652?v=4",
+      "profile": "http://sahilsaha.me",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "uttu2",
+      "name": "uttu2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47916726?v=4",
+      "profile": "https://github.com/uttu2",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "anubhab1710",
+      "name": "Anubhab Sarkar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76936580?v=4",
+      "profile": "https://www.linkedin.com/in/anubhab-sarkar-webwriter/",
+      "contributions": [
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "BlogSite",
+  "projectOwner": "ALPHAVIO",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
