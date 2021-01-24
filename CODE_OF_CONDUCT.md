@@ -55,7 +55,7 @@ further defined and clarified by project maintainers.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at https://github.com/ALPHAVIO/BlogSite. All
+reported by contacting the project team at [BlogSite](https://github.com/ALPHAVIO/BlogSite). All
 complaints will be reviewed and investigated and will result in a response that
 is deemed necessary and appropriate to the circumstances. The project team is
 obligated to maintain confidentiality with regard to the reporter of an incident.
@@ -67,10 +67,9 @@ members of the project's leadership.
 
 ## Attribution
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 1.4,
+available [here](https://www.contributor-covenant.org/version/1/4/code-of-conduct.html)
 
-[homepage]: https://www.contributor-covenant.org
+Visit [homepage](https://www.contributor-covenant.org)
 
-For answers to common questions about this code of conduct, see
-https://www.contributor-covenant.org/faq
+For answers to common questions about this code of conduct, [check it out](https://www.contributor-covenant.org/faq).
