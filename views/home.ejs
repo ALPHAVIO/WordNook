@@ -2,7 +2,10 @@
 
 <h2>Hey there!</h2>
 <p> <%= homeStartingContent %> </p> 
-
+<h3>Anything New?</h3>
+<a class="btn btn-success" href="/compose">Compose</a>
+<br/>
+<h3>Looking for something?</h3>
 <form action="/search" method="POST">
     <div class="form-group">
         <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
