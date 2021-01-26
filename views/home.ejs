@@ -13,22 +13,56 @@
     <button class="btn btn-primary" type="submit" name="search">Search</button>
 </form>
 <% if(search!="") {%>
-    <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
-        <label for="quantity">Number of posts to display on this page:</label>
-        <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-        <input type="submit">
-    </form>
+    <div class="orderForms">
+        <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+            <label for="quantity">Number of posts to display on this page:</label>
+            <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
+            <input type="submit">
+        </form>
+        <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+            <select name="order" class="orderSelect">
+                <% if(order==='new one first') {%> 
+                    <option value="new one first" selected>New one first</option>
+                <% }else {%>
+                    <option value="new one first">New one first</option> 
+                <% }if(order==='old one first') {%> 
+                    <option value="old one first" selected>Old one first</option>
+                <%} else {%>
+                    <option value="old one first">Old one first</option>
+                <% }  %>
+                <input type="submit"/>
+            </select>
+        </form>
+    </div>
 <% } else { %>
-    <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
-        <label for="quantity">Number of posts to display on this page:</label>
-        <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-        <input type="submit">
-    </form>
+    <div class="orderForms">
+        <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+            <label for="quantity">Number of posts to display on this page:</label>
+            <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
+            <input type="submit">
+        </form>
+        <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+            <select name="order" class="orderSelect">
+                <% if(order==='new one first') {%> 
+                    <option value="new one first" selected>New one first</option>
+                <% }else {%>
+                    <option value="new one first">New one first</option> 
+                <% }if(order==='old one first') {%> 
+                    <option value="old one first" selected>Old one first</option>
+                <%} else {%>
+                    <option value="old one first">Old one first</option>
+                <% }  %>
+                <input type="submit"/>
+            </select>
+        </form>
+    </div> 
 <% } %>
     
 <% posts.forEach(function (post) { %>
     <div class="post">
         <h1> <%= post.blogTitle %> </h1>
+        <p>Posted on <%= new Date(post.timestamps) %> </p>
+        <hr/>
         <p> <%= post.blogContent.substring(0,100) + ("...") %> 
             <span><a href="posts/<%= post.blogTitle %>" >Read More</a></span>
         </p>
