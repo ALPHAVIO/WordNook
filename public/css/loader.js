@@ -1,4 +1,4 @@
-var loader;
+var loader = document.getElementById("loader");
 
 function loadNow(opacity) {
   if (opacity <= 0) {
@@ -12,8 +12,7 @@ function loadNow(opacity) {
 }
 
 function displayContent() {
-  loader.style.display = "none";
-  document.getElementById("root").style.display = "block";
+  document.getElementById("loader").style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
