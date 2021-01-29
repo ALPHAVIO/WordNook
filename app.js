@@ -54,7 +54,11 @@ mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true});
 const blogSchema = {
   blogTitle: String,
   blogContent: String,
-  comments: Array
+  comments: Array,
+  timestamps: {
+    type: Date, 
+    default: Date.now
+  }
 }
 
 //Making a MongoDB model for the schema-
@@ -66,27 +70,29 @@ app.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], function
   if(req.query.perPage>0)
     perPage =  parseInt(req.query.perPage);
   const currentPage = req.params.page || 1;
-
+  const order = req.query.order || "new one first";
   Blog
-    .find({})
-    .skip((perPage * currentPage) - perPage)
-    .limit(perPage)
-    .exec(function(err, foundBlogs) {
-      Blog.count().exec(function(err, count) {
-        if(err)
-          console.log(err);
-        else {
-          res.render("home", {
-            homeStartingContent: homeStartingContent,
-            posts: foundBlogs,
-            current: currentPage,
-            pages: Math.ceil(count/perPage),
-            search: "",
-            perPage: perPage
-          });
-        }
-      })
-    });
+  .find({})
+  .sort({'timestamps': (order === "new one first")?'desc':'asc'})
+  .skip((perPage * currentPage) - perPage)
+  .limit(perPage)
+  .exec(function(err, foundBlogs) {
+    Blog.count().exec(function(err, count) {
+      if(err)
+        console.log(err);
+      else {
+        res.render("home", {
+          homeStartingContent: homeStartingContent,
+          posts: foundBlogs,
+          current: currentPage,
+          pages: Math.ceil(count/perPage),
+          search: "",
+          perPage: perPage,
+          order: order
+        });
+      }
+    })
+  });
 });
 
 
@@ -173,6 +179,7 @@ app.post(["/search"], function(req, res){
 
   Blog.find({blogTitle: { "$regex": query, "$options": "i" }})
   .skip((perPage * currentPage) - perPage)
+  .sort({'timestamps': 'desc'})
   .limit(perPage)
   .exec( function(err, posts) {
     Blog.countDocuments({blogTitle: { "$regex": query, "$options": "i" }}, function(err, count) {
@@ -183,6 +190,7 @@ app.post(["/search"], function(req, res){
         pages: Math.ceil(count/perPage),
         search: query,
         perPage: perPage,
+        order: 'new one first'
       });
     })
     
@@ -195,9 +203,11 @@ app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPag
   var perPage = parseInt(req.params.perPage) || 5;
   if(req.query.perPage>0)
     perPage =  parseInt(req.query.perPage);
+  const order = req.query.order || "new one first";
   const currentPage = req.params.page || 1;
 
   Blog.find({blogTitle: { "$regex": query, "$options": "i" }})
+  .sort({'timestamps': (order === "new one first")?'desc':'asc'})
   .skip((perPage * currentPage) - perPage)
   .limit(perPage)
   .exec( function(err, posts) {
@@ -208,7 +218,8 @@ app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPag
         current: currentPage,
         pages: Math.ceil(count/perPage),
         search: query,
-        perPage: perPage
+        perPage: perPage,
+        order: order
       });
     })
     
