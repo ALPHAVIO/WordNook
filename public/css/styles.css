@@ -1,3 +1,21 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+}
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 90vh;
+  z-index: 1;
+  overflow: visible;
+  background: #000000
+    url("https://i.pinimg.com/originals/34/cc/62/34cc62d1df1c8328f56ae7a7acf2e83a.gif")
+    no-repeat center center;
+}
 .container-fluid {
   padding-top: 70px;
   padding-bottom: 70px;
