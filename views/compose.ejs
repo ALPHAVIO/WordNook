@@ -5,11 +5,11 @@
 <form action="/compose" method="POST">
     <div class="form-group">
         <label>Title</label>
-        <input class="form-control" type="text" name="postTitle" autocomplete="off"></input>
+        <input class="form-control" type="text" name="postTitle" autocomplete="off" required></input>
     </div>
     <div class="form-group">
         <label>Post</label>
-        <textarea class="form-control" type="text" name="postBody" rows="3" autocomplete="off"></textarea>
+        <textarea class="form-control" type="text" name="postBody" rows="3" autocomplete="off" required></textarea>
     </div>
     <button class="btn btn-primary" type="submit" name="publish">Publish</button>
 </form>
