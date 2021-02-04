@@ -88,19 +88,10 @@ body {
 .quantityForm {
   margin-top: 20px;
 }
+
 .darkmode-layer,
 .darkmode-toggle {
   z-index: 500;
-  bottom: 15px !important;
-  right: 8% !important;
-}
-
-@media only screen and (min-width: 500px) and (max-width: 1230px)
-{
-  .darkmode-layer,
-  .darkmode-toggle {
-    right: 15% !important;
-  }
 }
 
 .darkmode--activated #nav-id {
@@ -142,14 +133,3 @@ body {
   border: 0px;
   font-weight: 800;
 }
-
-.hEBnKS {
-  z-index: 1;
-  right: 15px !important;
-  bottom: 0px !important;
-  position: absolute !important;
-  width: 60px !important;
-  height: 50px !important;
-  /* padding: 34px; */
-} 
-
