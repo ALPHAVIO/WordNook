@@ -1,6 +1,7 @@
-# BlogSite
-
+<div align="center">
+  <h1>BlogSite</h1>
   <img src="assets/New Banner.jpg" />
+</div>
   
 # A sneek peek into what we have here :
   
