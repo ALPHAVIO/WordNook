@@ -62,14 +62,6 @@ in your git bash.
 ```
 npm install
 ```
-All the current dependencies -
-```
-  "body-parser": "^1.18.3",
-  "ejs": "^2.6.1",
-  "express": "^4.16.3",
-  "lodash": "^4.17.20",
-  "mongoose": "^5.11.9"
-```
 <br/>
 
 * Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default). You need to change the url in your `app.js` file to `'mongodb://localhost:27017/blogDB'`; 
