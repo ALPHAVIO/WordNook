@@ -1,8 +1,8 @@
 /*font style: Quicksand*/
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
-/*font style: Potta One*/
-@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+/*font style: Lato*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
 
 html,
 body {
@@ -79,12 +79,12 @@ body {
 
 .footer p {
   margin-top: 25px;
-  font-size: 12px;
+  font-size: 13px;
   color: #fff;
 }
 
 .heading-main-bold{
-  font-weight: bolder;
+  font-weight:bold;
 }
 
 .heading-centre{
@@ -105,8 +105,8 @@ body {
 }
 
 .post-title{
-  font-family: 'Potta One', cursive;
-  font-size:45px;
+  font-family: 'Lato', sans-serif;
+  font-size:50px;
 }
 
 .post-margin{
