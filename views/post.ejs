@@ -1,8 +1,9 @@
 <%- include("partials/header") -%>
 
-<h1> <%= title %> </h1>
+<div class="container-centre">
+<h1 class="heading-centre post-title"> <%= title %> </h1>
 
-<p> <%= content %> </p> 
+<p class="post-preview-font post-margin"> <%= content %> </p> 
 <form  action="/posts/<%=title%>" method="post" >
     <input class="myButton" type="submit" value="Delete">
 </form>
@@ -16,7 +17,7 @@
         <p><%= comments[i].content %></p>
     </div>
 <% } %>
-<h2>Add a comment</h2>
+<h4>Add a comment</h4>
 <form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 20px;">
     <div class="form-group">
         <label>Name</label>
@@ -28,5 +29,7 @@
     </div>
     <button class="btn btn-primary" type="submit" name="publish">Post comment</button>
 </form>
+</div>
+
 <%- include("partials/footer") -%>
 

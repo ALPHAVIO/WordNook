@@ -1,11 +1,12 @@
 <%- include("partials/header") -%>
 
-<h2>Hey there!</h2>
-<p> <%= homeStartingContent %> </p> 
-<h3>Anything New?</h3>
+<div class="container-centre">
+<h1>Hi <span class="heading-main-bold">there</span>!</h1>
+<p class="main-content-font"> <%= homeStartingContent %> </p> 
+<h3>Anything <span class="heading-main-bold">new</span>?</h3>
 <a class="btn btn-success compose-btn" href="/compose"><i class="fa fa-pencil" style="color:white"></i>  Compose</a>
 <br/>
-<h3>Looking for something?</h3>
+<h3>Looking for <span class="heading-main-bold">something</span>....</h3>
 <form action="/search" method="POST">
     <div class="form-group search-form">
         <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
@@ -16,7 +17,7 @@
 <% if(search!="") {%>
     <div class="orderForms">
         <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
-            <label for="quantity">Number of posts to display on this page:</label>
+            <label for="quantity">Number of posts to be displayed on this page:</label>
             <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
             <input class="btn btn-primary search-btn" type="submit">
         </form>
@@ -61,10 +62,10 @@
     
 <% posts.forEach(function (post) { %>
     <div class="post">
-        <h1> <%= post.blogTitle %> </h1>
-        <p>Posted on <%= new Date(post.timestamps) %> </p>
+        <h2 style="font-weight: bolder;"> <%= post.blogTitle %> </h2>
+        <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
         <hr/>
-        <p> <%= post.blogContent.substring(0,100) + ("...") %> 
+        <p class="post-preview-font"> <%= post.blogContent.substring(0,100) + ("...") %> 
             <span><a href="posts/<%= post.blogTitle %>" >Read More</a></span>
         </p>
     </div>
@@ -126,4 +127,5 @@
         <% } %>
     </ul>
 <% } }%>
+</div>
 <%- include("partials/footer") -%>
