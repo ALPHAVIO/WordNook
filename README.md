@@ -1,7 +1,27 @@
-<div align="center">
-  <h1>BlogSite</h1>
+# BlogSite
+
   <img src="assets/New Banner.jpg" />
-</div>
+  
+# A sneek peek into what we have here :
+  
+### Home Page :
+  
+  <p align="center">
+  <img src="assets/home-page.gif" align = "center" />
+  </p>
+  
+### Publish Post :
+
+  <p align="center">
+  <img src="assets/publish.gif" align = "center" />
+  </p>
+  
+### Dark Mode :
+
+  <p align="center">
+  <img src="assets/dark-mode.gif" align = "center" />
+  </p>
+
 
 ## About-
 
@@ -22,7 +42,7 @@
 - Express JS
 - Mongoose
 
-## Environment Setup-
+## Environment Setup for local use -
 
 * Drop a :star: on the GitHub repository.
 <br/>
@@ -97,6 +117,24 @@ use db <db name>
 show collections
 <db name> .find()
 ```
+## Project Deployed on Heroku : [Link](https://blogsite321.herokuapp.com/)
+
+## Open Source Events Project is associated with:
+### 1. JGEC Winter of Code
+
+JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into Open Source contribution and get the realm of Software Development.
+
+
+ <img src="assets/event1.png"/>
+ 
+ 
+### 2. Mexili Winter of Code
+
+Mexili is a Free and Open Source organization whose motivation is to funnel learning and implementation through Open Source Software Development.
+
+
+ <img src="assets/event2.png"/>
+ 
 
 ## Maintainer ✨
 <table>
