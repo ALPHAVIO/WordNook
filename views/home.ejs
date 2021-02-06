@@ -3,13 +3,14 @@
 <h2>Hey there!</h2>
 <p> <%= homeStartingContent %> </p> 
 <h3>Anything New?</h3>
-<a class="btn btn-success compose-btn" href="/compose"><i class="fa fa-pencil" style="color:white"></i>  Compose</a>
+
+<a href="/compose"><button class="button  pen">Compose</button></a>
 <br/>
 <h3>Looking for something?</h3>
 <form action="/search" method="POST">
     <div class="form-group search-form">
         <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
-        <button class="btn btn-primary search-btn" type="submit" name="search">🔎 Search</button>
+        <button class="button  search" style="margin-left: 10px;">Search</button>
     </div>
 </form>
 
@@ -18,7 +19,7 @@
         <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
             <label for="quantity">Number of posts to display on this page:</label>
             <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-            <input class="btn btn-primary search-btn" type="submit">
+            <button class="button  arrow" type="submit" style="min-width: 10em; margin-left: 10px;">Go</button>
         </form>
         <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
             <select name="order" class="orderSelect">
@@ -31,8 +32,8 @@
                 <%} else {%>
                     <option value="old one first">Old one first</option>
                 <% }  %>
-                <input class="btn btn-primary filter-btn" type="submit"/>
             </select>
+            <button class="button  arrow" type="submit" style="min-width: 10em; margin-left: 10px;">Go</button>
         </form>
     </div>
 <% } else { %>
@@ -40,7 +41,7 @@
         <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
             <label for="quantity">Number of posts to display on this page:</label>
             <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-            <input class="btn btn-primary search-btn" type="submit">
+            <button class="button  arrow" type="submit" style="min-width: 10em; margin-left: 10px;">Go</button>
         </form>
         <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
             <select name="order" class="orderSelect">
@@ -53,8 +54,8 @@
                 <%} else {%>
                     <option value="old one first">Old one first</option>
                 <% }  %>
-                <input class="btn btn-primary filter-btn" type="submit"/>
             </select>
+            <button class="button  arrow" type="submit" style="min-width: 10em;  margin-left: 10px;">Go</button>
         </form>
     </div> 
 <% } %>
@@ -64,9 +65,8 @@
         <h1> <%= post.blogTitle %> </h1>
         <p>Posted on <%= new Date(post.timestamps) %> </p>
         <hr/>
-        <p> <%= post.blogContent.substring(0,100) + ("...") %> 
-            <span><a href="posts/<%= post.blogTitle %>" >Read More</a></span>
-        </p>
+        <p> <%= post.blogContent.substring(0,150) + ("...") %> </p>
+        <a href="posts/<%= post.blogTitle %>"><button class="button read">Read More</button></a>
     </div>
 <% }); %>
 <% if(search!="") {%>

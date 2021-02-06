@@ -4,8 +4,9 @@
 
 <p> <%= content %> </p> 
 <form  action="/posts/<%=title%>" method="post" >
-    <input class="myButton" type="submit" value="Delete">
+    <button class="button  del" type="submit">Delete</button>
 </form>
+
 
 <h2 style="margin-top: 40px; margin-bottom: 20px;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
 <% for(var i=0; i<comments.length; i++) { %>
@@ -26,7 +27,7 @@
         <label>Content</label>
         <textarea class="form-control" type="text" name="content" rows="3" autocomplete="off" required></textarea>
     </div>
-    <button class="btn btn-primary" type="submit" name="publish">Post comment</button>
+    <button class="button commenting" type="submit" name="publish">Post comment</button>
 </form>
 <%- include("partials/footer") -%>
 
