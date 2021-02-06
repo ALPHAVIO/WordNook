@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const router = mongoose.Router();
-const User = require('../models/User.model');
-const bcrypt = require("bcrypt");
+const express = require("express");
+const router = express.Router();
+const User = require('../models/user.model');
+const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 
 
@@ -9,6 +9,7 @@ router.post("/sign-up", (req, res) => {
     
     const { firstName, lastName, userName, email, password } = req.body;
 
+    console.log(firstName, lastName, userName, email, password);
     // Check if all the fields are filled
     if(!firstName || !lastName || !userName || !email || !password){
         return res.status(422).json({error : "Please add all the fields!"});
@@ -43,14 +44,8 @@ router.post("/sign-up", (req, res) => {
                     //Send back the token to the user as a httpOnly cookie
                     res.cookie("token", token, {
                         httpOnly: true
-                    })
-                    res.json({
-                        success : "Sign Up successful!",
-                        user: {
-                            id: doc._id,
-                            name: doc.userName
-                        }
                     });
+                    res.redirect("/");
                 });
             });
 
@@ -83,13 +78,7 @@ router.post("/log-in", (req, res) => {
                 httpOnly: true
             });
 
-            res.json({
-                success: "Log In succesful!",
-                user: {
-                    id: doc._id,
-                    name: doc.userName
-                }
-            });
+            res.redirect("/");
         })
     })
 });

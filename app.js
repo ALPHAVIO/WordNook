@@ -3,12 +3,15 @@
 //Acquiring Dependencies- 
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require("lodash");
 const PORT = process.env.PORT || 3000;
 //darkmode
 const Darkmode = require("darkmode-js") ;
+//middleware for authentication
+const auth = require("./middlewares/auth");
 
 
 const options = {
@@ -39,7 +42,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-
+app.use(express.json());
+app.use(cookieParser());
 //When in development mode then only require the dotenv module
 if(process.env.NODE_ENV !== 'production'){
   const dotenv = require('dotenv');
@@ -58,11 +62,18 @@ const blogSchema = {
   timestamps: {
     type: Date, 
     default: Date.now
+  },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
   }
 }
 
 //Making a MongoDB model for the schema-
 const Blog = new mongoose.model("Blog", blogSchema);
+
+// Router for user login and sign in
+app.use(require("./routes/user.router"));
 
 //Get request for home route-
 app.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], function(req, res){
@@ -107,18 +118,27 @@ app.get("/contact", function(req, res){
 });
 
 //Get request for compose blog page-
-app.get("/compose", function(req, res){
+app.get("/compose", auth, function(req, res){
+  const user = req.user;
+  if(!user){
+    return res.status(401).redirect("/log-in");
+  }
   res.render("compose");
 });
 
 //Post request to save the new blogs to the DB
-app.post("/compose", function(req, res){
+app.post("/compose", auth, function(req, res){
+  const user = req.user;
+  if(!user){
+    return res.status(401).redirect("/log-in");
+  }
   const postTitle = req.body.postTitle;
   const postContent = req.body.postBody;
   const blog = new Blog({
     blogTitle: postTitle,
     blogContent: postContent,
-    comments: []
+    comments: [],
+    author: user._id
   })
   console.log(blog);
   blog.save();
@@ -126,20 +146,27 @@ app.post("/compose", function(req, res){
 });
 
 //Get request for posts page-
-app.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:postName", "/search/:query/posts/:postName", "/search/:query/:page/posts/:postName"], function(req, res){
+app.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:postName", "/search/:query/posts/:postName", "/search/:query/:page/posts/:postName"], auth, function(req, res){
+  const user = req.user;
+  let isAuthor = false;
   const requestedTitle = _.lowerCase(req.params.postName);
   Blog.find({}, function(err, posts){
     if(!err){
       posts.forEach(function(post){
         const storedTitle = _.lowerCase(post.blogTitle);
         if(storedTitle === requestedTitle){
+          // Check if the user and author of this post are same
+          if(user && JSON.stringify(user._id) === JSON.stringify(post.author)){
+            isAuthor = true;
+          }
           //Sort the comments to show the recent one
           post.comments = post.comments.sort((a,b) =>  ((a.timestamps > b.timestamps) ? -1 : ((a.timestamps < b.timestamps) ? 1 : 0)));
           res.render("post", {
             title: post.blogTitle,
             content: post.blogContent,
             id:post._id,
-            comments: post.comments
+            comments: post.comments,
+            isAuthor
           });
         }
       });
@@ -227,10 +254,15 @@ app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPag
 })
 
 //delete post route
-app.post('/posts/:postName', (req, res, next) => {
+app.post('/posts/:postName', auth, (req, res, next) => {
+  const user = req.user;
+  if(!user) {
+    return res.status(401).redirect("/log-in");
+  }
+
   const requestedTitle = req.params.postName;
   console.log(requestedTitle)
-  Blog.deleteOne({blogTitle: requestedTitle}).then(
+  Blog.deleteOne({blogTitle: requestedTitle, author: user._id}).then(
     () => {
       res.redirect("/");
     }

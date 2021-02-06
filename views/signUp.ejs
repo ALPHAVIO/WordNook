@@ -1,0 +1,8 @@
+<%- include("partials/header") -%>
+
+<form action="/search" method="POST">
+    <div class="form-group search-form">
+        <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
+        <button class="btn btn-primary search-btn" type="submit" name="search">🔎 Search</button>
+    </div>
+</form>

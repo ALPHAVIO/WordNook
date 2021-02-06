@@ -3,9 +3,13 @@
 <h1> <%= title %> </h1>
 
 <p> <%= content %> </p> 
-<form  action="/posts/<%=title%>" method="post" >
-    <input class="myButton" type="submit" value="Delete">
-</form>
+
+<!-- If this user is the author then only render the delete button-->
+<% if(isAuthor){ %>
+    <form  action="/posts/<%=title%>" method="post" >
+        <input class="myButton" type="submit" value="Delete">
+    </form>
+<% } %>
 
 <h2 style="margin-top: 40px; margin-bottom: 20px;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
 <% for(var i=0; i<comments.length; i++) { %>
