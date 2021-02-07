@@ -1,12 +1,12 @@
 <%- include("partials/header") -%>
 
-<h2>Hey there!</h2>
-<p> <%= homeStartingContent %> </p> 
-<h3>Anything New?</h3>
+<h2 class="normal-heading-font" style="font-weight:600;">Hi there!</h2>
+<p class="content-body-font"> <%= homeStartingContent %> </p> 
+<h3 class="normal-heading-font" style="font-weight:600;">Anything New?</h3>
 
 <a href="/compose"><button class="button  pen">Compose</button></a>
 <br/>
-<h3>Looking for something?</h3>
+<h3 class="normal-heading-font" style="font-weight:600;">Looking for something....</h3>
 <form action="/search" method="POST">
     <div class="form-group search-form">
         <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
@@ -59,16 +59,18 @@
         </form>
     </div> 
 <% } %>
-    
-<% posts.forEach(function (post) { %>
-    <div class="post">
-        <h1> <%= post.blogTitle %> </h1>
-        <p>Posted on <%= new Date(post.timestamps) %> </p>
-        <hr/>
-        <p> <%= post.blogContent.substring(0,150) + ("...") %> </p>
-        <a href="posts/<%= post.blogTitle %>"><button class="button read">Read More</button></a>
-    </div>
-<% }); %>
+<hr>
+<div class="posts-section">    
+    <% posts.forEach(function (post) { %>
+        <div class="post post-preview">
+            <h1> <%= post.blogTitle %> </h1>
+            <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
+            <hr/>
+            <p class="post-preview-font"> <%= post.blogContent.substring(0,150) + ("...") %> </p>
+            <a href="posts/<%= post.blogTitle %>"><button class="button read">Read More</button></a>
+        </div>
+    <% }); %>
+</div>
 <% if(search!="") {%>
     <% if (pages > 0) { %>
     <ul class="pagination text-center">
