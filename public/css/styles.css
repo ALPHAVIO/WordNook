@@ -1,3 +1,9 @@
+/*font style: Quicksand*/
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
+/*font style: Patua One*/
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+/*font style: Open Sans*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
 html,
 body {
   margin: 0;
@@ -5,6 +11,7 @@ body {
   width: 100%;
   height: 100vh;
   background-size: cover;
+  font-family: 'Quicksand', sans-serif;
 }
 #loader {
   position: fixed;
@@ -20,6 +27,10 @@ body {
   padding-top: 70px;
   padding-bottom: 70px;
 }
+.container-centre{
+  margin: auto;
+  max-width: 900px;
+}
 .navbar {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -27,12 +38,66 @@ body {
   border-radius: 0;
   margin-bottom: 0;
   font-size: 12px;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+.navbar-brand{
+  font-size: 46px;
   letter-spacing: 5px;
+  font-weight: 300;
+}
+.navbar-brand-bold{
+  font-weight:600;
+}
+.navbar-right{
+  margin: 0;
+  padding-top:16px;
+}
+.navbar-right li a{
+  font-weight: bold;
+  margin: 5px;
+  padding: 5px;
 }
 .navbar-nav li a:hover {
   color: #1abc9c !important;
 }
 
+.heading-bold{
+  font-weight:bold;
+}
+.normal-heading-font{
+  font-family: 'Open Sans', sans-serif;
+}
+.heading-centre{
+  text-align: center;
+  padding: 20px;
+}
+.post-heading{
+  font-family: 'Patua One', cursive;
+  font-size: 46px;
+}
+.content-body-font{
+  font-size: 17px;
+}
+.posts-section{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.post-preview-font{
+  font-size: 16px;
+}
+.post-preview{
+  background-color: #E5E7EB;
+  margin: 12px;
+  padding: 30px;
+  border-radius: 1rem;
+}
+.post-date-font{
+  font-size: 12px;
+}
+.post-margin{
+  margin-bottom:30px;
+}
 .footer-padding {
   padding-bottom: 60px;
 }
@@ -49,7 +114,7 @@ body {
 
 .footer p {
   margin-top: 25px;
-  font-size: 12px;
+  font-size: 13px;
   color: #fff;
 }
 
