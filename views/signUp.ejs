@@ -1,25 +1,34 @@
 <%- include("partials/header") -%>
 
+<% if(error) { %>
+    <div class="alert alert-danger" role="alert">
+        <%= error %>
+    </div>
+<% } %>
+
 <form action="/sign-up" method="POST">
     <div class="form-group">
         <label>First Name</label>
-        <input class="form-control" type="text" name="firstName" autocomplete="off" required></input>
+        <input class="form-control" type="text" name="firstName" autocomplete="off" value="<%= data.firstName %>" required></input>
     </div>
     <div class="form-group">
         <label>Last Name</label>
-        <input class="form-control" type="text" name="lastName" autocomplete="off" required></input>
+        <input class="form-control" type="text" name="lastName" autocomplete="off" value="<%= data.lastName %>" required></input>
     </div>
     <div class="form-group">
         <label>Your Username</label>
-        <input class="form-control" type="text" name="userName" autocomplete="off" required></input>
+        <input class="form-control" type="text" name="userName" autocomplete="off" value="<%= data.userName %>" required></input>
     </div>
     <div class="form-group">
         <label>Your Email</label>
-        <input class="form-control" type="email" name="email" autocomplete="off" required></input>
+        <input class="form-control" type="email" name="email" autocomplete="off" value="<%= data.email %>" required></input>
     </div>
     <div class="form-group">
         <label>Password</label>
-        <input class="form-control" type="password" name="password" autocomplete="off" required></input>
+        <input class="form-control" type="password" name="password" autocomplete="off" value="<%= data.password %>" required></input>
+    </div>
+    <div class="text-center">
+        Already an User? <a href="/log-in">Log In</a>
     </div>
     <button class="btn btn-primary" type="submit" name="sign-up">Sign Up</button>
 </form>

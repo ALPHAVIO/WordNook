@@ -1,36 +1,36 @@
 <%- include("partials/header") -%>
+<div class="container-centre">
+    <h1 class="heading-bold heading-centre post-heading"> <%= title %> </h1>
+    <p class="content-body-font post-margin"> <%= content %> </p>
 
-<h1> <%= title %> </h1>
-
-<p> <%= content %> </p> 
-
-<!-- If this user is the author then only render the delete button-->
-<% if(isAuthor){ %>
-    <form  action="/posts/<%=title%>" method="post" >
-        <input class="myButton" type="submit" value="Delete">
+    <!-- If this user is the author then only render the delete button-->
+    <% if(isAuthor){ %>
+        <form  action="/posts/<%=title%>" method="post" >
+            <button class="button  del" type="submit">Delete</button>
+        </form>
+    <% } %>
+    
+    <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 40px; margin-bottom: 20px;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
+    <% for(var i=0; i<comments.length; i++) { %>
+        <div class="comment"> 
+            <h4><strong><%= comments[i].name %></strong></h4>
+            <p class="post-date-font"><%= new Date(comments[i].timestamps*1000) %></p>
+            <hr/>
+            <p style="font-size: 16px;"><%= comments[i].content %></p>
+        </div>
+    <% } %>
+    <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
+    <form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 20px;">
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" type="text" name="name" autocomplete="off" required></input>
+        </div>
+        <div class="form-group">
+            <label>Content</label>
+            <textarea class="form-control" type="text" name="content" rows="3" autocomplete="off" required></textarea>
+        </div>
+        <button class="button commenting" type="submit" name="publish">Post comment</button>
     </form>
-<% } %>
-
-<h2 style="margin-top: 40px; margin-bottom: 20px;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
-<% for(var i=0; i<comments.length; i++) { %>
-    <div class="comment"> 
-        <h4><strong><%= comments[i].name %></strong></h4>
-        <p><%= new Date(comments[i].timestamps*1000) %></p>
-        <hr/>
-        <p><%= comments[i].content %></p>
-    </div>
-<% } %>
-<h2>Add a comment</h2>
-<form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 20px;">
-    <div class="form-group">
-        <label>Name</label>
-        <input class="form-control" type="text" name="name" autocomplete="off" required></input>
-    </div>
-    <div class="form-group">
-        <label>Content</label>
-        <textarea class="form-control" type="text" name="content" rows="3" autocomplete="off" required></textarea>
-    </div>
-    <button class="btn btn-primary" type="submit" name="publish">Post comment</button>
-</form>
+</div>
 <%- include("partials/footer") -%>
 

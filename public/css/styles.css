@@ -1,3 +1,9 @@
+/*font style: Quicksand*/
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
+/*font style: Patua One*/
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+/*font style: Open Sans*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
 html,
 body {
   margin: 0;
@@ -5,6 +11,7 @@ body {
   width: 100%;
   height: 100vh;
   background-size: cover;
+  font-family: 'Quicksand', sans-serif;
 }
 #loader {
   position: fixed;
@@ -20,6 +27,10 @@ body {
   padding-top: 70px;
   padding-bottom: 70px;
 }
+.container-centre{
+  margin: auto;
+  max-width: 900px;
+}
 .navbar {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -27,12 +38,66 @@ body {
   border-radius: 0;
   margin-bottom: 0;
   font-size: 12px;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+.navbar-brand{
+  font-size: 46px;
   letter-spacing: 5px;
+  font-weight: 300;
+}
+.navbar-brand-bold{
+  font-weight:600;
+}
+.navbar-right{
+  margin: 0;
+  padding-top:16px;
+}
+.navbar-right li a{
+  font-weight: bold;
+  margin: 5px;
+  padding: 5px;
 }
 .navbar-nav li a:hover {
   color: #1abc9c !important;
 }
 
+.heading-bold{
+  font-weight:bold;
+}
+.normal-heading-font{
+  font-family: 'Open Sans', sans-serif;
+}
+.heading-centre{
+  text-align: center;
+  padding: 20px;
+}
+.post-heading{
+  font-family: 'Patua One', cursive;
+  font-size: 46px;
+}
+.content-body-font{
+  font-size: 17px;
+}
+.posts-section{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.post-preview-font{
+  font-size: 16px;
+}
+.post-preview{
+  background-color: #E5E7EB;
+  margin: 12px;
+  padding: 30px;
+  border-radius: 1rem;
+}
+.post-date-font{
+  font-size: 12px;
+}
+.post-margin{
+  margin-bottom:30px;
+}
 .footer-padding {
   padding-bottom: 60px;
 }
@@ -49,7 +114,7 @@ body {
 
 .footer p {
   margin-top: 25px;
-  font-size: 12px;
+  font-size: 13px;
   color: #fff;
 }
 
@@ -153,3 +218,216 @@ body {
   /* padding: 34px; */
 } 
 
+/* Button Styling */
+.button {
+  display: inline-block;
+  font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  padding: 0.4em 1.4em;
+  padding-right: 3.7em;
+  background: #009ED8;
+  border: none;
+  color: white;
+  transition: 0.2s;
+}
+.button:before,
+.button:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding-top: inherit;
+  padding-bottom: inherit;
+  width: 2.8em;
+  content: "\00a0";
+  font-family: 'FontAwesome', sans-serif;
+  font-size: 1.2em;
+  text-align: center;
+  transition: 0.2s;
+  transform-origin: 50% 60%;
+}
+.button:before {
+  background: rgba(0, 0, 0, 0.1);
+}
+.button:hover {
+  background: #0079a5;
+}
+.button:active,
+.button:focus {
+  background: #002e3f;
+  outline: none;
+}
+.button {
+  min-width: 15em;
+}
+.arrow {
+  background: #139675;
+}
+.arrow:hover {
+  background: #0d6952;
+}
+.arrow:active,
+.arrow:focus {
+  background: #083b2e;
+}
+.arrow:after {
+  content: "\F054";
+}
+.arrow:hover:after {
+  -webkit-animation: bounceright 0.3s alternate ease infinite;
+  animation: bounceright 0.3s alternate ease infinite;
+}
+.del {
+  background: #FE5F55;
+}
+.del:hover {
+  background: #fe2f22;
+}
+.del:active,
+.del:focus {
+  background: #b90c01;
+}
+.del:after {
+  content: "\F1F8";
+}
+.del:hover:after {
+  -webkit-animation: wiggle 0.15s alternate ease infinite;
+  animation: wiggle 0.15s alternate ease infinite;
+}
+.pen {
+  background: #C673B3;
+}
+.pen:hover {
+  background: #b74f9f;
+}
+.pen:active,
+.pen:focus {
+  background: #963d82;
+}
+.pen:after {
+  content: "\F304";
+}
+.pen:hover:after {
+  -webkit-animation: none;
+  -webkit-transform: rotate(20deg);
+  animation: none;
+  transform: rotate(-45deg);
+  text-indent: 0.1em;
+}
+.read {
+  background: #f5d93f;
+  color: #000000;
+}
+.read:hover {
+  background: #dac23a;
+}
+.read:active,
+.read:focus {
+  background: #ddbc02;
+}
+.read:after {
+  content: "\F4D5";
+}
+.read:hover:after {
+  -webkit-animation: none;
+  -webkit-transform: scale(1.4);
+  animation: none;
+  transform: scale(1.4);
+}
+.search:after {
+  content: "\f002";
+}
+.search:hover:after {
+  -webkit-animation: none;
+  -webkit-transform: scale(1.4);
+  animation: none;
+  transform: scale(1.4);
+}
+.commenting {
+  background: #ff7300;
+}
+.commenting:hover {
+  background: #e46701;
+}
+.commenting:active,
+.commenting:focus {
+  background: #ff8928;
+}
+.commenting:after {
+  content: "\F075";
+}
+.commenting:hover:after {
+  -webkit-animation: none;
+  -webkit-transform: rotate(360deg);
+  animation: none;
+  transform: rotate(360deg);
+  text-indent: 0.1em;
+}
+
+.publish {
+  background: #b028ff;
+}
+.publish:hover {
+  background: #9201a5;
+}
+.publish:active,
+.publish:focus {
+  background: rgb(133, 3, 133);
+}
+.publish:after {
+  content: "\F064";
+}
+.publish:hover:after {
+  -webkit-animation: none;
+  -webkit-transform: rotate(360deg);
+  animation: none;
+  transform: rotate(360deg);
+  text-indent: 0.1em;
+}
+@-webkit-keyframes bounceright {
+  from {
+    -webkit-transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(3px);
+  }
+}
+@-webkit-keyframes wiggle {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(30deg);
+  }
+}
+@keyframes bounceright {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(3px);
+  }
+}
+@keyframes wiggle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(30deg);
+  }
+}
+/* body {
+  background: #303036;
+  text-align: center;
+  text-rendering: auto;
+  font-size: 17px;
+  line-height: 1.6em;
+  height: 100vh;
+  overflow: hidden;
+  padding: 18%;
+  padding-top: 25vh;
+}
+{
+  box-sizing: border-box;
+} */
