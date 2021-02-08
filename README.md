@@ -3,10 +3,16 @@
   <img src="assets/New Banner.jpg" />
 </div>
 
+# A sneek peek into what we have here :
+  
+ <p align="center">
+ <img src="assets/blogsite-gif.gif" align = "center" />
+ </p>
+
 ## About-
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 - 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
@@ -22,7 +28,7 @@
 - Express JS
 - Mongoose
 
-## Environment Setup-
+## Environment Setup for local use -
 
 * Drop a :star: on the GitHub repository.
 <br/>
@@ -56,17 +62,9 @@ in your git bash.
 ```
 npm install
 ```
-All the current dependencies -
-```
-  "body-parser": "^1.18.3",
-  "ejs": "^2.6.1",
-  "express": "^4.16.3",
-  "lodash": "^4.17.20",
-  "mongoose": "^5.11.9"
-```
 <br/>
 
-* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default). You need to change the url to `'mongodb://localhost:27017/blogDB'`; 
+* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default). You need to change the url in your `app.js` file to `'mongodb://localhost:27017/blogDB'`; 
 
 ```
 mongod
@@ -98,6 +96,18 @@ show collections
 <db name> .find()
 ```
 
+#### Project Deployed on Heroku : [Link](https://blogsite321.herokuapp.com/)
+
+## Open Source Events Project is associated with:
+
+<img align="right" src="assets/event1.png" width = "100" height = "80"><b>1. JGEC Winter of Code</b>
+
+- JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into Open Source contribution and get the realm of Software Development.
+
+<img align="right" src="assets/event2.png" width = "100" height = "80"><b>2. Mexili Winter of Code</b>
+
+- Mexili is a Free and Open Source organization whose motivation is to funnel learning and implementation through Open Source Software Development.
+
 ## Maintainer ✨
 <table>
   <tr>
@@ -126,6 +136,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://kanhaiyalal.000webhostapp.com/Kanhaiya.html"><img src="https://avatars.githubusercontent.com/u/58850584?v=4?s=100" width="100px;" alt=""/><br /><sub><b>kanhaiya lal</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=mak-ux" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/tusharjain0022"><img src="https://avatars.githubusercontent.com/u/59157988?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tushar Jain</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=tusharjain0022" title="Documentation">📖</a> <a href="https://github.com/ALPHAVIO/BlogSite/commits?author=tusharjain0022" title="Code">💻</a></td>
     <td align="center"><a href="https://karunkarthik-portfolio.netlify.app/"><img src="https://avatars.githubusercontent.com/u/58992593?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Karun Karthik</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=karunkarthik-git" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/HarshitAditya27"><img src="https://avatars.githubusercontent.com/u/71604531?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harshit Aditya</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=HarshitAditya27" title="Code">💻</a></td>
+    <td align="center"><a href="https://aayush-hub.github.io/Aayush-Garg-Portfolio/"><img src="https://avatars.githubusercontent.com/u/65889104?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aayush Garg</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=Aayush-hub" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Abhijay007"><img src="https://avatars.githubusercontent.com/u/64387054?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abhijay Jain</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=Abhijay007" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/cmonojit/"><img src="https://avatars.githubusercontent.com/u/49222090?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Monojit Chakraborty</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=mcmonojit" title="Code">💻</a></td>
   </tr>
 </table>
 

@@ -1,6 +1,6 @@
 //jshint esversion:6
 
-//Acquiring Dependencies- 
+//Acquiring Dependencies-
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -60,7 +60,7 @@ const blogSchema = {
   blogContent: String,
   comments: Array,
   timestamps: {
-    type: Date, 
+    type: Date,
     default: Date.now
   },
   author: {
@@ -186,10 +186,10 @@ app.post("/posts/:postName/comment", async function(req, res) {
   }
   else {
     const doc = await Blog.findOne({blogTitle: req.params.postName});
-    doc.comments.push({'name': name, 
-                       'content': content, 
+    doc.comments.push({'name': name,
+                       'content': content,
                        'timestamps': Math.floor(Date.now() / 1000)});
-                       
+
     await Blog.updateOne({blogTitle: req.params.postName}, {comments: doc.comments}, function(err, doc) {
       if(err)
         console.log(err);
@@ -220,7 +220,7 @@ app.post(["/search"], function(req, res){
         order: 'new one first'
       });
     })
-    
+
   })
 })
 
@@ -249,7 +249,7 @@ app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPag
         order: order
       });
     })
-    
+
   })
 })
 
