@@ -1,0 +1,15 @@
+<%- include("partials/header") -%>
+
+<form action="/log-in" method="POST">
+    <div class="form-group">
+        <label>Your Username</label>
+        <input class="form-control" type="text" name="userName" autocomplete="off" required></input>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" name="password" autocomplete="off" required></input>
+    </div>
+    <button class="btn btn-primary" type="submit" name="log-in">Log In</button>
+</form>
+
+<%- include("partials/footer") -%>

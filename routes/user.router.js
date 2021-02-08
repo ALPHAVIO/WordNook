@@ -4,7 +4,17 @@ const User = require('../models/user.model');
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 
+//GET request for Sign Up 
+router.get("/sign-up", (req, res) => {
+    res.render("signUp");
+});
 
+// GET request for Log In 
+router.get("/log-in", (req, res) => {
+    res.render("logIn");
+});
+
+//POST request for sign up
 router.post("/sign-up", (req, res) => {
     
     const { firstName, lastName, userName, email, password } = req.body;
@@ -54,6 +64,8 @@ router.post("/sign-up", (req, res) => {
 
 });
 
+
+//POST request for log in
 router.post("/log-in", (req, res) => {
 
     const { userName, password } = req.body;

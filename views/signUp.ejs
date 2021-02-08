@@ -1,8 +1,27 @@
 <%- include("partials/header") -%>
 
-<form action="/search" method="POST">
-    <div class="form-group search-form">
-        <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
-        <button class="btn btn-primary search-btn" type="submit" name="search">🔎 Search</button>
+<form action="/sign-up" method="POST">
+    <div class="form-group">
+        <label>First Name</label>
+        <input class="form-control" type="text" name="firstName" autocomplete="off" required></input>
     </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input class="form-control" type="text" name="lastName" autocomplete="off" required></input>
+    </div>
+    <div class="form-group">
+        <label>Your Username</label>
+        <input class="form-control" type="text" name="userName" autocomplete="off" required></input>
+    </div>
+    <div class="form-group">
+        <label>Your Email</label>
+        <input class="form-control" type="email" name="email" autocomplete="off" required></input>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" name="password" autocomplete="off" required></input>
+    </div>
+    <button class="btn btn-primary" type="submit" name="sign-up">Sign Up</button>
 </form>
+
+<%- include("partials/footer") -%>
