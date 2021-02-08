@@ -156,16 +156,6 @@ body {
 .darkmode-layer,
 .darkmode-toggle {
   z-index: 500;
-  bottom: 15px !important;
-  right: 8% !important;
-}
-
-@media only screen and (min-width: 500px) and (max-width: 1230px)
-{
-  .darkmode-layer,
-  .darkmode-toggle {
-    right: 15% !important;
-  }
 }
 
 .darkmode--activated #nav-id {
