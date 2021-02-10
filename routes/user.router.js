@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user.model');
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
+const auth = require("../middlewares/auth");
 
 //GET request for Sign Up 
 router.get("/sign-up", (req, res) => {
@@ -105,7 +106,7 @@ router.post("/sign-up", (req, res) => {
                     res.cookie("token", token, {
                         httpOnly: true
                     });
-                    res.redirect("/");
+                    res.redirect("/compose");
                 });
             });
 
@@ -158,9 +159,14 @@ router.post("/log-in", (req, res) => {
                 httpOnly: true
             });
 
-            res.redirect("/");
+            res.redirect("/compose");
         })
     })
 });
+
+router.post("/log-out", auth, (req, res) => {
+    res.clearCookie("token");
+    res.redirect("/");
+})
 
 module.exports = router;

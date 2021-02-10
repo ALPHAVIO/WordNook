@@ -54,7 +54,8 @@ const Blog = new mongoose.model("Blog", blogSchema);
 app.use(require("./routes/user.router"));
 
 //Get request for home route-
-app.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], function(req, res){
+app.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], auth, function(req, res){
+  
   var perPage = parseInt(req.params.perPage) || 5;
   if(req.query.perPage>0)
     perPage =  parseInt(req.query.perPage);
@@ -77,7 +78,8 @@ app.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], function
           pages: Math.ceil(count/perPage),
           search: "",
           perPage: perPage,
-          order: order
+          order: order,
+          isAuthenticated: req.user? true: false
         });
       }
     })
@@ -86,13 +88,20 @@ app.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], function
 
 
 //Get request for about page-
-app.get("/about", function(req, res){
-  res.render("about", {aboutContent: aboutContent});
+app.get("/about", auth, function(req, res){
+  
+  res.render("about", {
+    aboutContent: aboutContent,
+    isAuthenticated: req.user? true : false
+  });
 });
 
 //Get request for contact page-
-app.get("/contact", function(req, res){
-  res.render("contact", {contactContent: contactContent});
+app.get("/contact", auth, function(req, res){
+  res.render("contact", {
+    contactContent: contactContent,
+    isAuthenticated: req.user? true : false
+  });
 });
 
 //Get request for compose blog page-
@@ -101,7 +110,9 @@ app.get("/compose", auth, function(req, res){
   if(!user){
     return res.status(401).redirect("/log-in");
   }
-  res.render("compose");
+  res.render("compose", {
+    isAuthenticated: true
+  });
 });
 
 //Post request to save the new blogs to the DB
@@ -144,7 +155,8 @@ app.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:postNa
             content: post.blogContent,
             id:post._id,
             comments: post.comments,
-            isAuthor
+            isAuthor,
+            isAuthenticated: user? true: false
           });
         }
       });
@@ -177,7 +189,7 @@ app.post("/posts/:postName/comment", async function(req, res) {
 });
 
 //Post request to search by title
-app.post(["/search"], function(req, res){
+app.post(["/search"], auth, function(req, res){
   const query = req.body.query || req.params.query;
   var perPage = 5;
   const currentPage = req.params.page || 1;
@@ -195,7 +207,8 @@ app.post(["/search"], function(req, res){
         pages: Math.ceil(count/perPage),
         search: query,
         perPage: perPage,
-        order: 'new one first'
+        order: 'new one first',
+        isAuthenticated: req.user? true : false
       });
     })
 
@@ -203,7 +216,7 @@ app.post(["/search"], function(req, res){
 })
 
 // GET request for search to support pagination
-app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPage", "/search/:query"], function(req, res){
+app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPage", "/search/:query"], auth, function(req, res){
   const query = req.params.query;
   var perPage = parseInt(req.params.perPage) || 5;
   if(req.query.perPage>0)
@@ -224,7 +237,8 @@ app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPag
         pages: Math.ceil(count/perPage),
         search: query,
         perPage: perPage,
-        order: order
+        order: order,
+        isAuthenticated: req.user? true: false
       });
     })
 
