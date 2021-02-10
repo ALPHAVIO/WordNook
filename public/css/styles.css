@@ -98,25 +98,6 @@ body {
 .post-margin{
   margin-bottom:30px;
 }
-.footer-padding {
-  padding-bottom: 60px;
-}
-
-.footer {
-  position: fixed;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background-color: #1abc9c;
-  z-index: 100;
-}
-
-.footer p {
-  margin-top: 25px;
-  font-size: 13px;
-  color: #fff;
-}
 
 .myButton {
   box-shadow: inset 0px 1px 0px 0px #f29c93;
