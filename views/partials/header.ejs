@@ -19,6 +19,13 @@
           <li id="home"><a href="/">HOME</a></li>
           <li id="about"><a href="/about">ABOUT</a></li>
           <li id="contact"><a href="/contact">CONTACT US</a></li>
+          <% if(isAuthenticated) { %>
+            <li id="log-out">
+              <form action="/log-out" method="post">
+                <button class="btn btn-primary" type="submit" name="log-out">Log out</button>
+              </form>
+            </li>
+          <% } %>
         </ul>
     </div>
   </nav>

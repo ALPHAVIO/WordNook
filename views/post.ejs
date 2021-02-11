@@ -1,10 +1,14 @@
-<%- include("partials/header") -%>
+<%- include("partials/header", {isAuthenticated}) -%>
 <div class="container-centre">
     <h1 class="heading-bold heading-centre post-heading"> <%= title %> </h1>
-    <p class="content-body-font post-margin"> <%= content %> </p> 
-    <form  action="/posts/<%=title%>" method="post" >
-        <button class="button  del" type="submit">Delete</button>
-    </form>
+    <p class="content-body-font post-margin"> <%= content %> </p>
+
+    <!-- If this user is the author then only render the delete button-->
+    <% if(isAuthor){ %>
+        <form  action="/posts/<%=title%>" method="post" >
+            <button class="button  del" type="submit">Delete</button>
+        </form>
+    <% } %>
     
     <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 40px; margin-bottom: 20px;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
     <% for(var i=0; i<comments.length; i++) { %>
