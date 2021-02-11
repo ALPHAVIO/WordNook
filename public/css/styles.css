@@ -424,6 +424,8 @@ body {
 
 .bg_home { 
   position: absolute;
+  min-width: 100%;
+  height: 100%;
   background-size: cover;
   background-image: linear-gradient(rgba(255,255,255,0.9),rgba(178, 209, 205, 0.7)),url("https://images.pexels.com/photos/7380/startup-photos.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-position: center;
