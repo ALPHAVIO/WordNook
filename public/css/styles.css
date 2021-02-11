@@ -46,6 +46,10 @@ body {
   letter-spacing: 5px;
   font-weight: 300;
 }
+.navbar-brand a{
+  text-decoration: none;
+  color: inherit;
+}
 .navbar-brand-bold{
   font-weight:600;
 }
@@ -55,11 +59,38 @@ body {
 }
 .navbar-right li a{
   font-weight: bold;
-  margin: 5px;
-  padding: 5px;
+  margin: 5px 8px 4px 8px;
+  padding: 5px 1px 3px 2px;
 }
 .navbar-nav li a:hover {
   color: #1abc9c !important;
+}
+/*navbar animation*/
+.navbar-right a::before,a::after{
+  content:'';
+  position:absolute;
+  width:0%;
+  height:1.5px;
+  bottom:-1px;
+  background: #414141;
+}
+.navbar-right a::before{
+  left: 0;
+}
+.navbar-right a::after{
+  right:0;
+  background: #414141;
+  transition: width 0.8s cubic-bezier(0.22,0.61,0.36,1);
+}
+.navbar-right a:hover::before{
+  background: #414141;
+  width:100%;
+  transition: width 0.5s cubic-bezier(0.22,0.61,0.36,1);
+}
+.navbar-right a:hover::after{
+  background: transparent;
+  width:100%;
+  transition: 0s;
 }
 
 .heading-bold{
@@ -156,6 +187,7 @@ body {
 .darkmode-layer,
 .darkmode-toggle {
   z-index: 500;
+  outline: none;
 }
 
 .darkmode--activated #nav-id {
