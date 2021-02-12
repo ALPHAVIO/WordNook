@@ -1,7 +1,10 @@
-<%- include("partials/header") -%>
+<%- include("partials/header", {isAuthenticated}) -%>
 
-<h1>Contact</h1>
-
-<p> <%= contactContent %> </p> 
+<div class="container-centre content-body-font">
+    <h1 class="heading-centre heading-bold normal-heading-font">Contact Us</h1>
+    <p> <%= contactContent %> </p> 
+    <p>Drop a message, we got it covered for you! </p>
+    <i class="far fa-envelope fa-lg"><a href="mailto:aaradhyasharma218@gmail.com"> alphavio16@gmail.com </a></i>
+</div>
 
 <%- include("partials/footer") -%>

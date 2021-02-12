@@ -7,18 +7,29 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/styles.css">
-  <nav class="navbar navbar-default">
+  <link rel="icon" href="/images/favicon.ico">
+  <script src="https://kit.fontawesome.com/7a2242c499.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <nav id="nav-id" class="navbar navbar-default darkmode--activated">
     <div class="container">
       <div class="navbar-header">
-        <p class="navbar-brand">DAILY JOURNAL</p>
+        <p class="navbar-brand"><a href="/">DAILY <span class="navbar-brand-bold">JOURNAL</span></a></p>
       </div>
         <ul class="nav navbar-nav navbar-right">
           <li id="home"><a href="/">HOME</a></li>
-          <li id="about"><a href="/about">ABOUT US</a></li>
+          <li id="about"><a href="/about">ABOUT</a></li>
           <li id="contact"><a href="/contact">CONTACT US</a></li>
+          <% if(isAuthenticated) { %>
+            <li id="log-out">
+              <form action="/log-out" method="post">
+                <button class="btn btn-primary" type="submit" name="log-out">Log out</button>
+              </form>
+            </li>
+          <% } %>
         </ul>
     </div>
   </nav>
 
-  <body>
+  <body class="darkmode--activated">
+    <div id="loader" class="pre"></div>
     <div class="container">

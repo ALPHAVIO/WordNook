@@ -1,15 +1,131 @@
-<%- include("partials/header") -%>
+<%- include("partials/header", {isAuthenticated}) -%>
 
-<h1>Home</h1>
-<p> <%= homeStartingContent %> </p> 
+<h2 class="normal-heading-font" style="font-weight:600;">Hi there!</h2>
+<p class="content-body-font"> <%= homeStartingContent %> </p> 
+<h3 class="normal-heading-font" style="font-weight:600;">Anything New?</h3>
 
-<% posts.forEach(function (post) { %>
-    <div class="post">
-        <h1> <%= post.blogTitle %> </h1>
-        <p> <%= post.blogContent.substring(0,100) + ("...") %> 
-            <span><a href="posts/<%= post.blogTitle %>" >Read More</a></span>
-        </p>
+<a href="/compose"><button class="button  pen">Compose</button></a>
+<br/>
+<h3 class="normal-heading-font" style="font-weight:600;">Looking for something....</h3>
+<form action="/search" method="POST">
+    <div class="form-group search-form">
+        <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
+        <button class="button  search" style="margin-left: 10px;">Search</button>
     </div>
-<% }); %>
+</form>
 
+<% if(search!="") {%>
+    <div class="orderForms">
+        <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+            <label for="quantity">Number of posts to display on this page:</label>
+            <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
+            <button class="button  arrow" type="submit" style="min-width: 10em; margin-left: 10px;">Go</button>
+        </form>
+        <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+            <select name="order" class="orderSelect">
+                <% if(order==='new one first') {%> 
+                    <option value="new one first" selected>New one first</option>
+                <% }else {%>
+                    <option value="new one first">New one first</option> 
+                <% }if(order==='old one first') {%> 
+                    <option value="old one first" selected>Old one first</option>
+                <%} else {%>
+                    <option value="old one first">Old one first</option>
+                <% }  %>
+            </select>
+            <button class="button  arrow" type="submit" style="min-width: 10em; margin-left: 10px;">Go</button>
+        </form>
+    </div>
+<% } else { %>
+    <div class="orderForms">
+        <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+            <label for="quantity">Number of posts to display on this page:</label>
+            <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
+            <button class="button  arrow" type="submit" style="min-width: 10em; margin-left: 10px;">Go</button>
+        </form>
+        <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm">
+            <select name="order" class="orderSelect">
+                <% if(order==='new one first') {%> 
+                    <option value="new one first" selected>New one first</option>
+                <% }else {%>
+                    <option value="new one first">New one first</option> 
+                <% }if(order==='old one first') {%> 
+                    <option value="old one first" selected>Old one first</option>
+                <%} else {%>
+                    <option value="old one first">Old one first</option>
+                <% }  %>
+            </select>
+            <button class="button  arrow" type="submit" style="min-width: 10em;  margin-left: 10px;">Go</button>
+        </form>
+    </div> 
+<% } %>
+<hr>
+<div class="posts-section">    
+    <% posts.forEach(function (post) { %>
+        <div class="post post-preview">
+            <h1> <%= post.blogTitle %> </h1>
+            <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
+            <hr/>
+            <p class="post-preview-font"> <%= post.blogContent.substring(0,150) + ("...") %> </p>
+            <a href="posts/<%= post.blogTitle %>"><button class="button read">Read More</button></a>
+        </div>
+    <% }); %>
+</div>
+<% if(search!="") {%>
+    <% if (pages > 0) { %>
+    <ul class="pagination text-center">
+        <% if (current == 1) { %>
+            <li class="disabled"><a>First</a></li>
+        <% } else { %>
+            <li><a href="/search/<%= search %>/1/<%= perPage %>">First</a></li>
+        <% } %>
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% if (i == current) { %>
+                <li class="active"><a><%= i %></a></li>
+            <% } else { %>
+                <li><a href="/search/<%= search %>/<%= i %>/<%= perPage %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+        <% } %>
+        <% if (current == pages) { %>
+            <li class="disabled"><a>Last</a></li>
+        <% } else { %>
+            <li><a href="/search/<%= search %>/<%= pages %>/<%= perPage %>">Last</a></li>
+        <% } %>
+    </ul>
+<% }} else { %>
+<% if (pages > 0) { %>
+    <ul class="pagination text-center">
+        <% if (current == 1) { %>
+            <li class="disabled"><a>First</a></li>
+        <% } else { %>
+            <li><a href="/page/1/<%= perPage %>">First</a></li>
+        <% } %>
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% if (i == current) { %>
+                <li class="active"><a><%= i %></a></li>
+            <% } else { %>
+                <li><a href="/page/<%= i %>/<%= perPage %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+        <% } %>
+        <% if (current == pages) { %>
+            <li class="disabled"><a>Last</a></li>
+        <% } else { %>
+            <li><a href="/page/<%= pages %>/<%= perPage %>">Last</a></li>
+        <% } %>
+    </ul>
+<% } }%>
 <%- include("partials/footer") -%>
