@@ -10,11 +10,18 @@
   <link rel="icon" href="/images/favicon.ico">
   <script src="https://kit.fontawesome.com/7a2242c499.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <nav id="nav-id" class="navbar navbar-default darkmode--activated">
+  <nav id="nav-id" class="navbar navbar-default darkmode--activated navbar-fixed-top">
     <div class="container">
-      <div class="navbar-header">
+      <div class="navbar-header" style="display:inline-block">
         <p class="navbar-brand"><a href="/">DAILY <span class="navbar-brand-bold">JOURNAL</span></a></p>
+        <button type="button" class="navbar-right navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li id="home"><a href="/">HOME</a></li>
           <li id="about"><a href="/about">ABOUT</a></li>
@@ -27,9 +34,10 @@
             </li>
           <% } %>
         </ul>
+      </div>
     </div>
   </nav>
 
-  <body class="darkmode--activated">
+  <body class="darkmode--activated" style="margin-top: 90px;">
     <div id="loader" class="pre"></div>
     <div class="container">
