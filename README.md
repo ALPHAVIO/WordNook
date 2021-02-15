@@ -104,15 +104,13 @@ show collections
 
 - JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into Open Source contribution and get the realm of Software Development.
 
-<img align="right" src="assets/event2.png" width = "100" height = "80"><b>2. Mexili Winter of Code</b>
+<img align="right" src="assets/event2.png" width = "100" height = "80"><b>2. Winter of Code</b>
 
 - Mexili is a Free and Open Source organization whose motivation is to funnel learning and implementation through Open Source Software Development.
 
 <img align="right" src="assets/event3.png" width = "100" height = "80"><b>3. GirlScript Summer of Code</b>
 
 - GirlScript Summer of Code is the 3 month long Open Source program  conducted by GirlScript Foundation, started in 2018, with an aim to help beginners get started with Open Source Development while encouraging diversity.
-
-
 
 ## Maintainer ✨
 <table>
