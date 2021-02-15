@@ -104,7 +104,7 @@ show collections
 
 - JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into Open Source contribution and get the realm of Software Development.
 
-<img align="right" src="assets/event2.png" width = "100" height = "80"><b>2. Winter of Code</b>
+<img align="right" src="assets/event2.png" width = "100" height = "80"><b>2. Mexili Winter of Code</b>
 
 - Mexili is a Free and Open Source organization whose motivation is to funnel learning and implementation through Open Source Software Development.
 
