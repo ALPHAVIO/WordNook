@@ -6,7 +6,7 @@
 # A sneek peek into what we have here :
   
  <p align="center">
- <img src="assets/blogsite-gif.gif" align = "center" />
+ <img src="assets/blogsite_gif.gif" align = "center"  width=600px/>
  </p>
 
 ## About-
