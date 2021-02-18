@@ -64,6 +64,17 @@ npm install
 ```
 <br/>
 
+* Adding secret key for JWT auth.
+  * Run this command when inside the root directory to make a `.env` file.
+  ```
+  touch .env
+  ```
+  * Now add this to the `.env` file
+  ```
+  SECRET_KEY = "AlphaVio";
+  ```
+<br/>
+
 * Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default). You need to change the url in your `app.js` file to `'mongodb://localhost:27017/blogDB'`; 
 
 ```
