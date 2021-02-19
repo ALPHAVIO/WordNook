@@ -156,7 +156,8 @@ app.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:postNa
             id:post._id,
             comments: post.comments,
             isAuthor,
-            isAuthenticated: user? true: false
+            isAuthenticated: user? true: false,
+            currentUser: user
           });
         }
       });
@@ -168,15 +169,20 @@ app.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:postNa
 });
 
 //Post request to create a comment
-app.post("/posts/:postName/comment", async function(req, res) {
-  const {name, content} = req.body;
+app.post("/posts/:postName/comment",auth, async function(req, res) {
+  const loggedUser=req.user;
+  const {content} = req.body;
+  //check if the user is authenticated
+  if(!loggedUser){    
+    return res.status(401).redirect(req.baseUrl+"/sign-up");
+  }
   //Server side form validation
-  if(name ==="" || content===""){
+  else if(content===""){
     res.redirect(`/posts/${req.params.postName}`);
   }
   else {
     const doc = await Blog.findOne({blogTitle: req.params.postName});
-    doc.comments.push({'name': name,
+    doc.comments.push({'name': loggedUser.name,
                        'content': content,
                        'timestamps': Math.floor(Date.now() / 1000)});
 
@@ -187,6 +193,18 @@ app.post("/posts/:postName/comment", async function(req, res) {
     res.redirect(`/posts/${req.params.postName}`);
   }
 });
+app.post("/posts/:postName/comments/:commentNum",async function(req,res){
+  const requestedPost = req.params.postName;
+  const commentNum=req.params.commentNum;
+  const foundPost=await Blog.findOne({blogTitle: requestedPost});
+  foundPost.comments = foundPost.comments.sort((a,b) =>  ((a.timestamps > b.timestamps) ? -1 : ((a.timestamps < b.timestamps) ? 1 : 0)));
+  foundPost.comments.splice(commentNum,1);
+  await Blog.updateOne({blogTitle: requestedPost}, {comments: foundPost.comments}, function(err, foundPost) {
+    if(err)
+      console.log(err);
+  })
+  res.redirect(`/posts/${requestedPost}`);
+})
 
 //Post request to search by title
 app.post(["/search"], auth, function(req, res){
