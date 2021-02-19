@@ -193,17 +193,22 @@ app.post("/posts/:postName/comment",auth, async function(req, res) {
     res.redirect(`/posts/${req.params.postName}`);
   }
 });
-app.post("/posts/:postName/comments/:commentNum",async function(req,res){
+app.post("/posts/:postName/comments/:commentNum",auth,async function(req,res){
+  const isUser=req.user?true:false;
   const requestedPost = req.params.postName;
   const commentNum=req.params.commentNum;
-  const foundPost=await Blog.findOne({blogTitle: requestedPost});
-  foundPost.comments = foundPost.comments.sort((a,b) =>  ((a.timestamps > b.timestamps) ? -1 : ((a.timestamps < b.timestamps) ? 1 : 0)));
-  foundPost.comments.splice(commentNum,1);
-  await Blog.updateOne({blogTitle: requestedPost}, {comments: foundPost.comments}, function(err, foundPost) {
-    if(err)
-      console.log(err);
-  })
-  res.redirect(`/posts/${requestedPost}`);
+  if(!isUser){
+    return res.status(401).redirect(req.baseUrl+"/sign-up");
+  }else{
+    const foundPost=await Blog.findOne({blogTitle: requestedPost});
+    foundPost.comments = foundPost.comments.sort((a,b) =>  ((a.timestamps > b.timestamps) ? -1 : ((a.timestamps < b.timestamps) ? 1 : 0)));
+    foundPost.comments.splice(commentNum,1);
+    await Blog.updateOne({blogTitle: requestedPost}, {comments: foundPost.comments}, function(err, foundPost) {
+      if(err)
+        console.log(err);
+    })
+    res.redirect(`/posts/${requestedPost}`);
+  }
 })
 
 //Post request to search by title
