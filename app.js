@@ -193,11 +193,12 @@ app.post("/posts/:postName/comment",auth, async function(req, res) {
     res.redirect(`/posts/${req.params.postName}`);
   }
 });
+// Delete comment Route
 app.post("/posts/:postName/comments/:commentNum",auth,async function(req,res){
   const isUser=req.user?true:false;
   const requestedPost = req.params.postName;
   const commentNum=req.params.commentNum;
-  if(!isUser){
+  if(!isUser){    // checking if user is authenticated
     return res.status(401).redirect(req.baseUrl+"/sign-up");
   }else{
     const foundPost=await Blog.findOne({blogTitle: requestedPost});
