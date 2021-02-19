@@ -17,14 +17,13 @@
             <p class="post-date-font"><%= new Date(comments[i].timestamps*1000) %></p>
             <hr/>
             <p style="font-size: 16px;"><%= comments[i].content %></p>
+            <form  action="/posts/<%=title%>/comments/<%=i%>" method="post">
+                <button class="button  del" type="submit">Delete</button>
+            </form>
         </div>
     <% } %>
     <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
     <form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 20px;">
-        <div class="form-group">
-            <label>Name</label>
-            <input class="form-control" type="text" name="name" autocomplete="off" required></input>
-        </div>
         <div class="form-group">
             <label>Content</label>
             <textarea class="form-control" type="text" name="content" rows="3" autocomplete="off" required></textarea>
@@ -33,4 +32,3 @@
     </form>
 </div>
 <%- include("partials/footer") -%>
-
