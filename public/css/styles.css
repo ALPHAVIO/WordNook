@@ -39,14 +39,11 @@ body {
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
-  font-size: 1.1rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   letter-spacing: 0.125rem;
 }
 .navbar-brand{
-  font-size: 3.5rem;
-  letter-spacing: 0.313rem;
-  font-weight: 300;
+  font-size: 3.5vw;
 }
 .navbar-brand a{
   text-decoration: none;
