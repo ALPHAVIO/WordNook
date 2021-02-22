@@ -10,7 +10,7 @@
         </form>
     <% } %>
     
-    <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 40px; margin-bottom: 20px;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
+    <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 6vh; margin-bottom: 3vh;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
     <% for(var i=0; i<comments.length; i++) { %>
         <div class="comment"> 
             <h4><strong><%= comments[i].name %></strong></h4>
@@ -23,7 +23,7 @@
         </div>
     <% } %>
     <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
-    <form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 20px;">
+    <form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 3vh;">
         <div class="form-group">
             <label>Content</label>
             <textarea class="form-control" type="text" name="content" rows="3" autocomplete="off" required></textarea>
