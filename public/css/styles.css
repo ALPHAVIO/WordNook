@@ -26,12 +26,12 @@ body {
     no-repeat center center;
 }
 .container-fluid {
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
 }
 .container-centre{
   margin: auto;
-  max-width: 900px;
+  max-width: 65vw;
 }
 .navbar {
   padding-top: 1vh;
@@ -39,14 +39,11 @@ body {
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
-  font-size: 12px;
-  font-size: 13px;
-  letter-spacing: 2px;
+  font-size: 1.5rem;
+  letter-spacing: 0.125rem;
 }
 .navbar-brand{
-  font-size: 3rem;
-  letter-spacing: 5px;
-  font-weight: 300;
+  font-size: 3.5vw;
 }
 .navbar-brand a{
   text-decoration: none;
@@ -57,12 +54,12 @@ body {
 }
 .navbar-right{
   margin: 0;
-  padding-top:16px;
+  padding-top:3vh;
 }
 .navbar-right li a{
   font-weight: bold;
-  margin: 5px 8px 4px 8px;
-  padding: 5px 1px 3px 2px;
+  margin: 0.4rem 0.6rem 0.3rem 0.6rem;
+  padding: 0.4rem 0.07rem 0.2rem 0.13rem;
 }
 .navbar-nav li a:hover {
   color: #1abc9c !important;
@@ -72,8 +69,8 @@ body {
   content:'';
   position:absolute;
   width:0%;
-  height:1.5px;
-  bottom:-1px;
+  height:0.3vh;
+  bottom:-0.14vh;
   background: #414141;
 }
 .navbar-right a::before{
@@ -103,69 +100,50 @@ body {
 }
 .heading-centre{
   text-align: center;
-  padding: 20px;
+  padding: 1rem;
 }
 .post-heading{
   font-family: 'Patua One', cursive;
-  font-size: 46px;
+  font-size: 3.4rem;
 }
 .content-body-font{
-  font-size: 17px;
+  font-size: 2rem;
 }
 .posts-section{
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 1.4vh;
+  margin-bottom: 2.8vh;
 }
 .post-preview-font{
-  font-size: 16px;
+  font-size: 1rem;
 }
 .post-preview{
   background-color: #E5E7EB;
-  margin: 12px;
-  padding: 30px;
+  margin: 0.8rem;
+  padding: 1.9rem;
   border-radius: 1rem;
 }
 .post-date-font{
-  font-size: 12px;
+  font-size: 1.1rem;
 }
 .post-margin{
-  margin-bottom:30px;
-}
-.footer-padding {
-  padding-bottom: 60px;
-}
-
-.footer {
-  position: fixed;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background-color: #1abc9c;
-  z-index: 100;
-}
-
-.footer p {
-  margin-top: 25px;
-  font-size: 13px;
-  color: #fff;
+  margin-bottom:4.1vh;
 }
 
 .myButton {
-  box-shadow: inset 0px 1px 0px 0px #f29c93;
+  box-shadow: inset 0rem 0.07rem 0rem 0rem #f29c93;
   background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
   background-color: #fe1a00;
-  border-radius: 6px;
-  border: 1px solid #d83526;
+  border-radius: 0.4rem;
+  border: 0.07rem solid #d83526;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
-  font-size: 21px;
+  font-size: 1.4rem;
   font-weight: bold;
-  padding: 5px 19px;
+  padding: 0.4rem 1.2rem;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #b23e35;
+  text-shadow: 0rem 0.07rem 0rem #b23e35;
 }
 .myButton:hover {
   background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
@@ -173,18 +151,18 @@ body {
 }
 .myButton:active {
   position: relative;
-  top: 1px;
+  top: 0.07rem;
 }
 .comment {
-  border: 2px solid rgb(223, 220, 220);
-  border-radius: 5px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0px 0px 1px 0px;
+  border: 0.13rem solid rgb(223, 220, 220);
+  border-radius: 0.4rem;
+  padding: 1.3rem;
+  margin-bottom: 1.3rem;
+  box-shadow: 0rem 0rem 0.07rem 0rem;
 }
 
 .quantityForm {
-  margin-top: 20px;
+  margin-top: 1.3rem;
 }
 .darkmode-layer,
 .darkmode-toggle {
@@ -196,12 +174,13 @@ body {
   background-color: #d3d3d3 !important;
 }
 .orderForms {
-  display:flex; 
+  /*display:flex;*/
+  align-items: center;
   justify-content: space-between;
 }
 
 .orderSelect {
-  padding: 5px;
+  padding: 0.4rem;
 }
 
 .search-form {
@@ -210,9 +189,9 @@ body {
 }
 
 .search-btn, .filter-btn {
-  margin-left: 10px;
+  margin-left: 0.7rem;
   font-weight: 800;
-  border: 0px;
+  border: 0rem;
   transition: all 1.5s;
 }
 
@@ -228,18 +207,18 @@ body {
 .compose-btn {
   background-color: #337ab7;
   transition: all 1.5s;
-  border: 0px;
+  border: 0rem;
   font-weight: 800;
 }
 
 .hEBnKS {
   z-index: 1;
-  right: 15px !important;
-  bottom: 0px !important;
+  right: 1rem !important;
+  bottom: 0rem !important;
   position: absolute !important;
-  width: 60px !important;
-  height: 50px !important;
-  /* padding: 34px; */
+  width: 3.8rem !important;
+  height: 3.2rem !important;
+  /* padding: 2.2rem; */
 } 
 
 /* Button Styling */
@@ -414,7 +393,7 @@ body {
     -webkit-transform: translateX(0);
   }
   to {
-    -webkit-transform: translateX(3px);
+    -webkit-transform: translateX(0.2rem);
   }
 }
 @-webkit-keyframes wiggle {
@@ -430,7 +409,7 @@ body {
     transform: translateX(0);
   }
   to {
-    transform: translateX(3px);
+    transform: translateX(0.2rem);
   }
 }
 @keyframes wiggle {
@@ -445,7 +424,7 @@ body {
   background: #303036;
   text-align: center;
   text-rendering: auto;
-  font-size: 17px;
+  font-size: 1.07rem;
   line-height: 1.6em;
   height: 100vh;
   overflow: hidden;
