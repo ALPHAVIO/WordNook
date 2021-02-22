@@ -1,7 +1,7 @@
 <%- include("partials/header", {isAuthenticated}) -%>
 <div class="container-centre">
     <h1 class="heading-bold heading-centre post-heading"> <%= title %> </h1>
-    <p class="content-body-font post-margin"> <%= content %> </p>
+         <%- content %>
 
     <!-- If this user is the author then only render the delete button-->
     <% if(isAuthor){ %>
@@ -16,7 +16,7 @@
             <h4><strong><%= comments[i].name %></strong></h4>
             <p class="post-date-font"><%= new Date(comments[i].timestamps*1000) %></p>
             <hr/>
-            <p style="font-size: 16px;"><%= comments[i].content %></p>
+            <%- comments[i].content %>
             <form  action="/posts/<%=title%>/comments/<%=i%>" method="post">
                 <button class="button  del" type="submit">Delete</button>
             </form>
@@ -26,9 +26,15 @@
     <form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 20px;">
         <div class="form-group">
             <label>Content</label>
-            <textarea class="form-control" type="text" name="content" rows="3" autocomplete="off" required></textarea>
+            <textarea name="content" ></textarea>
+            <script>
+                window.onload = function() {
+                   CKEDITOR.replace('content');
+                };
+            </script>
         </div>
         <button class="button commenting" type="submit" name="publish">Post comment</button>
     </form>
 </div>
+<script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 <%- include("partials/footer") -%>

@@ -66,7 +66,7 @@
             <h1> <%= post.blogTitle %> </h1>
             <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
             <hr/>
-            <p class="post-preview-font"> <%= post.blogContent.substring(0,150) + ("...") %> </p>
+            <%- post.blogContent.substring(0,15000000) + ("...") %>
             <a href="posts/<%= post.blogTitle %>"><button class="button read">Read More</button></a>
         </div>
     <% }); %>

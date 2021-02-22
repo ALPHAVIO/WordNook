@@ -10,9 +10,14 @@
         <div class="form-group">
             <label>Post</label>
             <textarea class="form-control" type="text" name="postBody" rows="3" autocomplete="off" required></textarea>
+            <script>
+                window.onload = function() {
+                   CKEDITOR.replace('postBody');
+                };
+            </script>
         </div>
         <button class="button publish" type="submit" name="publish">Publish</button>
     </form>
 </div>
-
+<script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 <%- include("partials/footer") -%>
