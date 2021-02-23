@@ -67,7 +67,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/59636719?v=4",
       "profile": "https://indiancovid19tracker.herokuapp.com/",
       "contributions": [
-        "doc"
+        "doc",
+        "code"
       ]
     },
     {
@@ -149,6 +150,15 @@
       "name": "Aniket Lodh",
       "avatar_url": "https://avatars.githubusercontent.com/u/55927827?v=4",
       "profile": "https://www.linkedin.com/in/aniket-lodh-998b34199",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "m-code12",
+      "name": "Monika Jha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53649201?v=4",
+      "profile": "https://github.com/m-code12",
       "contributions": [
         "code"
       ]
