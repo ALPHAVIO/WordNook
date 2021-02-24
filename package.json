@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "14.15.1"
+  },
   "scripts": {
     "test": "jest",
     "start": "nodemon app.js"
