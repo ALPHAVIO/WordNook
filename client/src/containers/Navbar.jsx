@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { motion } from "framer-motion";
 import icon from "./../icon.png";
 
-const BACKEND_URL = "http://localhost:7781";
+const BACKEND_URL = "http://localhost:3001";
 function Navbar() {
   const { user } = useAuth();
   return (
@@ -58,14 +58,15 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item mx-md-2 my-1">
-                  <a
-                    role="button"
-                    href={`${BACKEND_URL}/auth/logout`}
-                    className="btn btn-sm btn-secondary text-light pb-md-2 d-flex"
-                  >
-                    <i className="fas fa-sign-out-alt my-1 my-md-0 pt-md-1"></i>
-                    <h6 className="d-md-none ml-2 ">Sign out</h6>
-                  </a>
+                  <form action={`${BACKEND_URL}/log-out`} method="post">
+                    <button
+                      role="submit"
+                      className="btn btn-sm btn-secondary text-light pb-md-2 d-flex"
+                    >
+                      <i className="fas fa-sign-out-alt my-1 my-md-0 pt-md-1"></i>
+                      <h6 className="d-md-none ml-2 ">Sign out</h6>
+                    </button>
+                  </form>
                 </li>
               </ul>
             </div>

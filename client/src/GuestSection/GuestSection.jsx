@@ -35,12 +35,12 @@ function GuestSection() {
             to="/signUp"
             className="btn btn-sm btn-primary pb-0"
           >
-            <h6>SignUp</h6>
+            <h6>Sign Up</h6>
           </Link>
           <p className="my-2">
             Already have an account?{" "}
             <Link to="/signIn" className="ml-1 text-danger">
-              SignIn
+              Sign In
             </Link>
           </p>
         </motion.div>

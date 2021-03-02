@@ -12,7 +12,6 @@ import SignUp from "../components/SignUp";
 function Routes() {
   const location = useLocation();
   const { user } = useAuth();
-  console.log(user);
   return (
     <div className="container mt-3">
       {/* <Alert /> */}

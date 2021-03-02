@@ -11,23 +11,31 @@ function Form({ type, handleSubmit }) {
 
   const submitForm = (e) => {
     e.preventDefault();
-    let user = {
-      firstName: firstNameRef.current.value,
-      lastName: lastNameRef.current.value,
-      email: emailRef.current.value,
-      userName: userNameRef.current.value,
-      password: passwordRef.current.value,
-    };
+    let user =
+      type === "signup"
+        ? {
+            firstName: firstNameRef.current.value,
+            lastName: lastNameRef.current.value,
+            email: emailRef.current.value,
+            userName: userNameRef.current.value,
+            password: passwordRef.current.value,
+          }
+        : {
+            userName: userNameRef.current.value,
+            password: passwordRef.current.value,
+          };
     handleSubmit(user);
-    firstNameRef.current.value = "";
-    lastNameRef.current.value = "";
-    emailRef.current.value = "";
+    if (type === "signup") {
+      firstNameRef.current.value = "";
+      lastNameRef.current.value = "";
+      emailRef.current.value = "";
+    }
     userNameRef.current.value = "";
     passwordRef.current.value = "";
   };
 
   return (
-    <form className="my-3 text-dark p-3 my-0 rounded" onSubmit={submitForm}>
+    <form className="text-dark" onSubmit={submitForm}>
       {type === "signup" && (
         <>
           <div className="form-group my-2">
@@ -84,7 +92,7 @@ function Form({ type, handleSubmit }) {
       </div>
       <div className="form-group my-2">
         <button type="submit" className="float-right btn btn-sm btn-danger">
-          SignUp
+          {type === "signup" ? "Sign Up" : "Sign In"}
         </button>
         <Link to="/" className="btn btn-sm btn-secondary float-left">
           Cancel

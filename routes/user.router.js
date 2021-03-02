@@ -111,34 +111,34 @@ router.post("/log-in", (req, res) => {
   const { userName, password } = req.body;
 
   if (!userName || !password) {
-    res.status(401).render("logIn", {
+    res.status(401).json({
       error: "Please add all the fields!",
-      data: {
-        userName: userName || "",
-        password: password || "",
-      },
+      //   data: {
+      //     userName: userName || "",
+      //     password: password || "",
+      //   },
     });
   }
 
   User.findOne({ userName }, (err, doc) => {
     if (err || !doc) {
-      return res.status(401).render("logIn", {
+      return res.status(401).json({
         error: "Invalid username or password!",
-        data: {
-          userName,
-          password,
-        },
+        // data: {
+        //   userName,
+        //   password,
+        // },
       });
     }
 
     bcrypt.compare(password, doc.password, (err, matched) => {
       if (err || !matched) {
-        return res.status(401).render("logIn", {
+        return res.status(401).json({
           error: "Invalid usrname or password!",
-          data: {
-            userName,
-            password,
-          },
+          //   data: {
+          //     userName,
+          //     password,
+          //   },
         });
       }
 
@@ -151,14 +151,14 @@ router.post("/log-in", (req, res) => {
         httpOnly: true,
       });
 
-      res.redirect("/compose");
+      res.json({ message: "User signed in successfully!!!" });
     });
   });
 });
 
 router.post("/log-out", auth, (req, res) => {
   res.clearCookie("token");
-  res.redirect("/");
+  res.redirect(process.env.FRONTEND_URL);
 });
 
 router.get("/currentUser", auth, (req, res) => {

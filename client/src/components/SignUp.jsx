@@ -5,7 +5,7 @@ import Form from "./Form";
 function SignUp() {
   const history = useHistory();
   const signupUser = (user) => {
-    console.log(user);
+    // console.log(user);
 
     fetch("/sign-up", {
       method: "POST",
@@ -37,7 +37,7 @@ function SignUp() {
           <div className="card-header">
             <h4 className="text-danger text-center">Sign Up</h4>
           </div>
-          <div className="card-content p-0">
+          <div className="card-content p-3">
             <Form type="signup" handleSubmit={signupUser} />
           </div>
         </div>
