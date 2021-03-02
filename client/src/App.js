@@ -1,13 +1,25 @@
-import React, { Component } from 'react'
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import { useAuth } from "./contexts/AuthContext";
+import Routes from "./containers/Routes";
+import Loader from "./containers/Loader";
+import Navbar from "./containers/Navbar";
 
-export class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Hello World!</h1>
-      </div>
-    )
-  }
+function App() {
+  const { loading } = useAuth();
+  return loading ? (
+    <Loader height="100" />
+  ) : (
+    <>
+      <Router>
+        {/* <AlertProvider> */}
+        <Navbar />
+        <Routes />
+        {/* </AlertProvider> */}
+      </Router>
+    </>
+  );
 }
 
-export default App
+export default App;
