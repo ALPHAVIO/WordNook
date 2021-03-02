@@ -6,10 +6,13 @@ import { AnimatePresence } from "framer-motion";
 
 import GuestSection from "./../GuestSection/GuestSection";
 import Home from "../AuthSection/Home";
+import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
 
 function Routes() {
   const location = useLocation();
   const { user } = useAuth();
+  console.log(user);
   return (
     <div className="container mt-3">
       {/* <Alert /> */}
@@ -17,6 +20,12 @@ function Routes() {
         <Switch location={location} key={location.pathname}>
           <Route exact path="/">
             {user ? <Home /> : <GuestSection />}
+          </Route>
+          <Route exact path="/signIn">
+            {user ? <Home /> : <SignIn />}
+          </Route>
+          <Route exact path="/signUp">
+            {user ? <Home /> : <SignUp />}
           </Route>
           {/* <AuthRoute exact path="/dashboard" component={Dashboard} />
           <AuthRoute exact path="/post" component={Post} />

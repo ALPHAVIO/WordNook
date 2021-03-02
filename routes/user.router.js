@@ -64,15 +64,8 @@ router.post("/sign-up", (req, res) => {
     }
     User.findOne({ userName }, (err, doc) => {
       if (doc) {
-        return res.status(401).render("signUp", {
+        return res.status(401).json({
           error: "Username already taken!",
-          data: {
-            firstName,
-            lastName,
-            userName,
-            password,
-            email,
-          },
         });
       }
 
@@ -87,15 +80,15 @@ router.post("/sign-up", (req, res) => {
 
         newUser.save((err, doc) => {
           if (err || !doc) {
-            return res.status(422).render("signUp", {
+            return res.status(422).json("signUp", {
               error: "Oops something went wrong!",
-              data: {
-                firstName,
-                lastName,
-                userName,
-                email,
-                password,
-              },
+              //   data: {
+              //     firstName,
+              //     lastName,
+              //     userName,
+              //     email,
+              //     password,
+              //   },
             });
           }
 
@@ -105,7 +98,8 @@ router.post("/sign-up", (req, res) => {
           res.cookie("token", token, {
             httpOnly: true,
           });
-          res.redirect("/compose");
+          //   res.redirect("/compose");
+          res.json({ message: "User signed up successfully!!!" });
         });
       });
     });
@@ -169,7 +163,7 @@ router.post("/log-out", auth, (req, res) => {
 
 router.get("/currentUser", auth, (req, res) => {
   if (req.user) {
-    return res.json(req.user);
+    return res.json({ user: req.user });
   }
   return res.json(null);
 });
