@@ -16,10 +16,10 @@ function Blog(props) {
   const [blog, setBlog] = useState({});
 
   useEffect(() => {
-    if (props.match.params.id) {
-      console.log(props.match.params.id);
-      return;
-    }
+    // if (props.match.params.id) {
+    //   console.log(props.match.params.id);
+    //   return;
+    // }
     setLoading(true);
     setError(false);
     fetch(`/posts/${props.match.params.id}`)
@@ -34,7 +34,7 @@ function Blog(props) {
         }
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
         setAlert("Server Error");
         setError(true);
       })
@@ -44,7 +44,7 @@ function Blog(props) {
   return loading ? (
     <Loader height="50" />
   ) : (
-    blog && (
+    !error && blog && (
       <div className="row">
         <motion.div
           variants={blogAuthorVariant}
@@ -54,11 +54,11 @@ function Blog(props) {
           className="col-md-4 my-2"
         >
           <h4 className="text-center text-danger">Author</h4>
-          <UserProfile user={blog.user} />
+          <UserProfile user={blog.author} />
           <Link
             to={`${
-              blog.user._id !== user._id
-                ? `/user/${blog.user._id}`
+              blog.author._id !== user._id
+                ? `/author/${blog.author._id}`
                 : "/dashboard"
             }`}
             className="btn btn-info btn-sm btn-block my-2"
@@ -80,7 +80,7 @@ function Blog(props) {
           </p>
           <div
             className="border-left border-danger m-2 p-2"
-            dangerouslySetInnerHTML={blog.blogContent}
+            dangerouslySetInnerHTML={{ __html: blog.blogContent }}
           >
             {/* <ReactQuill
               className="bg-dark text-white"

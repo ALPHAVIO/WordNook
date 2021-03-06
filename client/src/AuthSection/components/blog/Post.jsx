@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
+import { useAlert } from "../../../contexts/AlertContext";
 import { useAuth } from "../../../contexts/AuthContext";
 import BlogPost from "./BlogPost";
 
 function Post() {
   const { user } = useAuth();
+  const { setAlert } = useAlert();
   const [disableButtons, setDisableButtons] = useState(false);
   const titleRef = useRef("");
   const statusRef = useRef("Public");
@@ -32,15 +34,16 @@ function Post() {
         .then((res) => res.json())
         .then((data) => {
           if (data.blogId) {
-            console.log(data.blogId);
-            history.push(`/post/${data.blogId}`);
+            // console.log(data.blogId);
+            history.push(`/posts/${data.blogId}`);
           }
+          setAlert(data.msg);
         })
         .catch(() => {
-          alert("Error");
+          setAlert("Server Error");
         })
         .finally(() => setDisableButtons(false));
-    } else alert("No blank fields.");
+    } else setAlert("No blank fields.");
   };
 
   return (

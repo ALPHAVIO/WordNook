@@ -12,13 +12,14 @@ import AuthRoute from "./AuthRoute";
 import GuestRoute from "./GuestRoute";
 import Post from "../AuthSection/components/blog/Post";
 import Blog from "../AuthSection/components/blog/Blog";
+import Alert from "../AuthSection/components/alert/Alert";
 
 function Routes() {
   const location = useLocation();
   const { user } = useAuth();
   return (
     <div className="container mt-3">
-      {/* <Alert /> */}
+      <Alert />
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
           <Route exact path="/">
@@ -27,10 +28,10 @@ function Routes() {
           <GuestRoute exact path="/signIn" component={SignIn} />
           <GuestRoute exact path="/signUp" component={SignUp} />
           <AuthRoute exact path="/compose" component={Post} />
-          <AuthRoute exact path="/post/:id" component={Blog} />
+          <AuthRoute exact path="/posts/:id" component={Blog} />
           {/* <AuthRoute exact path="/dashboard" component={Dashboard} />
           <AuthRoute exact path="/edit/:id" component={Edit} />
-          <AuthRoute exact path="/user/:userId" component={ProfileVisit} /> */}
+          <AuthRoute exact path="/author/:authorId" component={ProfileVisit} /> */}
           <Redirect from="*" to="/" />
         </Switch>
       </AnimatePresence>

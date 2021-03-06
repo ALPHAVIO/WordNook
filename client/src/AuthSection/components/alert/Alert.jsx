@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useAlert } from "../../contexts/AlertContext";
+import { useAlert } from "../../../contexts/AlertContext";
 
 function Alert() {
   const { alert, setAlert } = useAlert();

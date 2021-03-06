@@ -137,75 +137,95 @@ app.post("/compose", auth, async function (req, res) {
     // if (!user) {
     //   return res.status(401).redirect("/log-in");
     // }
-    const postTitle = req.body.postTitle;
-    const postContent = req.body.postBody;
+    const blogTitle = req.body.blogTitle;
+    const blogContent = req.body.blogContent;
+    const status = req.body.status;
     const blog = new Blog({
-      blogTitle: postTitle,
-      blogContent: postContent,
+      blogTitle,
+      blogContent,
       comments: [],
       likes: [user._id],
       author: user._id,
+      status,
     });
     // console.log(blog);
     await blog.save();
     // res.redirect("/");
-    res.json({ blogId: blog._id });
+    res.json({ blogId: blog._id, msg: "New blog posted 👌." });
   } catch (error) {
     res.json({ msg: "Server Error" });
   }
 });
 
 //Get request for posts page-
-app.get(
-  [
-    "/posts/:postName",
-    "/page/posts/:postName",
-    "/page/:page/posts/:postName",
-    "/search/:query/posts/:postName",
-    "/search/:query/:page/posts/:postName",
-  ],
-  auth,
-  function (req, res) {
-    const user = req.user;
-    let isAuthor = false;
-    const requestedTitle = _.lowerCase(req.params.postName);
-    Blog.find({}, function (err, posts) {
-      if (!err) {
-        posts.forEach(function (post) {
-          const storedTitle = _.lowerCase(post.blogTitle);
-          if (storedTitle === requestedTitle) {
-            // Check if the user and author of this post are same
-            if (
-              user &&
-              JSON.stringify(user._id) === JSON.stringify(post.author)
-            ) {
-              isAuthor = true;
-            }
-            //Sort the comments to show the recent one
-            post.comments = post.comments.sort((a, b) =>
-              a.timestamps > b.timestamps
-                ? -1
-                : a.timestamps < b.timestamps
-                ? 1
-                : 0
-            );
-            res.render("post", {
-              title: post.blogTitle,
-              content: post.blogContent,
-              id: post._id,
-              comments: post.comments,
-              isAuthor,
-              isAuthenticated: user ? true : false,
-              currentUser: user,
-            });
-          }
-        });
-      } else {
-        console.log(err);
+// app.get(
+//   [
+//     "/posts/:postName",
+//     "/page/posts/:postName",
+//     "/page/:page/posts/:postName",
+//     "/search/:query/posts/:postName",
+//     "/search/:query/:page/posts/:postName",
+//   ],
+//   auth,
+//   function (req, res) {
+//     const user = req.user;
+//     let isAuthor = false;
+//     const requestedTitle = _.lowerCase(req.params.postName);
+//     Blog.find({}, function (err, posts) {
+//       if (!err) {
+//         posts.forEach(function (post) {
+//           const storedTitle = _.lowerCase(post.blogTitle);
+//           if (storedTitle === requestedTitle) {
+//             // Check if the user and author of this post are same
+//             if (
+//               user &&
+//               JSON.stringify(user._id) === JSON.stringify(post.author)
+//             ) {
+//               isAuthor = true;
+//             }
+//             //Sort the comments to show the recent one
+//             post.comments = post.comments.sort((a, b) =>
+//               a.timestamps > b.timestamps
+//                 ? -1
+//                 : a.timestamps < b.timestamps
+//                 ? 1
+//                 : 0
+//             );
+//             res.render("post", {
+//               title: post.blogTitle,
+//               content: post.blogContent,
+//               id: post._id,
+//               comments: post.comments,
+//               isAuthor,
+//               isAuthenticated: user ? true : false,
+//               currentUser: user,
+//             });
+//           }
+//         });
+//       } else {
+//         console.log(err);
+//       }
+//     });
+//   }
+// );
+
+//*route    /blogs/posts/:id
+//*desc     Display a selected blog
+app.get("/posts/:id", auth, async (req, res) => {
+  try {
+    try {
+      const blog = await Blog.findById(req.params.id).populate("author").lean();
+      if (!blog) {
+        throw "Error";
       }
-    });
+      return res.status(200).json({ blog });
+    } catch (error) {
+      return res.status(400).json({ msg: "404 Error" });
+    }
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error, Please try later." });
   }
-);
+});
 
 //Post request to create a comment
 app.post("/posts/:postName/comment", auth, async function (req, res) {
