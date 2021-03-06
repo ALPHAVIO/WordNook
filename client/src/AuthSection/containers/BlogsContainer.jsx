@@ -19,9 +19,10 @@ function BlogsContainer({ displayBlogs, isProfile }) {
   useEffect(() => {
     initialSetup();
   }, []);
+
   const initialSetup = async () => {
     const data = await getLoggedInUserDetails(user._id);
-    setSavedLists(data.savedBlogsList.blogs);
+    // setSavedLists(data.savedBlogsList.blogs);
   };
 
   const addBookmark = async (blogId) => {
@@ -86,7 +87,7 @@ function BlogsContainer({ displayBlogs, isProfile }) {
         <Card
           key={blog._id}
           blog={blog}
-          access={user._id === blog.user._id}
+          access={user._id === blog.author._id}
           isProfile={isProfile}
           addBookmark={addBookmark}
           isBookmarked={savedLists.includes(blog._id)}

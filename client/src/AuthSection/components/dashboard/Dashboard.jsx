@@ -15,16 +15,16 @@ function Dashboard() {
   const [displayBlogs, setDisplayBlogs] = useState([]);
   const [savedBlogs, setSavedBlogs] = useState([]);
 
-  // const fetchBlogs = async () => {
-  //   const data = await getLoggedInUserDetails(user._id);
-  //   // console.log(data);
-  //   setAllBlogs(data.blogs);
-  //   setDisplayBlogs(data.blogs);
-  //   setSavedBlogs(data.savedBlogs);
-  // };
+  const fetchBlogs = async () => {
+    const data = await getLoggedInUserDetails(user._id);
+    // console.log(data);
+    setAllBlogs(data.blogs);
+    setDisplayBlogs(data.blogs);
+    setSavedBlogs(data.savedBlogs);
+  };
 
   useEffect(() => {
-    // fetchBlogs();
+    fetchBlogs();
   }, []);
 
   const setSelection = (id) => {
@@ -53,7 +53,7 @@ function Dashboard() {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="row"
+      className="row align-items-start"
     >
       <div className="col-md-3 my-2 bg-dark p-2 mx-2">
         <h4 className="text-center text-secondary border-bottom border-danger pb-2">
@@ -75,9 +75,9 @@ function Dashboard() {
           />
         )}
         <div className="row">
-          {/* {displayBlogs && (
+          {displayBlogs && (
             <BlogsContainer displayBlogs={displayBlogs} isProfile={true} />
-          )} */}
+          )}
         </div>
       </div>
     </motion.div>

@@ -23,3 +23,12 @@ body {
 .bg-silver {
   background-color: #f0f0f0;
 }
+
+.options {
+  color: #eeeeeece;
+  cursor: pointer;
+}
+
+.options:hover {
+  color: #eeeeee;
+}

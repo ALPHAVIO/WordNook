@@ -1,6 +1,6 @@
 export async function getLoggedInUserDetails(id) {
   try {
-    let res = await fetch(`/users/auth/${id}`);
+    let res = await fetch(`/currentUser/posts/${id}`);
     let data = await res.json();
     // console.log(data);
     return data;

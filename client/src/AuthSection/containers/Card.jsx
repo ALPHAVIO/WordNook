@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import avatar from "./../../avatar.png";
 
 function Card({
   blog,
@@ -51,17 +52,18 @@ function Card({
         } d-flex align-items-center`}
       >
         <Link
-          to={`${!access ? `/user/${blog.user._id}` : "/dashboard"}`}
-          className="d-flex align-items-center"
+          to={`${!access ? `/user/${blog.author._id}` : "/dashboard"}`}
+          className="d-flex align-items-center text-decoration-none"
         >
           <img
-            src={blog.user.image}
+            // src={blog.author.image}
+            src={avatar}
             alt="profile"
             className="img-fluid rounded-circle mr-2"
             style={{ height: 30 }}
           />
           <h6 className="m-0 text-danger">
-            {blog.user.displayName.substring(0, 20)}
+            {blog.author.userName.substring(0, 20)}
           </h6>
         </Link>
         <div className="ml-auto d-flex align-items-center">
@@ -96,10 +98,10 @@ function Card({
         </div>
       </div>
       <div className="card-content p-2 border-top border-secondary">
-        <h5 className="text-light">{blog.title}</h5>
+        <h5 className="text-light">{blog.blogTitle}</h5>
         <p className="text-muted mb-1">
           <i className="fas fa-clock mr-1"></i>
-          <span>{new Date(blog.createdAt).toDateString()}</span>
+          <span>{new Date(blog.timestamps).toDateString()}</span>
         </p>
         {isProfile && access && (
           <div className="badge badge-pill badge-danger py-1 px-2 mb-1">
@@ -108,7 +110,7 @@ function Card({
         )}
         <div className="d-flex align-items-center">
           <Link
-            to={`/read/${blog._id}`}
+            to={`/posts/${blog._id}`}
             className="btn btn-success btn-sm my-1"
           >
             Read

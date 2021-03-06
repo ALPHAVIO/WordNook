@@ -48,7 +48,7 @@ function Blog(props) {
     <>
       {error && <ErrorBox />}
       {!error && blog && (
-        <div className="row">
+        <div className="row align-items-start">
           <motion.div
             variants={blogAuthorVariant}
             initial="hidden"
