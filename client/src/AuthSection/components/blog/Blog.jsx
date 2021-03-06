@@ -54,9 +54,11 @@ function Blog(props) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="col-md-4 my-2"
+            className="col-md-4 my-2 bg-dark p-2"
           >
-            <h4 className="text-center text-danger">Author</h4>
+            <h4 className="text-center text-secondary border-bottom border-danger pb-2">
+              Author
+            </h4>
             <UserProfile user={blog.author} />
             <Link
               to={`${
