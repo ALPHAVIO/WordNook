@@ -41,6 +41,8 @@ mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const blogSchema = {
   blogTitle: String,
   blogContent: String,
+  status: String,
+  likes: Array,
   comments: Array,
   timestamps: {
     type: Date,
@@ -129,22 +131,28 @@ app.get("/compose", auth, function (req, res) {
 });
 
 //Post request to save the new blogs to the DB
-app.post("/compose", auth, function (req, res) {
+app.post("/compose", auth, async function (req, res) {
   const user = req.user;
-  if (!user) {
-    return res.status(401).redirect("/log-in");
+  try {
+    // if (!user) {
+    //   return res.status(401).redirect("/log-in");
+    // }
+    const postTitle = req.body.postTitle;
+    const postContent = req.body.postBody;
+    const blog = new Blog({
+      blogTitle: postTitle,
+      blogContent: postContent,
+      comments: [],
+      likes: [user._id],
+      author: user._id,
+    });
+    // console.log(blog);
+    await blog.save();
+    // res.redirect("/");
+    res.json({ blogId: blog._id });
+  } catch (error) {
+    res.json({ msg: "Server Error" });
   }
-  const postTitle = req.body.postTitle;
-  const postContent = req.body.postBody;
-  const blog = new Blog({
-    blogTitle: postTitle,
-    blogContent: postContent,
-    comments: [],
-    author: user._id,
-  });
-  console.log(blog);
-  blog.save();
-  res.redirect("/");
 });
 
 //Get request for posts page-

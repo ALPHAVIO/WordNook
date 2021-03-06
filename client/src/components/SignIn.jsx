@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import Form from "./Form";
 
 function SignIn() {
@@ -22,7 +23,7 @@ function SignIn() {
           alert(data.error);
         } else if (data.message) {
           alert(data.message);
-          history.goBack();
+          history.push("/");
         }
       })
       .catch((err) => {
@@ -40,6 +41,12 @@ function SignIn() {
           <div className="card-content p-3">
             <Form type="signin" handleSubmit={signinUser} />
           </div>
+          <p className="my-2 text-dark text-center">
+            Don't have an account?{" "}
+            <Link to="/signUp" className="ml-1 text-danger">
+              Sign Up
+            </Link>
+          </p>
         </div>
       </div>
     </div>

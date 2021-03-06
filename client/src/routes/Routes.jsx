@@ -8,6 +8,10 @@ import GuestSection from "./../GuestSection/GuestSection";
 import Home from "../AuthSection/Home";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
+import AuthRoute from "./AuthRoute";
+import GuestRoute from "./GuestRoute";
+import Post from "../AuthSection/components/blog/Post";
+import Blog from "../AuthSection/components/blog/Blog";
 
 function Routes() {
   const location = useLocation();
@@ -20,16 +24,12 @@ function Routes() {
           <Route exact path="/">
             {user ? <Home /> : <GuestSection />}
           </Route>
-          <Route exact path="/signIn">
-            {user ? <Home /> : <SignIn />}
-          </Route>
-          <Route exact path="/signUp">
-            {user ? <Home /> : <SignUp />}
-          </Route>
+          <GuestRoute exact path="/signIn" component={SignIn} />
+          <GuestRoute exact path="/signUp" component={SignUp} />
+          <AuthRoute exact path="/compose" component={Post} />
+          <AuthRoute exact path="/post/:id" component={Blog} />
           {/* <AuthRoute exact path="/dashboard" component={Dashboard} />
-          <AuthRoute exact path="/post" component={Post} />
           <AuthRoute exact path="/edit/:id" component={Edit} />
-          <AuthRoute exact path="/read/:id" component={Blog} />
           <AuthRoute exact path="/user/:userId" component={ProfileVisit} /> */}
           <Redirect from="*" to="/" />
         </Switch>

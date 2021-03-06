@@ -2,7 +2,8 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext";
-import Routes from "./containers/Routes";
+import AlertProvider from "./contexts/AlertContext";
+import Routes from "./routes/Routes";
 import Loader from "./containers/Loader";
 import Navbar from "./containers/Navbar";
 
@@ -13,10 +14,10 @@ function App() {
   ) : (
     <>
       <Router>
-        {/* <AlertProvider> */}
-        <Navbar />
-        <Routes />
-        {/* </AlertProvider> */}
+        <AlertProvider>
+          <Navbar />
+          <Routes />
+        </AlertProvider>
       </Router>
     </>
   );
