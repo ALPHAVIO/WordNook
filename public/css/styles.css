@@ -36,7 +36,6 @@ body {
 }
 .navbar {
   padding-top: 1vh;
-  padding-bottom: 1vh;
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
@@ -432,6 +431,9 @@ input[name="perPage"]{
   animation: none;
   transform: rotate(360deg);
   text-indent: 0.1em;
+}
+.normal-heading-font {
+  margin-top: 25px;
 }
 @-webkit-keyframes bounceright {
   from {
