@@ -22,5 +22,9 @@ A clear and concise description of how this feature will be useful for our  othe
 ### Additional context
 Add any other context or screenshots about the feature request here.
 
-Note: If you want to work on an issue, you should check if it has already been assigned to anyone. If the issue is free you can comment `/assign` to get the issue assigned to you.
-If you are raising a new issue and want to work on it then also you should comment `/assign` under the issue to get it auto assigned.
+<hr/>
+
+Note:  
+If you want to work on an issue, you should check if it has already been assigned to anyone. If the issue is free you can comment `/assign` to get the issue assigned to you.  
+If you are raising a new issue and want to work on it then also you should comment `/assign` under the issue to get it auto assigned.  
+Then you can directly start working on the issue.  
