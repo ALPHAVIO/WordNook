@@ -99,6 +99,9 @@ body {
 .normal-heading-font{
   font-family: 'Open Sans', sans-serif;
 }
+#first-heading{
+	margin-top:80px;
+}
 .heading-centre{
   text-align: center;
   padding: 1rem;
