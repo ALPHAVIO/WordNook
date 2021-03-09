@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const _ = require("lodash");
 const PORT = process.env.PORT || 3000;
 const auth = require('./middlewares/auth');
-
 //Default Texts-
 const homeStartingContent = "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
 const aboutContent = "'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.";
@@ -30,7 +29,7 @@ if(process.env.NODE_ENV !== 'production'){
 
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
-mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("URL", {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Setting up schema for the collection-
 const blogSchema = {
@@ -133,6 +132,7 @@ app.post("/compose", auth, function(req, res){
   blog.save();
   res.redirect("/");
 });
+
 
 //Get request for posts page-
 app.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:postName", "/search/:query/posts/:postName", "/search/:query/:page/posts/:postName"], auth, function(req, res){
