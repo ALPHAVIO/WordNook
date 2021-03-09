@@ -29,7 +29,7 @@ export async function updateLikes(updatedLikes, blogId) {
 
 export async function deleteBlog(id) {
   try {
-    let res = await fetch(`/blogs/delete/${id}`, {
+    let res = await fetch(`/delete/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

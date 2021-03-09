@@ -445,6 +445,29 @@ app.get(
   }
 );
 
+//*route    /blogs/delete/:id
+//*desc     Delete a blog
+app.delete("/delete/:id", auth, async (req, res) => {
+  try {
+    try {
+      let blog = await Blog.findById(req.params.id);
+      if (!blog) {
+        console.log("Error");
+        throw "Error";
+      }
+      if (blog.author.toString() !== req.user._id.toString()) {
+        throw "Error";
+      }
+      await blog.deleteOne(req.body);
+      res.status(200).json({ msg: "Blog deleted 👀" });
+    } catch (error) {
+      return res.status(400).json({ msg: "404 Error" });
+    }
+  } catch (error) {
+    res.status(500).json({ msg: "Server error, Please try later." });
+  }
+});
+
 //delete post route
 app.post("/posts/:postName", auth, (req, res, next) => {
   const user = req.user;

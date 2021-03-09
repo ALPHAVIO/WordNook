@@ -51,7 +51,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    console.log(category);
+    // console.log(category);
     setFilteredBlogs(blogs.filter((blog) => blog.category === category));
   }, [category]);
 
