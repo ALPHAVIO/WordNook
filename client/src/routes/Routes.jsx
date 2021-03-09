@@ -23,13 +23,12 @@ function Routes() {
       <Alert />
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
-          <Route exact path="/">
-            {user ? <Home /> : <GuestSection />}
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={GuestSection} />
           <GuestRoute exact path="/signIn" component={SignIn} />
           <GuestRoute exact path="/signUp" component={SignUp} />
           <AuthRoute exact path="/compose" component={Post} />
-          <AuthRoute exact path="/posts/:id" component={Blog} />
+          <Route exact path="/posts/:id" component={Blog} />
           <AuthRoute exact path="/dashboard" component={Dashboard} />
           {/* <AuthRoute exact path="/edit/:id" component={Edit} />
           <AuthRoute exact path="/author/:authorId" component={ProfileVisit} /> */}

@@ -62,7 +62,7 @@ function Blog(props) {
             <UserProfile user={blog.author} />
             <Link
               to={`${
-                blog.author._id !== user._id
+                blog.author._id !== user?._id
                   ? `/author/${blog.author._id}`
                   : "/dashboard"
               }`}

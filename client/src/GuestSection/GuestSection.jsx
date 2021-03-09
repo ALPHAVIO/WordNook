@@ -2,8 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import blog from "./../blog.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function GuestSection() {
+  const { user } = useAuth();
   return (
     <motion.div
       variants={guestCardVariant}
@@ -29,21 +31,23 @@ function GuestSection() {
           A blogging platform designed for little stories that make your day
           better.
         </motion.p>
-        <motion.div variants={guestButtonVariant}>
-          <Link
-            role="button"
-            to="/signUp"
-            className="btn btn-sm btn-primary pb-0"
-          >
-            <h6>Sign Up</h6>
-          </Link>
-          <p className="my-2">
-            Already have an account?{" "}
-            <Link to="/signIn" className="ml-1 text-danger">
-              Sign In
+        {!user && (
+          <motion.div variants={guestButtonVariant}>
+            <Link
+              role="button"
+              to="/signUp"
+              className="btn btn-sm btn-primary pb-0"
+            >
+              <h6>Sign Up</h6>
             </Link>
-          </p>
-        </motion.div>
+            <p className="my-2">
+              Already have an account?{" "}
+              <Link to="/signIn" className="ml-1 text-danger">
+                Sign In
+              </Link>
+            </p>
+          </motion.div>
+        )}
       </div>
     </motion.div>
   );

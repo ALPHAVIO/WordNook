@@ -18,7 +18,7 @@ function Home() {
     fetch("/blogs")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.blogs) {
           setBlogs(data.blogs);
         } else {
@@ -44,7 +44,7 @@ function Home() {
     >
       <div className="d-flex align-items-center my-2">
         <h4>Recent Blogs</h4>
-        <Link to="/post" className="btn btn-sm btn-info ml-auto pb-0">
+        <Link to="/compose" className="btn btn-sm btn-info ml-auto pb-0">
           <h6>Post a blog</h6>
         </Link>
       </div>

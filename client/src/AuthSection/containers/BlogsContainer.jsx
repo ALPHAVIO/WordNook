@@ -21,7 +21,7 @@ function BlogsContainer({ displayBlogs, isProfile }) {
   }, []);
 
   const initialSetup = async () => {
-    const data = await getLoggedInUserDetails(user._id);
+    const data = await getLoggedInUserDetails(user?._id);
     // setSavedLists(data.savedBlogsList.blogs);
   };
 
@@ -87,14 +87,14 @@ function BlogsContainer({ displayBlogs, isProfile }) {
         <Card
           key={blog._id}
           blog={blog}
-          access={user._id === blog.author._id}
+          access={user?._id === blog.author._id}
           isProfile={isProfile}
           addBookmark={addBookmark}
           isBookmarked={savedLists.includes(blog._id)}
           removeBookmark={removeBookmark}
           handleDelete={handleDelete}
           likes={blog.likes}
-          isLiked={blog.likes.includes(user._id)}
+          isLiked={blog.likes.includes(user?._id)}
           likeBlog={likeBlog}
           dislikeBlog={dislikeBlog}
         />
