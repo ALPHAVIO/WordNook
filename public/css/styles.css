@@ -33,6 +33,11 @@ body {
 .container-centre{
   margin: auto;
   max-width: 65vw;
+  text-shadow: 2px 2px #cac3c3;
+}
+.container-centre p{
+    text-shadow: 2px 2px #d5c4c4;
+    font-size: 22px;
 }
 .navbar {
   padding-top: 1vh;
@@ -106,6 +111,7 @@ body {
 .post-heading{
   font-family: 'Patua One', cursive;
   font-size: 3.4rem;
+  text-shadow: 2px 2px #cac3c3;
 }
 .content-body-font{
   font-size: 2rem;
