@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Redirect, Route, Switch } from "react-router";
-import { useAuth } from "../contexts/AuthContext";
+// import { useAuth } from "../contexts/AuthContext";
 import { AnimatePresence } from "framer-motion";
 import AuthRoute from "./AuthRoute";
 import GuestRoute from "./GuestRoute";
@@ -17,7 +17,7 @@ import Dashboard from "../AuthSection/components/dashboard/Dashboard";
 
 function Routes() {
   const location = useLocation();
-  const { user } = useAuth();
+  // const { user } = useAuth();
   return (
     <div className="container mt-3">
       <Alert />

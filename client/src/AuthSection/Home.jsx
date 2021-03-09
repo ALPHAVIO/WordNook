@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useAuth } from "../contexts/AuthContext";
+// import { useAuth } from "../contexts/AuthContext";
 import Loader from "./../containers/Loader";
 import ErrorBox from "./components/error/ErrorBox";
 import BlogsContainer from "./containers/BlogsContainer";
 
 function Home() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
