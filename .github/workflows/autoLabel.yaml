@@ -1,3 +1,4 @@
+
 name: Labeling new issue
 on:
   issues:
@@ -10,6 +11,4 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           ignore-comments: true
-          labels-synonyms: '{"bug":["error","need fix","not working"],"enhancement":["upgrade"],"question":["help"]}'
-          labels-not-allowed: '["good first issue"]'
-          default-labels: '["GSSOC"]'
+          labels-synonyms: '{"GSSOC21":["GSSOC","GSSOC21","gssoc","Gssoc","GSSoC"]}'
