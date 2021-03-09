@@ -1,8 +1,8 @@
 ## What is the change?
 Remove this line and add a description
 
-## Related issue?
-issue: #issue_number
+## Whhich issue will be resolved by this PR?
+It will resolve #issue_number
 
 ## How was it tested?
 Remove this line and tell us how the code was tested.
