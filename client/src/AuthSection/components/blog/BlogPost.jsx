@@ -8,11 +8,29 @@ function BlogPost({
   type,
   handleSubmit,
   titleRef,
+  categoryRef,
   statusRef,
   body,
   setBody,
   disableButtons,
 }) {
+  const categories = [
+    "IT & Software",
+    "Business",
+    "Personality Development",
+    "Design",
+    "Marketing",
+    "Lifestyle",
+    "Photography",
+    "Health & Fitness",
+    "Music",
+    "Academics",
+    "Language",
+    "Sports",
+    "Social media",
+    "History",
+    "Space and Research",
+  ];
   return (
     <motion.div
       variants={blogPostVariant}
@@ -36,6 +54,22 @@ function BlogPost({
             defaultValue={titleRef.current}
             required
           />
+        </div>
+        <div className="form-group">
+          <label>Category:</label>
+          <select
+            type="text"
+            ref={categoryRef}
+            className="form-control"
+            defaultValue={categoryRef.current}
+            required
+          >
+            {categories.map((item) => (
+              <option value={item} key={item}>
+                {item}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="form-group">
           <label>Status:</label>

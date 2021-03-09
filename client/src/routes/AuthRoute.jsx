@@ -8,7 +8,7 @@ function AuthRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={(props) => {
-        return user ? <Component {...props} /> : <Redirect to="/signUp" />;
+        return user ? <Component {...props} /> : <Redirect to="/signIn" />;
       }}
     ></Route>
   );

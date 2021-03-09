@@ -10,6 +10,7 @@ function Post() {
   const [disableButtons, setDisableButtons] = useState(false);
   const titleRef = useRef("");
   const statusRef = useRef("Public");
+  const categoryRef = useRef("IT & Software");
   const [body, setBody] = useState("");
   const history = useHistory();
 
@@ -19,6 +20,7 @@ function Post() {
       setDisableButtons(true);
       let newBlog = {
         blogTitle: titleRef.current.value,
+        category: categoryRef.current.value,
         status: statusRef.current.value,
         blogContent: body,
       };
@@ -52,6 +54,7 @@ function Post() {
         type="Compose"
         titleRef={titleRef}
         statusRef={statusRef}
+        categoryRef={categoryRef}
         body={body}
         setBody={setBody}
         handleSubmit={postBlog}

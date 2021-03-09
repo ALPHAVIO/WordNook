@@ -42,6 +42,7 @@ const blogSchema = {
   blogTitle: String,
   blogContent: String,
   status: String,
+  category: String,
   likes: Array,
   comments: Array,
   timestamps: {
@@ -154,9 +155,11 @@ app.post("/compose", auth, async function (req, res) {
     const blogTitle = req.body.blogTitle;
     const blogContent = req.body.blogContent;
     const status = req.body.status;
+    const category = req.body.category;
     const blog = new Blog({
       blogTitle,
       blogContent,
+      category,
       comments: [],
       likes: [user._id],
       author: user._id,
