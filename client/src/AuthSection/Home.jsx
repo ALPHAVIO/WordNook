@@ -9,9 +9,27 @@ import BlogsContainer from "./containers/BlogsContainer";
 function Home() {
   // const { user } = useAuth();
   const [blogs, setBlogs] = useState([]);
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
+  const [category, setCategory] = useState("");
+  const categories = [
+    "IT & Software",
+    "Business",
+    "Personality Development",
+    "Design",
+    "Marketing",
+    "Lifestyle",
+    "Photography",
+    "Health & Fitness",
+    "Music",
+    "Academics",
+    "Language",
+    "Sports",
+    "Social media",
+    "History",
+    "Space and Research",
+  ];
   useEffect(() => {
     setLoading(true);
     setError(false);
@@ -27,10 +45,15 @@ function Home() {
       })
       .catch((err) => {
         setError(true);
-        console.log(err);
+        // console.log(err);
       })
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    console.log(category);
+    setFilteredBlogs(blogs.filter((blog) => blog.category === category));
+  }, [category]);
 
   return error ? (
     <ErrorBox />
@@ -52,7 +75,27 @@ function Home() {
         <Loader height="50" />
       ) : (
         <div className="row">
-          {blogs && <BlogsContainer displayBlogs={blogs} isProfile={false} />}
+          <div className="col-md-8 d-flex my-2 mx-auto">
+            <select
+              type="text"
+              className="form-control"
+              onChange={(e) => setCategory(e.target.value)}
+              required
+            >
+              <option></option>
+              {categories.map((item) => (
+                <option value={item} key={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+          {!category && blogs && (
+            <BlogsContainer displayBlogs={blogs} isProfile={false} />
+          )}
+          {category && (
+            <BlogsContainer displayBlogs={filteredBlogs} isProfile={false} />
+          )}
         </div>
       )}
     </motion.div>

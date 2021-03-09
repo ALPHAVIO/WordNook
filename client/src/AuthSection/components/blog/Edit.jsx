@@ -14,6 +14,7 @@ function Edit(props) {
   const [disableButtons, setDisableButtons] = useState(false);
   const titleRef = useRef("");
   const statusRef = useRef("Public");
+  const categoryRef = useRef("IT & Software");
   const [body, setBody] = useState("");
   const history = useHistory();
 
@@ -24,6 +25,7 @@ function Edit(props) {
       let blog = {
         blogTitle: titleRef.current.value,
         status: statusRef.current.value,
+        category: categoryRef.current.value,
         blogContent: body,
         user: user._id,
       };
@@ -58,6 +60,7 @@ function Edit(props) {
         if (!data.msg) {
           titleRef.current = data.blog.blogTitle;
           statusRef.current = data.blog.status;
+          categoryRef.current = data.blog.category;
           setBody(data.blog.blogContent);
         } else {
           setError(true);
@@ -81,6 +84,7 @@ function Edit(props) {
           type="Edit"
           titleRef={titleRef}
           statusRef={statusRef}
+          categoryRef={categoryRef}
           body={body}
           setBody={setBody}
           handleSubmit={editBlog}
