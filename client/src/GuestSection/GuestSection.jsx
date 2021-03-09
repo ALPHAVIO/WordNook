@@ -12,10 +12,10 @@ function GuestSection() {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="col-md-4 text-center card bg-dark p-0 mx-auto mt-5"
+      className="col-md-6 text-center card bg-dark p-0 mx-auto mt-5"
     >
       <div className="card-header border-bottom border-secondary py-1">
-        <motion.h3 variants={guestTextVariant}>Welcome user!</motion.h3>
+        <motion.h3 variants={guestTextVariant}>About</motion.h3>
       </div>
       <div className="card-content p-2">
         <motion.img
@@ -23,13 +23,21 @@ function GuestSection() {
           src={blog}
           alt="blog"
           className="img-fluid mb-2"
+          style={{ maxHeight: 200 }}
         />
         <motion.h5 variants={guestTextVariant} className="text-danger">
-          Post creative blogs...
+          Daily Journal, A blogging platform designed for little stories that
+          make your day better.
         </motion.h5>
         <motion.p variants={guestTextVariant}>
-          A blogging platform designed for little stories that make your day
-          better.
+          'Blog' and 'blogging' are now loosely used for content creation and
+          sharing on social media, especially when the content is long-form and
+          one creates and shares content on regular basis. Daily Journal is one
+          such platform where one can share their day-to-day experiences. <br />{" "}
+          We ensure to promote a healthy environment and help our users stay
+          strong and motivated. From a food journal to a dream journal, you can
+          express thoughts, share ideas and capture your interests. All you have
+          to do is get started and start writing yours!
         </motion.p>
         {!user && (
           <motion.div variants={guestButtonVariant}>

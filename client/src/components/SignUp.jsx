@@ -1,9 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { useAlert } from "../contexts/AlertContext";
 import Form from "./Form";
 
 function SignUp() {
+  const { setAlert } = useAlert();
   const history = useHistory();
   const signupUser = (user) => {
     // console.log(user);
@@ -20,9 +22,9 @@ function SignUp() {
       .then((data) => {
         console.log(data);
         if (data.error) {
-          alert(data.error);
+          setAlert(data.error);
         } else if (data.message) {
-          alert(data.message);
+          setAlert(data.message);
           history.push("/");
         }
       })
