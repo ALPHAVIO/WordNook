@@ -3,7 +3,7 @@
   <img src="assets/New Banner.jpg" />
 </div>
 
-# A sneek peek into what we have here :
+# A sneak peek into what we have here-
   
  <p align="center">
  <img src="assets/blogsite-gif.gif" align = "center"  width=600px/>
@@ -28,7 +28,7 @@
 - Express JS
 - Mongoose
 
-## Environment Setup for local use -
+## Environment Setup for local use-
 
 * Drop a :star: on the GitHub repository.
 <br/>
