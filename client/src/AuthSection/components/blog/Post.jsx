@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router";
 import { useAlert } from "../../../contexts/AlertContext";
-import { useAuth } from "../../../contexts/AuthContext";
+// import { useAuth } from "../../../contexts/AuthContext";
 import BlogPost from "./BlogPost";
 
 function Post() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const { setAlert } = useAlert();
   const [disableButtons, setDisableButtons] = useState(false);
   const titleRef = useRef("");
