@@ -75,9 +75,7 @@ function Dashboard() {
           />
         )}
         <div className="row">
-          {displayBlogs && (
-            <BlogsContainer displayBlogs={displayBlogs} isProfile={true} />
-          )}
+          {displayBlogs && <BlogsContainer displayBlogs={displayBlogs} />}
         </div>
       </div>
     </motion.div>

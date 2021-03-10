@@ -95,9 +95,7 @@ function Home() {
               ))}
             </select>
           </div>
-          {blogs && (
-            <BlogsContainer displayBlogs={displayBlogs} isProfile={false} />
-          )}
+          {blogs && <BlogsContainer displayBlogs={displayBlogs} />}
         </div>
       )}
     </motion.div>

@@ -11,7 +11,7 @@ import {
 import Card from "./Card";
 import CardNotFound from "./CardNotFound";
 
-function BlogsContainer({ displayBlogs, isProfile }) {
+function BlogsContainer({ displayBlogs }) {
   const { user } = useAuth();
   const { setAlert } = useAlert();
   const [savedLists, setSavedLists] = useState([]);
@@ -88,7 +88,6 @@ function BlogsContainer({ displayBlogs, isProfile }) {
           key={blog._id}
           blog={blog}
           access={user?._id === blog.author._id}
-          isProfile={isProfile}
           addBookmark={addBookmark}
           isBookmarked={savedLists?.includes(blog._id)}
           removeBookmark={removeBookmark}

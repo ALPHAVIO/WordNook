@@ -60,7 +60,7 @@ function ProfileVisit(props) {
       <div className="col-md-8 mx-auto my-2">
         <h4>Blogs</h4>
         <div className="row">
-          {blogs && <BlogsContainer displayBlogs={blogs} isProfile={false} />}
+          {blogs && <BlogsContainer displayBlogs={blogs} />}
         </div>
       </div>
     </motion.div>
