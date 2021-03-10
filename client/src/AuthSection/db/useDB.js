@@ -11,7 +11,7 @@ export async function getLoggedInUserDetails(id) {
 
 export async function updateLikes(updatedLikes, blogId) {
   try {
-    let res = await fetch(`/blogs/updateLikes/${blogId}`, {
+    let res = await fetch(`/updateLikes/${blogId}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -35,27 +35,6 @@ export async function deleteBlog(id) {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    });
-    let data = await res.json();
-    return data;
-  } catch (error) {
-    alert(error.msg);
-  }
-}
-
-export async function addToBookmark(blogId, userId) {
-  try {
-    const newBlog = {
-      blogId,
-      userId,
-    };
-    let res = await fetch("/users/addBookmark", {
-      method: "PATCH",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newBlog),
     });
     let data = await res.json();
     return data;

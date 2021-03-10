@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import avatar from "./../../avatar.png";
+import { useAuth } from "../../contexts/AuthContext";
 
 function Card({
   blog,
   access,
-  isProfile,
   handleDelete,
   addBookmark,
   isBookmarked,
@@ -16,6 +16,7 @@ function Card({
   likeBlog,
   dislikeBlog,
 }) {
+  const { user } = useAuth();
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(false);
 
@@ -67,34 +68,35 @@ function Card({
           </h6>
         </Link>
         <div className="ml-auto d-flex align-items-center">
-          {access ? (
-            <>
-              <Link to={`/edit/${blog._id}`} className="text-info m-1">
-                <i className="fas fa-edit"></i>
-              </Link>
-              <h6
-                className="options m-1 text-dark"
-                onClick={() => handleDelete(blog._id, access)}
-              >
-                <i className="fas fa-trash"></i>
+          {user &&
+            (access ? (
+              <>
+                <Link to={`/edit/${blog._id}`} className="text-info m-1">
+                  <i className="fas fa-edit"></i>
+                </Link>
+                <h6
+                  className="options m-1 text-dark"
+                  onClick={() => handleDelete(blog._id, access)}
+                >
+                  <i className="fas fa-trash"></i>
+                </h6>
+              </>
+            ) : (
+              <h6 className="text-primary m-1">
+                <motion.i
+                  variants={starVariant}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className={`${isBookmarked ? "fas fa-star" : "far fa-star"}`}
+                  style={{ cursor: "pointer" }}
+                  onClick={
+                    isBookmarked
+                      ? () => removeBookmark(blog._id)
+                      : () => addBookmark(blog._id)
+                  }
+                ></motion.i>
               </h6>
-            </>
-          ) : (
-            <h6 className="text-primary m-1">
-              <motion.i
-                variants={starVariant}
-                whileHover="hover"
-                whileTap="tap"
-                className={`${isBookmarked ? "fas fa-star" : "far fa-star"}`}
-                style={{ cursor: "pointer" }}
-                onClick={
-                  isBookmarked
-                    ? () => removeBookmark(blog._id)
-                    : () => addBookmark(blog._id)
-                }
-              ></motion.i>
-            </h6>
-          )}
+            ))}
         </div>
       </div>
       <div className="card-content p-2 border-top border-secondary">
@@ -103,12 +105,11 @@ function Card({
           <i className="fas fa-clock mr-1"></i>
           <span>{new Date(blog.timestamps).toDateString()}</span>
         </p>
-        {isProfile && access && (
-          <div className="badge badge-pill badge-danger py-1 px-2 mb-1">
-            {blog.status}
-          </div>
-        )}
-        <div className="d-flex align-items-center">
+        <div className="badge badge-pill badge-danger py-1 px-2 my-1">
+          {blog.category}
+        </div>
+
+        <div className="d-flex mt-1 align-items-center">
           <Link
             to={`/posts/${blog._id}`}
             className="btn btn-success btn-sm my-1"
@@ -117,19 +118,21 @@ function Card({
           </Link>
           <h6 className="ml-auto text-warning">
             <span className="text-muted mr-1">({likesCount})</span>
-            {access ? (
+            {access || !user ? (
               <i className="fas fa-heart fa-lg "></i>
             ) : (
-              <motion.i
-                variants={heartVariant}
-                whileHover="hover"
-                whileTap="tap"
-                className={`${
-                  liked ? "fas fa-heart fa-lg" : "far fa-heart fa-lg"
-                }`}
-                onClick={liked ? () => onDislike(blog) : () => onLike(blog)}
-                style={{ cursor: "pointer" }}
-              ></motion.i>
+              user && (
+                <motion.i
+                  variants={heartVariant}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className={`${
+                    liked ? "fas fa-heart fa-lg" : "far fa-heart fa-lg"
+                  }`}
+                  onClick={liked ? () => onDislike(blog) : () => onLike(blog)}
+                  style={{ cursor: "pointer" }}
+                ></motion.i>
+              )
             )}
           </h6>
         </div>

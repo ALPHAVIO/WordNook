@@ -22,11 +22,11 @@ function BlogsContainer({ displayBlogs, isProfile }) {
 
   const initialSetup = async () => {
     const data = await getLoggedInUserDetails(user?._id);
-    // setSavedLists(data.savedBlogsList.blogs);
+    setSavedLists(data.savedBlogsList?.blogs);
   };
 
   const addBookmark = async (blogId) => {
-    if (!savedLists.includes(blogId)) {
+    if (!savedLists?.includes(blogId)) {
       let updatedList = [blogId, ...savedLists];
       let res = await updateBookmark(updatedList, user._id);
       setSavedLists(updatedList);
@@ -35,7 +35,7 @@ function BlogsContainer({ displayBlogs, isProfile }) {
   };
 
   const removeBookmark = async (blogId) => {
-    if (savedLists.includes(blogId)) {
+    if (savedLists?.includes(blogId)) {
       let updatedList = savedLists.filter(
         (savedId) => savedId.toString() !== blogId.toString()
       );
@@ -80,7 +80,7 @@ function BlogsContainer({ displayBlogs, isProfile }) {
           blog={blog}
           access={true}
           addBookmark={addBookmark}
-          isBookmarked={savedLists.includes(blog._id)}
+          isBookmarked={savedLists?.includes(blog._id)}
           removeBookmark={removeBookmark}
         />
       ) : (
@@ -90,7 +90,7 @@ function BlogsContainer({ displayBlogs, isProfile }) {
           access={user?._id === blog.author._id}
           isProfile={isProfile}
           addBookmark={addBookmark}
-          isBookmarked={savedLists.includes(blog._id)}
+          isBookmarked={savedLists?.includes(blog._id)}
           removeBookmark={removeBookmark}
           handleDelete={handleDelete}
           likes={blog.likes}

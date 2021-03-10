@@ -39,6 +39,22 @@ const URL = process.env.URL;
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Setting up schema for the collection-
+const bookmarkSchema = {
+  blogs: Array,
+  timestamps: {
+    type: Date,
+    default: Date.now,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+};
+
+//Making a MongoDB model for the schema-
+const Bookmark = new mongoose.model("Bookmark", bookmarkSchema);
+
+//Setting up schema for the collection-
 const blogSchema = {
   blogTitle: String,
   blogContent: String,
@@ -209,8 +225,7 @@ app.get("/currentUser/posts/:id", auth, async (req, res) => {
           .populate("author")
           .sort({ timestamps: "desc" })
           .lean();
-        // const savedBlogsList = await Bookmark.findOne({ user: req.params.id });
-        const savedBlogsList = null;
+        const savedBlogsList = await Bookmark.findOne({ user: req.params.id });
         // console.log(savedBlogsList);
         const allBlogs = await Blog.find().populate("author").lean();
         // console.log(allBlogs);
@@ -507,6 +522,52 @@ app.get("/authors/:id", auth, async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ msg: "Server Error" });
+  }
+});
+
+//*route    /blogs/updateLikes/:id
+//*desc     update likes on a blog
+app.patch("/updateLikes/:id", auth, async (req, res) => {
+  try {
+    // console.log(req.body);
+    let blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      return res.status(400).json({ msg: "404 Error" });
+    }
+    await blog.updateOne(req.body);
+    res.status(200).json({ msg: "Liked" });
+  } catch (error) {
+    res.status(500).json({ msg: "Server error, Please try later." });
+  }
+});
+
+//*route    /users/bookmarks
+//*desc     add/remove a blog to/from bookmark
+app.patch("/users/bookmarks", auth, async (req, res) => {
+  try {
+    try {
+      if (req.body.userId.toString() !== req.user._id.toString()) {
+        throw "Error";
+      }
+      let savedBlogsList = await Bookmark.findOne({
+        user: req.body.userId,
+      });
+      if (!savedBlogsList) {
+        savedBlogsList = await Bookmark.create({
+          blogs: [],
+          user: req.body.userId,
+        });
+      }
+      // console.log(req.body);
+      await savedBlogsList.updateOne(req.body);
+      return res.status(200).json({ status: 200, msg: "Bookmarks updated" });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ status: 400, msg: "404 Error" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: 500, msg: "Server Error" });
   }
 });
 
