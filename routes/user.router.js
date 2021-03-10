@@ -49,6 +49,49 @@ router.post("/sign-up", (req, res) => {
         });
     }
 
+    
+
+    const emailRegx = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+    const pwdRegex = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/);
+    if(userName.length < 6 || userName.length > 12){
+        return res.status(500).render("signUp",{
+            error : "Username should be between 6 to 12 character",
+            data: {
+                firstName,
+                lastName,
+                userName,
+                email, 
+                password
+            }
+        });
+    }
+
+    if(!emailRegx.test(email)){
+        return res.status(500).render("signUp",{
+            error : "Please enter a valid email address",
+            data: {
+                firstName,
+                lastName,
+                userName,
+                email, 
+                password
+            }
+        });
+    }
+
+    if(!pwdRegex.test(password)){
+        return res.status(500).render("signUp",{
+            error : "Your password must contaub minimum 8 letter, with at least a symbol, upper and lower case letters and a number",
+            data: {
+                firstName,
+                lastName,
+                userName,
+                email, 
+                password
+            }
+        });
+    }
+
     // Check if the username or email already taken
     User.findOne({ email }, (err, doc) => {
         if(doc) {
