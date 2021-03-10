@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAlert } from "../contexts/AlertContext";
@@ -32,7 +33,13 @@ function SignIn() {
   };
 
   return (
-    <div className="container">
+    <motion.div
+      variants={signInVariant}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="container"
+    >
       <div className="row">
         <div className="col-md-5 card mx-2 my-5 p-0 mx-md-auto">
           <div className="card-header">
@@ -49,8 +56,27 @@ function SignIn() {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default SignIn;
+
+const signInVariant = {
+  hidden: {
+    y: "-100vh",
+  },
+  visible: {
+    y: "0",
+    transition: {
+      delay: 0.2,
+      durations: 1,
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+  exit: {
+    y: "100vh",
+    transition: { ease: "easeInOut" },
+  },
+};
