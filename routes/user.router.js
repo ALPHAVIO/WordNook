@@ -81,7 +81,7 @@ router.post("/sign-up", (req, res) => {
 
     if(!pwdRegex.test(password)){
         return res.status(500).render("signUp",{
-            error : "Your password must contaub minimum 8 letter, with at least a symbol, upper and lower case letters and a number",
+            error : "Your password must contain a minimum of 8 letter, with at least a symbol, upper and lower case letters and a number",
             data: {
                 firstName,
                 lastName,
