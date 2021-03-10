@@ -12,7 +12,7 @@ function Home() {
   const [displayBlogs, setDisplayBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("All");
   const categories = [
     "IT & Software",
     "Business",
@@ -53,7 +53,7 @@ function Home() {
 
   useEffect(() => {
     // console.log(category);
-    if (category) {
+    if (category !== "All") {
       setDisplayBlogs(blogs.filter((blog) => blog.category === category));
     } else {
       setDisplayBlogs(blogs);
@@ -87,7 +87,7 @@ function Home() {
               onChange={(e) => setCategory(e.target.value)}
               required
             >
-              <option></option>
+              <option value="All">All</option>
               {categories.map((item) => (
                 <option value={item} key={item}>
                   {item}
