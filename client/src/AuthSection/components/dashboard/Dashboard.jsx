@@ -14,13 +14,14 @@ function Dashboard() {
   const [selectedOption, setSelectedOption] = useState("all");
   const [displayBlogs, setDisplayBlogs] = useState([]);
   const [savedBlogs, setSavedBlogs] = useState([]);
-  const data = getLoggedInUserDetails(user._id);
 
   useEffect(() => {
-    setAllBlogs(data?.blogs);
-    setDisplayBlogs(data?.blogs);
-    setSavedBlogs(data?.savedBlogs);
-  }, [data]);
+    getLoggedInUserDetails(user._id).then((data) => {
+      setAllBlogs(data?.blogs);
+      setDisplayBlogs(data?.blogs);
+      setSavedBlogs(data?.savedBlogs);
+    });
+  }, [user]);
 
   const setSelection = (id) => {
     setSelectedOption(id);

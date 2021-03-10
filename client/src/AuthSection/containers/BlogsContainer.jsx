@@ -15,11 +15,12 @@ function BlogsContainer({ displayBlogs }) {
   const { user } = useAuth();
   const { setAlert } = useAlert();
   const [savedLists, setSavedLists] = useState([]);
-  const data = getLoggedInUserDetails(user?._id);
 
   useEffect(() => {
-    setSavedLists(data?.savedBlogsList?.blogs);
-  }, [data]);
+    getLoggedInUserDetails(user?._id).then((data) => {
+      setSavedLists(data.savedBlogsList?.blogs);
+    });
+  }, [user]);
 
   const addBookmark = async (blogId) => {
     if (!savedLists?.includes(blogId)) {
