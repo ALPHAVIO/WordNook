@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "nodejs app.js",
-    "dev": "nodemon app.js -e env"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
