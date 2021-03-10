@@ -71,7 +71,7 @@ function Edit(props) {
         setError(true);
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [props.match.params.id]);
 
   return loading ? (
     <Loader height="80" />

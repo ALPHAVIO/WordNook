@@ -18,7 +18,7 @@ function BlogsContainer({ displayBlogs }) {
 
   useEffect(() => {
     initialSetup();
-  }, []);
+  }, [user]);
 
   const initialSetup = async () => {
     const data = await getLoggedInUserDetails(user?._id);

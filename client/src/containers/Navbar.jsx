@@ -89,7 +89,7 @@ function Navbar() {
                   <li className="nav-item mx-md-2 my-1">
                     <form action={`${BACKEND_URL}/log-out`} method="post">
                       <button
-                        role="submit"
+                        type="submit"
                         className="btn btn-sm btn-secondary text-light pb-md-2 d-flex"
                         title="Sign Out"
                       >
