@@ -66,7 +66,7 @@ function Navbar() {
                 <li className="nav-item mx-md-2 my-1">
                   <Link
                     to="/signIn"
-                    className="nav-link btn btn-sm btn-secondary text-light pb-md-2 d-flex"
+                    className="nav-link btn btn-sm btn-secondary text-light pb-md-2 px-2 d-flex"
                     title="Sign In"
                   >
                     <i className="fas fa-sign-in-alt fa-lg pt-1"></i>

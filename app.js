@@ -225,7 +225,14 @@ app.get("/currentUser/posts/:id", auth, async (req, res) => {
           .populate("author")
           .sort({ timestamps: "desc" })
           .lean();
-        const savedBlogsList = await Bookmark.findOne({ user: req.params.id });
+        let savedBlogsList = await Bookmark.findOne({ user: req.params.id });
+
+        if (!savedBlogsList) {
+          savedBlogsList = await Bookmark.create({
+            blogs: [],
+            user: req.user._id,
+          });
+        }
         // console.log(savedBlogsList);
         const allBlogs = await Blog.find().populate("author").lean();
         // console.log(allBlogs);
@@ -552,12 +559,6 @@ app.patch("/users/bookmarks", auth, async (req, res) => {
       let savedBlogsList = await Bookmark.findOne({
         user: req.body.userId,
       });
-      if (!savedBlogsList) {
-        savedBlogsList = await Bookmark.create({
-          blogs: [],
-          user: req.body.userId,
-        });
-      }
       // console.log(req.body);
       await savedBlogsList.updateOne(req.body);
       return res.status(200).json({ status: 200, msg: "Bookmarks updated" });
