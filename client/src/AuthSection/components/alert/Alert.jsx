@@ -16,7 +16,7 @@ function Alert() {
     return () => {
       mounted = false;
     };
-  }, [alert]);
+  }, [alert, setAlert]);
 
   return (
     <AnimatePresence exitBeforeEnter>

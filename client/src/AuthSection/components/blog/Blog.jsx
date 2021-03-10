@@ -38,7 +38,7 @@ function Blog(props) {
         setError(true);
       })
       .finally(() => setLoading(false));
-  }, [props.match.params.id]);
+  }, [setAlert, props.match.params.id]);
 
   return loading ? (
     <Loader height="50" />

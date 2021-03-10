@@ -58,7 +58,7 @@ function Home() {
     } else {
       setDisplayBlogs(blogs);
     }
-  }, [category]);
+  }, [category, blogs]);
 
   return error ? (
     <ErrorBox />

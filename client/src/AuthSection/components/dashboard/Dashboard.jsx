@@ -14,18 +14,13 @@ function Dashboard() {
   const [selectedOption, setSelectedOption] = useState("all");
   const [displayBlogs, setDisplayBlogs] = useState([]);
   const [savedBlogs, setSavedBlogs] = useState([]);
-
-  const fetchBlogs = async () => {
-    const data = await getLoggedInUserDetails(user._id);
-    // console.log(data);
-    setAllBlogs(data.blogs);
-    setDisplayBlogs(data.blogs);
-    setSavedBlogs(data.savedBlogs);
-  };
+  const data = getLoggedInUserDetails(user._id);
 
   useEffect(() => {
-    fetchBlogs();
-  }, []);
+    setAllBlogs(data?.blogs);
+    setDisplayBlogs(data?.blogs);
+    setSavedBlogs(data?.savedBlogs);
+  }, [data]);
 
   const setSelection = (id) => {
     setSelectedOption(id);

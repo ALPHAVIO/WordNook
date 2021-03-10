@@ -39,7 +39,7 @@ function ProfileVisit(props) {
         })
         .finally(() => setLoading(false));
     }
-  }, [props.match.params.authorId, user]);
+  }, [props.match.params.authorId, user, setAlert]);
   return user && user?._id === props.match.params.authorId ? (
     <Redirect to="/dashboard" />
   ) : loading ? (
