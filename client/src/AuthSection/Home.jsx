@@ -9,7 +9,7 @@ import BlogsContainer from "./containers/BlogsContainer";
 function Home() {
   // const { user } = useAuth();
   const [blogs, setBlogs] = useState([]);
-  const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [displayBlogs, setDisplayBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [category, setCategory] = useState("");
@@ -39,6 +39,7 @@ function Home() {
         // console.log(data);
         if (data.blogs) {
           setBlogs(data.blogs);
+          setDisplayBlogs(data.blogs);
         } else {
           setError(true);
         }
@@ -52,7 +53,11 @@ function Home() {
 
   useEffect(() => {
     // console.log(category);
-    setFilteredBlogs(blogs.filter((blog) => blog.category === category));
+    if (category) {
+      setDisplayBlogs(blogs.filter((blog) => blog.category === category));
+    } else {
+      setDisplayBlogs(blogs);
+    }
   }, [category]);
 
   return error ? (
@@ -90,11 +95,8 @@ function Home() {
               ))}
             </select>
           </div>
-          {!category && blogs && (
-            <BlogsContainer displayBlogs={blogs} isProfile={false} />
-          )}
-          {category && (
-            <BlogsContainer displayBlogs={filteredBlogs} isProfile={false} />
+          {blogs && (
+            <BlogsContainer displayBlogs={displayBlogs} isProfile={false} />
           )}
         </div>
       )}

@@ -43,23 +43,44 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbar">
             <ul className="navbar-nav ml-auto mr-2 align-items-center">
               <li className="nav-item mx-md-2 my-1">
-                <Link to="/" className="nav-link text-light d-flex">
+                <Link
+                  to="/"
+                  className="nav-link text-light d-flex"
+                  title="Home"
+                >
                   <i className="fas fa-home fa-lg pt-1"></i>
                   <h5 className="d-md-none ml-2">Blogs</h5>
                 </Link>
               </li>
               <li className="nav-item mx-md-2 my-1">
-                <Link to="/about" className="nav-link text-light d-flex">
+                <Link
+                  to="/about"
+                  className="nav-link text-light d-flex"
+                  title="About"
+                >
                   <i className="fas fa-info-circle fa-lg pt-1"></i>
                   <h5 className="d-md-none ml-2">About</h5>
                 </Link>
               </li>
+              {!user && (
+                <li className="nav-item mx-md-2 my-1">
+                  <Link
+                    to="/signIn"
+                    className="nav-link btn btn-sm btn-secondary text-light pb-md-2 d-flex"
+                    title="Sign In"
+                  >
+                    <i className="fas fa-sign-in-alt fa-lg pt-1"></i>
+                    <h5 className="d-md-none ml-2">Sign In</h5>
+                  </Link>
+                </li>
+              )}
               {user && (
                 <>
                   <li className="nav-item mx-md-2 my-1">
                     <Link
                       to="/dashboard"
                       className="nav-link text-light d-flex"
+                      title="My Profile"
                     >
                       <i className="fas fa-user-circle fa-lg pt-1"></i>
                       <h5 className="d-md-none ml-2 pb-1">My profile</h5>
@@ -70,6 +91,7 @@ function Navbar() {
                       <button
                         role="submit"
                         className="btn btn-sm btn-secondary text-light pb-md-2 d-flex"
+                        title="Sign Out"
                       >
                         <i className="fas fa-sign-out-alt my-1 my-md-0 pt-md-1"></i>
                         <h6 className="d-md-none ml-2 ">Sign out</h6>
