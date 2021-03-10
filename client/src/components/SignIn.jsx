@@ -1,12 +1,11 @@
 import React from "react";
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useAlert } from "../contexts/AlertContext";
 import Form from "./Form";
 
 function SignIn() {
   const { setAlert } = useAlert();
-  const history = useHistory();
+
   const signinUser = (user) => {
     console.log(user);
 
@@ -24,8 +23,7 @@ function SignIn() {
         if (data.error) {
           setAlert(data.error);
         } else if (data.message) {
-          setAlert(data.message);
-          history.push("/");
+          setAlert(data.message + " Refresh to continue...");
         }
       })
       .catch((err) => {

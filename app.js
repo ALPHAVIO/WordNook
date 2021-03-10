@@ -10,6 +10,7 @@ const _ = require("lodash");
 const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 const auth = require("./middlewares/auth");
+const User = require("./models/User.model");
 
 //Default Texts-
 const homeStartingContent =
@@ -487,6 +488,28 @@ app.post("/posts/:postName", auth, (req, res, next) => {
       });
     });
 });
+
+//*route    /authors/:id
+//*desc     Fetch the required user's blogs
+app.get("/authors/:id", auth, async (req, res) => {
+  try {
+    try {
+      const user = await User.findById(req.params.id);
+      if (!user) throw "Error";
+      const blogs = await Blog.find({ author: req.params.id, status: "Public" })
+        .populate("author")
+        .sort({ timestamps: "desc" })
+        .lean();
+      res.status(200).json({ user, blogs });
+    } catch (error) {
+      // console.error(error);
+      res.status(404).json({ msg: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ msg: "Server Error" });
+  }
+});
+
 //Launching the server on port 3000 in development mode-
 app.listen(PORT, function () {
   console.log(`Server started on port ${PORT}`);

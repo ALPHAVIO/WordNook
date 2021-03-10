@@ -52,7 +52,7 @@ function Card({
         } d-flex align-items-center`}
       >
         <Link
-          to={`${!access ? `/user/${blog.author._id}` : "/dashboard"}`}
+          to={`${!access ? `/authors/${blog.author._id}` : "/dashboard"}`}
           className="d-flex align-items-center text-decoration-none"
         >
           <img

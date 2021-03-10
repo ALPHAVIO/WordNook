@@ -15,6 +15,7 @@ import Post from "../AuthSection/components/blog/Post";
 import Blog from "../AuthSection/components/blog/Blog";
 import Dashboard from "../AuthSection/components/dashboard/Dashboard";
 import Edit from "../AuthSection/components/blog/Edit";
+import ProfileVisit from "../AuthSection/components/user/ProfileVisit";
 
 function Routes() {
   const location = useLocation();
@@ -32,7 +33,7 @@ function Routes() {
           <Route exact path="/posts/:id" component={Blog} />
           <AuthRoute exact path="/dashboard" component={Dashboard} />
           <AuthRoute exact path="/edit/:id" component={Edit} />
-          {/* <AuthRoute exact path="/author/:authorId" component={ProfileVisit} /> */}
+          <Route exact path="/authors/:authorId" component={ProfileVisit} />
           <Redirect from="*" to="/" />
         </Switch>
       </AnimatePresence>

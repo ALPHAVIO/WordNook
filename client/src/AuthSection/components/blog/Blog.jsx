@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.bubble.css";
 import { motion } from "framer-motion";
 import UserProfile from "../../containers/UserProfile";
 import { useAuth } from "../../../contexts/AuthContext";
@@ -63,7 +61,7 @@ function Blog(props) {
             <Link
               to={`${
                 blog.author._id !== user?._id
-                  ? `/author/${blog.author._id}`
+                  ? `/authors/${blog.author._id}`
                   : "/dashboard"
               }`}
               className="btn btn-info btn-sm btn-block my-2"
@@ -86,14 +84,7 @@ function Blog(props) {
             <div
               className="border-left border-danger m-2 p-2"
               dangerouslySetInnerHTML={{ __html: blog.blogContent }}
-            >
-              {/* <ReactQuill
-              className="bg-dark text-white"
-              value={blog.body}
-              readOnly={true}
-              theme="bubble"
-            /> */}
-            </div>
+            ></div>
           </motion.div>
         </div>
       )}
