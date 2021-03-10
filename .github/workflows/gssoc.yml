@@ -1,4 +1,4 @@
-name: Close
+name: gssoc
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions-ecosystem/action-add-labels@v1
-        if: ${{ startsWith(github.event.comment.body, '/close-pr/') }}
+        if: ${{ startsWith(github.event.comment.body, '/gssoc/') }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          labels: Close-PR
+          labels: GSSOC21
