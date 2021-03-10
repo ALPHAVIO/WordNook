@@ -116,25 +116,27 @@ function Card({
           >
             Read
           </Link>
-          <h6 className="ml-auto text-warning">
-            <span className="text-muted mr-1">({likesCount})</span>
-            {access || !user ? (
-              <i className="fas fa-heart fa-lg "></i>
-            ) : (
-              user && (
-                <motion.i
-                  variants={heartVariant}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className={`${
-                    liked ? "fas fa-heart fa-lg" : "far fa-heart fa-lg"
-                  }`}
-                  onClick={liked ? () => onDislike(blog) : () => onLike(blog)}
-                  style={{ cursor: "pointer" }}
-                ></motion.i>
-              )
-            )}
-          </h6>
+          {user && (
+            <h6 className="ml-auto text-warning">
+              <span className="text-muted mr-1">({likesCount})</span>
+              {access ? (
+                <i className="fas fa-heart fa-lg "></i>
+              ) : (
+                user && (
+                  <motion.i
+                    variants={heartVariant}
+                    whileHover="hover"
+                    whileTap="tap"
+                    className={`${
+                      liked ? "fas fa-heart fa-lg" : "far fa-heart fa-lg"
+                    }`}
+                    onClick={liked ? () => onDislike(blog) : () => onLike(blog)}
+                    style={{ cursor: "pointer" }}
+                  ></motion.i>
+                )
+              )}
+            </h6>
+          )}
         </div>
       </div>
     </motion.div>
