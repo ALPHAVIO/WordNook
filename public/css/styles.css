@@ -12,7 +12,7 @@ body {
   min-height: 100vh;
   background-size: cover;
   font-family: 'Quicksand', sans-serif;
-  opacity: 0.9;
+  opacity: 0.92;
   display: flex;
   flex-direction: column;
   background-image: url("../images/back.png");
