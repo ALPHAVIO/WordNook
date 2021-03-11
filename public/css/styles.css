@@ -161,6 +161,33 @@ body {
   margin-bottom: 1.3rem;
   box-shadow: 0rem 0rem 0.07rem 0rem;
 }
+/*Input boxes and placeholder text*/
+.form-control{
+  width:100%;
+  border:2px solid #009ED8;
+  height:50px; 
+  border-radius:8px;
+}
+.form-control::-webkit-input-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
+.form-control:-ms-input-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
+.form-control:-moz-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
+.form-control::-ms-input-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
+.form-control::-moz-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
 
 .quantityForm {
   margin-top: 1.3rem;
@@ -182,6 +209,17 @@ body {
 
 .orderSelect {
   padding: 0.4rem;
+  font-family:"Open Sans",sans-serif;
+  font-size:130%;
+  border:2px solid #139675;
+  border-radius:8px;
+}
+input[name="perPage"]{
+  border:2px solid #139675;
+  border-radius:8px;
+  font-family:"Open Sans",sans-serif;
+  font-size:110%;
+  text-align:center;
 }
 
 .search-form {
