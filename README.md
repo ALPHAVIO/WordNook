@@ -63,16 +63,6 @@ in your git bash.
 npm install
 ```
 
-* Run this command to start the project.
-```
-npm run start
-```
-
-* Run this command to start the project as a developer.
-```
-npm run dev
-```
-
 <br/>
 
 * Adding secret key for JWT auth.
@@ -93,9 +83,14 @@ mongod
 ```
 <br/>
 
-* Run this command to start the project on local host 3000.
+* Run this command to run the project.
 ```
-node app
+npm run start
+```
+
+* Run this command to run the project as a developer.
+```
+npm run dev
 ```
 <br/>
 
