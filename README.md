@@ -83,12 +83,12 @@ mongod
 ```
 <br/>
 
-* Run this command to run the project.
+* Run this command to start the project.
 ```
 npm run start
 ```
 
-* Run this command to run the project as a developer.
+* Run this command to start the project as a developer.
 ```
 npm run dev
 ```
