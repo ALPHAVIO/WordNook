@@ -5,7 +5,7 @@
 
     <!-- If this user is the author then only render the delete button-->
     <% if(isAuthor){ %>
-        <form  action="/posts/<%=title%>" method="post" >
+        <form  action="/posts/<%=id%>" method="post" >
             <button class="button  del" type="submit">Delete</button>
         </form>
     <% } %>
@@ -17,13 +17,13 @@
             <p class="post-date-font"><%= new Date(comments[i].timestamps*1000) %></p>
             <hr/>
             <%- comments[i].content %>
-            <form  action="/posts/<%=title%>/comments/<%=i%>" method="post">
+            <form  action="/posts/<%=id%>/comments/<%=i%>" method="post">
                 <button class="button  del" type="submit">Delete</button>
             </form>
         </div>
     <% } %>
     <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
-    <form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 3vh;">
+    <form action="/posts/<%=id%>/comment" method="POST" style="margin-bottom: 3vh;">
         <div class="form-group">
             <label>Content</label>
             <textarea name="content" ></textarea>
