@@ -18,7 +18,7 @@ function BlogsContainer({ displayBlogs }) {
 
   useEffect(() => {
     getLoggedInUserDetails(user?._id).then((data) => {
-      setSavedLists(data.savedBlogsList?.blogs);
+      setSavedLists(data?.savedBlogsList?.blogs);
     });
   }, [user]);
 

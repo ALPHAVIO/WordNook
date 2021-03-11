@@ -7,19 +7,23 @@ import { useEffect } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 import BlogsContainer from "../../containers/BlogsContainer";
 import { getLoggedInUserDetails } from "../../db/useDB";
+import Loader from "../../../containers/Loader";
 
 function Dashboard() {
   const { user } = useAuth();
   const [allBlogs, setAllBlogs] = useState(null);
   const [selectedOption, setSelectedOption] = useState("all");
-  const [displayBlogs, setDisplayBlogs] = useState([]);
-  const [savedBlogs, setSavedBlogs] = useState([]);
+  const [displayBlogs, setDisplayBlogs] = useState(null);
+  const [savedBlogs, setSavedBlogs] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     getLoggedInUserDetails(user._id).then((data) => {
       setAllBlogs(data?.blogs);
       setDisplayBlogs(data?.blogs);
       setSavedBlogs(data?.savedBlogs);
+      setLoading(false);
     });
   }, [user]);
 
@@ -71,6 +75,7 @@ function Dashboard() {
           />
         )}
         <div className="row">
+          {loading && <Loader height={50} />}
           {displayBlogs && <BlogsContainer displayBlogs={displayBlogs} />}
         </div>
       </div>
