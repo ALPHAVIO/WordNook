@@ -7,7 +7,10 @@ assignees: ''
 
 ---
 
-### Is your feature request related to a problem? Please describe.
+### Feature request-
+A clear and concise description of the feature.
+
+### Is your feature request related to a problem? Please describe. (optional)
 A clear and concise description of what the problem is. 
 
 ### Describe the solution you'd like
