@@ -62,6 +62,17 @@ in your git bash.
 ```
 npm install
 ```
+
+* Run this command to start the project.
+```
+npm run start
+```
+
+* Run this command to start the project as a developer.
+```
+npm run dev
+```
+
 <br/>
 
 * Adding secret key for JWT auth.
