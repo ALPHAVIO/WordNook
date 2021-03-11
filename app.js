@@ -36,7 +36,9 @@ if (process.env.NODE_ENV !== "production") {
 
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
-mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose
+  .connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("DB connected"));
 
 //Setting up schema for the collection-
 const bookmarkSchema = {

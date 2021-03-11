@@ -30,6 +30,7 @@ function SignUp() {
       })
       .catch((err) => {
         console.log(err);
+        setAlert("Server Error");
       });
   };
 

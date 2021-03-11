@@ -35,5 +35,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://blogsite-backend-dev.herokuapp.com/"
+  "proxy": "https://blogsite-backend-dev.herokuapp.com"
 }
