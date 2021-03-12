@@ -24,7 +24,6 @@ function SignUp() {
         if (data.error) {
           setAlert(data.error);
         } else if (data.message) {
-          setAlert(data.message);
           setAlert(data.message + " Refresh to continue...");
         }
       })

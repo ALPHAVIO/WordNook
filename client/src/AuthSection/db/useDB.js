@@ -1,11 +1,13 @@
 export async function getLoggedInUserDetails(id) {
-  try {
-    let res = await fetch(`/currentUser/posts/${id}`);
-    let data = await res.json();
-    // console.log(data);
-    return data;
-  } catch (error) {
-    alert(error.msg);
+  if (id) {
+    try {
+      let res = await fetch(`/currentUser/posts/${id}`);
+      let data = await res.json();
+      // console.log(data);
+      return data;
+    } catch (error) {
+      alert(error.msg);
+    }
   }
 }
 
