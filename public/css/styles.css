@@ -98,6 +98,7 @@ body {
 }
 .normal-heading-font{
   font-family: 'Open Sans', sans-serif;
+  margin-top: 3rem;
 }
 .heading{
   padding-top: 1.5rem;
@@ -433,9 +434,7 @@ input[name="perPage"]{
   transform: rotate(360deg);
   text-indent: 0.1em;
 }
-.normal-heading-font {
-  margin-top: 25px;
-}
+
 @-webkit-keyframes bounceright {
   from {
     -webkit-transform: translateX(0);
