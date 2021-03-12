@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<style>
-  @media only screen and (min-width:722px) {
-    body {
-      margin-top: 6vh !important;
+  <style>
+    @media only screen and (min-width:722px) {
+      body {
+        margin-top: 6vh !important;
+      }
     }
-  }
-
-  @media only screen and (min-width: 1349px) {
-    body {
-      margin-top: 11vh !important;
+    @media only screen and (min-width: 1349px) {
+      body {
+        margin-top: 11vh !important;
+      }
     }
-  }
-
-  @media only screen and (min-width: 686px) {
-    body {
-      margin-top: 6vh !important;
+    @media only screen and (min-width: 686px) {
+      body {
+        margin-top: 6vh !important;
+      }
     }
-  }
-
-  @media only screen and (min-width: 470px) {
-    body {
-      margin-top: 6vh !important;
+    @media only screen and (min-width: 470px) {
+      body {
+        margin-top: 6vh !important;
+      }
     }
-  }
-
-  @media only screen and (min-width: 280px) {
-    body {
-      margin-top: 6vh !important;
+    @media only screen and (min-width: 280px) {
+      body {
+        margin-top: 6vh !important;
+      }
     }
-  }
-</style>
+  
+  </style>
 
 
 <head>
@@ -46,8 +43,7 @@
   <nav id="nav-id" class="navbar navbar-default darkmode--activated navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-          aria-expanded="false" aria-controls="navbar">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -60,8 +56,6 @@
           <li id="home"><a href="/">HOME</a></li>
           <li id="about"><a href="/about">ABOUT</a></li>
           <li id="contact"><a href="/contact">CONTACT US</a></li>
-          <li><a href="/sign-up">SIGN UP</a> </li>
-          <li><a href="/log-in">LOGIN</a> </li>
           <% if(isAuthenticated) { %>
             <li id="log-out">
               <form action="/log-out" method="post">
@@ -74,6 +68,6 @@
     </div>
   </nav>
 
-<body class="darkmode--activated">
-  <div id="loader" class="pre"></div>
-  <div class="container">
+  <body class="darkmode--activated">
+    <div id="loader" class="pre"></div>
+    <div class="container">

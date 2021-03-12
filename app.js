@@ -16,7 +16,6 @@ const Blog = require('./models/Blog.model')
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.set('useCreateIndex', true); // to stop the depricating warning
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
