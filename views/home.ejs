@@ -1,5 +1,6 @@
 <%- include("partials/header", {isAuthenticated}) -%>
-
+<link rel="stylesheet" href="/css/styles.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"></link>
 <h2 class="normal-heading-font" style="font-weight:600;">Hi there!</h2>
 <p class="content-body-font"> <%= homeStartingContent %> </p> 
 <h3 class="normal-heading-font" style="font-weight:600;">Anything New?</h3>
@@ -72,8 +73,47 @@
             <hr/>
             <%- post.blogContent.substring(0,15000000) + ("...") %>
             <a href="posts/<%= post.blogTitle %>"><button class="button read">Read More</button></a>
-        </div>
+            <% if (post.likes.includes(currentUser._id)) { %>
+                <i class="like fa fa-2x fa-heart" data-post-id="<%=post._id%>"></i>
+           <% }else{ %>
+                <i class="like fa fa-2x fa-heart-o" data-post-id="<%=post._id%>"></i> 
+           <% } %>
+            <span class="likeCounter"><%=post.likes.length%></span>
+           
+           </div>
     <% }); %>
+    <script>
+        let LikeBtn = document.querySelectorAll('.like');
+        let likeCounter = document.querySelectorAll('.likeCounter');
+        for(let i=0; i< LikeBtn.length; i++){ 
+           LikeBtn[i].addEventListener('click', function(e){
+                if(e.target.classList.contains('fa-heart-o')){
+                fetch('/like',{  method: 'PUT', 
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({postId : e.target.dataset.postId})})
+                    .then(response =>  {
+                        likeCounter[i].innerText = parseInt(likeCounter[i].innerText)+1;
+                        e.target.classList.remove("fa-heart-o");
+                        e.target.classList.add("fa-heart")})
+                    .catch(err => console.log(err))
+               }
+               else{
+                fetch('/unlike',{  method: 'PUT',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({postId : e.target.dataset.postId})})
+                    .then(response => {
+                        likeCounter[i].innerText = parseInt(likeCounter[i].innerText)-1;
+                        e.target.classList.remove("fa-heart");
+                        e.target.classList.add("fa-heart-o")})
+                    .catch(err => console.log(err))
+                }
+           });
+       }
+   </script>
 </div>
 <% if(search!="") {%>
     <% if (pages > 0) { %>

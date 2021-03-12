@@ -9,6 +9,8 @@ const mongoose = require('mongoose');
 const _ = require("lodash");
 const PORT = process.env.PORT || 3000;
 const auth = require('./middlewares/auth');
+const router = require("./routes/user.router");
+const { post } = require("./routes/user.router");
 
 //Default Texts-
 const homeStartingContent = "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
@@ -41,6 +43,12 @@ const blogSchema = {
     type: Date,
     default: Date.now
   },
+  likes:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+       ref: "User"
+    }
+  ],
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
@@ -79,7 +87,8 @@ app.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], auth, fu
           search: "",
           perPage: perPage,
           order: order,
-          isAuthenticated: req.user? true: false
+          isAuthenticated: req.user? true: false,
+          currentUser: req.user
         });
       }
     })
@@ -127,6 +136,7 @@ app.post("/compose", auth, function(req, res){
     blogTitle: postTitle,
     blogContent: postContent,
     comments: [],
+    likes: [],
     author: user._id
   })
   console.log(blog);
@@ -232,7 +242,8 @@ app.post(["/search"], auth, function(req, res){
         search: query,
         perPage: perPage,
         order: 'new one first',
-        isAuthenticated: req.user? true : false
+        isAuthenticated: req.user? true : false,
+        currentUser: req.user
       });
     })
 
@@ -262,7 +273,8 @@ app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPag
         search: query,
         perPage: perPage,
         order: order,
-        isAuthenticated: req.user? true: false
+        isAuthenticated: req.user? true: false,
+        currentUser: req.user
       });
     })
 
@@ -290,6 +302,37 @@ app.post('/posts/:postName', auth, (req, res, next) => {
     }
   );
 });
+
+// Put route for likes
+app.put('/like', auth, (req,res)=>{
+  Blog.findByIdAndUpdate(req.body.postId,{
+    $push: {likes:req.user._id}
+  },{
+  }).exec((err,result)=> {
+    if(err){
+      return res.status(422).json({error:err});
+    }
+    else{
+      res.json(result);
+    }
+  })
+})
+
+// Put route for unlike
+app.put('/unlike', auth, (req,res)=>{
+  Blog.findByIdAndUpdate(req.body.postId,{
+    $pull: {likes:req.user._id}
+  },{
+  }).exec((err,result)=> {
+    if(err){
+      return res.status(422).json({error:err});
+    }
+    else{
+      res.json(result);
+    }
+  })
+})
+
 //Launching the server on port 3000 in development mode-
 app.listen(PORT, function() {
   console.log("Server started on port 3000");

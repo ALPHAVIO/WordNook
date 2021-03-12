@@ -338,6 +338,16 @@ body {
   animation: none;
   transform: scale(1.4);
 }
+.like{
+  transform: translateY(3px);
+  border-radius: 50%;
+  padding: 5px;
+  margin-left: 40px;
+  color: #aa0707;
+}
+.like:hover{
+  color: rgb(80, 5, 5);
+}
 .search:after {
   content: "\f002";
 }
