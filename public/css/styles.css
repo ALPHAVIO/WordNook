@@ -98,6 +98,7 @@ body {
 }
 .normal-heading-font{
   font-family: 'Open Sans', sans-serif;
+  margin-top: 3rem;
 }
 .heading-centre{
   text-align: center;
@@ -389,9 +390,7 @@ body {
   transform: rotate(360deg);
   text-indent: 0.1em;
 }
-.normal-heading-font {
-  margin-top: 25px;
-}
+
 @-webkit-keyframes bounceright {
   from {
     -webkit-transform: translateX(0);
