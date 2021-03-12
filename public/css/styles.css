@@ -16,16 +16,28 @@ body {
   flex-direction: column;
   background-image: url("../images/back.png");
 }
+
+/* btn */
+.btn {
+  margin-right: 1em;
+}
 #loader {
   position: fixed;
   width: 100%;
   height: 90vh;
   z-index: 1;
   overflow: visible;
-  background: #000000
+  background: #520c0c
     url("https://i.pinimg.com/originals/34/cc/62/34cc62d1df1c8328f56ae7a7acf2e83a.gif")
     no-repeat center center;
 }
+
+/* ////////////////////////////
+  Removing basic design of a herf
+  ///////////////////////////
+*/
+
+
 .container-fluid {
   padding-top: 10vh;
   padding-bottom: 10vh;
@@ -465,17 +477,3 @@ input[name="perPage"]{
     transform: rotate(30deg);
   }
 }
-/* body {
-  background: #303036;
-  text-align: center;
-  text-rendering: auto;
-  font-size: 1.07rem;
-  line-height: 1.6em;
-  height: 100vh;
-  overflow: hidden;
-  padding: 18%;
-  padding-top: 25vh;
-}
-{
-  box-sizing: border-box;
-} */
