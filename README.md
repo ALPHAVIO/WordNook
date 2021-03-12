@@ -3,7 +3,7 @@
   <img src="assets/New Banner.jpg" />
 </div>
 
-# A sneek peek into what we have here :
+# A sneak peek into what we have here-
   
  <p align="center">
  <img src="assets/blogsite-gif.gif" align = "center"  width=600px/>
@@ -28,7 +28,7 @@
 - Express JS
 - Mongoose
 
-## Environment Setup for local use -
+## Environment Setup for local use-
 
 * Drop a :star: on the GitHub repository.
 <br/>
@@ -62,6 +62,7 @@ in your git bash.
 ```
 npm install
 ```
+
 <br/>
 
 * Adding secret key for JWT auth.
@@ -82,9 +83,14 @@ mongod
 ```
 <br/>
 
-* Run this command to start the project on local host 3000.
+* Run this command to start the project.
 ```
-node app
+npm run start
+```
+
+* Run this command to start the project as a developer.
+```
+npm run dev
 ```
 <br/>
 
