@@ -14,6 +14,7 @@ body {
   font-family: 'Quicksand', sans-serif;
   display: flex;
   flex-direction: column;
+  background-image: url("../images/back.png");
 }
 #loader {
   position: fixed;
@@ -98,6 +99,9 @@ body {
 .normal-heading-font{
   font-family: 'Open Sans', sans-serif;
 }
+.heading{
+  padding-top: 1.5rem;
+}
 .heading-centre{
   text-align: center;
   padding: 1rem;
@@ -160,6 +164,33 @@ body {
   margin-bottom: 1.3rem;
   box-shadow: 0rem 0rem 0.07rem 0rem;
 }
+/*Input boxes and placeholder text*/
+.form-control{
+  width:100%;
+  border:2px solid #009ED8;
+  height:50px; 
+  border-radius:8px;
+}
+.form-control::-webkit-input-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
+.form-control:-ms-input-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
+.form-control:-moz-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
+.form-control::-ms-input-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
+.form-control::-moz-placeholder{
+  font-family:"Open Sans",sans-serif;
+  font-size:150%;
+}
 
 .quantityForm {
   margin-top: 1.3rem;
@@ -181,6 +212,17 @@ body {
 
 .orderSelect {
   padding: 0.4rem;
+  font-family:"Open Sans",sans-serif;
+  font-size:130%;
+  border:2px solid #139675;
+  border-radius:8px;
+}
+input[name="perPage"]{
+  border:2px solid #139675;
+  border-radius:8px;
+  font-family:"Open Sans",sans-serif;
+  font-size:110%;
+  text-align:center;
 }
 
 .search-form {
@@ -233,6 +275,9 @@ body {
   border: none;
   color: white;
   transition: 0.2s;
+  border: 3px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 .button:before,
 .button:after {
