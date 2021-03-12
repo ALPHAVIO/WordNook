@@ -56,8 +56,8 @@
           <li id="home"><a href="/">HOME</a></li>
           <li id="about"><a href="/about">ABOUT</a></li>
           <li id="contact"><a href="/contact">CONTACT US</a></li>
-          <li><a href="/sign-up">SIGN UP</a> </li>
-          <li><a href="/log-in">LOG IN</a></li>
+          <li><a href="/sign-up"><span class="glyphicon glyphicon-user"></span> SIGN UP</a> </li>
+          <li><a href="/log-in"><span class="glyphicon glyphicon-log-in"></span> LOG IN</a></li>
           <% if(isAuthenticated) { %>
             <li id="log-out">
               <form action="/log-out" method="post">
