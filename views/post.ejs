@@ -9,17 +9,20 @@
             <button class="button  del" type="submit">Delete</button>
         </form>
     <% } %>
-    
+
     <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 6vh; margin-bottom: 3vh;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
     <% for(var i=0; i<comments.length; i++) { %>
-        <div class="comment"> 
+        <div class="comment">
             <h4><strong><%= comments[i].name %></strong></h4>
             <p class="post-date-font"><%= new Date(comments[i].timestamps*1000) %></p>
             <hr/>
             <%- comments[i].content %>
-            <form  action="/posts/<%=title%>/comments/<%=i%>" method="post">
-                <button class="button  del" type="submit">Delete</button>
-            </form>
+
+            <% if(String(comments[i].author._id) == String(currentUser._id)) { %>
+                <form  action="/posts/<%=title%>/comments/<%=i%>" method="post">
+                    <button class="button  del" type="submit">Delete</button>
+                </form>
+            <% } %>
         </div>
     <% } %>
     <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
