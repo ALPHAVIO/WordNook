@@ -1,7 +1,9 @@
+export const BACKEND_URL = "https://blogsite-backend-dev.herokuapp.com";
+
 export async function getLoggedInUserDetails(id) {
   if (id) {
     try {
-      let res = await fetch(`/currentUser/posts/${id}`);
+      let res = await fetch(`${BACKEND_URL}/currentUser/posts/${id}`);
       let data = await res.json();
       // console.log(data);
       return data;
@@ -13,7 +15,7 @@ export async function getLoggedInUserDetails(id) {
 
 export async function updateLikes(updatedLikes, blogId) {
   try {
-    let res = await fetch(`/updateLikes/${blogId}`, {
+    let res = await fetch(`${BACKEND_URL}/updateLikes/${blogId}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -31,7 +33,7 @@ export async function updateLikes(updatedLikes, blogId) {
 
 export async function deleteBlog(id) {
   try {
-    let res = await fetch(`/delete/${id}`, {
+    let res = await fetch(`${BACKEND_URL}/delete/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -52,7 +54,7 @@ export async function updateBookmark(updatedList, userId) {
       userId,
     };
     // console.log(updateList);
-    let res = await fetch("/users/bookmarks", {
+    let res = await fetch(`${BACKEND_URL}/users/bookmarks`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",

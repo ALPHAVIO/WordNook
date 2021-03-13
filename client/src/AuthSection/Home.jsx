@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Loader from "./../containers/Loader";
 import ErrorBox from "./components/error/ErrorBox";
 import BlogsContainer from "./containers/BlogsContainer";
+import { BACKEND_URL } from "./db/useDB";
 
 function Home() {
   // const { user } = useAuth();
@@ -31,9 +32,10 @@ function Home() {
     "Space and Research",
   ];
   useEffect(() => {
+    console.log(BACKEND_URL);
     setLoading(true);
     setError(false);
-    fetch("/blogs")
+    fetch(`${BACKEND_URL}/blogs`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

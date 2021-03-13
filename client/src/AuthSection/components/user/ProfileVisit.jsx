@@ -7,6 +7,7 @@ import Loader from "../../../containers/Loader";
 import ErrorBox from "../error/ErrorBox";
 import UserProfile from "../../containers/UserProfile";
 import BlogsContainer from "../../containers/BlogsContainer";
+import { BACKEND_URL } from "../../db/useDB";
 
 function ProfileVisit(props) {
   const { user } = useAuth();
@@ -20,7 +21,7 @@ function ProfileVisit(props) {
     if (user?._id !== props.match.params.authorId) {
       setLoading(true);
       setError(false);
-      fetch(`/authors/${props.match.params.authorId}`)
+      fetch(`${BACKEND_URL}/authors/${props.match.params.authorId}`)
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { BACKEND_URL } from "../AuthSection/db/useDB";
 
 export const AuthContext = React.createContext();
 
@@ -12,7 +13,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     setLoading(true);
-    fetch("/currentUser")
+    fetch(`${BACKEND_URL}/currentUser`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

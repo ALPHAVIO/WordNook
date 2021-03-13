@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { Link } from "react-router-dom";
+import { BACKEND_URL } from "../AuthSection/db/useDB";
 import { useAlert } from "../contexts/AlertContext";
 import Form from "./Form";
 
@@ -10,7 +11,7 @@ function SignIn() {
   const signinUser = (user) => {
     console.log(user);
 
-    fetch("/log-in", {
+    fetch(`/log-in`, {
       method: "POST",
       headers: {
         Accept: "application/json",

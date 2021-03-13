@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { useAlert } from "../../../contexts/AlertContext";
 // import { useAuth } from "../../../contexts/AuthContext";
 import BlogPost from "./BlogPost";
+import { BACKEND_URL } from "./../../db/useDB";
 
 function Post() {
   // const { user } = useAuth();
@@ -25,7 +26,7 @@ function Post() {
         blogContent: body,
       };
       // console.log(newBlog);
-      fetch("/compose", {
+      fetch(`${BACKEND_URL}/compose`, {
         method: "POST",
         headers: {
           Accept: "application/json",

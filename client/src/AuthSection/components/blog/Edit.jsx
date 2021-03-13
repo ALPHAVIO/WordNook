@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import Loader from "../../../containers/Loader";
 import ErrorBox from "../error/ErrorBox";
 import BlogPost from "./BlogPost";
+import { BACKEND_URL } from "../../db/useDB";
 
 function Edit(props) {
   const { user } = useAuth();
@@ -30,7 +31,7 @@ function Edit(props) {
         user: user._id,
       };
       // console.log(newBlog);
-      fetch(`/edit/${props.match.params.id}`, {
+      fetch(`${BACKEND_URL}/edit/${props.match.params.id}`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
@@ -53,7 +54,7 @@ function Edit(props) {
     setLoading(true);
     setError(false);
     setDisableButtons(false);
-    fetch(`/posts/${props.match.params.id}`)
+    fetch(`${BACKEND_URL}/posts/${props.match.params.id}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
