@@ -107,6 +107,13 @@ body {
   text-align: center;
   padding: 1rem;
 }
+.home-intro{
+  padding: 1rem 0;
+  margin: 1rem 0;
+}
+.home-container{
+  padding: 0 2rem;
+}
 .post-heading{
   font-family: 'Patua One', cursive;
   font-size: 3.4rem;
@@ -123,7 +130,7 @@ body {
 }
 .post-preview{
   background-color: #E5E7EB;
-  margin: 0.8rem;
+  margin: 0.8rem 0;
   padding: 1.9rem;
   border-radius: 1rem;
 }
