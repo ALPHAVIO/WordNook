@@ -6,6 +6,7 @@ import { useAuth } from "../../../contexts/AuthContext";
 import { useAlert } from "../../../contexts/AlertContext";
 import Loader from "../../../containers/Loader";
 import ErrorBox from "../error/ErrorBox";
+import { BACKEND_URL } from "../../db/useDB";
 
 function Blog(props) {
   const { user } = useAuth();
@@ -21,7 +22,7 @@ function Blog(props) {
     // }
     setLoading(true);
     setError(false);
-    fetch(`/posts/${props.match.params.id}`)
+    fetch(`${BACKEND_URL}/posts/${props.match.params.id}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
