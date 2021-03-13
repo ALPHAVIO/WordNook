@@ -79,41 +79,9 @@
                 <i class="like fa fa-2x fa-heart-o" data-post-id="<%=post._id%>"></i> 
            <% } %>
             <span class="likeCounter"><%=post.likes.length%></span>
-           
            </div>
     <% }); %>
-    <script>
-        let LikeBtn = document.querySelectorAll('.like');
-        let likeCounter = document.querySelectorAll('.likeCounter');
-        for(let i=0; i< LikeBtn.length; i++){ 
-           LikeBtn[i].addEventListener('click', function(e){
-                if(e.target.classList.contains('fa-heart-o')){
-                fetch('/like',{  method: 'PUT', 
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({postId : e.target.dataset.postId})})
-                    .then(response =>  {
-                        likeCounter[i].innerText = parseInt(likeCounter[i].innerText)+1;
-                        e.target.classList.remove("fa-heart-o");
-                        e.target.classList.add("fa-heart")})
-                    .catch(err => console.log(err))
-               }
-               else{
-                fetch('/unlike',{  method: 'PUT',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({postId : e.target.dataset.postId})})
-                    .then(response => {
-                        likeCounter[i].innerText = parseInt(likeCounter[i].innerText)-1;
-                        e.target.classList.remove("fa-heart");
-                        e.target.classList.add("fa-heart-o")})
-                    .catch(err => console.log(err))
-                }
-           });
-       }
-   </script>
+   
 </div>
 <% if(search!="") {%>
     <% if (pages > 0) { %>
@@ -172,4 +140,36 @@
         <% } %>
     </ul>
 <% } }%>
+<script>
+    let LikeBtn = document.querySelectorAll('.like');
+    let likeCounter = document.querySelectorAll('.likeCounter');
+    for(let i=0; i< LikeBtn.length; i++){ 
+       LikeBtn[i].addEventListener('click', function(e){
+            if(e.target.classList.contains('fa-heart-o')){
+            fetch('/like',{  method: 'PUT', 
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({postId : e.target.dataset.postId})})
+                .then(response =>  {
+                    likeCounter[i].innerText = parseInt(likeCounter[i].innerText)+1;
+                    e.target.classList.remove("fa-heart-o");
+                    e.target.classList.add("fa-heart")})
+                .catch(err => console.log(err))
+           }
+           else{
+            fetch('/unlike',{  method: 'PUT',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({postId : e.target.dataset.postId})})
+                .then(response => {
+                    likeCounter[i].innerText = parseInt(likeCounter[i].innerText)-1;
+                    e.target.classList.remove("fa-heart");
+                    e.target.classList.add("fa-heart-o")})
+                .catch(err => console.log(err))
+            }
+       });
+   }
+</script>
 <%- include("partials/footer") -%>

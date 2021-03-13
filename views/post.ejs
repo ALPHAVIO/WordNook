@@ -22,6 +22,15 @@
             </form>
         </div>
     <% } %>
+    <span style="position:absolute;top:180px ;left: 480px;">
+        <% if (likes.includes(currentUser._id)) { %>
+            <i class="like fa fa-2x fa-heart" data-post-id="<%=id%>"></i>
+        <% }else{ %>
+            <i class="like fa fa-2x fa-heart-o" data-post-id="<%=id%>"></i> 
+         <% } %>
+        <span class="likeCounter"><%=likes.length%></span>
+    </span>
+    
     <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
     <form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 3vh;">
         <div class="form-group">
@@ -37,5 +46,37 @@
     </form>
 </div>
 <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+<script>
+    let LikeBtn = document.querySelector('.like');
+    let likeCounter = document.querySelector('.likeCounter');
+    LikeBtn.addEventListener('click', function(e){
+        if(e.target.classList.contains('fa-heart-o')){
+        fetch('/like',{  method: 'PUT', 
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({postId : e.target.dataset.postId})})
+            .then(response =>  {
+                likeCounter.innerText = parseInt(likeCounter.innerText)+1;
+                e.target.classList.remove("fa-heart-o");
+                e.target.classList.add("fa-heart")})
+            .catch(err => console.log(err))
+        }
+        else{
+        fetch('/unlike',{  method: 'PUT',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({postId : e.target.dataset.postId})})
+            .then(response => {
+                likeCounter.innerText = parseInt(likeCounter.innerText)-1;
+                e.target.classList.remove("fa-heart");
+                e.target.classList.add("fa-heart-o")})
+            .catch(err => console.log(err))
+        }
+    });
+   
+</script>
+
 <%- include("partials/footer") -%>
 

@@ -339,9 +339,6 @@ body {
   transform: scale(1.4);
 }
 .like{
-  transform: translateY(3px);
-  border-radius: 50%;
-  padding: 5px;
   margin-left: 40px;
   color: #aa0707;
 }

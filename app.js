@@ -167,7 +167,8 @@ app.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:postNa
             comments: post.comments,
             isAuthor,
             isAuthenticated: user? true: false,
-            currentUser: user
+            currentUser: user,
+            likes: post.likes
           });
         }
       });
