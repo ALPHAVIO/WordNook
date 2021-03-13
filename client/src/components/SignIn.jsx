@@ -11,7 +11,7 @@ function SignIn() {
   const signinUser = (user) => {
     console.log(user);
 
-    fetch(`/log-in`, {
+    fetch(`${BACKEND_URL}/log-in`, {
       method: "POST",
       headers: {
         Accept: "application/json",
