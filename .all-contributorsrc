@@ -114,7 +114,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/65889104?v=4",
       "profile": "https://aayush-hub.github.io/Aayush-Garg-Portfolio/",
       "contributions": [
-        "doc"
+        "doc",
+        "code"
       ]
     },
     {
@@ -159,6 +160,15 @@
       "name": "Monika Jha",
       "avatar_url": "https://avatars.githubusercontent.com/u/53649201?v=4",
       "profile": "https://github.com/m-code12",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "vismitap",
+      "name": "vismitap",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47056243?v=4",
+      "profile": "https://vispprofile.netlify.app/",
       "contributions": [
         "code"
       ]

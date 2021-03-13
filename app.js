@@ -1,5 +1,4 @@
 //jshint esversion:6
-
 //Acquiring Dependencies-
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -11,23 +10,19 @@ const PORT = process.env.PORT || 3000;
 const auth = require('./middlewares/auth');
 const router = require("./routes/user.router");
 const { post } = require("./routes/user.router");
-
-//Default Texts-
-const homeStartingContent = "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
-const aboutContent = "'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.";
-const contactContent = "Got a query to ask? Have an amazing idea? Loved our page? Okay! All you have to do is shoot a mail and we'll get back to you shortly.";
+const Blog = require('./models/Blog.model')
 
 //Setting up the app and the ejs view engine-
 const app = express();
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
 //When in development mode then only require the dotenv module
-if(process.env.NODE_ENV !== 'production'){
-  const dotenv = require('dotenv');
-  dotenv.config({path:'./.env'});
+if (process.env.NODE_ENV !== 'production') {
+  const dotenv = require('dotenv');
+  dotenv.config({ path: './.env' });
 }
 
 //Connecting to Mongo Database using ODM Mongoose-
@@ -57,6 +52,7 @@ const blogSchema = {
 
 //Making a MongoDB model for the schema-
 const Blog = new mongoose.model("Blog", blogSchema);
+mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Router for user login and sign in
 app.use(require("./routes/user.router"));
@@ -223,11 +219,11 @@ app.post("/posts/:postName/comments/:commentNum",auth,async function(req,res){
   }
 })
 
-//Post request to search by title
-app.post(["/search"], auth, function(req, res){
-  const query = req.body.query || req.params.query;
-  var perPage = 5;
-  const currentPage = req.params.page || 1;
+//router for post and search related urls
+app.use(require("./routes/post.router"));
+
+// router for the requests from home page
+app.use(require("./routes/index.router"));
 
   Blog.find({blogTitle: { "$regex": query, "$options": "i" }})
   .skip((perPage * currentPage) - perPage)
@@ -335,6 +331,6 @@ app.put('/unlike', auth, (req,res)=>{
 })
 
 //Launching the server on port 3000 in development mode-
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("Server started on port 3000");
 });

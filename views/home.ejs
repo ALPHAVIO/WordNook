@@ -1,12 +1,15 @@
 <%- include("partials/header", {isAuthenticated}) -%>
 <link rel="stylesheet" href="/css/styles.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"></link>
-<h2 class="normal-heading-font" style="font-weight:600;">Hi there!</h2>
+<h2 class="normal-heading-font heading" style="font-weight:600;">Hi there!</h2>
+
 <p class="content-body-font"> <%= homeStartingContent %> </p> 
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-12">
 <h3 class="normal-heading-font" style="font-weight:600;">Anything New?</h3>
 
-<a href="/compose"><button class="button  pen">Compose</button></a>
-<br/>
+<a href="/compose"><button class="button  pen">Compose</button></a></div>
+<div class="col-lg-9 col-md-9 col-sm-12">
 <h3 class="normal-heading-font" style="font-weight:600;">Looking for something....</h3>
 <form action="/search" method="POST">
     <div class="form-group search-form">
@@ -19,7 +22,7 @@
     <div class="orderForms row">
         <center>
             <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6">
-                <label for="quantity">Number of posts to display on this page:</label>
+                <label class="label" for="quantity">Number of posts to display on this page:</label>
                 <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
                 <button class="button  arrow" type="submit" style="min-width: 10em;"> Go</button>
             </form>
@@ -63,7 +66,7 @@
             </form>
         </center>
     </div> 
-<% } %>
+<% } %></div>
 <hr>
 <div class="posts-section">    
     <% posts.forEach(function (post) { %>

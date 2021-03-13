@@ -1,9 +1,10 @@
 const express = require("express");
-const router = express.Router();
 const User = require('../models/User.model');
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 const auth = require("../middlewares/auth");
+
+const router = express.Router();
 
 //GET request for Sign Up 
 router.get("/sign-up", (req, res) => {
