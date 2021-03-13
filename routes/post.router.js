@@ -1,8 +1,5 @@
 const express = require("express");
 var _ = require('lodash');
-const mongoose  = require('mongoose');
-const ObjectId = mongoose.Schema.Types.ObjectId;
-
 const auth = require("../middlewares/auth");
 const Blog = require('../models/Blog.model')
 
