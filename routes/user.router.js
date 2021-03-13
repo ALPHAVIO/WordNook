@@ -134,7 +134,7 @@ router.post("/log-in", (req, res) => {
     bcrypt.compare(password, doc.password, (err, matched) => {
       if (err || !matched) {
         return res.status(401).json({
-          error: "Invalid usrname or password!",
+          error: "Invalid username or password!",
           //   data: {
           //     userName,
           //     password,
