@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { motion } from "framer-motion";
 import icon from "./../icon.png";
 
-const BACKEND_URL = "https://blogsite-backend-dev.herokuapp.com/";
+const BACKEND_URL = "https://blogsite-backend-dev.herokuapp.com";
 function Navbar() {
   const { user } = useAuth();
   return (
