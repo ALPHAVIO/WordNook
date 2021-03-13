@@ -477,3 +477,18 @@ input[name="perPage"]{
     transform: rotate(30deg);
   }
 }
+
+/* body {
+  background: #303036;
+  text-align: center;
+  text-rendering: auto;
+  font-size: 1.07rem;
+  line-height: 1.6em;
+  height: 100vh;
+  overflow: hidden;
+  padding: 18%;
+  padding-top: 25vh;
+}
+{
+  box-sizing: border-box;
+} */
