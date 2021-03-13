@@ -28,6 +28,7 @@ if (process.env.NODE_ENV !== 'production') {
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set('useCreateIndex', true);
 
 // Router for user login and sign in
 app.use(require("./routes/user.router"));
