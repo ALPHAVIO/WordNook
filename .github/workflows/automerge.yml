@@ -1,2 +1,0 @@
-- name: Merge pull requests
-  uses: pascalgn/automerge-action@v0.13.1
