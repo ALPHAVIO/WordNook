@@ -53,6 +53,7 @@ const blogSchema = {
 //Making a MongoDB model for the schema-
 const Blog = new mongoose.model("Blog", blogSchema);
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set('useCreateIndex', true);
 
 // Router for user login and sign in
 app.use(require("./routes/user.router"));

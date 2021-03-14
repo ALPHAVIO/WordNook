@@ -12,6 +12,7 @@ body {
   min-height: 100vh;
   background-size: cover;
   font-family: 'Quicksand', sans-serif;
+  opacity: 0.92;
   display: flex;
   flex-direction: column;
   background-image: url("../images/back.png");
@@ -36,7 +37,6 @@ body {
 }
 .navbar {
   padding-top: 1vh;
-  padding-bottom: 1vh;
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
@@ -98,6 +98,7 @@ body {
 }
 .normal-heading-font{
   font-family: 'Open Sans', sans-serif;
+  margin-top: 3rem;
 }
 .heading{
   padding-top: 1.5rem;
@@ -440,6 +441,7 @@ input[name="perPage"]{
   transform: rotate(360deg);
   text-indent: 0.1em;
 }
+
 @-webkit-keyframes bounceright {
   from {
     -webkit-transform: translateX(0);

@@ -75,6 +75,7 @@
             <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
             <hr/>
             <%- post.blogContent.substring(0,15000000) + ("...") %>
+
             <a href="posts/<%= post.blogTitle %>"><button class="button read">Read More</button></a>
             <% if (post.likes.includes(currentUser._id)) { %>
                 <i class="like fa fa-2x fa-heart" data-post-id="<%=post._id%>"></i>
@@ -83,6 +84,10 @@
            <% } %>
             <span class="likeCounter"><%=post.likes.length%></span>
            </div>
+
+            <a href="posts/<%= post._id %>"><button class="button read">Read More</button></a>
+        </div>
+
     <% }); %>
    
 </div>
