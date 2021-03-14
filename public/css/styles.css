@@ -34,11 +34,12 @@ body {
   margin: auto;
   max-width: 65vw;
 }
-#nav{
-      background-color: #80ACA5 !important;
-}
+.navbar {
+  background-color: #be5850;
+} 
+
 .navbar-header{
-  color: #083b2e;
+  color: #2a263b;
 }
 .navbar {
   padding-top: 1vh;
