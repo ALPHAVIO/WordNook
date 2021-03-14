@@ -10,6 +10,7 @@ const _ = require("lodash");
 const PORT = process.env.PORT || 3000;
 const auth = require('./middlewares/auth');
 const Blog = require('./models/Blog.model')
+const connectDB = require('./config/db');
 
 
 //Setting up the app and the ejs view engine-
@@ -26,8 +27,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 //Connecting to Mongo Database using ODM Mongoose-
-const URL = process.env.URL;
-mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
+connectDB();
 
 // Router for user login and sign in
 app.use(require("./routes/user.router"));
