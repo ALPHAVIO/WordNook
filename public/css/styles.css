@@ -120,7 +120,7 @@ a::after {
   font-size: 3.4rem;
 }
 .content-body-font {
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 .posts-section {
   margin-top: 1.4vh;
@@ -136,7 +136,7 @@ a::after {
   border-radius: 1rem;
 }
 .post-date-font {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 .post-margin {
   margin-bottom: 4.1vh;
