@@ -66,9 +66,9 @@
     </div> 
 <% } %></div>
 <hr>
-<div class="posts-section">    
+<div class="row">    
     <% posts.forEach(function (post) { %>
-        <div class="post post-preview">
+        <div class="post-preview col-md-5 mx-auto my-3">
             <h1> <%= post.blogTitle %> </h1>
             <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
             <hr/>
@@ -77,6 +77,7 @@
         </div>
     <% }); %>
 </div>
+    
 <% if(search!="") {%>
     <% if (pages > 0) { %>
     <ul class="pagination text-center">
