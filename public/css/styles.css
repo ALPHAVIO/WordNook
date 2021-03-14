@@ -27,10 +27,10 @@ body {
     url("https://i.pinimg.com/originals/34/cc/62/34cc62d1df1c8328f56ae7a7acf2e83a.gif")
     no-repeat center center;
 }
-.container-fluid {
+/* .container-fluid {
   padding-top: 10vh;
   padding-bottom: 10vh;
-}
+} */
 .container-centre {
   margin: auto;
   max-width: 65vw;
