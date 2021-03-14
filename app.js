@@ -7,15 +7,18 @@ const cookieParser = require("cookie-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require("lodash");
-const PORT = process.env.PORT || 3000;
-const auth = require('./middlewares/auth');
-const Blog = require('./models/Blog.model');
 
 // Security dependencies
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
+
+
+const PORT = process.env.PORT || 3000;
+const auth = require('./middlewares/auth');
+const Blog = require('./models/Blog.model');
+
 
 //Setting up the app and the ejs view engine-
 const app = express();
