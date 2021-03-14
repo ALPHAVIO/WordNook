@@ -2,6 +2,10 @@
 
 //Acquiring Dependencies-
 const express = require("express");
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const ejs = require("ejs");
@@ -15,15 +19,36 @@ const Blog = require('./models/Blog.model')
 //Setting up the app and the ejs view engine-
 const app = express();
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+//set security HTTP headers
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
+
+//limit requests from same IP
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60*60*1000,
+  message: 'To many request from this IP, please try again after an hour!'
+});
+
+app.use('/api', limiter);
+
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 //When in development mode then only require the dotenv module
 if (process.env.NODE_ENV !== 'production') {
   const dotenv = require('dotenv');
   dotenv.config({ path: './.env' });
 }
+
+//data sanitization against noSQL query injection
+app.use(mongoSanitize());
+
+//data sanitization against xss
+app.use(xss());
 
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
