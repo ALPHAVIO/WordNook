@@ -36,15 +36,16 @@ body {
   max-width: 65vw;
 }
 .navbar {
-  padding-top: 1vh;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0;
-  font-size: 1.5rem;
   letter-spacing: 0.125rem;
+}
+@media only screen and (min-width: 686px) {
+  .navbar {
+    height: 10vh;
+  }
 }
 .navbar-brand {
   font-size: 3.5vw;
+  color: #8d9b97;
 }
 .navbar-brand a {
   text-decoration: none;
@@ -53,14 +54,20 @@ body {
 .navbar-brand-bold {
   font-weight: 600;
 }
+.navbar-toggler {
+  color: #8d9b97;
+  border-color: #8d9b97;
+}
 .navbar-right {
   margin: 0;
   padding-top: 3vh;
 }
-.navbar-right li a {
+.navbar-nav li a {
+  font-size: 20;
   font-weight: bold;
-  margin: 0.4rem 0.6rem 0.3rem 0.6rem;
-  padding: 0.4rem 0.07rem 0.2rem 0.13rem;
+  color: #8d9b97;
+  /* margin: 0.4rem 0.6rem 0.3rem 0.6rem;
+  padding: 0.4rem 0.07rem 0.2rem 0.13rem; */
 }
 .navbar-nav li a:hover {
   color: #1abc9c !important;
