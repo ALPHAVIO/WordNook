@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
+
 //When in development mode then only require the dotenv module
 if (process.env.NODE_ENV !== 'production') {
   const dotenv = require('dotenv');
@@ -27,6 +28,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
+// console.log(URL);
+
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Router for user login and sign in
