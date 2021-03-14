@@ -9,7 +9,13 @@ const mongoose = require('mongoose');
 const _ = require("lodash");
 const PORT = process.env.PORT || 3000;
 const auth = require('./middlewares/auth');
-const Blog = require('./models/Blog.model')
+const Blog = require('./models/Blog.model');
+
+// Security dependencies
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 
 
 //Setting up the app and the ejs view engine-
@@ -17,6 +23,27 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+//set security HTTP headers
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
+
+//limit requests from same IP
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60*60*1000,
+  message: 'To many request from this IP, please try again after an hour!'
+});
+
+app.use('/', limiter);
+
+//data sanitization against noSQL query injection
+app.use(mongoSanitize());
+
+//data sanitization against xss
+app.use(xss());
+
 app.use(express.json());
 app.use(cookieParser());
 //When in development mode then only require the dotenv module
