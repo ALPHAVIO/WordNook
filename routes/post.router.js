@@ -12,31 +12,26 @@ const contactContent = "Got a query to ask? Have an amazing idea? Loved our page
 
 
 //Get request for posts page-
-router.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:postName", "/search/:query/posts/:postName", "/search/:query/:page/posts/:postName"], auth, function (req, res) {
+router.get(["/posts/:postId", "/page/posts/:postId", "/page/:page/posts/:postId", "/search/:query/posts/:postId", "/search/:query/:page/posts/:postId"], auth, function (req, res) {
     const user = req.user;
     let isAuthor = false;
-    const requestedTitle = _.lowerCase(req.params.postName);
-    Blog.find({}, function (err, posts) {
+    const requestedPostId = req.params.postId;
+    Blog.findOne({_id: requestedPostId}, function (err, post) {
         if (!err) {
-            posts.forEach(function (post) {
-                const storedTitle = _.lowerCase(post.blogTitle);
-                if (storedTitle === requestedTitle) {
-                    // Check if the user and author of this post are same
-                    if (user && JSON.stringify(user._id) === JSON.stringify(post.author)) {
-                        isAuthor = true;
-                    }
-                    //Sort the comments to show the recent one
-                    post.comments = post.comments.sort((a, b) => ((a.timestamps > b.timestamps) ? -1 : ((a.timestamps < b.timestamps) ? 1 : 0)));
-                    res.render("post", {
-                        title: post.blogTitle,
-                        content: post.blogContent,
-                        id: post._id,
-                        comments: post.comments,
-                        isAuthor,
-                        isAuthenticated: user ? true : false,
-                        currentUser: user
-                    });
-                }
+            // Check if the user and author of this post are same
+            if (user && JSON.stringify(user._id) === JSON.stringify(post.author)) {
+                isAuthor = true;
+            }
+            //Sort the comments to show the recent one
+            post.comments = post.comments.sort((a, b) => ((a.timestamps > b.timestamps) ? -1 : ((a.timestamps < b.timestamps) ? 1 : 0)));
+            res.render("post", {
+                title: post.blogTitle,
+                content: post.blogContent,
+                id: post._id,
+                comments: post.comments,
+                isAuthor,
+                isAuthenticated: user ? true : false,
+                currentUser: user
             });
         }
         else {
@@ -46,7 +41,7 @@ router.get(["/posts/:postName", "/page/posts/:postName", "/page/:page/posts/:pos
 });
 
 //Post request to create a comment
-router.post("/posts/:postName/comment", auth, async function (req, res) {
+router.post("/posts/:postId/comment", auth, async function (req, res) {
     const loggedUser = req.user;
     const { content } = req.body;
     //check if the user is authenticated
@@ -55,39 +50,39 @@ router.post("/posts/:postName/comment", auth, async function (req, res) {
     }
     //Server side form validation
     else if (content === "") {
-        res.redirect(`/posts/${req.params.postName}`);
+        res.redirect(`/posts/${req.params.postId}`);
     }
     else {
-        const doc = await Blog.findOne({ blogTitle: req.params.postName });
+        const doc = await Blog.findOne({ _id: req.params.postId });
         doc.comments.push({
             'name': loggedUser.name,
             'content': content,
             'timestamps': Math.floor(Date.now() / 1000)
         });
 
-        await Blog.updateOne({ blogTitle: req.params.postName }, { comments: doc.comments }, function (err, doc) {
+        await Blog.updateOne({ _id: req.params.postId }, { comments: doc.comments }, function (err, doc) {
             if (err)
                 console.log(err);
         })
-        res.redirect(`/posts/${req.params.postName}`);
+        res.redirect(`/posts/${req.params.postId}`);
     }
 });
 // Delete comment Route
-router.post("/posts/:postName/comments/:commentNum", auth, async function (req, res) {
+router.post("/posts/:postId/comments/:commentNum", auth, async function (req, res) {
     const isUser = req.user ? true : false;
-    const requestedPost = req.params.postName;
+    const requestedPostId = req.params.postId;
     const commentNum = req.params.commentNum;
     if (!isUser) {    // checking if user is authenticated
         return res.status(401).redirect(req.baseUrl + "/sign-up");
     } else {
-        const foundPost = await Blog.findOne({ blogTitle: requestedPost });
+        const foundPost = await Blog.findOne({ _id: requestedPostId });
         foundPost.comments = foundPost.comments.sort((a, b) => ((a.timestamps > b.timestamps) ? -1 : ((a.timestamps < b.timestamps) ? 1 : 0)));
         foundPost.comments.splice(commentNum, 1);
-        await Blog.updateOne({ blogTitle: requestedPost }, { comments: foundPost.comments }, function (err, foundPost) {
+        await Blog.updateOne({ _id: requestedPostId }, { comments: foundPost.comments }, function (err, foundPost) {
             if (err)
                 console.log(err);
         })
-        res.redirect(`/posts/${requestedPost}`);
+        res.redirect(`/posts/${requestedPostId}`);
     }
 })
 
@@ -149,15 +144,15 @@ router.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:per
 })
 
 //delete post route
-router.post('/posts/:postName', auth, (req, res, next) => {
+router.post('/posts/:postId', auth, (req, res, next) => {
     const user = req.user;
     if (!user) {
         return res.status(401).redirect("/log-in");
     }
 
-    const requestedTitle = req.params.postName;
-    console.log(requestedTitle)
-    Blog.deleteOne({ blogTitle: requestedTitle, author: user._id }).then(
+    const requestedPostId = req.params.postId;
+    // console.log(requestedPostId)
+    Blog.deleteOne({ _id: requestedPostId, author: user._id }).then(
         () => {
             res.redirect("/");
         }
