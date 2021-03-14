@@ -17,7 +17,6 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 
-
 //Setting up the app and the ejs view engine-
 const app = express();
 app.set('view engine', 'ejs');
@@ -25,9 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 //set security HTTP headers
-app.use(helmet({
-  contentSecurityPolicy: false,
-}));
+app.use(helmet());
 
 //limit requests from same IP
 const limiter = rateLimit({
@@ -38,7 +35,7 @@ const limiter = rateLimit({
 
 app.use('/', limiter);
 
-//data sanitization against noSQL query injection
+//data sanitization against NoSQL query injection
 app.use(mongoSanitize());
 
 //data sanitization against xss
