@@ -62,7 +62,18 @@
                 <button class="btn btn-primary" type="submit" name="log-out">Log out</button>
               </form>
             </li>
-          <% } %>
+            <% }else{ %>
+              <li id="log-in">
+                <form action="/log-in" method="post">
+                  <button class="btn btn-primary" type="submit" name="log-in">Log in</button>
+                </form>
+              </li>
+              <li id="sign-up">
+                <form action="/sign-up" method="post">
+                  <button class="btn btn-primary" type="submit" name="sign-up">Sign Up</button>
+                </form>
+              </li>
+              <% } %>
         </ul>
       </div>
     </div>

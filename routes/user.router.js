@@ -33,18 +33,18 @@ router.get("/log-in", (req, res) => {
 
 //POST request for sign up
 router.post("/sign-up", (req, res) => {
-    
+
     const { firstName, lastName, userName, email, password } = req.body;
 
     // Check if all the fields are filled
-    if(!firstName || !lastName || !userName || !email || !password){
-        return res.status(422).render("signUp",{
-            error : "Please add all the fields!",
+    if (!firstName || !lastName || !userName || !email || !password) {
+        return res.status(422).render("signUp", {
+            error: "Please add all the fields!",
             data: {
                 firstName: firstName || "",
                 lastName: lastName || "",
                 userName: userName || "",
-                email: email || "", 
+                email: email || "",
                 password: password || ""
             }
         });
@@ -52,9 +52,9 @@ router.post("/sign-up", (req, res) => {
 
     // Check if the username or email already taken
     User.findOne({ email }, (err, doc) => {
-        if(doc) {
+        if (doc) {
             return res.status(401).render("signUp", {
-                error : "Email already taken!",
+                error: "Email already taken!",
                 data: {
                     firstName,
                     lastName,
@@ -64,10 +64,10 @@ router.post("/sign-up", (req, res) => {
                 }
             });
         }
-        User.findOne({userName}, (err , doc) => {
-            if(doc){
+        User.findOne({ userName }, (err, doc) => {
+            if (doc) {
                 return res.status(401).render("signUp", {
-                    error : "Username already taken!",
+                    error: "Username already taken!",
                     data: {
                         firstName,
                         lastName,
@@ -88,9 +88,9 @@ router.post("/sign-up", (req, res) => {
                 });
 
                 newUser.save((err, doc) => {
-                    if(err || !doc){
+                    if (err || !doc) {
                         return res.status(422).render("signUp", {
-                            error : "Oops something went wrong!",
+                            error: "Oops something went wrong!",
                             data: {
                                 firstName,
                                 lastName,
@@ -100,14 +100,14 @@ router.post("/sign-up", (req, res) => {
                             }
                         });
                     }
-                    
-                    const token = jwt.sign({_id: doc._id}, process.env.SECRET_KEY);
+
+                    const token = jwt.sign({ _id: doc._id }, process.env.SECRET_KEY);
 
                     //Send back the token to the user as a httpOnly cookie
                     res.cookie("token", token, {
                         httpOnly: true
                     });
-                    res.redirect("/compose");
+                    res.redirect("/"); //may not compose after login or signup
                 });
             });
 
@@ -121,10 +121,10 @@ router.post("/sign-up", (req, res) => {
 router.post("/log-in", (req, res) => {
 
     const { userName, password } = req.body;
-    
-    if(!userName || !password){
+
+    if (!userName || !password) {
         res.status(401).render("logIn", {
-            error : "Please add all the fields!",
+            error: "Please add all the fields!",
             data: {
                 userName: userName || "",
                 password: password || ""
@@ -132,8 +132,8 @@ router.post("/log-in", (req, res) => {
         });
     }
 
-    User.findOne({userName}, (err, doc) => {
-        if(err || !doc){
+    User.findOne({ userName }, (err, doc) => {
+        if (err || !doc) {
             return res.status(401).render("logIn", {
                 error: "Invalid username or password!",
                 data: {
@@ -144,9 +144,9 @@ router.post("/log-in", (req, res) => {
         }
 
         bcrypt.compare(password, doc.password, (err, matched) => {
-            if(err || !matched){
-                return res.status(401).render("logIn",{
-                    error : "Invalid usrname or password!",
+            if (err || !matched) {
+                return res.status(401).render("logIn", {
+                    error: "Invalid usrname or password!",
                     data: {
                         userName,
                         password
@@ -154,13 +154,13 @@ router.post("/log-in", (req, res) => {
                 });
             }
 
-            const token = jwt.sign({_id: doc._id, userName}, process.env.SECRET_KEY);
+            const token = jwt.sign({ _id: doc._id, userName }, process.env.SECRET_KEY);
 
             res.cookie("token", token, {
                 httpOnly: true
             });
 
-            res.redirect("/compose");
+            res.redirect("/"); //may not compose after login or signup
         })
     })
 });
