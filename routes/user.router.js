@@ -8,7 +8,7 @@ const router = express.Router();
 
 //GET request for Sign Up 
 router.get("/sign-up", (req, res) => {
-    res.render("signUp", {
+    res.render("logIn", {
         error: "",
         data: {
             firstName: "",
@@ -38,7 +38,7 @@ router.post("/sign-up", (req, res) => {
 
     // Check if all the fields are filled
     if(!firstName || !lastName || !userName || !email || !password){
-        return res.status(422).render("signUp",{
+        return res.status(422).render("logIn",{
             error : "Please add all the fields!",
             data: {
                 firstName: firstName || "",
@@ -96,7 +96,7 @@ router.post("/sign-up", (req, res) => {
     // Check if the username or email already taken
     User.findOne({ email }, (err, doc) => {
         if(doc) {
-            return res.status(401).render("signUp", {
+            return res.status(401).render("logIn", {
                 error : "Email already taken!",
                 data: {
                     firstName,
@@ -109,7 +109,7 @@ router.post("/sign-up", (req, res) => {
         }
         User.findOne({userName}, (err , doc) => {
             if(doc){
-                return res.status(401).render("signUp", {
+                return res.status(401).render("logIn", {
                     error : "Username already taken!",
                     data: {
                         firstName,
@@ -132,7 +132,7 @@ router.post("/sign-up", (req, res) => {
 
                 newUser.save((err, doc) => {
                     if(err || !doc){
-                        return res.status(422).render("signUp", {
+                        return res.status(422).render("logIn", {
                             error : "Oops something went wrong!",
                             data: {
                                 firstName,
@@ -189,7 +189,7 @@ router.post("/log-in", (req, res) => {
         bcrypt.compare(password, doc.password, (err, matched) => {
             if(err || !matched){
                 return res.status(401).render("logIn",{
-                    error : "Invalid usrname or password!",
+                    error : "Invalid username or password!",
                     data: {
                         userName,
                         password
