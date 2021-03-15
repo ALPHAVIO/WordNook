@@ -7,7 +7,7 @@
     "node": "14.15.1"
   },
   "scripts": {
-    "start": "nodejs app.js",
+    "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "author": "",
