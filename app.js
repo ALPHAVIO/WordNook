@@ -57,6 +57,7 @@ const blogSchema = {
 const Blog = new mongoose.model("Blog", blogSchema);
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
+
 // Router for user login and sign in
 app.use(require("./routes/user.router"));
 
