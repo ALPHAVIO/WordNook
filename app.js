@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
+
 //When in development mode then only require the dotenv module
 if (process.env.NODE_ENV !== 'production') {
   const dotenv = require('dotenv');
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
+
 mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Setting up schema for the collection-
@@ -52,6 +54,8 @@ const blogSchema = {
 
 //Making a MongoDB model for the schema-
 const Blog = new mongoose.model("Blog", blogSchema);
+
+
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
 
@@ -246,7 +250,7 @@ app.use(require("./routes/index.router"));
     })
 
   })
-})
+
 
 // GET request for search to support pagination
 app.get(["/search/:query/:page", "/search/:query", "/search/:query/:page/:perPage", "/search/:query"], auth, function(req, res){
