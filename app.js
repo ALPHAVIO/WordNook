@@ -30,8 +30,33 @@ if(process.env.NODE_ENV !== 'production'){
 
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
-mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true});
 
+//Setting up schema for the collection-
+const blogSchema = {
+  blogTitle: String,
+  blogContent: String,
+  comments: Array,
+  timestamps: {
+    type: Date,
+    default: Date.now
+  },
+  likes:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+       ref: "User"
+    }
+  ],
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
+}
+
+//Making a MongoDB model for the schema-
+const Blog = new mongoose.model("Blog", blogSchema);
+mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set('useCreateIndex', true);
 // Router for user login and sign in
 app.use(require("./routes/user.router"));
 
