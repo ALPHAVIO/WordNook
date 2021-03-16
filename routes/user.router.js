@@ -8,7 +8,7 @@ const router = express.Router();
 
 //GET request for Sign Up 
 router.get("/sign-up", (req, res) => {
-    res.render("signUp", {
+    res.render("logIn", {
         error: "",
         data: {
             firstName: "",
@@ -38,7 +38,7 @@ router.post("/sign-up", (req, res) => {
 
     // Check if all the fields are filled
     if(!firstName || !lastName || !userName || !email || !password){
-        return res.status(422).render("signUp",{
+        return res.status(422).render("logIn",{
             error : "Please add all the fields!",
             data: {
                 firstName: firstName || "",
@@ -50,10 +50,53 @@ router.post("/sign-up", (req, res) => {
         });
     }
 
+    
+
+    const emailRegx = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+    const pwdRegex = new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/);
+    if(userName.length < 6 || userName.length > 12){
+        return res.status(500).render("signUp",{
+            error : "Username should be between 6 to 12 character",
+            data: {
+                firstName,
+                lastName,
+                userName,
+                email, 
+                password
+            }
+        });
+    }
+
+    if(!emailRegx.test(email)){
+        return res.status(500).render("signUp",{
+            error : "Please enter a valid email address",
+            data: {
+                firstName,
+                lastName,
+                userName,
+                email, 
+                password
+            }
+        });
+    }
+
+    if(!pwdRegex.test(password)){
+        return res.status(500).render("signUp",{
+            error : "Your password must contain a minimum of 8 letter, with at least a symbol, upper and lower case letters and a number",
+            data: {
+                firstName,
+                lastName,
+                userName,
+                email, 
+                password
+            }
+        });
+    }
+
     // Check if the username or email already taken
     User.findOne({ email }, (err, doc) => {
         if(doc) {
-            return res.status(401).render("signUp", {
+            return res.status(401).render("logIn", {
                 error : "Email already taken!",
                 data: {
                     firstName,
@@ -66,7 +109,7 @@ router.post("/sign-up", (req, res) => {
         }
         User.findOne({userName}, (err , doc) => {
             if(doc){
-                return res.status(401).render("signUp", {
+                return res.status(401).render("logIn", {
                     error : "Username already taken!",
                     data: {
                         firstName,
@@ -89,7 +132,7 @@ router.post("/sign-up", (req, res) => {
 
                 newUser.save((err, doc) => {
                     if(err || !doc){
-                        return res.status(422).render("signUp", {
+                        return res.status(422).render("logIn", {
                             error : "Oops something went wrong!",
                             data: {
                                 firstName,
@@ -146,7 +189,7 @@ router.post("/log-in", (req, res) => {
         bcrypt.compare(password, doc.password, (err, matched) => {
             if(err || !matched){
                 return res.status(401).render("logIn",{
-                    error : "Invalid usrname or password!",
+                    error : "Invalid username or password!",
                     data: {
                         userName,
                         password
