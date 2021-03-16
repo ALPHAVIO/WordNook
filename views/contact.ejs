@@ -1,10 +1,30 @@
-<%- include("partials/header", {isAuthenticated}) -%>
+<%- include("partials/header", {isAuthenticated: false}) -%>
 
 <div class="container-centre content-body-font">
     <h1 class="heading-centre heading-bold normal-heading-font">Contact Us</h1>
     <p> <%= contactContent %> </p> 
-    <p>Drop a message, we got it covered for you! </p>
-    <i class="far fa-envelope fa-lg"></i><a href="mailto:aaradhyasharma218@gmail.com" style="font-size: 90%;"> alphavio16@gmail.com </a>
+
+    <% if(error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <form action="/contact" method="POST" style="margin-top: 30px">
+        <div class="form-group">
+            <label>Subject</label>
+            <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="subject" autocomplete="off" value="<%= formData.name %>" required></input>
+        </div>
+        <div class="form-group">
+            <label>Your Email</label>
+            <input class="form-control col-md-12 col-sm-12 col-xs-12" type="email" name="email" autocomplete="off" value="<%= formData.email %>" required></input>
+        </div>
+        <div class="form-group">
+            <label>Message</label>
+            <textarea class="form-control col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px" rows="6" name="message" value="<%= formData.message %>"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Send</button>
+    </form>
 </div>
 
 <%- include("partials/footer") -%>
