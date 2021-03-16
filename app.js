@@ -29,6 +29,7 @@ if (process.env.NODE_ENV !== 'production') {
 //Connecting to Mongo Database using ODM Mongoose-
 const URL = process.env.URL;
 
+
 mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Setting up schema for the collection-
@@ -54,6 +55,9 @@ const blogSchema = {
 
 //Making a MongoDB model for the schema-
 const Blog = new mongoose.model("Blog", blogSchema);
+
+
+
 
 
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
