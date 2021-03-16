@@ -7,7 +7,10 @@ const router = express.Router();
 //Default Texts-
 const homeStartingContent = "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
 const aboutContent = "'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.";
-const contactContent = "Got a query to ask? Have an amazing idea? Loved our page? Okay! All you have to do is shoot a mail and we'll get back to you shortly.";
+const contactContent1 = "Got a query to ask?";
+const contactContent2= "Have an amazing idea? ";
+const contactContent3= "Loved our page?" ;
+const contactContent4= "Okay! All you have to do is shoot a mail and we'll get back to you shortly.";
 
 
 //Get request for home route-
@@ -56,7 +59,10 @@ router.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], auth,
   //Get request for contact page-
   router.get("/contact", auth, function (req, res) {
     res.render("contact", {
-      contactContent: contactContent,
+      firstQuestion: contactContent1,
+      secondQuestion: contactContent2,
+      thirdQuestion: contactContent3,
+      contactContent: contactContent4,
       isAuthenticated: req.user ? true : false
     });
   });
