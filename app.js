@@ -11,6 +11,7 @@ const auth = require('./middlewares/auth');
 const router = require("./routes/user.router");
 const { post } = require("./routes/user.router");
 const Blog = require('./models/Blog.model')
+const connectDB = require('./config/db');
 
 //Setting up the app and the ejs view engine-
 const app = express();
@@ -27,10 +28,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 //Connecting to Mongo Database using ODM Mongoose-
-const URL = process.env.URL;
-
-
-mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology: true});
+connectDB();
 
 //Setting up schema for the collection-
 const blogSchema = {
@@ -56,11 +54,6 @@ const blogSchema = {
 //Making a MongoDB model for the schema-
 const Blog = new mongoose.model("Blog", blogSchema);
 
-
-
-
-
-mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
 
 // Router for user login and sign in
