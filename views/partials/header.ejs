@@ -80,10 +80,24 @@
             <% if(isAuthenticated) { %>
             <li id="log-out">
               <form action="/log-out" method="post">
-                <button class="btn btn-primary" type="submit" name="log-out">
+                <button
+                  class="btn btn-primary btn-sm"
+                  type="submit"
+                  name="log-out"
+                >
                   Log out
                 </button>
               </form>
+            </li>
+            <% }else{ %>
+            <li id="log-out">
+              <a
+                href="/log-in"
+                class="btn btn-primary btn-sm text-white"
+                role="button"
+              >
+                Log in
+              </a>
             </li>
             <% } %>
           </ul>
