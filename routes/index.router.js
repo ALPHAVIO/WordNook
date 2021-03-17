@@ -1,6 +1,7 @@
 const express = require("express");
 const auth = require("../middlewares/auth");
 const Blog = require('../models/Blog.model');
+const sendMail = require('../mail')
 
 const router = express.Router();
 
@@ -57,10 +58,38 @@ router.get(["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"], auth,
   router.get("/contact", auth, function (req, res) {
     res.render("contact", {
       contactContent: contactContent,
+      error: "",
+        formData:{
+            subject: "",
+            email: "",
+            message: ""
+        },
       isAuthenticated: req.user ? true : false
     });
   });
   
+  //post request for contact page
+  router.post('/contact', (req,res) =>{
+    const {subject,email,message} = req.body
+    sendMail(subject,email,message,(err,data) => {
+      if(err)
+        res.status(500).json({message: 'Error occurred!'})
+      else{
+        res.render("contact",{
+          contactContent: "Email was sent successfully!",
+          error: "",
+            formData:{
+                subject: "",
+                email: "",
+                message: ""
+            },
+          isAuthenticated: req.user ? true : false
+        })
+    }
+      })
+      
+})
+
   //Get request for compose blog page-
   router.get("/compose", auth, function (req, res) {
     const user = req.user;
