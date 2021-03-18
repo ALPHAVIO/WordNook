@@ -1,40 +1,45 @@
 <%- include("partials/header", {isAuthenticated: false}) -%>
 
-<div style="margin-top: 11vh;">
+    <div style="margin-top: 11vh;">
 
-<% if(error) { %>
-    <div class="alert alert-danger" role="alert">
-        <%= error %>
-    </div>
-<% } %>
+        <% if(error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+            <% } %>
 
-<form action="/sign-up" method="POST">
-    <div class="form-group">
-        <label class="sign-up-place">First Name</label>
-        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="firstName" autocomplete="off" value="<%= data.firstName %>" required></input>
-    </div>
-    <div class="form-group">
-        <label class="sign-up-place">Last Name</label>
-        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="lastName" autocomplete="off" value="<%= data.lastName %>" required></input>
-    </div>
-    <div class="form-group">
-        <label class="sign-up-place">Your Username</label>
-        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="userName" autocomplete="off" value="<%= data.userName %>" required></input>
-    </div>
-    <div class="form-group">
-        <label class="sign-up-place">Your Email</label>
-        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="email" name="email" autocomplete="off" value="<%= data.email %>" required></input>
-    </div>
-    <div class="form-group">
-        <label class="sign-up-place">Password</label>
-        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="password" name="password" autocomplete="off" value="<%= data.password %>" required></input>
-    </div>
-    <div class="text-center">
-        Already an User? <a href="/log-in">Log In</a>
-    </div>
-    <button class="btn btn-primary log-in-btn" type="submit" name="sign-up">Sign Up</button>
-</form>
+                <form action="/sign-up" method="POST">
+                    <div class="form-group">
+                        <label class="sign-up-place">First Name</label>
+                        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="firstName"
+                            autocomplete="off" value="<%= data.firstName %>" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="sign-up-place">Last Name</label>
+                        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="lastName"
+                            autocomplete="off" value="<%= data.lastName %>" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="sign-up-place">Your Username</label>
+                        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="userName"
+                            autocomplete="off" value="<%= data.userName %>" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="sign-up-place">Your Email</label>
+                        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="email" name="email"
+                            autocomplete="off" value="<%= data.email %>" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label class="sign-up-place">Password</label>
+                        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="password" name="password"
+                            autocomplete="off" value="<%= data.password %>" required></input>
+                    </div>
+                    <div class="text-center">
+                        Already a User? <a href="/log-in">Log In</a>
+                    </div>
+                    <button class="btn btn-primary log-in-btn" type="submit" name="sign-up">Sign Up</button>
+                </form>
 
-</div>
+    </div>
 
-<%- include("partials/footer") -%>
+    <%- include("partials/footer") -%>
