@@ -491,3 +491,150 @@ input[name="perPage"] {
   transform: rotate(360deg);
   text-indent: 0.1em;
 }
+.contact-us-header
+{
+  position: relative;
+  margin-top: 10rem;
+}
+.contact-us-header:hover
+{
+  
+color: #1abc9c !important;
+}
+.contact-content-card
+{
+  position: relative;
+  margin-left: 30rem ;
+  margin-right: 30rem;
+
+}
+.center-content
+{
+  justify-content: center;
+  margin-left: 5rem;
+}
+i.center-content
+{
+  margin-left: 40%;
+  color: #000000;  
+}
+i.center-content:hover
+{
+
+  color:  #1abc9c !important;
+}
+div.slide-right p:hover{
+  color: #1abc9c !important;
+}
+div.slide-up p:hover{
+  color: #1abc9c !important;
+}
+
+
+div.slide-right
+{
+  width: 100%;
+  overflow: hidden;
+}
+div.slide-right .p1{
+  animation: 3s slide-right;
+}
+div.slide-right .p2{
+  animation: 3s slide-left;
+}
+div.slide-right .p3{
+  animation: 3s slide-right;
+}
+
+div.slide-up
+{
+  width: 100%;
+  overflow: hidden;
+}
+div.slide-up p
+{
+  animation: 4s slide-up;
+}
+@keyframes slide-up
+{
+  from{
+    margin-top: 100%;
+    width: 300%;
+  }
+  to{
+    margin-top: 0%;
+    width: 100%;
+
+  }
+}
+@keyframes slide-right
+{
+  from{
+    margin-left: 100%;
+    width: 300%;
+  }
+  to{
+    margin-left: 0%;
+    width: 100%;
+
+  }
+}
+@keyframes slide-left
+{
+  from{
+    margin-left: -100%;
+    width:300%;
+  }
+  to
+  {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes bounceright {
+  from {
+    -webkit-transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(0.2rem);
+  }
+}
+@-webkit-keyframes wiggle {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(30deg);
+  }
+}
+@keyframes bounceright {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(0.2rem);
+  }
+}
+@keyframes wiggle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(30deg);
+  }
+}
+/* body {
+  background: #303036;
+  text-align: center;
+  text-rendering: auto;
+  font-size: 1.07rem;
+  line-height: 1.6em;
+  height: 100vh;
+  overflow: hidden;
+  padding: 18%;
+  padding-top: 25vh;
+}
+{
+  box-sizing: border-box;
+} */

@@ -1,7 +1,13 @@
 <%- include("partials/header", {isAuthenticated}) -%>
 
-<div class="container-centre content-body-font">
-    <h1 class="heading-centre heading-bold normal-heading-font">Contact Us</h1>
+<div class="container-centre content-body-font contact-content-card">
+    <h1 class="heading-centre heading-bold normal-heading-font contact-us-header">Contact Us</h1>
+    <div class="slide-right">
+        <p class="p1 alert alert-success"><%= firstQuestion %></p>
+        <p class="p2 alert alert-success"><%= secondQuestion %></p>
+        <p class="p3 alert alert-success"><%= thirdQuestion %></p>
+    </div>
+    <div class="slide-up">
     <p class="alert alert-success"> <%= contactContent %> </p> 
 
     <% if(error) { %>
@@ -25,6 +31,7 @@
         </div>
         <button class="btn btn-primary" type="submit">Send</button>
     </form>
+  </div>
 </div>
 
 <%- include("partials/footer") -%>
