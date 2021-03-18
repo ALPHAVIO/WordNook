@@ -17,6 +17,7 @@
         <button class="button  search" style="margin-left: 1em;">Search</button>
     </div>
 </form>
+</div>
 
 <% if(search!="") {%>
     <div class="orderForms row">
@@ -71,16 +72,12 @@
             <h1> <%= post.blogTitle %> </h1>
             <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
             <hr/>
-            <%- post.blogContent.substring(0,15000000) + ("...") %>
-
+            <%- post.blogContent.substring(0,100) + ("...") %>
+            <div>
             <a href="posts/<%= post._id %>"><button class="button read">Read More</button></a>
-           </div>
-
-            <!-- <a href="posts/<%= post._id %>"><button class="button read">Read More</button></a> -->
         </div>
-
+        </div>
     <% }); %>
-   
 </div>
 <% if(search!="") {%>
     <% if (pages > 0) { %>
