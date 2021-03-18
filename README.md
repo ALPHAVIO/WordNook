@@ -73,12 +73,12 @@ npm install
   ```
   * Now add this to the `.env` file
   ```
-  SECRET_KEY = "AlphaVio";
+  SECRET_KEY = AlphaVio
+  URL = mongodb://localhost:27017/blogDB
   ```
 <br/>
 
-* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default). You need to change the url in your `app.js` file to `'mongodb://localhost:27017/blogDB'`; 
-
+* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
 ```
 mongod
 ```
