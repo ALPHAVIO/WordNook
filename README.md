@@ -106,7 +106,7 @@ http://localhost:3000/
 
 * Now you are all set to use this project.
 
-**Disclaimer-**
+**Disclaimer-**  
 The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as `API-KEY = <your-api-key>`.  
 
 #### Some useful Mongo DB commands if you are using the terminal instead of the GUI-
