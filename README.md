@@ -14,6 +14,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/BlogSite)](https://dependabot.com)  
 
 - 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
 <br/>
@@ -106,7 +107,7 @@ http://localhost:3000/
 
 * Now you are all set to use this project.
 
-**Disclaimer-**
+**Disclaimer-**  
 The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as `API-KEY = <your-api-key>`.  
 
 #### Some useful Mongo DB commands if you are using the terminal instead of the GUI-
