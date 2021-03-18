@@ -17,10 +17,10 @@
         <button class="button  search" style="margin-left: 1em;">Search</button>
     </div>
 </form>
+</div>
 
 <% if(search!="") {%>
     <div class="orderForms row">
-        <center>
             <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6">
                 <label class="label" for="quantity">Number of posts to display on this page:</label>
                 <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
@@ -40,11 +40,10 @@
                 </select>
                 <button class="button  arrow" type="submit" style="min-width: 10em;;"> Go</button>
             </form>
-        </center>
     </div>
 <% } else { %>
     <div class="orderForms row">
-        <center>
+
             <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6">
                 <label for="quantity">Number of posts:</label>
                 <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
@@ -64,7 +63,6 @@
                 </select>
                 <button class="button  arrow" type="submit" style="min-width: 10em;"> Go</button>
             </form>
-        </center>
     </div> 
 <% } %></div>
 <hr>
@@ -74,22 +72,12 @@
             <h1> <%= post.blogTitle %> </h1>
             <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
             <hr/>
-            <%- post.blogContent.substring(0,15000000) + ("...") %>
-
-            <a href="posts/<%= post.blogTitle %>"><button class="button read">Read More</button></a>
-            <% if (post.likes.includes(currentUser._id)) { %>
-                <i class="like fa fa-2x fa-heart" data-post-id="<%=post._id%>"></i>
-           <% }else{ %>
-                <i class="like fa fa-2x fa-heart-o" data-post-id="<%=post._id%>"></i> 
-           <% } %>
-            <span class="likeCounter"><%=post.likes.length%></span>
-           </div>
-
+            <%- post.blogContent.substring(0,100) + ("...") %>
+            <div>
             <a href="posts/<%= post._id %>"><button class="button read">Read More</button></a>
         </div>
-
+        </div>
     <% }); %>
-   
 </div>
 <% if(search!="") {%>
     <% if (pages > 0) { %>
@@ -148,36 +136,5 @@
         <% } %>
     </ul>
 <% } }%>
-<script>
-    let LikeBtn = document.querySelectorAll('.like');
-    let likeCounter = document.querySelectorAll('.likeCounter');
-    for(let i=0; i< LikeBtn.length; i++){ 
-       LikeBtn[i].addEventListener('click', function(e){
-            if(e.target.classList.contains('fa-heart-o')){
-            fetch('/like',{  method: 'PUT', 
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({postId : e.target.dataset.postId})})
-                .then(response =>  {
-                    likeCounter[i].innerText = parseInt(likeCounter[i].innerText)+1;
-                    e.target.classList.remove("fa-heart-o");
-                    e.target.classList.add("fa-heart")})
-                .catch(err => console.log(err))
-           }
-           else{
-            fetch('/unlike',{  method: 'PUT',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({postId : e.target.dataset.postId})})
-                .then(response => {
-                    likeCounter[i].innerText = parseInt(likeCounter[i].innerText)-1;
-                    e.target.classList.remove("fa-heart");
-                    e.target.classList.add("fa-heart-o")})
-                .catch(err => console.log(err))
-            }
-       });
-   }
-</script>
+
 <%- include("partials/footer") -%>

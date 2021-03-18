@@ -73,12 +73,12 @@ npm install
   ```
   * Now add this to the `.env` file
   ```
-  SECRET_KEY = "AlphaVio";
+  SECRET_KEY = AlphaVio
+  URL = mongodb://localhost:27017/blogDB
   ```
 <br/>
 
-* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default). You need to change the url in your `app.js` file to `'mongodb://localhost:27017/blogDB'`; 
-
+* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
 ```
 mongod
 ```
@@ -105,6 +105,9 @@ http://localhost:3000/
 <br/>
 
 * Now you are all set to use this project.
+
+**Disclaimer-**
+The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as `API-KEY = <your-api-key>`.  
 
 #### Some useful Mongo DB commands if you are using the terminal instead of the GUI-
 ```
