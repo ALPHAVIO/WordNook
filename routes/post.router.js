@@ -3,9 +3,12 @@ const express = require("express");
 var _ = require("lodash");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
+const methodOverride=require('method-override');
+const bodyParser=require('body-parser');
 
 const router = express.Router();
-
+router.use(methodOverride("_method"));
+router.use(bodyParser.json());
 //Get request for posts page-
 router.get(
   [
@@ -195,5 +198,26 @@ router.post("/posts/:postId/delete", auth, (req, res, next) => {
       });
     });
 });
-
+//update post route
+router.put("/posts/:id",(req,res)=>{
+  console.log(req.body.post);
+  Blog.findByIdAndUpdate(req.params.id,req.body.post,(err,foundBlog)=>{
+    if(err){
+      res.redirect('/');
+    }else{
+      console.log(req.params.id);
+      res.redirect('/posts/'+req.params.id);
+    }
+  })
+})
+//Edit route
+router.get('/posts/:id/edit',(req,res)=>{
+  Blog.findById(req.params.id,(err,fndBlog)=>{
+    if(err){
+      console.log(err);
+    }else{
+      res.render('edit',{blog:fndBlog,isAuthenticated: req.user ? true : false,})
+    }
+  })
+})
 module.exports = router;
