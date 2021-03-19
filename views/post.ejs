@@ -10,7 +10,11 @@
         </form>
     <% } %>
     
+
+    <!-- number of comments -->
     <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 6vh; margin-bottom: 3vh;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
+
+    <!-- display all comments section -->
     <% for(var i=0; i<comments.length; i++) { %>
         <div class="comment"> 
             <h4><strong><%= comments[i].name %></strong></h4>
@@ -22,6 +26,8 @@
             </form>
         </div>
     <% } %>
+
+    <!-- add comment section -->
     <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
     <form action="/posts/<%=id%>/comment" method="POST" style="margin-bottom: 3vh;">
         <div class="form-group">
@@ -35,6 +41,7 @@
         </div>
         <button class="button commenting" type="submit" name="publish">Post comment</button>
     </form>
+    
 </div>
 <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 
