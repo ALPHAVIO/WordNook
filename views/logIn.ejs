@@ -2,11 +2,14 @@
 
     <div style="margin-top: 11vh;">
 
+        <!-- display error if any while submitting the form -->
         <% if(error) { %>
             <div class="alert alert-danger" role="alert">
                 <%= error %>
             </div>
-            <% } %>
+        <% } %>
+
+                <!-- login form section -->
                 <form action="/log-in" method="POST">
                     <div class="form-group">
                         <label>Your Username</label>
@@ -24,4 +27,4 @@
                     <button class="btn btn-primary log-in-btn" type="submit" name="log-in">Log In</button>
                 </form>
 
-                <%- include("partials/footer") -%>
+<%- include("partials/footer") -%>

@@ -6,21 +6,26 @@
 <p class="content-body-font"> <%= homeStartingContent %> </p> 
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-12 anynew">
-<h3 class="normal-heading-font" style="font-weight:600;">Anything New?</h3>
-
-<a href="/compose"><button class="button  pen">Compose</button></a></div>
-<div class="col-lg-9 col-md-9 col-sm-12 anylook">
-<h3 class="normal-heading-font" style="font-weight:600;">Looking for something....</h3>
-<form action="/search" method="POST">
-    <div class="form-group search-form">
-        <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
-        <button class="button  search" style="margin-left: 1em;">Search</button>
+        <h3 class="normal-heading-font" style="font-weight:600;">Anything New?</h3>
+        <a href="/compose"><button class="button  pen">Compose</button></a>
     </div>
-</form>
-</div>
 
-<% if(search!="") {%>
-    <div class="orderForms row">
+    <!-- posts searchbar -->
+    <div class="col-lg-9 col-md-9 col-sm-12 anylook">
+        <h3 class="normal-heading-font" style="font-weight:600;">Looking for something....</h3>
+        <form action="/search" method="POST">
+            <div class="form-group search-form">
+                <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
+                <button class="button  search" style="margin-left: 1em;">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- display the search results -->
+    <!-- if the page was rendered by querying in searchbar -->
+    <% if(search!="") {%>
+
+        <div class="orderForms row">
             <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6">
                 <label class="label" for="quantity">Number of posts to display on this page:</label>
                 <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
@@ -40,45 +45,56 @@
                 </select>
                 <button class="button  arrow" type="submit" style="min-width: 10em;;"> Go</button>
             </form>
-    </div>
-<% } else { %>
-    <div class="orderForms row">
+        </div>
 
-            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6">
-                <label for="quantity">Number of posts:</label>
-                <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-                <button class="button  arrow" type="submit" style="min-width: 10em;" >Go</button>
-            </form>
-            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6">
-                <select name="order" class="orderSelect">
-                    <% if(order==='new one first') {%> 
-                        <option value="new one first" selected>New one first</option>
-                    <% }else {%>
-                        <option value="new one first">New one first</option> 
-                    <% }if(order==='old one first') {%> 
-                        <option value="old one first" selected>Old one first</option>
-                    <%} else {%>
-                        <option value="old one first">Old one first</option>
-                    <% }  %>
-                </select>
-                <button class="button  arrow" type="submit" style="min-width: 10em;"> Go</button>
-            </form>
-    </div> 
-<% } %></div>
+    <!-- else page was rendered normally by simple '/' Get request   -->
+    <% } else { %>
+
+        <div class="orderForms row">
+                <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6">
+                    <label for="quantity">Number of posts:</label>
+                    <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
+                    <button class="button  arrow" type="submit" style="min-width: 10em;" >Go</button>
+                </form>
+
+                <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6">
+                    <select name="order" class="orderSelect">
+                        <% if(order==='new one first') {%> 
+                            <option value="new one first" selected>New one first</option>
+                        <% }else {%>
+                            <option value="new one first">New one first</option> 
+                        <% }if(order==='old one first') {%> 
+                            <option value="old one first" selected>Old one first</option>
+                        <%} else {%>
+                            <option value="old one first">Old one first</option>
+                        <% }  %>
+                    </select>
+                    <button class="button  arrow" type="submit" style="min-width: 10em;"> Go</button>
+                </form>
+        </div> 
+
+    <% } %>
+</div>
 <hr>
+
+<!-- display all the posts -->
 <div class="posts-section">    
     <% posts.forEach(function (post) { %>
         <div class="post post-preview">
-            <h1> <%= post.blogTitle %> </h1>
-            <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
-            <hr/>
-            <%- post.blogContent.substring(0,100) + ("...") %>
-            <div>
-            <a href="posts/<%= post._id %>"><button class="button read">Read More</button></a>
-        </div>
+                <h1> <%= post.blogTitle %> </h1>
+                <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
+                <hr/>
+                <%- post.blogContent.substring(0,100) + ("...") %>
+                <div>
+                <a href="posts/<%= post._id %>"><button class="button read">Read More</button></a>
+            </div>
         </div>
     <% }); %>
 </div>
+
+
+<!-- display no of pages i.e pagination -->
+<!-- if the page was rendered by querying in searchbar -->
 <% if(search!="") {%>
     <% if (pages > 0) { %>
     <ul class="pagination text-center">
@@ -107,6 +123,8 @@
             <li><a href="/search/<%= search %>/<%= pages %>/<%= perPage %>">Last</a></li>
         <% } %>
     </ul>
+
+<!-- else page was rendered normally by simple '/' Get request   -->
 <% }} else { %>
 <% if (pages > 0) { %>
     <ul class="pagination text-center">

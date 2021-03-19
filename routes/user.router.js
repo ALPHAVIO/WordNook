@@ -8,28 +8,36 @@ const auth = require("../middlewares/auth");
 const router = express.Router();
 
 //GET request for Sign Up
-router.get("/sign-up", (req, res) => {
-  res.render("signUp", {
-    error: "",
-    data: {
-      firstName: "",
-      lastName: "",
-      userName: "",
-      password: "",
-      email: "",
-    },
-  });
+router.get("/sign-up",auth, (req, res) => {
+  if(req.user){
+    res.redirect('/');
+  }else{
+    res.render("signUp", {
+      error: "",
+      data: {
+        firstName: "",
+        lastName: "",
+        userName: "",
+        password: "",
+        email: "",
+      },
+    });
+  }
 });
 
 // GET request for Log In
-router.get("/log-in", (req, res) => {
-  res.render("logIn", {
-    error: "",
-    data: {
-      userName: "",
-      password: "",
-    },
-  });
+router.get("/log-in",auth,(req, res) => {
+  if(req.user){
+    res.redirect('/');
+  }else{
+    res.render("logIn", {
+      error: "",
+      data: {
+        userName: "",
+        password: "",
+      },
+    });
+  }
 });
 
 //POST request for sign up
