@@ -432,6 +432,7 @@ input[name="perPage"] {
 
 .del {
 	background: var(--color-secondary);
+	margin-left: 5px;
 }
 
 .del:hover {
@@ -450,6 +451,10 @@ input[name="perPage"] {
 .del:hover:after {
 	-webkit-animation: wiggle 0.15s alternate ease infinite;
 	animation: wiggle 0.15s alternate ease infinite;
+}
+
+.edit:after {
+	content: "\F044";
 }
 
 .pen {
