@@ -215,12 +215,10 @@ router.get('/posts/:id/edit',(req,res)=>{
 })
 //update post route
 router.put("/posts/:id",(req,res)=>{
-  console.log(req.body.post);
   Blog.findByIdAndUpdate(req.params.id,req.body.post,(err,foundBlog)=>{
     if(err){
       res.redirect('/');
     }else{
-      console.log(req.params.id);
       res.redirect('/posts/'+req.params.id);
     }
   })
