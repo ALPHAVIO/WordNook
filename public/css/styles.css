@@ -68,6 +68,12 @@ body {
   backdrop-filter: blur(10px);
 }
 
+@media only screen and (min-width: 768px) {
+  .navbar {
+    height: 10vh;
+  }
+}
+
 .navbar-brand {
   font-size: 3.5vw;
   color: var(--color-secondary) !important;
