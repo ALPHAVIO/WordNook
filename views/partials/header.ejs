@@ -69,19 +69,19 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-md-auto align-items-center">
             <li id="home" class="nav-item">
-              <a class="nav-link" href="/">HOME</a>
+              <a class="nav-link text-info" href="/">HOME</a>
             </li>
             <li id="about" class="nav-item">
-              <a class="nav-link" href="/about">ABOUT</a>
+              <a class="nav-link text-info" href="/about">ABOUT</a>
             </li>
             <li id="contact" class="nav-item">
-              <a class="nav-link" href="/contact">CONTACT US</a>
+              <a class="nav-link text-info" href="/contact">CONTACT US</a>
             </li>
             <% if(isAuthenticated) { %>
             <li id="log-out">
               <form action="/log-out" method="post">
                 <button
-                  class="btn btn-primary btn-sm"
+                  class="btn btn-info btn-sm"
                   type="submit"
                   name="log-out"
                 >
@@ -90,10 +90,10 @@
               </form>
             </li>
             <% }else{ %>
-            <li id="log-out">
+            <li id="log-in">
               <a
                 href="/log-in"
-                class="btn btn-primary btn-sm text-white"
+                class="btn btn-info btn-sm text-white"
                 role="button"
               >
                 Log in
