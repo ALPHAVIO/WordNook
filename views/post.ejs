@@ -5,13 +5,14 @@
 
     <!-- If this user is the author then only render the delete button-->
     <% if(isAuthor){ %>
-        <form  action="/posts/<%=id%>/delete" method="post" >
-            <button class="button  del" type="submit">Delete</button>
-        </form>
-        <a role="button" type="submit" class="btn btn-warning" href="/posts/<%=id%>/edit" style="height:35px;margin-top: 4vh; width:15em;background: var(--color-secondary);font-family: Montserrat, sans-serif;border-radius:0;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border:3px solid #fff;font-size: 1.4rem;">Edit <i class="fa fa-edit"></i></a>
+        <div style="display: flex;">
+            <a role="button" type="submit" class="btn btn-warning" href="/posts/<%=id%>/edit" style="height:37px;margin-right: 10px; width:15em;background: var(--color-secondary);font-family: Montserrat, sans-serif;border-radius:0;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border:3px solid #fff;font-size: 1.4rem;">Edit <i class="fa fa-edit"></i></a>    
+            <form  action="/posts/<%=id%>/delete" method="post" >
+                <button class="button  del" type="submit">Delete</button>
+            </form>
+        </div>
     <% } %>
     
-
     <!-- number of comments -->
     <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 6vh; margin-bottom: 3vh;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
 
