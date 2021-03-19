@@ -2,12 +2,13 @@
 
     <div style="margin-top: 11vh;">
 
+        <!-- display error if any while submitting the form -->
         <% if(error) { %>
             <div class="alert alert-danger" role="alert">
                 <%= error %>
             </div>
-            <% } %>
-
+        <% } %>
+                <!-- sign-up form section -->
                 <form action="/sign-up" method="POST">
                     <div class="form-group">
                         <label class="sign-up-place">First Name</label>
@@ -42,4 +43,4 @@
 
     </div>
 
-    <%- include("partials/footer") -%>
+<%- include("partials/footer") -%>

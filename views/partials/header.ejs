@@ -40,6 +40,8 @@
   <link rel="icon" href="/images/favicon.ico">
   <script src="https://kit.fontawesome.com/7a2242c499.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- navbar section -->
   <nav id="nav-id" class="navbar navbar-default darkmode--activated navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -56,6 +58,8 @@
           <li id="home"><a href="/">HOME</a></li>
           <li id="about"><a href="/about">ABOUT</a></li>
           <li id="contact"><a href="/contact">CONTACT US</a></li>
+
+          <!-- if the user is authenticated then only show logout button -->
           <% if(isAuthenticated) { %>
             <li id="log-out">
               <form action="/log-out" method="post">
@@ -63,6 +67,7 @@
               </form>
             </li>
           <% } %>
+          
         </ul>
       </div>
     </div>

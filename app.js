@@ -3,14 +3,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const ejs = require("ejs");
 const mongoose = require("mongoose");
-const _ = require("lodash");
 const PORT = process.env.PORT || 3000;
-const auth = require("./middlewares/auth");
-const router = require("./routes/user.router");
-const { post } = require("./routes/user.router");
-const Blog = require("./models/Blog.model");
 const connectDB = require("./config/db");
 
 //Setting up the app middlewares and the ejs view engine-
@@ -28,14 +22,9 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 //Connecting to Mongo Database using ODM Mongoose-
-// mongoose.connect(process.env.URL, {
-// 	useNewUrlParser: true,
-// 	useUnifiedTopology: true,
-// });
 connectDB();
-
-// mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
+
 
 // router for the requests from home page
 app.use(require("./routes/index.router"));
