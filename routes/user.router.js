@@ -8,10 +8,10 @@ const auth = require("../middlewares/auth");
 const router = express.Router();
 
 //GET request for Sign Up
-router.get("/sign-up",auth, (req, res) => {
-  if(req.user){
-    res.redirect('/');
-  }else{
+router.get("/sign-up", auth, (req, res) => {
+  if (req.user) {
+    res.redirect("/");
+  } else {
     res.render("signUp", {
       error: "",
       data: {
@@ -20,16 +20,17 @@ router.get("/sign-up",auth, (req, res) => {
         userName: "",
         password: "",
         email: "",
+        confirmPassword : ""
       },
     });
   }
 });
 
 // GET request for Log In
-router.get("/log-in",auth,(req, res) => {
-  if(req.user){
-    res.redirect('/');
-  }else{
+router.get("/log-in", auth, (req, res) => {
+  if (req.user) {
+    res.redirect("/");
+  } else {
     res.render("logIn", {
       error: "",
       data: {
@@ -42,10 +43,10 @@ router.get("/log-in",auth,(req, res) => {
 
 //POST request for sign up
 router.post("/sign-up", (req, res) => {
-  const { firstName, lastName, userName, email, password } = req.body;
+  const { firstName, lastName, userName, email, password , confirmPassword } = req.body;
 
   // Check if all the fields are filled
-  if (!firstName || !lastName || !userName || !email || !password) {
+  if (!firstName || !lastName || !userName || !email || !password || !confirmPassword) {
     return res.status(422).render("signUp", {
       error: "Please add all the fields!",
       data: {
@@ -54,6 +55,7 @@ router.post("/sign-up", (req, res) => {
         userName: userName || "",
         email: email || "",
         password: password || "",
+        confirmPassword : confirmPassword || " ",
       },
     });
   }
@@ -73,6 +75,7 @@ router.post("/sign-up", (req, res) => {
         userName,
         email,
         password,
+        confirmPassword
       },
     });
   }
@@ -86,6 +89,7 @@ router.post("/sign-up", (req, res) => {
         userName,
         email,
         password,
+        confirmPassword
       },
     });
   }
@@ -104,6 +108,20 @@ router.post("/sign-up", (req, res) => {
     });
   }
 
+  if (password !== confirmPassword ) {
+    return res.status(500).render("signUp", {
+      error:
+        "Password does not match",
+      data: {
+        firstName,
+        lastName,
+        userName,
+        email,
+        password,
+        confirmPassword
+      },
+    });
+  }
   // Check if the username or email already taken
   User.findOne({ email }, (err, doc) => {
     if (doc) {
@@ -115,6 +133,7 @@ router.post("/sign-up", (req, res) => {
           email,
           userName,
           password,
+          confirmPassword
         },
       });
     }
@@ -128,6 +147,7 @@ router.post("/sign-up", (req, res) => {
             userName,
             password,
             email,
+            confirmPassword
           },
         });
       }
@@ -139,6 +159,7 @@ router.post("/sign-up", (req, res) => {
           userName,
           email,
           password: hashedPassword,
+          confirmPassword : hashedPassword
         });
 
         newUser.save((err, doc) => {
@@ -151,6 +172,7 @@ router.post("/sign-up", (req, res) => {
                 userName,
                 email,
                 password,
+                confirmPassword
               },
             });
           }
