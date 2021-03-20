@@ -4,19 +4,19 @@
     <h2 class="normal-heading-font heading" style="font-weight:600;">Hi there!</h2>
     <p class="content-body-font"> <%= homeStartingContent %> </p> 
     <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-12">
-    <h3 class="normal-heading-font" style="font-weight:600;">Anything New?</h3>
-    <a href="/compose"><button class="button  pen">Compose</button></a>
-    </div>
-    <div class="col-lg-9 col-md-9 col-sm-12">
-    <h3 class="normal-heading-font" style="font-weight:600;">Looking for something....</h3>
-    <form action="/search" method="POST">
-        <div class="form-group search-form">
-            <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
-            <button class="button  search" style="margin-left: 1em;">Search</button>
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <h3 class="normal-heading-font" style="font-weight:600;">Anything New?</h3>
+            <a href="/compose"><button class="button  pen">Compose</button></a>
         </div>
-    </form>
-    </div>
+        <div class="col-lg-9 col-md-9 col-sm-12">
+            <h3 class="normal-heading-font" style="font-weight:600;">Looking for something....</h3>
+            <form action="/search" method="POST">
+                <div class="form-group search-form">
+                    <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
+                    <button class="button  search" style="margin-left: 1em;">Search</button>
+                </div>
+            </form>
+        </div>
     </div>
     <% if(search!="") {%>
         <div class="orderForms row">
@@ -51,15 +51,15 @@
                 <select name="order" class="orderSelect">
                     <% if(order==='new one first') {%> 
                         <option value="new one first" selected>New one first</option>
-                        <% }else {%>
-                            <option value="new one first">New one first</option> 
-                            <% }if(order==='old one first') {%> 
-                                <option value="old one first" selected>Old one first</option>
-                                <%} else {%>
-                                    <option value="old one first">Old one first</option>
-                                    <% }  %>
-                                </select>
-                                <button class="button  arrow" type="submit" style="min-width: 10em;"> Go</button>
+                    <% }else {%>
+                        <option value="new one first">New one first</option> 
+                    <% }if(order==='old one first') {%> 
+                        <option value="old one first" selected>Old one first</option>
+                    <%} else {%>
+                        <option value="old one first">Old one first</option>
+                    <% }  %>
+                </select>
+                <button class="button  arrow" type="submit" style="min-width: 10em;"> Go</button>
             </form>
         </div> 
         <% } %> 
