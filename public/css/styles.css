@@ -439,6 +439,7 @@ input[name="perPage"] {
 
 .del {
   background: var(--color-secondary);
+  margin-left: 5px;
 }
 
 .del:hover {
