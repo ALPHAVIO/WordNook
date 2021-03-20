@@ -55,8 +55,9 @@ body {
   max-width: 65vw;
 }
 
-/* styles for navbar */
-
+.navbar-header{
+  color: #2a263b;
+}
 .navbar {
   padding-top: 1vh;
   border: 0;
@@ -81,7 +82,7 @@ body {
 
 .navbar-brand:hover {
   font-size: 3.5vw;
-  color: var(--color-primary) !important;
+  color: #1D2D28 !important;
 }
 
 .navbar-brand a {
@@ -102,16 +103,18 @@ body {
   font-weight: 600;
   font-size: 18px;
 }
-
-.navbar-right li a {
-  color: var(--color-primary) !important;
+.navbar-default .navbar-nav li a{
+  color: #000000;
+}
+.navbar-right li a{
   font-weight: bold;
   margin: 0.4rem 0.6rem 0.3rem 0.6rem;
-  padding: 0.4rem 0.7rem 0.2rem 0.3rem;
+  padding: 0.4rem 0.07rem 0.2rem 0.13rem;
+  color:purple
 }
 
 .navbar-nav li a:hover {
-  color: var(--color-secondary) !important;
+  color: purple ;
 }
 
 /* navbar links */
@@ -129,31 +132,26 @@ body {
 }
 
 /*navbar animation*/
-
-.navbar-right a::before,
-a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 0.3vh;
-  bottom: -0.14vh;
-  background: var(--color-text);
+.navbar-right a::before,a::after{
+  content:'';
+  position:absolute;
+  width:0%;
+  height:0.3vh;
+  bottom:-0.14vh;
+  background: purple;
 }
-
-.navbar-right a::before {
+.navbar-right a::before{
   left: 0;
 }
-
-.navbar-right a::after {
-  right: 0;
-  background: var(--color-secondary);
-  transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+.navbar-right a::after{
+  right:0;
+  background: purple;
+  transition: width 0.8s cubic-bezier(0.22,0.61,0.36,1);
 }
-
-.navbar-right a:hover::before {
-  background: var(--color-secondary);
-  width: 100%;
-  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+.navbar-right a:hover::before{
+  background: #9201a5;
+  width:100%;
+  transition: width 0.5s cubic-bezier(0.22,0.61,0.36,1);
 }
 
 .navbar-right a:hover::after {
@@ -297,7 +295,7 @@ a::after {
 }
 
 .darkmode--activated #nav-id {
-  background-color: var(--color-text) !important;
+  background-color: #be5850  !important;
 }
 
 .orderForms {
