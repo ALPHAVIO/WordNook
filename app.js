@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 const auth = require('./middlewares/auth');
 const router = require("./routes/user.router");
 const { post } = require("./routes/user.router");
-const Blog = require('./models/Blog.model')
+//const Blog = require('./models/Blog.model')
 const connectDB = require('./config/db');
 
 //Setting up the app and the ejs view engine-
@@ -113,7 +113,7 @@ app.get("/contact", auth, function(req, res){
 
 //Get request for compose blog page-
 app.get("/compose", auth, function(req, res){
-  const user = req.user;
+  const user = req.user;          
   if(!user){
     return res.status(401).redirect("/log-in");
   }
