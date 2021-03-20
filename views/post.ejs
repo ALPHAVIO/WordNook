@@ -5,12 +5,14 @@
 
     <!-- If this user is the author then only render the delete button-->
     <% if(isAuthor){ %>
-        <form  action="/posts/<%=id%>/delete" method="post" >
-            <button class="button  del" type="submit">Delete</button>
-        </form>
+        <div style="display: flex;">
+            <button onclick="window.location.href='/posts/<%=id%>/edit'" type="submit" class="button del edit">Edit </button>
+            <form  action="/posts/<%=id%>/delete" method="post" >
+                <button class="button  del" type="submit">Delete</button>
+            </form>
+        </div>
     <% } %>
     
-
     <!-- number of comments -->
     <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 6vh; margin-bottom: 3vh;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
 

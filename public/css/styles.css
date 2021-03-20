@@ -460,6 +460,10 @@ input[name="perPage"] {
   animation: wiggle 0.15s alternate ease infinite;
 }
 
+.edit:after {
+	content: "\F044";
+}
+
 .pen {
   background: var(--color-primary);
 }
