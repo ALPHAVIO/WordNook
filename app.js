@@ -25,7 +25,6 @@ if (process.env.NODE_ENV !== "production") {
 connectDB();
 mongoose.set("useCreateIndex", true);
 
-
 // router for the requests from home page
 app.use(require("./routes/index.router"));
 
