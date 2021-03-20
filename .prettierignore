@@ -1,0 +1,11 @@
+*.ejs
+package.json
+package-lock.json
+.all-contributorsrc
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+*.yml
+*.yaml
+.github
+assets
+README.md

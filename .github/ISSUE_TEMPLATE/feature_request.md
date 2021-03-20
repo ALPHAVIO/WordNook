@@ -27,7 +27,7 @@ Add any other context or screenshots about the feature request here.
 
 <hr/>
 
-
+<!--- Do not remove or change this in the issue description. Only update the details above this. --->
 **Note:**
 * Do mention if your are working under GSSoC'21.
 * If you want to work on an issue, you should check if it has already been assigned to anyone. **If the issue is free** you can comment `/assign` to get the issue assigned to you.
