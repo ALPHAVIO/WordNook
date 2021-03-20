@@ -34,6 +34,10 @@ body {
   margin: auto;
   max-width: 65vw;
 }
+
+.navbar-header{
+  color: #2a263b;
+}
 .navbar {
   padding-top: 1vh;
   padding-bottom: 1vh;
@@ -45,6 +49,7 @@ body {
 }
 .navbar-brand{
   font-size: 3.5vw;
+  color: #1D2D28 !important;
 }
 .navbar-brand a{
   text-decoration: none;
@@ -57,13 +62,17 @@ body {
   margin: 0;
   padding-top:3vh;
 }
+.navbar-default .navbar-nav li a{
+  color: #000000;
+}
 .navbar-right li a{
   font-weight: bold;
   margin: 0.4rem 0.6rem 0.3rem 0.6rem;
   padding: 0.4rem 0.07rem 0.2rem 0.13rem;
+  color:purple
 }
 .navbar-nav li a:hover {
-  color: #1abc9c !important;
+  color: purple ;
 }
 /*navbar animation*/
 .navbar-right a::before,a::after{
@@ -72,18 +81,18 @@ body {
   width:0%;
   height:0.3vh;
   bottom:-0.14vh;
-  background: #414141;
+  background: purple;
 }
 .navbar-right a::before{
   left: 0;
 }
 .navbar-right a::after{
   right:0;
-  background: #414141;
+  background: purple;
   transition: width 0.8s cubic-bezier(0.22,0.61,0.36,1);
 }
 .navbar-right a:hover::before{
-  background: #414141;
+  background: #9201a5;
   width:100%;
   transition: width 0.5s cubic-bezier(0.22,0.61,0.36,1);
 }
@@ -202,7 +211,7 @@ body {
 }
 
 .darkmode--activated #nav-id {
-  background-color: #d3d3d3 !important;
+  background-color: #be5850  !important;
 }
 .orderForms {
   /*display:flex;*/
