@@ -66,6 +66,13 @@ body {
   letter-spacing: 0.125rem;
   background-color: var(--color-text) !important;
   backdrop-filter: blur(10px);
+
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar {
+    height: 10vh;
+  }
 }
 
 .navbar-brand {
@@ -90,6 +97,13 @@ body {
 .navbar-right {
   margin: 0;
   padding-top: 3vh;
+
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 18px;
+
 }
 
 .navbar-right li a {
@@ -192,7 +206,9 @@ a::after {
 }
 
 .content-body-font {
-  font-size: 2rem;
+
+  font-size: 1.3rem;
+
 }
 
 /* Home page styles */
@@ -428,6 +444,7 @@ input[name="perPage"] {
 
 .del {
   background: var(--color-secondary);
+  margin-left: 5px;
 }
 
 .del:hover {
@@ -446,6 +463,10 @@ input[name="perPage"] {
 .del:hover:after {
   -webkit-animation: wiggle 0.15s alternate ease infinite;
   animation: wiggle 0.15s alternate ease infinite;
+}
+
+.edit:after {
+	content: "\F044";
 }
 
 .pen {
