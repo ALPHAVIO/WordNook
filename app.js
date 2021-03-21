@@ -34,6 +34,14 @@ app.use(require("./routes/user.router"));
 //router for post and search related urls
 app.use(require("./routes/post.router"));
 
+
+// 404 page
+app.use("*", (req, res) => {
+  res.render('404',{
+    isAuthenticated: req.user ? true : false
+  })
+});
+
 //Launching the server on port 3000 in development mode-
 app.listen(PORT, function () {
   console.log(`Server started on port: ${PORT}`);
