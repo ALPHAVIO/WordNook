@@ -123,10 +123,11 @@ router.post("/sign-up", (req, res) => {
     });
   }
   // Check if the username or email already taken
-  User.findOne({ $or: [email,userName]}, (err, doc) => {
+  User.findOne({ $or: [{email},{userName}]}, (err, doc) => {
     if(doc){
       let error = "Username already taken!";
       if(doc.email == email) error = "Email already taken!";
+      console.log(error)
       return res.status(401).render("logIn", {
         error,
         data: {
