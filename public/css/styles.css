@@ -110,8 +110,12 @@ body {
   padding: 0.4rem 0.7rem 0.2rem 0.3rem;
 }
 
+.btn {
+  background-color: #80807E;
+}
+
 .navbar-nav li a:hover {
-  color: #5489EF !important;
+  color: white !important;
 }
 
 /* navbar links */
