@@ -2,7 +2,7 @@
 Remove this line and add a description
 
 ## Related issue?
-close: #[issue number that will be closed through this PR]
+close: #issue_number
 
 
 ## How was it tested?
