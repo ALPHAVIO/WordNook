@@ -128,7 +128,7 @@ router.post("/sign-up", (req, res) => {
       let error = "Username already taken!";
       if(doc.email == email) error = "Email already taken!";
       return res.status(401).render("logIn", {
-        error: "Email already taken!",
+        error,
         data: {
           firstName,
           lastName,
