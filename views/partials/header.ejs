@@ -70,37 +70,29 @@
           <ul class="navbar-nav ml-md-auto align-items-center">
             <li id="home" class="nav-item">
               <a class="nav-link text-info" href="/">HOME</a>
-            </li>
-            <li id="about" class="nav-item">
-              <a class="nav-link text-info" href="/about">ABOUT</a>
-            </li>
-            <li id="contact" class="nav-item">
-              <a class="nav-link text-info" href="/contact">CONTACT US</a>
-            </li>
-            <% if(isAuthenticated) { %>
-            <li id="log-out">
-              <form action="/log-out" method="post">
-                <button
-                  class="btn btn-info btn-sm"
-                  type="submit"
-                  name="log-out"
-                >
-                  Log out
-                </button>
-              </form>
-            </li>
-            <% }else{ %>
-            <li id="log-in">
-              <a
-                href="/log-in"
-                class="btn btn-info btn-sm text-white"
-                role="button"
-              >
-                Log in
-              </a>
-            </li>
-            <% } %>
-          </ul>
+                </li>
+                <li id="about" class="nav-item">
+                    <a class="nav-link text-info" href="/about">ABOUT</a>
+                </li>
+                <li id="contact" class="nav-item">
+                    <a class="nav-link text-info" href="/contact">CONTACT US</a>
+                </li>
+                <% if(isAuthenticated) { %>
+                    <li id="log-out">
+                        <form action="/log-out" method="post">
+                            <button class="btn btn-info btn-sm text-white logout" type="submit" name="log-out">Log out</button>
+                        </form>
+                    </li>
+                <% }else{ %>
+                    <li id="log-in">
+                      <a href="/log-in" class="btn btn-info btn-sm text-white" role="button">Log in</a>
+                    </li>
+                    <li id="sign-up">
+                      <a href="/sign-up" class="btn btn-info btn-sm text-white" role="button"> Sign up</a>
+                    </li>
+                <% } %>
+            </ul>
+            </div>
         </div>
       </div>
     </nav>
