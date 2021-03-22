@@ -585,3 +585,6 @@ input[name="perPage"] {
 .footer-txt {
   color: var(--color-secondary);
 }
+.list-unstyled{
+margin-left: 1.125rem;
+}
