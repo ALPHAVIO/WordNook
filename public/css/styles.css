@@ -227,6 +227,10 @@ a::after {
   font-size: 1rem;
 }
 
+.post-content-font {
+  font-size: 1.1rem;
+}
+
 .post-preview {
   background-color: rgba(229, 231, 235, 0.5);
   margin: 0.8rem;
@@ -235,7 +239,7 @@ a::after {
 }
 
 .post-date-font {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .post-margin {
