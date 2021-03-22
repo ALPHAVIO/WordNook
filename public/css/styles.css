@@ -294,6 +294,7 @@ a::after {
 .darkmode-toggle {
   z-index: 500;
   outline: none;
+  margin-bottom: 18px;
 }
 
 .darkmode--activated #nav-id {
@@ -584,4 +585,8 @@ input[name="perPage"] {
 
 .footer-txt {
   color: var(--color-secondary);
+}
+
+.list-unstyled{
+  margin-left: 20px;
 }
