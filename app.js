@@ -9,6 +9,9 @@ const connectDB = require("./config/db");
 
 //Setting up the app middlewares and the ejs view engine-
 const app = express();
+
+app.locals.moment = require("moment");
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
