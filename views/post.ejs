@@ -5,25 +5,33 @@
 
     <!-- If this user is the author then only render the delete button-->
     <% if(isAuthor){ %>
-        <form  action="/posts/<%=title%>" method="post" >
-            <button class="button  del" type="submit">Delete</button>
-        </form>
+        <div style="display: flex;">
+            <button onclick="window.location.href='/posts/<%=id%>/edit'" type="submit" class="button del edit">Edit </button>
+            <form  action="/posts/<%=id%>/delete" method="post" >
+                <button class="button  del" type="submit">Delete</button>
+            </form>
+        </div>
     <% } %>
     
+    <!-- number of comments -->
     <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 6vh; margin-bottom: 3vh;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
+
+    <!-- display all comments section -->
     <% for(var i=0; i<comments.length; i++) { %>
         <div class="comment"> 
             <h4><strong><%= comments[i].name %></strong></h4>
             <p class="post-date-font"><%= new Date(comments[i].timestamps*1000) %></p>
             <hr/>
             <%- comments[i].content %>
-            <form  action="/posts/<%=title%>/comments/<%=i%>" method="post">
+            <form  action="/posts/<%=id%>/comments/<%=i%>" method="post">
                 <button class="button  del" type="submit">Delete</button>
             </form>
         </div>
     <% } %>
+
+    <!-- add comment section -->
     <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
-    <form action="/posts/<%=title%>/comment" method="POST" style="margin-bottom: 3vh;">
+    <form action="/posts/<%=id%>/comment" method="POST" style="margin-bottom: 3vh;">
         <div class="form-group">
             <label>Content</label>
             <textarea name="content" ></textarea>
@@ -35,7 +43,9 @@
         </div>
         <button class="button commenting" type="submit" name="publish">Post comment</button>
     </form>
+    
 </div>
 <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+
 <%- include("partials/footer") -%>
 

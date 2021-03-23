@@ -1,3 +1,4 @@
+// requiring dependencies, models and middlewares
 const express = require("express");
 const { check, validationResult } = require("express-validator");
 const auth = require("../middlewares/auth");
@@ -39,6 +40,7 @@ router.get(
               perPage: perPage,
               order: order,
               isAuthenticated: req.user ? true : false,
+              // currentUser: req.user,
             });
           }
         });
@@ -58,7 +60,36 @@ router.get("/about", auth, function (req, res) {
 router.get("/contact", auth, function (req, res) {
   res.render("contact", {
     contactContent: contactContent,
+    error: "",
+    formData: {
+      subject: "",
+      email: "",
+      message: "",
+    },
     isAuthenticated: req.user ? true : false,
+  });
+});
+
+//post request for contact page
+router.post("/contact", (req, res) => {
+  //requiring api for mailgun
+  const sendMail = require("../mail");
+
+  const { subject, email, message } = req.body;
+  sendMail(subject, email, message, (err, data) => {
+    if (err) res.status(500).json({ message: "Error occurred!" });
+    else {
+      res.render("contact", {
+        contactContent: "Email was sent successfully!",
+        error: "",
+        formData: {
+          subject: "",
+          email: "",
+          message: "",
+        },
+        isAuthenticated: req.user ? true : false,
+      });
+    }
   });
 });
 
@@ -74,37 +105,21 @@ router.get("/compose", auth, function (req, res) {
 });
 
 //Post request to save the new blogs to the DB
-router.post(
-  "/compose",
-  [
-    auth,
-    check("postTitle", "Please Enter Title").not().isEmpty(),
-    check("postBody", "Please Enter Body").not().isEmpty(),
-  ],
-  function (req, res) {
-    const user = req.user;
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      res.status(401).render("compose", {
-        error: "Please add all the fields!",
-      });
-    }
-    if (!user) {
-      return res.status(401).redirect("/log-in");
-    }
-    const postTitle = req.body.postTitle;
-    const postContent = req.body.postBody;
-    const blog = new Blog({
-      blogTitle: postTitle,
-      blogContent: postContent,
-      comments: [],
-      author: user._id,
-    });
-    console.log(blog);
-    blog.save();
-    res.redirect("/");
+router.post("/compose", auth, function (req, res) {
+  const user = req.user;
+  if (!user) {
+    return res.status(401).redirect("/log-in");
   }
-);
+  const postTitle = req.body.postTitle;
+  const postContent = req.body.postBody;
+  const blog = new Blog({
+    blogTitle: postTitle,
+    blogContent: postContent,
+    comments: [],
+    author: user._id,
+  });
+  blog.save();
+  res.redirect("/");
+});
 
 module.exports = router;
