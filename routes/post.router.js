@@ -211,4 +211,28 @@ router.post("/category", auth, async (req, res, next) => {
   });
 });
 
+//Edit Post route
+router.get("/posts/:id/edit", (req, res) => {
+  Blog.findById(req.params.id, (err, fndBlog) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("edit", {
+        blog: fndBlog,
+        isAuthenticated: req.user ? true : false,
+      });
+    }
+  });
+});
+//update post route
+router.put("/posts/:id", (req, res) => {
+  Blog.findByIdAndUpdate(req.params.id, req.body.post, (err, foundBlog) => {
+    if (err) {
+      res.redirect("/");
+    } else {
+      res.redirect("/posts/" + req.params.id);
+    }
+  });
+});
+
 module.exports = router;
