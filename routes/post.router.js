@@ -3,8 +3,9 @@ const express = require("express");
 var _ = require("lodash");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
-const methodOverride=require('method-override');
-const bodyParser=require('body-parser');
+const methodOverride = require("method-override");
+const { check, validationResult } = require("express-validator");
+const bodyParser = require("body-parser");
 
 const router = express.Router();
 router.use(methodOverride("_method"));
@@ -54,36 +55,41 @@ router.get(
 );
 
 //Post request to create a comment
-router.post("/posts/:postId/comment", auth, async function (req, res) {
-  try {
-    const loggedUser = req.user;
-    const { content } = req.body;
-    //check if the user is authenticated
-    if (!loggedUser) {
-      return res.status(401).redirect(req.baseUrl + "/sign-up");
-    }
-    //Server side form validation
-    else if (content === "") {
-      res.redirect(`/posts/${req.params.postId}`);
-    } else {
-      const doc = await Blog.findOne({ _id: req.params.postId });
-      doc.comments.push({
-        name: loggedUser.name,
-        content: content,
-        timestamps: Math.floor(Date.now() / 1000),
-      });
+router.post(
+  "/posts/:postId/comment",
+  [auth, check("content", "Please Enter content").not().isEmpty()],
+  async function (req, res) {
+    try {
+      const loggedUser = req.user;
+      const { content } = req.body;
+      //check if the user is authenticated
+      if (!loggedUser) {
+        return res.status(401).redirect(req.baseUrl + "/sign-up");
+      }
+      //Server side form validation
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        res.redirect(`/posts/${req.params.postId}`);
+      } else {
+        const doc = await Blog.findOne({ _id: req.params.postId });
+        doc.comments.push({
+          name: loggedUser.name,
+          content: content,
+          timestamps: Math.floor(Date.now() / 1000),
+        });
 
-      await Blog.updateOne(
-        { _id: req.params.postId },
-        { comments: doc.comments }
-      );
-      res.redirect(`/posts/${req.params.postId}`);
+        await Blog.updateOne(
+          { _id: req.params.postId },
+          { comments: doc.comments }
+        );
+        res.redirect(`/posts/${req.params.postId}`);
+      }
+    } catch (err) {
+      if (err) console.log(err);
+      return res.redirect("back");
     }
-  } catch (err) {
-    if (err) console.log(err);
-    return res.redirect("back");
   }
-});
+);
 
 // Delete comment Route
 router.post(
@@ -204,23 +210,30 @@ router.post("/posts/:postId/delete", auth, (req, res, next) => {
 });
 
 //Edit Post route
-router.get("/posts/:id/edit",(req,res)=>{
-  Blog.findById(req.params.id,(err,fndBlog)=>{
-    if(err){
+router.get("/posts/:id/edit", (req, res) => {
+  Blog.findById(req.params.id, (err, fndBlog) => {
+    if (err) {
       console.log(err);
-    }else{
-      res.render("edit",{blog:fndBlog,isAuthenticated: req.user ? true : false,});
+    } else {
+      res.render("edit", {
+        blog: fndBlog,
+        isAuthenticated: req.user ? true : false,
+      });
     }
   });
 });
 //update post route
-router.put("/posts/:id",(req,res)=>{
-  Blog.findByIdAndUpdate(req.params.id,req.body.post,(err,foundBlog)=>{
-    if(err){
-      res.redirect("/");
-    }else{
-      res.redirect("/posts/"+req.params.id);
-    }
-  });
-});
+router.put(
+  "/posts/:id",
+  [check("post", "Please Enter Post").not().isEmpty()],
+  (req, res) => {
+    Blog.findByIdAndUpdate(req.params.id, req.body.post, (err, foundBlog) => {
+      if (err) {
+        res.redirect("/");
+      } else {
+        res.redirect("/posts/" + req.params.id);
+      }
+    });
+  }
+);
 module.exports = router;

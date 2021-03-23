@@ -71,27 +71,40 @@ router.get("/contact", auth, function (req, res) {
 });
 
 //post request for contact page
-router.post("/contact", (req, res) => {
-  //requiring api for mailgun
-  const sendMail = require("../mail");
-
-  const { subject, email, message } = req.body;
-  sendMail(subject, email, message, (err, data) => {
-    if (err) res.status(500).json({ message: "Error occurred!" });
-    else {
-      res.render("contact", {
-        contactContent: "Email was sent successfully!",
-        error: "",
-        formData: {
-          subject: "",
-          email: "",
-          message: "",
-        },
-        isAuthenticated: req.user ? true : false,
+router.post(
+  "/contact",
+  [
+    check("subject", "Please Enter Subject").not().isEmpty(),
+    check("email", "Please Enter email").not().isEmpty(),
+    check("message", "Please Enter message").not().isEmpty(),
+  ],
+  (req, res) => {
+    //requiring api for mailgun
+    const sendMail = require("../mail");
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(401).render("contact", {
+        error: "Please add all the fields!",
       });
     }
-  });
-});
+    const { subject, email, message } = req.body;
+    sendMail(subject, email, message, (err, data) => {
+      if (err) res.status(500).json({ message: "Error occurred!" });
+      else {
+        res.render("contact", {
+          contactContent: "Email was sent successfully!",
+          error: "",
+          formData: {
+            subject: "",
+            email: "",
+            message: "",
+          },
+          isAuthenticated: req.user ? true : false,
+        });
+      }
+    });
+  }
+);
 
 //Get request for compose blog page-
 router.get("/compose", auth, function (req, res) {
@@ -105,21 +118,35 @@ router.get("/compose", auth, function (req, res) {
 });
 
 //Post request to save the new blogs to the DB
-router.post("/compose", auth, function (req, res) {
-  const user = req.user;
-  if (!user) {
-    return res.status(401).redirect("/log-in");
+router.post(
+  "/compose",
+  [
+    auth,
+    check("postTitle", "Please Enter Post Title").not().isEmpty(),
+    check("postBody", "Please Enter Post Body").not().isEmpty(),
+  ],
+  function (req, res) {
+    const user = req.user;
+    if (!user) {
+      return res.status(401).redirect("/log-in");
+    }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(401).render("compose", {
+        error: "Please add all the fields!",
+      });
+    }
+    const postTitle = req.body.postTitle;
+    const postContent = req.body.postBody;
+    const blog = new Blog({
+      blogTitle: postTitle,
+      blogContent: postContent,
+      comments: [],
+      author: user._id,
+    });
+    blog.save();
+    res.redirect("/");
   }
-  const postTitle = req.body.postTitle;
-  const postContent = req.body.postBody;
-  const blog = new Blog({
-    blogTitle: postTitle,
-    blogContent: postContent,
-    comments: [],
-    author: user._id,
-  });
-  blog.save();
-  res.redirect("/");
-});
+);
 
 module.exports = router;
