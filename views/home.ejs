@@ -68,7 +68,7 @@
         <% posts.forEach(function (post) { %>
             <div class="post-preview col-md-5 mx-2 mx-md-auto py-3 my-3">
                 <h1> <%= post.blogTitle %> </h1>
-                <p class="post-date-font">Posted on <%= new Date(post.timestamps) %> </p>
+                <p class="post-date-font">Posted on <%= new Date(post.timestamps).toDateString() %>, <%= new Date(post.timestamps).toLocaleTimeString() %> </p>
                 <% if (post.category) { %>
                     <div class="badge badge-pill badge-danger py-1 px-2">
                         <%= post.category %> 
