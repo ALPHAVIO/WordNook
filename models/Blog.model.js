@@ -6,6 +6,9 @@ const blogSchema = {
   blogTitle: String,
   blogContent: String,
   comments: Array,
+  photo:{
+    type: String
+  },
   timestamps: {
     type: Date,
     default: Date.now,
