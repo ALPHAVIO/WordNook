@@ -1,14 +1,16 @@
 <%- include("partials/header", {isAuthenticated: false}) -%>
 
-    <div style="margin-top: 11vh;">
+    <div class="col-md-4 mx-2 mx-md-auto my-5">
 
+        <h1 class="text-center">Sign Up</h1>
         <!-- display error if any while submitting the form -->
         <% if(error) { %>
             <div class="alert alert-danger" role="alert">
                 <%= error %>
             </div>
         <% } %>
-                <!-- sign-up form section -->
+            <!-- sign-up form section -->
+            <div class="container-centre">
                 <form action="/sign-up" method="POST">
                     <div class="form-group">
                         <label class="sign-up-place">First Name</label>
@@ -45,6 +47,7 @@
                     </div>
                     <button class="btn btn-primary log-in-btn" type="submit" name="sign-up">Sign Up</button>
                 </form>
+            </div>
 
     </div>
 
