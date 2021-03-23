@@ -123,10 +123,13 @@ router.post("/sign-up", (req, res) => {
     });
   }
   // Check if the username or email already taken
-  User.findOne({ email }, (err, doc) => {
-    if (doc) {
+  User.findOne({ $or: [{email},{userName}]}, (err, doc) => {
+    if(doc){
+      let error = "Username already taken!";
+      if(doc.email == email) error = "Email already taken!";
+      console.log(error)
       return res.status(401).render("logIn", {
-        error: "Email already taken!",
+        error,
         data: {
           firstName,
           lastName,
@@ -137,54 +140,38 @@ router.post("/sign-up", (req, res) => {
         },
       });
     }
-    User.findOne({ userName }, (err, doc) => {
-      if (doc) {
-        return res.status(401).render("logIn", {
-          error: "Username already taken!",
-          data: {
-            firstName,
-            lastName,
-            userName,
-            password,
-            email,
-            confirmPassword
-          },
-        });
-      }
+    bcrypt.hash(password, 12, (err, hashedPassword) => {
+      const newUser = new User({
+        firstName,
+        lastName,
+        userName,
+        email,
+        password: hashedPassword,
+        confirmPassword : hashedPassword
+      });
 
-      bcrypt.hash(password, 12, (err, hashedPassword) => {
-        const newUser = new User({
-          firstName,
-          lastName,
-          userName,
-          email,
-          password: hashedPassword,
-          confirmPassword : hashedPassword
-        });
-
-        newUser.save((err, doc) => {
-          if (err || !doc) {
-            return res.status(422).render("logIn", {
-              error: "Oops something went wrong!",
-              data: {
-                firstName,
-                lastName,
-                userName,
-                email,
-                password,
-                confirmPassword
-              },
-            });
-          }
-
-          const token = jwt.sign({ _id: doc._id }, process.env.SECRET_KEY);
-
-          //Send back the token to the user as a httpOnly cookie
-          res.cookie("token", token, {
-            httpOnly: true,
+      newUser.save((err, doc) => {
+        if (err || !doc) {
+          return res.status(422).render("logIn", {
+            error: "Oops something went wrong!",
+            data: {
+              firstName,
+              lastName,
+              userName,
+              email,
+              password,
+              confirmPassword
+            },
           });
-          res.redirect("/");
+        }
+
+        const token = jwt.sign({ _id: doc._id }, process.env.SECRET_KEY);
+
+        //Send back the token to the user as a httpOnly cookie
+        res.cookie("token", token, {
+          httpOnly: true,
         });
+        res.redirect("/");
       });
     });
   });

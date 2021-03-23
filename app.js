@@ -9,6 +9,9 @@ const connectDB = require("./config/db");
 
 //Setting up the app middlewares and the ejs view engine-
 const app = express();
+
+app.locals.moment = require("moment");
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -33,14 +36,6 @@ app.use(require("./routes/user.router"));
 
 //router for post and search related urls
 app.use(require("./routes/post.router"));
-
-
-// 404 page
-app.use("*", (req, res) => {
-  res.render('404',{
-    isAuthenticated: req.user ? true : false
-  })
-});
 
 //Launching the server on port 3000 in development mode-
 app.listen(PORT, function () {
