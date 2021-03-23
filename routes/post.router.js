@@ -198,4 +198,17 @@ router.post("/posts/:postId/delete", auth, (req, res, next) => {
     });
 });
 
+router.post("/category", auth, async (req, res, next) => {
+  const category = req.body.category;
+  if (!category) {
+    res.redirect("/");
+  }
+  let posts = await Blog.find({ category });
+  res.render("category", {
+    category,
+    posts,
+    isAuthenticated: req.user ? true : false,
+  });
+});
+
 module.exports = router;
