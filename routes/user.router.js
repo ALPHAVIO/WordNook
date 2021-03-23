@@ -20,7 +20,7 @@ router.get("/sign-up", auth, (req, res) => {
         userName: "",
         password: "",
         email: "",
-        confirmPassword : ""
+        confirmPassword: ""
       },
     });
   }
@@ -43,7 +43,7 @@ router.get("/log-in", auth, (req, res) => {
 
 //POST request for sign up
 router.post("/sign-up", (req, res) => {
-  const { firstName, lastName, userName, email, password , confirmPassword } = req.body;
+  const { firstName, lastName, userName, email, password, confirmPassword } = req.body;
 
   // Check if all the fields are filled
   if (!firstName || !lastName || !userName || !email || !password || !confirmPassword) {
@@ -55,7 +55,7 @@ router.post("/sign-up", (req, res) => {
         userName: userName || "",
         email: email || "",
         password: password || "",
-        confirmPassword : confirmPassword || " ",
+        confirmPassword: confirmPassword || " ",
       },
     });
   }
@@ -108,7 +108,7 @@ router.post("/sign-up", (req, res) => {
     });
   }
 
-  if (password !== confirmPassword ) {
+  if (password !== confirmPassword) {
     return res.status(500).render("signUp", {
       error:
         "Password does not match",
@@ -152,39 +152,30 @@ router.post("/sign-up", (req, res) => {
         });
       }
 
-      bcrypt.hash(password, 12, (err, hashedPassword) => {
-        const newUser = new User({
-          firstName,
-          lastName,
-          userName,
-          email,
-          password: hashedPassword,
-          confirmPassword : hashedPassword
-        });
+      const newUser = new User(req.body)
 
-        newUser.save((err, doc) => {
-          if (err || !doc) {
-            return res.status(422).render("logIn", {
-              error: "Oops something went wrong!",
-              data: {
-                firstName,
-                lastName,
-                userName,
-                email,
-                password,
-                confirmPassword
-              },
-            });
-          }
-
-          const token = jwt.sign({ _id: doc._id }, process.env.SECRET_KEY);
-
-          //Send back the token to the user as a httpOnly cookie
-          res.cookie("token", token, {
-            httpOnly: true,
+      newUser.save((err, doc) => {
+        if (err || !doc) {
+          return res.status(422).render("logIn", {
+            error: "Oops something went wrong!",
+            data: {
+              firstName,
+              lastName,
+              userName,
+              email,
+              password,
+              confirmPassword
+            },
           });
-          res.redirect("/");
+        }
+
+        const token = jwt.sign({ _id: doc._id }, process.env.SECRET_KEY);
+
+        //Send back the token to the user as a httpOnly cookie
+        res.cookie("token", token, {
+          httpOnly: true,
         });
+        res.redirect("/");
       });
     });
   });
