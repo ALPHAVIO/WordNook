@@ -53,14 +53,14 @@ html, body {
 /* styles for navbar */
 
 .navbar {
-  padding-top: 1vh;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0;
-  font-size: 1.5rem;
-  letter-spacing: 0.125rem;
-  background-color: var(--color-text) !important;
-  backdrop-filter: blur(10px);
+    padding-top: 1vh;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.125rem;
+    background-color: var(--color-text) !important;
+    backdrop-filter: blur(10px);
 }
 
 @media only screen and (min-width: 768px) {
@@ -89,13 +89,13 @@ html, body {
 }
 
 .navbar-right {
-  margin: 0;
-  padding-top: 3vh;
+    margin: 0;
+    padding-top: 3vh;
 }
 
 .nav-link {
-  font-weight: 600;
-  font-size: 18px;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .navbar-right li a {
@@ -200,7 +200,7 @@ html, body {
 }
 
 .content-body-font {
-  font-size: 1.3rem;
+    font-size: 1.3rem;
 }
 
 /* Home page styles */
@@ -218,6 +218,10 @@ html, body {
     font-size: 1rem;
 }
 
+.post-content-font {
+  font-size: 1.1rem;
+}
+
 .post-preview {
     background-color: rgba(229, 231, 235, 0.5);
     margin: 0.8rem;
@@ -226,7 +230,7 @@ html, body {
 }
 
 .post-date-font {
-    font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .post-margin {
@@ -567,5 +571,8 @@ input[name="perPage"] {
 }
 
 .footer-txt {
-    color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+.list-unstyled{
+margin-left: 1.125rem;
 }

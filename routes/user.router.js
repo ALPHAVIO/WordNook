@@ -20,7 +20,7 @@ router.get("/sign-up", auth, (req, res) => {
         userName: "",
         password: "",
         email: "",
-        confirmPassword: ""
+        confirmPassword : ""
       },
     });
   }
@@ -43,7 +43,7 @@ router.get("/log-in", auth, (req, res) => {
 
 //POST request for sign up
 router.post("/sign-up", (req, res) => {
-  const { firstName, lastName, userName, email, password, confirmPassword } = req.body;
+  const { firstName, lastName, userName, email, password , confirmPassword } = req.body;
 
   // Check if all the fields are filled
   if (!firstName || !lastName || !userName || !email || !password || !confirmPassword) {
@@ -108,7 +108,7 @@ router.post("/sign-up", (req, res) => {
     });
   }
 
-  if (password !== confirmPassword) {
+  if (password !== confirmPassword ) {
     return res.status(500).render("signUp", {
       error:
         "Password does not match",
@@ -123,10 +123,13 @@ router.post("/sign-up", (req, res) => {
     });
   }
   // Check if the username or email already taken
-  User.findOne({ email }, (err, doc) => {
-    if (doc) {
+  User.findOne({ $or: [{email},{userName}]}, (err, doc) => {
+    if(doc){
+      let error = "Username already taken!";
+      if(doc.email == email) error = "Email already taken!";
+      console.log(error)
       return res.status(401).render("logIn", {
-        error: "Email already taken!",
+        error,
         data: {
           firstName,
           lastName,
