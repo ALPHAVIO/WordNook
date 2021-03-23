@@ -1,14 +1,14 @@
 <%- include("partials/header", {isAuthenticated: false}) -%>
 
-    <div style="margin-top: 11vh;">
+    <div class="col-md-4 mx-2 mx-md-auto my-5">
 
+        <h1 class="text-center">Login</h1>
         <!-- display error if any while submitting the form -->
         <% if(error) { %>
             <div class="alert alert-danger" role="alert">
                 <%= error %>
             </div>
         <% } %>
-
             <!-- login form section -->
             <div class="container-centre">
                 <form action="/log-in" method="POST">
