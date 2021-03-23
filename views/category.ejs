@@ -4,7 +4,9 @@
         <h1 class="heading-centre heading-bold normal-heading-font"><%= category %> </h1>
     </div>
     <div class="row my-3">
+        <%# Check if there are posts for requested categories... %> 
         <%if (posts.length) { %>
+            <%# If there are posts(length>=1) then display them through looping %> 
             <% posts.forEach(function (post) { %>
                 <div class="post-preview col-md-5 mx-2 mx-md-auto py-3 my-3">
                     <h1> <%= post.blogTitle %> </h1>
@@ -18,9 +20,10 @@
                         <%- post.blogContent.substring(0,15000000) + ("...") %>
                         <a href="posts/<%= post._id %>"><button class="button read">Read More</button></a>
                     </div>
-                    <% });} else { %>
-                        <p class="mx-auto text-danger">No Blogs Found...</p> 
-                        <%}%>
-                    </div>
-                </div>
-                <%- include("partials/footer") -%>
+            <%# If there are no posts(length=0) then display no blogs found %> 
+            <% });} else { %>
+                <p class="mx-auto text-danger">No Blogs Found...</p> 
+        <%}%>
+    </div>
+</div>
+<%- include("partials/footer") -%>
