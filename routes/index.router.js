@@ -98,7 +98,25 @@ router.get("/compose", auth, function (req, res) {
   if (!user) {
     return res.status(401).redirect("/log-in");
   }
+  const categories = [
+    "IT & Software",
+    "Business",
+    "Personality Development",
+    "Design",
+    "Marketing",
+    "Lifestyle",
+    "Photography",
+    "Health & Fitness",
+    "Music",
+    "Academics",
+    "Language",
+    "Sports",
+    "Social media",
+    "History",
+    "Space and Research",
+  ];
   res.render("compose", {
+    categories,
     isAuthenticated: true,
   });
 });
@@ -110,10 +128,12 @@ router.post("/compose", auth, function (req, res) {
     return res.status(401).redirect("/log-in");
   }
   const postTitle = req.body.postTitle;
+  const category = req.body.category;
   const postContent = req.body.postBody;
   const blog = new Blog({
     blogTitle: postTitle,
     blogContent: postContent,
+    category,
     comments: [],
     author: user._id,
   });

@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const blogSchema = {
   blogTitle: String,
   blogContent: String,
+  category: String,
   comments: Array,
   timestamps: {
     type: Date,
