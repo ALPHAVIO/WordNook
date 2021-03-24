@@ -306,7 +306,7 @@ html, body {
 }
 
 .orderSelect {
-    padding: 0.4rem;
+    padding: 0.2rem 0.4rem 0.35rem 0.4rem;
     font-family: "Open Sans", sans-serif;
     font-size: 130%;
     border: 2px solid var(--color-primary);
@@ -319,6 +319,8 @@ input[name="perPage"] {
     font-family: "Open Sans", sans-serif;
     font-size: 110%;
     text-align: center;
+    padding-bottom: 0.3rem;
+    padding-top: 0.13rem;
 }
 
 .search-form {
