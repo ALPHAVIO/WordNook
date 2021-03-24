@@ -20,7 +20,7 @@
     <% for(var i=0; i<comments.length; i++) { %>
         <div class="comment"> 
             <h4><strong><%= comments[i].name %></strong></h4>
-            <p class="post-date-font"><%= new Date(comments[i].timestamps*1000) %></p>
+            <p class="post-date-font"><%= moment(new Date(comments[i].timestamps*1000)).format("dddd, MMMM Do YYYY, h:mm:ss a") %></p>
             <hr/>
             <%- comments[i].content %>
             <form  action="/posts/<%=id%>/comments/<%=i%>" method="post">
