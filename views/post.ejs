@@ -15,7 +15,14 @@
     
     <!-- number of comments -->
     <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 6vh; margin-bottom: 3vh;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
+    
+     <div class="like-btn">
+        <div class="content">
+            <span class="like_icon"></span>
+            <span class="like"> Like</span>
 
+        </div>
+    </div>
     <!-- display all comments section -->
     <% for(var i=0; i<comments.length; i++) { %>
         <div class="comment"> 
@@ -46,6 +53,16 @@
     
 </div>
 <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+<script> 
+  $(document).ready(function(post){
+    $(".content").click(function(){
+       $(".content").toggleClass("like-active")
+       $(".like").toggleClass("like-active")
+       $(".like_icon").toggleClass("like-active")
+       $(".like").html("Unlike")
+    })
+  })
+</script>
 
 <%- include("partials/footer") -%>
 
