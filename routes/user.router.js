@@ -55,7 +55,7 @@ router.post("/sign-up", (req, res) => {
         userName: userName || "",
         email: email || "",
         password: password || "",
-        confirmPassword : confirmPassword || " ",
+        confirmPassword: confirmPassword || " ",
       },
     });
   }
@@ -140,15 +140,22 @@ router.post("/sign-up", (req, res) => {
         },
       });
     }
-    bcrypt.hash(password, 12, (err, hashedPassword) => {
-      const newUser = new User({
-        firstName,
-        lastName,
-        userName,
-        email,
-        password: hashedPassword,
-        confirmPassword : hashedPassword
-      });
+    User.findOne({ userName }, (err, doc) => {
+      if (doc) {
+        return res.status(401).render("logIn", {
+          error: "Username already taken!",
+          data: {
+            firstName,
+            lastName,
+            userName,
+            password,
+            email,
+            confirmPassword
+          },
+        });
+      }
+
+      const newUser = new User(req.body)
 
       newUser.save((err, doc) => {
         if (err || !doc) {

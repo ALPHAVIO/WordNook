@@ -1,35 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-  <head>
+<head>
     <meta charset="utf-8" />
     <title>Daily Journal</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="icon" href="/images/favicon.ico" />
-    <script
-      src="https://kit.fontawesome.com/7a2242c499.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <nav
-      id="nav-id"
-      class="navbar navbar-expand-md navbar-default darkmode--activated sticky-top"
-    >
-      <div class="container">
-        <div class="navbar-header d-flex">
-          <a class="navbar-brand" href="/"
-            >DAILY <span class="navbar-brand-bold">JOURNAL</span></a
+    <script src="https://kit.fontawesome.com/7a2242c499.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <nav id="nav-id" class="navbar navbar-expand-md navbar-default darkmode--activated sticky-top">
+        <div class="container">
+            <div class="navbar-header d-flex">
+                <a class="navbar-brand" href="/">DAILY <span class="navbar-brand-bold">JOURNAL</span></a
           >
           <button
             class="navbar-toggler ml-auto"
@@ -43,60 +28,40 @@
           <ul class="navbar-nav ml-md-auto align-items-center">
             <li id="home" class="nav-item">
               <a class="nav-link text-info" href="/">HOME</a>
-            </li>
-            <li id="about" class="nav-item">
-              <a class="nav-link text-info" href="/about">ABOUT</a>
-            </li>
-            <li id="contact" class="nav-item">
-              <a class="nav-link text-info" href="/contact">CONTACT US</a>
-            </li>
-            <% if(isAuthenticated) { %>
-            <li id="log-out">
-              <form action="/log-out" method="post">
-                <button
-                  class="btn btn-info btn-sm"
-                  type="submit"
-                  name="log-out"
-                >
-                  Log out
-                </button>
-              </form>
-            </li>
-            <% }else{ %>
-            <li id="log-in">
-              <a
-                href="/log-in"
-                class="btn btn-info btn-sm text-white"
-                role="button"
-              >
-                Log in
-              </a>
-            </li>
-            <% } %>
-          </ul>
+                </li>
+                <li id="about" class="nav-item">
+                    <a class="nav-link text-info" href="/about">ABOUT</a>
+                </li>
+                <li id="contact" class="nav-item">
+                    <a class="nav-link text-info" href="/contact">CONTACT US</a>
+                </li>
+                <% if(isAuthenticated) { %>
+                    <li id="log-out">
+                        <form action="/log-out" method="post">
+                            <button class="btn btn-info btn-sm text-white logout" type="submit" name="log-out">Log out</button>
+                        </form>
+                    </li>
+                <% }else{ %>
+                    <li id="log-in">
+                      <a href="/log-in" class="btn btn-info btn-sm text-white" role="button">Log in</a>
+                    </li>
+                    <li id="sign-up">
+                      <a href="/sign-up" class="btn btn-info btn-sm text-white" role="button"> Sign up</a>
+                    </li>
+                <% } %>
+            </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <body class="darkmode--activated">
-      <div id="loader" class="pre"></div>
-      <div class="container"></div>
+        <div id="loader" class="pre"></div>
+        <div class="container"></div>
 
-      <script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"
-      ></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     </body>
-  </head>
+</head>
+
 </html>
