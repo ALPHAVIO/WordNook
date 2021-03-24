@@ -3,7 +3,7 @@
 <!-- compose/write a new post section -->
 <div class="container-centre">
     <h1 class="heading-centre heading-bold normal-heading-font">Compose</h1>
-    <form action="/compose" method="POST">
+    <form action="/compose" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label>Title</label>
             <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="postTitle" autocomplete="off" required></input>
@@ -31,6 +31,9 @@
                    CKEDITOR.replace('postBody');
                 };
             </script>
+        </div>
+        <div class="form-group">
+            <input type="file" name="photo" />
         </div>
         <button class="button publish" type="submit" name="publish">Publish</button>
     </form>
