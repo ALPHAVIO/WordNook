@@ -203,24 +203,42 @@ router.post("/posts/:postId/delete", auth, (req, res, next) => {
     });
 });
 
+router.post("/category", auth, async (req, res, next) => {
+  const category = req.body.category;
+  if (!category) {
+    res.redirect("/");
+  }
+  let posts = await Blog.find({ category });
+  res.render("category", {
+    category,
+    posts,
+    isAuthenticated: req.user ? true : false,
+  });
+});
+
 //Edit Post route
-router.get("/posts/:id/edit",(req,res)=>{
-  Blog.findById(req.params.id,(err,fndBlog)=>{
-    if(err){
+router.get("/posts/:id/edit", (req, res) => {
+  Blog.findById(req.params.id, (err, fndBlog) => {
+    if (err) {
       console.log(err);
-    }else{
-      res.render("edit",{blog:fndBlog,isAuthenticated: req.user ? true : false,});
+    } else {
+      res.render("edit", {
+        blog: fndBlog,
+        isAuthenticated: req.user ? true : false,
+      });
     }
   });
 });
+      
 //update post route
-router.put("/posts/:id",(req,res)=>{
-  Blog.findByIdAndUpdate(req.params.id,req.body.post,(err,foundBlog)=>{
-    if(err){
+router.put("/posts/:id", (req, res) => {
+  Blog.findByIdAndUpdate(req.params.id, req.body.post, (err, foundBlog) => {
+    if (err) {
       res.redirect("/");
-    }else{
-      res.redirect("/posts/"+req.params.id);
+    } else {
+      res.redirect("/posts/" + req.params.id);
     }
   });
 });
+
 module.exports = router;

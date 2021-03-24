@@ -17,6 +17,30 @@
                 </div>
             </form>
         </div>
+        <% if (categories) { %>
+        <div class="col-md-6 mt-0 mb-2 mx-2 mx-md-auto text-center">
+            <h3 class="normal-heading-font" style="font-weight:600;">Filter Category:</h3>
+            <form action="/category" method="POST" class="d-flex align-items-center justify-content-center">
+                <div class="form-group">
+                    <select
+                    type="text"
+                    class="form-control"
+                    name="category"
+                    required
+                    >
+                    <% categories.forEach(item => { %>
+                        <option value="<%= item %>">
+                            <%= item %>
+                        </option>
+                        <% }) %>     
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info ml-2">Filter</button>
+                </div>
+            </form>
+          </div>
+        <% } %>
     </div>
     <% if(search!="") {%>
         <div class="orderForms row">
@@ -69,6 +93,11 @@
             <div class="post-preview col-md-5 mx-2 mx-md-auto py-3 my-3">
                 <h1> <%= post.blogTitle %> </h1>
                 <p class="post-date-font">Posted on <%= moment(new Date(post.timestamps)).format("dddd, MMMM Do YYYY, h:mm:ss a") %> </p>
+                <% if (post.category) { %>
+                    <div class="badge badge-pill badge-danger py-1 px-2">
+                        <%= post.category %> 
+                    </div>
+                <% } %>
                 <hr/>
                 <div class="post-content-font">
                     <%- post.blogContent.substring(0,15000000) + ("...") %>
