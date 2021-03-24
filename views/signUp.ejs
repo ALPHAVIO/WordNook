@@ -9,7 +9,8 @@
                 <%= error %>
             </div>
         <% } %>
-                <!-- sign-up form section -->
+            <!-- sign-up form section -->
+            <div class="container-centre">
                 <form action="/sign-up" method="POST">
                     <div class="form-group">
                         <label class="sign-up-place">First Name</label>
@@ -36,11 +37,17 @@
                         <input class="form-control col-md-12 col-sm-12 col-xs-12" type="password" name="password"
                             autocomplete="off" value="<%= data.password %>" required></input>
                     </div>
+                    <div class="form-group">
+                        <label class="sign-up-place">Confirm Password</label>
+                        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="password" name="confirmPassword"
+                            autocomplete="off" value="<%= data.confirmPassword %>" required></input>
+                    </div>
                     <div class="text-center">
                         Already a User? <a href="/log-in">Log In</a>
                     </div>
                     <button class="btn btn-primary log-in-btn" type="submit" name="sign-up">Sign Up</button>
                 </form>
+            </div>
 
     </div>
 

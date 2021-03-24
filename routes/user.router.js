@@ -8,10 +8,10 @@ const auth = require("../middlewares/auth");
 const router = express.Router();
 
 //GET request for Sign Up
-router.get("/sign-up",auth, (req, res) => {
-  if(req.user){
-    res.redirect('/');
-  }else{
+router.get("/sign-up", auth, (req, res) => {
+  if (req.user) {
+    res.redirect("/");
+  } else {
     res.render("signUp", {
       error: "",
       data: {
@@ -20,16 +20,17 @@ router.get("/sign-up",auth, (req, res) => {
         userName: "",
         password: "",
         email: "",
+        confirmPassword : ""
       },
     });
   }
 });
 
 // GET request for Log In
-router.get("/log-in",auth,(req, res) => {
-  if(req.user){
-    res.redirect('/');
-  }else{
+router.get("/log-in", auth, (req, res) => {
+  if (req.user) {
+    res.redirect("/");
+  } else {
     res.render("logIn", {
       error: "",
       data: {
@@ -42,10 +43,10 @@ router.get("/log-in",auth,(req, res) => {
 
 //POST request for sign up
 router.post("/sign-up", (req, res) => {
-  const { firstName, lastName, userName, email, password } = req.body;
+  const { firstName, lastName, userName, email, password , confirmPassword } = req.body;
 
   // Check if all the fields are filled
-  if (!firstName || !lastName || !userName || !email || !password) {
+  if (!firstName || !lastName || !userName || !email || !password || !confirmPassword) {
     return res.status(422).render("signUp", {
       error: "Please add all the fields!",
       data: {
@@ -54,6 +55,7 @@ router.post("/sign-up", (req, res) => {
         userName: userName || "",
         email: email || "",
         password: password || "",
+        confirmPassword : confirmPassword || " ",
       },
     });
   }
@@ -73,6 +75,7 @@ router.post("/sign-up", (req, res) => {
         userName,
         email,
         password,
+        confirmPassword
       },
     });
   }
@@ -86,6 +89,7 @@ router.post("/sign-up", (req, res) => {
         userName,
         email,
         password,
+        confirmPassword
       },
     });
   }
@@ -104,65 +108,70 @@ router.post("/sign-up", (req, res) => {
     });
   }
 
+  if (password !== confirmPassword ) {
+    return res.status(500).render("signUp", {
+      error:
+        "Password does not match",
+      data: {
+        firstName,
+        lastName,
+        userName,
+        email,
+        password,
+        confirmPassword
+      },
+    });
+  }
   // Check if the username or email already taken
-  User.findOne({ email }, (err, doc) => {
-    if (doc) {
+  User.findOne({ $or: [{email},{userName}]}, (err, doc) => {
+    if(doc){
+      let error = "Username already taken!";
+      if(doc.email == email) error = "Email already taken!";
+      console.log(error)
       return res.status(401).render("logIn", {
-        error: "Email already taken!",
+        error,
         data: {
           firstName,
           lastName,
           email,
           userName,
           password,
+          confirmPassword
         },
       });
     }
-    User.findOne({ userName }, (err, doc) => {
-      if (doc) {
-        return res.status(401).render("logIn", {
-          error: "Username already taken!",
-          data: {
-            firstName,
-            lastName,
-            userName,
-            password,
-            email,
-          },
-        });
-      }
+    bcrypt.hash(password, 12, (err, hashedPassword) => {
+      const newUser = new User({
+        firstName,
+        lastName,
+        userName,
+        email,
+        password: hashedPassword,
+        confirmPassword : hashedPassword
+      });
 
-      bcrypt.hash(password, 12, (err, hashedPassword) => {
-        const newUser = new User({
-          firstName,
-          lastName,
-          userName,
-          email,
-          password: hashedPassword,
-        });
-
-        newUser.save((err, doc) => {
-          if (err || !doc) {
-            return res.status(422).render("logIn", {
-              error: "Oops something went wrong!",
-              data: {
-                firstName,
-                lastName,
-                userName,
-                email,
-                password,
-              },
-            });
-          }
-
-          const token = jwt.sign({ _id: doc._id }, process.env.SECRET_KEY);
-
-          //Send back the token to the user as a httpOnly cookie
-          res.cookie("token", token, {
-            httpOnly: true,
+      newUser.save((err, doc) => {
+        if (err || !doc) {
+          return res.status(422).render("logIn", {
+            error: "Oops something went wrong!",
+            data: {
+              firstName,
+              lastName,
+              userName,
+              email,
+              password,
+              confirmPassword
+            },
           });
-          res.redirect("/");
+        }
+
+        const token = jwt.sign({ _id: doc._id }, process.env.SECRET_KEY);
+
+        //Send back the token to the user as a httpOnly cookie
+        res.cookie("token", token, {
+          httpOnly: true,
         });
+        res.redirect("/");
       });
     });
   });

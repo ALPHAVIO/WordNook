@@ -3,8 +3,13 @@ const express = require("express");
 var _ = require("lodash");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
+const methodOverride=require('method-override');
+const bodyParser=require('body-parser');
 
 const router = express.Router();
+router.use(methodOverride("_method"));
+router.use(bodyParser.json());
+
 const homeStartingContent =
   "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
 
@@ -224,6 +229,7 @@ router.get("/posts/:id/edit", (req, res) => {
     }
   });
 });
+      
 //update post route
 router.put("/posts/:id", (req, res) => {
   Blog.findByIdAndUpdate(req.params.id, req.body.post, (err, foundBlog) => {
