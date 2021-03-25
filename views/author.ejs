@@ -1,0 +1,33 @@
+<%- include("partials/header", {isAuthenticated}) -%>
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-10 mx-2 mx-md-auto card p-0">
+            <div class="card-header">
+                <h4 class="text-center">AUTHOR: <%= user.firstName %> <%= user.lastName %></h4>
+            </div>
+            <div class="card-content row p-3">
+                <%# Check if there are posts for requested categories... %> 
+                <%if (posts.length) { %>
+                    <%# If there are posts(length>=1) then display them through looping %> 
+                    <% posts.forEach(function (post) { %>
+                        <div class="post-preview col-md-5 mx-2 mx-md-auto py-3 my-3">
+                            <h1> <%= post.blogTitle %> </h1>
+                            <p class="post-date-font">Posted on <%= new Date(post.timestamps).toDateString() %>, <%= new Date(post.timestamps).toLocaleTimeString() %> </p>
+                            <% if (post.category) { %>
+                                <div class="badge badge-pill badge-danger py-1 px-2">
+                                    <%= post.category %> 
+                                </div>
+                                <% } %>
+                                <hr/>
+                                <%- post.blogContent.substring(0,15000000) + ("...") %>
+                                <a href="/posts/<%= post._id %>"><button class="button read">Read More</button></a>
+                            </div>
+                    <%# If there are no posts(length=0) then display no blogs found %> 
+                    <% });} else { %>
+                        <p class="mx-auto text-danger">No Blogs Found...</p> 
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("partials/footer") -%>
