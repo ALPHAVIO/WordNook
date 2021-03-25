@@ -1,49 +1,74 @@
 <%- include("partials/header", {isAuthenticated}) -%>
-<div class="container-centre">
-    <h1 class="heading-bold heading-centre post-heading"> <%= title %> </h1>
-         <%- content %>
+<div class="container-fluid">
+    <div class="row align-items-start">
+        <div class="col-lg-6 card mx-2 mx-lg-auto p-0">
+            <div class="card-header p-1 text-center">
+                <h1 class="my-0 heading-bold"> <%= title %> </h1>
+                <% if (category) { %>
+                    <div class="badge badge-pill badge-danger py-1 px-2">
+                        <%= category %> 
+                    </div>
+                <% } %>
+            </div>
+            <div class="card-content p-2">
+                <%- content %>
+                <!-- If this user is the author then only render the delete button-->
+                <% if(isAuthor){ %>
+                    <div class="d-block d-md-flex">
+                        <button onclick="window.location.href='/posts/<%=id%>/edit'" type="submit" class="button btn-sm edit my-1">Edit </button>
+                        <form  action="/posts/<%=id%>/delete" method="post" >
+                            <button class="button btn-sm  del my-1" type="submit">Delete</button>
+                        </form>
+                    </div>
+                <% } %>
+            </div>
+            <div class="card-footer text-center">
+                <p class="post-date-font">Posted on <%= moment(new Date(timestamps)).format("dddd, MMMM Do YYYY, h:mm:ss a") %> </p>
+                <a href="/author/<%= author._id %> " class="p-2 mb-4">
+                    <i class="fas fa-user"></i>
+                    <%= author.userName %> 
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 mx-1 mx-md-auto">
+            <!-- number of comments -->
+            <h6 class="text-muted mt-4 mt-lg-0" style="font-weight: 600"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h6>
+            
+            <!-- display all comments section -->
+            <% for(var i=0; i<comments.length; i++) { %>
+                <div class="comment"> 
+                    <a href="/author/<%= comments[i].authorId  %> " class="mb-4">
+                        <h5>
+                            <i class="fas fa-user"></i>
+                            <strong><%= comments[i].name %></strong>
+                        </h5>
+                    </a>
+                    <p class="post-date-font"><%= moment(new Date(comments[i].timestamps*1000)).format("dddd, MMMM Do YYYY, h:mm:ss a") %></p>
+                    <hr/>
+                    <%- comments[i].content %>
+                    <form  action="/posts/<%=id%>/comments/<%=i%>" method="post">
+                        <button class="button  del" type="submit">Delete</button>
+                    </form>
+                </div>
+            <% } %>
 
-    <!-- If this user is the author then only render the delete button-->
-    <% if(isAuthor){ %>
-        <div style="display: flex;">
-            <button onclick="window.location.href='/posts/<%=id%>/edit'" type="submit" class="button del edit">Edit </button>
-            <form  action="/posts/<%=id%>/delete" method="post" >
-                <button class="button  del" type="submit">Delete</button>
+            <!-- add comment section -->
+            <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
+            <form action="/posts/<%=id%>/comment" method="POST" style="margin-bottom: 3vh;">
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea name="content" ></textarea>
+                    <script>
+                        window.onload = function() {
+                        CKEDITOR.replace('content');
+                        };
+                    </script>
+                </div>
+                <button class="button commenting" type="submit" name="publish">Post comment</button>
             </form>
-        </div>
-    <% } %>
     
-    <!-- number of comments -->
-    <h2 class="normal-heading-font" style="font-weight: 600; margin-top: 6vh; margin-bottom: 3vh;"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h2>
-
-    <!-- display all comments section -->
-    <% for(var i=0; i<comments.length; i++) { %>
-        <div class="comment"> 
-            <h4><strong><%= comments[i].name %></strong></h4>
-            <p class="post-date-font"><%= moment(new Date(comments[i].timestamps*1000)).format("dddd, MMMM Do YYYY, h:mm:ss a") %></p>
-            <hr/>
-            <%- comments[i].content %>
-            <form  action="/posts/<%=id%>/comments/<%=i%>" method="post">
-                <button class="button  del" type="submit">Delete</button>
-            </form>
         </div>
-    <% } %>
-
-    <!-- add comment section -->
-    <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
-    <form action="/posts/<%=id%>/comment" method="POST" style="margin-bottom: 3vh;">
-        <div class="form-group">
-            <label>Content</label>
-            <textarea name="content" ></textarea>
-            <script>
-                window.onload = function() {
-                   CKEDITOR.replace('content');
-                };
-            </script>
-        </div>
-        <button class="button commenting" type="submit" name="publish">Post comment</button>
-    </form>
-    
+    </div>
 </div>
 <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 

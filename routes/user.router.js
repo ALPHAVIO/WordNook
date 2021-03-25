@@ -257,6 +257,11 @@ router.post("/log-out", auth, (req, res) => {
 //*route    /author/:id
 //*desc     Fetch the required user's blogs
 router.get("/author/:id", auth, async (req, res) => {
+  //If the requested author is the currently logged in user then redirect them to their dashbaord
+  if (req.user) {
+    if (req.params.id.toString() === req.user._id.toString())
+      return res.redirect("/dashboard");
+  }
   try {
     try {
       const user = await User.findById(req.params.id);
@@ -266,6 +271,31 @@ router.get("/author/:id", auth, async (req, res) => {
         .sort({ timestamps: "desc" })
         .lean();
       return res.render("author", {
+        user,
+        posts: blogs,
+        isAuthenticated: req.user ? true : false,
+      });
+    } catch (error) {
+      return res.redirect("/error");
+    }
+  } catch (error) {
+    return res.redirect("/error");
+  }
+});
+
+//*route    /dashboard/
+//*desc     Fetch the logged in user's blogs
+router.get("/dashboard", auth, async (req, res) => {
+  if (!req.user) return res.redirect("/log-in");
+  try {
+    try {
+      const user = await User.findById(req.user._id);
+      if (!user) return res.redirect("/error");
+      const blogs = await Blog.find({ author: req.user._id })
+        .populate("author")
+        .sort({ timestamps: "desc" })
+        .lean();
+      return res.render("dashboard", {
         user,
         posts: blogs,
         isAuthenticated: req.user ? true : false,
