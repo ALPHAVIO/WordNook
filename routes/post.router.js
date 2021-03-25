@@ -74,6 +74,7 @@ router.post("/posts/:postId/comment", auth, async function (req, res) {
       const doc = await Blog.findOne({ _id: req.params.postId });
       doc.comments.push({
         name: loggedUser.name,
+        authorId: loggedUser._id,
         content: content,
         timestamps: Math.floor(Date.now() / 1000),
       });
