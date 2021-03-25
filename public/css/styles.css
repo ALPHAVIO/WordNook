@@ -608,14 +608,14 @@ input[name="perPage"] {
 .content.like-active{
   background-color:#e2532f  
 }
-.like{
+.like:before{
   color: black;
-  
+  content: 'Like';
 }
-.like.like-active{
+.like.like-active:before{
  
   color:white;
-  content: "Unlike";
+  content: "Liked";
 }
 
 /* footer styles */

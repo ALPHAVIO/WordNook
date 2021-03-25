@@ -19,7 +19,7 @@
      <div class="like-btn">
         <div class="content">
             <span class="like_icon"></span>
-            <span class="like"> Like</span>
+            <div class="like"></div>
 
         </div>
     </div>
@@ -54,13 +54,21 @@
 </div>
 <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 <script> 
-  $(document).ready(function(post){
+  $(document).ready(function(){
     $(".content").click(function(){
        $(".content").toggleClass("like-active")
        $(".like").toggleClass("like-active")
        $(".like_icon").toggleClass("like-active")
-       $(".like").html("Unlike")
-    })
+         if($(".like").text()=='Like'){
+         
+
+        alert($(".like").text());
+         
+       }
+      
+    });
+
+   
   })
 </script>
 
