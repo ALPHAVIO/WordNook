@@ -562,7 +562,41 @@ input[name="perPage"] {
     transform: rotate(360deg);
     text-indent: 0.1em;
 }
+/*--Like button---*/
+.content{
+   display: flex;
+   flex-direction: row;
+   border:solid white 3px;
+   width:100px;
+   background-color: #0d97ac;
+   padding: 7px;
+   cursor: pointer;
+   margin-left:10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.content .like_icon{
+  background: url("../images/grey.png") no-repeat;
+  width:50px;
 
+
+}
+.like_icon.like-active{
+  background: url("../images/red.png") no-repeat;
+}
+
+.content.like-active{
+  background-color:#e2532f  
+}
+.like:before{
+  color: black;
+  content: 'Like';
+}
+.like.like-active:before{
+ 
+  color:white;
+  content: "Liked";
+}
+/*------------------------*/
 /* footer styles */
 
 .footer-class {
