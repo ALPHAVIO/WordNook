@@ -65,8 +65,8 @@ in your git bash.
 ```
 npm install
 ```
-<br/>
 (nodejs and npm should be installed before running this command)
+
 <br/>
 
 * Adding secret key for JWT auth.
@@ -85,9 +85,9 @@ npm install
 ```
 mongod
 ```
-<br/>
 (mongoDB should be installed, environment path should also be added for running this command.)
 <br/>
+
 * Run this command to start the project.
 ```
 npm run start
