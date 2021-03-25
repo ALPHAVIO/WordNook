@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
+app.use('/uploads', express.static('uploads'));
 
 //When in development mode then only require the dotenv module
 if (process.env.NODE_ENV !== "production") {
@@ -36,6 +37,13 @@ app.use(require("./routes/user.router"));
 
 //router for post and search related urls
 app.use(require("./routes/post.router"));
+
+//routing to 404 in case of unavilable urls.
+app.use("*", (req, res) => {
+  res.render('404',{
+    isAuthenticated: req.user ? true : false
+  })
+});
 
 //Launching the server on port 3000 in development mode-
 app.listen(PORT, function () {

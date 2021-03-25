@@ -4,6 +4,7 @@ const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require("../middlewares/auth");
+const Blog = require("../models/Blog.model");
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ router.get("/sign-up", auth, (req, res) => {
         userName: "",
         password: "",
         email: "",
-        confirmPassword : ""
+        confirmPassword: "",
       },
     });
   }
@@ -43,10 +44,24 @@ router.get("/log-in", auth, (req, res) => {
 
 //POST request for sign up
 router.post("/sign-up", (req, res) => {
-  const { firstName, lastName, userName, email, password , confirmPassword } = req.body;
+  const {
+    firstName,
+    lastName,
+    userName,
+    email,
+    password,
+    confirmPassword,
+  } = req.body;
 
   // Check if all the fields are filled
-  if (!firstName || !lastName || !userName || !email || !password || !confirmPassword) {
+  if (
+    !firstName ||
+    !lastName ||
+    !userName ||
+    !email ||
+    !password ||
+    !confirmPassword
+  ) {
     return res.status(422).render("signUp", {
       error: "Please add all the fields!",
       data: {
@@ -55,7 +70,7 @@ router.post("/sign-up", (req, res) => {
         userName: userName || "",
         email: email || "",
         password: password || "",
-        confirmPassword : confirmPassword || " ",
+        confirmPassword: confirmPassword || " ",
       },
     });
   }
@@ -75,7 +90,7 @@ router.post("/sign-up", (req, res) => {
         userName,
         email,
         password,
-        confirmPassword
+        confirmPassword,
       },
     });
   }
@@ -89,7 +104,7 @@ router.post("/sign-up", (req, res) => {
         userName,
         email,
         password,
-        confirmPassword
+        confirmPassword,
       },
     });
   }
@@ -108,26 +123,25 @@ router.post("/sign-up", (req, res) => {
     });
   }
 
-  if (password !== confirmPassword ) {
+  if (password !== confirmPassword) {
     return res.status(500).render("signUp", {
-      error:
-        "Password does not match",
+      error: "Password does not match",
       data: {
         firstName,
         lastName,
         userName,
         email,
         password,
-        confirmPassword
+        confirmPassword,
       },
     });
   }
   // Check if the username or email already taken
-  User.findOne({ $or: [{email},{userName}]}, (err, doc) => {
-    if(doc){
+  User.findOne({ $or: [{ email }, { userName }] }, (err, doc) => {
+    if (doc) {
       let error = "Username already taken!";
-      if(doc.email == email) error = "Email already taken!";
-      console.log(error)
+      if (doc.email == email) error = "Email already taken!";
+      console.log(error);
       return res.status(401).render("logIn", {
         error,
         data: {
@@ -136,19 +150,26 @@ router.post("/sign-up", (req, res) => {
           email,
           userName,
           password,
-          confirmPassword
+          confirmPassword,
         },
       });
     }
-    bcrypt.hash(password, 12, (err, hashedPassword) => {
-      const newUser = new User({
-        firstName,
-        lastName,
-        userName,
-        email,
-        password: hashedPassword,
-        confirmPassword : hashedPassword
-      });
+    User.findOne({ userName }, (err, doc) => {
+      if (doc) {
+        return res.status(401).render("logIn", {
+          error: "Username already taken!",
+          data: {
+            firstName,
+            lastName,
+            userName,
+            password,
+            email,
+            confirmPassword,
+          },
+        });
+      }
+
+      const newUser = new User(req.body);
 
       newUser.save((err, doc) => {
         if (err || !doc) {
@@ -160,7 +181,7 @@ router.post("/sign-up", (req, res) => {
               userName,
               email,
               password,
-              confirmPassword
+              confirmPassword,
             },
           });
         }
@@ -231,6 +252,30 @@ router.post("/log-in", (req, res) => {
 router.post("/log-out", auth, (req, res) => {
   res.clearCookie("token");
   res.redirect("/");
+});
+
+//*route    /author/:id
+//*desc     Fetch the required user's blogs
+router.get("/author/:id", auth, async (req, res) => {
+  try {
+    try {
+      const user = await User.findById(req.params.id);
+      if (!user) return res.redirect("/error");
+      const blogs = await Blog.find({ author: req.params.id })
+        .populate("author")
+        .sort({ timestamps: "desc" })
+        .lean();
+      return res.render("author", {
+        user,
+        posts: blogs,
+        isAuthenticated: req.user ? true : false,
+      });
+    } catch (error) {
+      return res.redirect("/error");
+    }
+  } catch (error) {
+    return res.redirect("/error");
+  }
 });
 
 module.exports = router;

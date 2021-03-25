@@ -5,7 +5,11 @@ const Schema = mongoose.Schema;
 const blogSchema = {
   blogTitle: String,
   blogContent: String,
+  category: String,
   comments: Array,
+  photo:{
+    type: String
+  },
   timestamps: {
     type: Date,
     default: Date.now,
