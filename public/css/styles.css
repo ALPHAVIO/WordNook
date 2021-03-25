@@ -237,6 +237,9 @@ html, body {
     margin-bottom: 4.1vh;
 }
 
+.qty {
+    font-weight: bold;font-size: 1.4rem;
+}
 /* Post page styles */
 
 .post-heading {
@@ -306,7 +309,7 @@ html, body {
 }
 
 .orderSelect {
-    padding: 0.2rem 0.4rem 0.35rem 0.4rem;
+    padding: 0.2rem 0.4rem 0.36rem 0.4rem;
     font-family: "Open Sans", sans-serif;
     font-size: 130%;
     border: 2px solid var(--color-primary);
@@ -565,6 +568,11 @@ input[name="perPage"] {
     text-indent: 0.1em;
 }
 
+.pagebtn {
+    min-width: 10em; 
+    padding-bottom: 0.2rem;
+    padding-top: 0.4rem;
+}
 /* footer styles */
 
 .footer-class {
