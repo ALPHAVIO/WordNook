@@ -278,4 +278,29 @@ router.get("/author/:id", auth, async (req, res) => {
   }
 });
 
+//*route    /dashboard/
+//*desc     Fetch the logged in user's blogs
+router.get("/dashboard", auth, async (req, res) => {
+  if (!req.user) return res.redirect("/log-in");
+  try {
+    try {
+      const user = await User.findById(req.user._id);
+      if (!user) return res.redirect("/error");
+      const blogs = await Blog.find({ author: req.user._id })
+        .populate("author")
+        .sort({ timestamps: "desc" })
+        .lean();
+      return res.render("dashboard", {
+        user,
+        posts: blogs,
+        isAuthenticated: req.user ? true : false,
+      });
+    } catch (error) {
+      return res.redirect("/error");
+    }
+  } catch (error) {
+    return res.redirect("/error");
+  }
+});
+
 module.exports = router;
