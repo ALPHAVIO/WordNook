@@ -43,6 +43,7 @@ router.get(
     const order = req.query.order || "new one first";
     Blog.find({})
       .sort({ timestamps: order === "new one first" ? "desc" : "asc" })
+      .populate("author")
       .skip(perPage * currentPage - perPage)
       .limit(perPage)
       .exec(function (err, foundBlogs) {
