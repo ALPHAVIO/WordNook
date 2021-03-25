@@ -3,8 +3,9 @@ const express = require("express");
 var _ = require("lodash");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
-const methodOverride=require('method-override');
-const bodyParser=require('body-parser');
+const methodOverride = require("method-override");
+const bodyParser = require("body-parser");
+const UserModel = require("../models/User.model");
 
 const router = express.Router();
 router.use(methodOverride("_method"));
@@ -27,7 +28,7 @@ router.get(
     const user = req.user;
     let isAuthor = false;
     const requestedPostId = req.params.postId;
-    Blog.findOne({ _id: requestedPostId }, function (err, post) {
+    Blog.findOne({ _id: requestedPostId }, async function (err, post) {
       if (!err) {
         // Check if the user and author of this post are same
         if (user && JSON.stringify(user._id) === JSON.stringify(post.author)) {
@@ -37,11 +38,15 @@ router.get(
         post.comments = post.comments.sort((a, b) =>
           a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
         );
+        let author = await UserModel.findById(post.author);
         res.render("post", {
           title: post.blogTitle,
           content: post.blogContent,
           id: post._id,
           comments: post.comments,
+          category: post.category,
+          author,
+          timestamps: post.timestamps,
           isAuthor,
           isAuthenticated: user ? true : false,
           currentUser: user,
@@ -69,6 +74,7 @@ router.post("/posts/:postId/comment", auth, async function (req, res) {
       const doc = await Blog.findOne({ _id: req.params.postId });
       doc.comments.push({
         name: loggedUser.name,
+        authorId: loggedUser._id,
         content: content,
         timestamps: Math.floor(Date.now() / 1000),
       });
@@ -208,7 +214,7 @@ router.post("/category", auth, async (req, res, next) => {
   if (!category) {
     res.redirect("/");
   }
-  let posts = await Blog.find({ category });
+  let posts = await Blog.find({ category }).populate("author");
   res.render("category", {
     category,
     posts,
@@ -229,7 +235,7 @@ router.get("/posts/:id/edit", (req, res) => {
     }
   });
 });
-      
+
 //update post route
 router.put("/posts/:id", (req, res) => {
   Blog.findByIdAndUpdate(req.params.id, req.body.post, (err, foundBlog) => {
