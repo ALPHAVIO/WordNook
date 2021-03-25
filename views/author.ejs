@@ -1,9 +1,11 @@
 <%- include("partials/header", {isAuthenticated}) -%>
 <div class="container">
     <div class="row my-4">
-        <div class="col-md-10 mx-2 mx-md-auto card p-0">
-            <div class="card-header">
-                <h4 class="text-center">AUTHOR: <%= user.firstName %> <%= user.lastName %></h4>
+        <div class="col-lg-10 mx-2 mx-md-auto card p-0">
+            <%# Display author's name %> 
+            <div class="card-header text-center">
+                <h4>AUTHOR: <%= user.firstName %> <%= user.lastName %></h4>
+                <h6>@<%= user.userName %></h6>
             </div>
             <div class="card-content row p-3">
                 <%# Check if there are posts for requested categories... %> 
