@@ -13,12 +13,31 @@ const aboutContent =
 const contactContent =
   "Got a query to ask? Have an amazing idea? Loved our page? Okay! All you have to do is shoot a mail and we'll get back to you shortly.";
 
+const categories = [
+  "IT & Software",
+  "Business",
+  "Personality Development",
+  "Design",
+  "Marketing",
+  "Lifestyle",
+  "Photography",
+  "Health & Fitness",
+  "Music",
+  "Academics",
+  "Language",
+  "Sports",
+  "Social media",
+  "History",
+  "Space and Research",
+];
+
 //Get request for home route-
 router.get(
-  ["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage"],
+  ["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage", "/category"],
   auth,
   function (req, res) {
     var perPage = parseInt(req.params.perPage) || 5;
+    var category = req.params.category || "";
     if (req.query.perPage > 0) perPage = parseInt(req.query.perPage);
     const currentPage = req.params.page || 1;
     const order = req.query.order || "new one first";
@@ -33,6 +52,7 @@ router.get(
             res.render("home", {
               homeStartingContent: homeStartingContent,
               posts: foundBlogs,
+              categories,
               current: currentPage,
               pages: Math.ceil(count / perPage),
               search: "",
@@ -99,6 +119,7 @@ router.get("/compose", auth, function (req, res) {
     return res.status(401).redirect("/log-in");
   }
   res.render("compose", {
+    categories,
     isAuthenticated: true,
   });
 });
@@ -110,10 +131,12 @@ router.post("/compose", auth, function (req, res) {
     return res.status(401).redirect("/log-in");
   }
   const postTitle = req.body.postTitle;
+  const category = req.body.category;
   const postContent = req.body.postBody;
   const blog = new Blog({
     blogTitle: postTitle,
     blogContent: postContent,
+    category,
     comments: [],
     author: user._id,
   });
