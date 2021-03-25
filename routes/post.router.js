@@ -3,8 +3,8 @@ const express = require("express");
 var _ = require("lodash");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
-const methodOverride=require('method-override');
-const bodyParser=require('body-parser');
+const methodOverride = require("method-override");
+const bodyParser = require("body-parser");
 
 const router = express.Router();
 router.use(methodOverride("_method"));
@@ -208,7 +208,7 @@ router.post("/category", auth, async (req, res, next) => {
   if (!category) {
     res.redirect("/");
   }
-  let posts = await Blog.find({ category });
+  let posts = await Blog.find({ category }).populate("author");
   res.render("category", {
     category,
     posts,
@@ -229,7 +229,7 @@ router.get("/posts/:id/edit", (req, res) => {
     }
   });
 });
-      
+
 //update post route
 router.put("/posts/:id", (req, res) => {
   Blog.findByIdAndUpdate(req.params.id, req.body.post, (err, foundBlog) => {
