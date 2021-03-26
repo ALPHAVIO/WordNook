@@ -2,7 +2,10 @@
   <h1>BlogSite</h1>
 </div>
   BlogSite is a platform where a writer or a group of writers can share their views on an individual subject.
-A blog is an online journal or informational website displaying information in reverse chronological order, with the latest posts appearing first, at the top.<br>
+A blog is an online journal or informational website displaying information in reverse chronological order, with the latest posts appearing first, at the top.
+There are many reasons to start a blog for personal use and only a handful of strong ones for business blogging. Blogging for business, projects, or anything else that might bring you money has a very straightforward purpose – to rank your website higher in Google SERPs, a.k.a. increase your visibility.
+
+<br><br><br>
 
 <div align="center">
   <img src="assets/New Banner.jpg" />
