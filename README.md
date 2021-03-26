@@ -1,15 +1,16 @@
 <div align="center">
   <h1>BlogSite</h1>
 </div>
-  BlogSite is a platform where a writer or a group of writers can share their views on an individual subject.
-A blog is an online journal or informational website displaying information in reverse chronological order, with the latest posts appearing first, at the top.
-There are many reasons to start a blog for personal use and only a handful of strong ones for business blogging. Blogging for business, projects, or anything else that might bring you money has a very straightforward purpose – to rank your website higher in Google SERPs, a.k.a. increase your visibility.
-
-<br><br><br>
 
 <div align="center">
   <img src="assets/New Banner.jpg" />
 </div>
+<br>
+There are many reasons to start a blog for personal use and only a handful of strong ones for business blogging. Blogging for business, projects, or anything else that might bring you money has a very straightforward purpose – to rank your website higher in Google SERPs, a.k.a. increase your visibility.
+
+<br><br><br>
+
+
 
 # A sneak peek into what we have here-
   
@@ -26,9 +27,7 @@ There are many reasons to start a blog for personal use and only a handful of st
 
 - 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
 
-- This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library). 
-
-- We made it really, really simple for people to make a blog and put whatever they want on it.<br>
+<br>
 
 # [Visit BlogSite](https://alphavio-daily-journal.herokuapp.com/)
 
@@ -130,7 +129,7 @@ show collections
 <db name> .find()
 ```
 
-#### Project Deployed on Heroku : [Link](https://blogsite321.herokuapp.com/)
+#### Project Deployed on Heroku : [Link](https://alphavio-daily-journal.herokuapp.com/)
 
 ## Open Source Events Project is associated with:
 
