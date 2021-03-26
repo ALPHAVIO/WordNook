@@ -13,18 +13,18 @@
     <!-- contact form section -->
     <form action="/contact" method="POST" style="margin-top: 30px">
         <div class="form-group">
-            <label>Subject</label>
+            <label>Your Email:</label>
+            <input class="form-control col-md-12 col-sm-12 col-xs-12" type="email" name="email" autocomplete="off" value="<%= formData.email %>" required autofocus></input>
+        </div>
+        <div class="form-group">
+            <label>Subject:</label>
             <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="subject" autocomplete="off" value="<%= formData.name %>" required></input>
         </div>
         <div class="form-group">
-            <label>Your Email</label>
-            <input class="form-control col-md-12 col-sm-12 col-xs-12" type="email" name="email" autocomplete="off" value="<%= formData.email %>" required></input>
-        </div>
-        <div class="form-group">
-            <label>Message</label>
+            <label>Message:</label>
             <textarea class="form-control col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px" rows="6" name="message" value="<%= formData.message %>" required></textarea>
         </div>
-        <button class="btn btn-primary float-right" type="submit">Send Response</button>
+        <button class="btn btn-primary block" type="submit" size="50dp">Send</button>
     </form>
 </div>
 
