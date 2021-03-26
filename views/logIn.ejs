@@ -13,9 +13,9 @@
             <div class="container-centre">
                 <form action="/log-in" method="POST">
                     <div class="form-group">
-                        <label>Your Username</label>
-                        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="userName"
-                            autocomplete="off" value="<%= data.userName %>" required>
+                        <label>Your Email</label>
+                        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="email" name="email"
+                            autocomplete="off" value="<%= data.email %>" required>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
@@ -28,5 +28,5 @@
                     <button class="btn btn-primary log-in-btn" type="submit" name="log-in">Log In</button>
                 </form>
             </div>
-
+    </div>
 <%- include("partials/footer") -%>

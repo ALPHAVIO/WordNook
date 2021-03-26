@@ -104,6 +104,7 @@
                 <% } %>
                 <hr/>
                 <div class="post-content-font">
+
                     <%- post.blogContent.substring(0,1000) + ("...") %>
                 </div>
                 <div>
@@ -111,6 +112,7 @@
                 <i class="fa fa-comment fa-2x" style="float: right;" aria-hidden="true"><%= post.comments.length %></i>
                 </div>
                 
+
             </div>
         <% }); %>
     </div>
@@ -172,4 +174,6 @@
         </ul>
     <% } }%>
 </div>
+
 <%- include("partials/footer") -%>
+
