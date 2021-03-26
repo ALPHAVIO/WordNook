@@ -30,7 +30,7 @@ There are many reasons to start a blog for personal use and only a handful of st
 
 - We made it really, really simple for people to make a blog and put whatever they want on it.<br>
 
-# [Visit BlogSite](https://blogsite321.herokuapp.com/)
+# [Visit BlogSite](https://alphavio-daily-journal.herokuapp.com/)
 
 
 ## Tech Stack-
