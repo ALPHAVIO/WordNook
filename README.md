@@ -19,7 +19,7 @@
 - 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
 <br/>
 
-- This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).  [Visit BlogSite](https://blogsite321.herokuapp.com/)
+- This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).  [Visit BlogSite](https://alphavio-daily-journal.herokuapp.com)
 
 ## Tech Stack-
 <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
@@ -118,7 +118,7 @@ show collections
 <db name> .find()
 ```
 
-#### Project Deployed on Heroku : [Link](https://blogsite321.herokuapp.com/)
+#### Project Deployed on Heroku : [Link](https://alphavio-daily-journal.herokuapp.com)
 
 ## Open Source Events Project is associated with:
 
