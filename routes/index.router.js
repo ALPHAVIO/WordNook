@@ -81,7 +81,7 @@ router.get(
             res.render("home", {
               homeStartingContent: homeStartingContent,
               posts: foundBlogs,
-              categories,
+              categories: categories,
               current: currentPage,
               pages: Math.ceil(count / perPage),
               search: "",
