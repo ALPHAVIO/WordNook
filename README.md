@@ -1,5 +1,10 @@
 <div align="center">
   <h1>BlogSite</h1>
+</div>
+  BlogSite is a platform where a writer or a group of writers can share their views on an individual subject.
+A blog is an online journal or informational website displaying information in reverse chronological order, with the latest posts appearing first, at the top.<br>
+
+<div align="center">
   <img src="assets/New Banner.jpg" />
 </div>
 
@@ -9,7 +14,7 @@
  <img src="assets/blogsitegiff.gif" align = "center"  width=600px/>
  </p>
 
-## About-
+# About-
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
@@ -19,7 +24,11 @@
 - 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
 <br/>
 
-- This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).  [Visit BlogSite](https://blogsite321.herokuapp.com/)
+- This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).  
+- We made it really, really simple for people to make a blog and put whatever they want on it.<br>
+
+# [Visit BlogSite](https://blogsite321.herokuapp.com/)
+
 
 ## Tech Stack-
 <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
