@@ -36,6 +36,9 @@
                     <a class="nav-link text-info" href="/contact">CONTACT US</a>
                 </li>
                 <% if(isAuthenticated) { %>
+                  <li id="read-profile" class="nav-item">
+                    <a class="nav-link text-info" href="/read-profile">PIcon </a>
+                </li>
                     <li id="log-out">
                         <form action="/log-out" method="post">
                             <button class="btn btn-info btn-sm text-white logout" type="submit" name="log-out">Log out</button>

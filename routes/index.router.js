@@ -2,7 +2,6 @@
 const express = require("express");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
-
 const multer = require('multer');
 
 const storage = multer.diskStorage({
