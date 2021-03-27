@@ -246,6 +246,9 @@ a::after {
   margin-bottom: 4.1vh;
 }
 
+.qty {
+    font-weight: bold;font-size: 1.4rem;
+}
 /* Post page styles */
 
 .post-heading {
@@ -316,19 +319,21 @@ a::after {
 }
 
 .orderSelect {
-  padding: 0.4rem;
-  font-family: "Open Sans", sans-serif;
-  font-size: 130%;
-  border: 2px solid var(--color-primary);
-  border-radius: 8px;
+    padding: 0.2rem 0.4rem 0.36rem 0.4rem;
+    font-family: "Open Sans", sans-serif;
+    font-size: 130%;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
 }
 
 input[name="perPage"] {
-  border: 2px solid var(--color-primary);
-  border-radius: 8px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 110%;
-  text-align: center;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 110%;
+    text-align: center;
+    padding-bottom: 0.3rem;
+    padding-top: 0.13rem;
 }
 
 .search-form {
@@ -595,6 +600,25 @@ input[name="perPage"] {
   text-indent: 0.1em;
 }
 
+
+.pagebtn {
+    min-width: 10em; 
+    padding-bottom: 0.2rem;
+    padding-top: 0.4rem;
+}
+.content.like-active{
+  background-color:#e2532f  
+}
+.like:before{
+  color: black;
+  content: 'Like';
+}
+.like.like-active:before{
+ 
+  color:white;
+  content: "Liked";
+}
+/*------------------------*/
 /* footer styles */
 
 .footer-class {
