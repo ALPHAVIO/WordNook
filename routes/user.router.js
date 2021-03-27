@@ -35,7 +35,7 @@ router.get("/log-in", auth, (req, res) => {
     res.render("logIn", {
       error: "",
       data: {
-        userName: "",
+        email: "",
         password: "",
       },
     });
@@ -236,24 +236,24 @@ router.post("/sign-up", (req, res) => {
 
 //POST request for log in
 router.post("/log-in", (req, res) => {
-  const { userName, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!userName || !password) {
+  if (!email || !password) {
     res.status(401).render("logIn", {
       error: "Please add all the fields!",
       data: {
-        userName: userName || "",
+        email: email || "",
         password: password || "",
       },
     });
   }
 
-  User.findOne({ userName }, (err, doc) => {
+  User.findOne({ email }, (err, doc) => {
     if (err || !doc) {
       return res.status(401).render("logIn", {
-        error: "Invalid username or password!",
+        error: "Invalid email or password!",
         data: {
-          userName,
+          email,
           password,
         },
       });
@@ -262,16 +262,16 @@ router.post("/log-in", (req, res) => {
     bcrypt.compare(password, doc.password, (err, matched) => {
       if (err || !matched) {
         return res.status(401).render("logIn", {
-          error: "Invalid username or password!",
+          error: "Invalid email or password!",
           data: {
-            userName,
+            email,
             password,
           },
         });
       }
 
       const token = jwt.sign(
-        { _id: doc._id, userName },
+        { _id: doc._id, email },
         process.env.SECRET_KEY
       );
 
@@ -293,6 +293,11 @@ router.post("/log-out", auth, (req, res) => {
 //*route    /author/:id
 //*desc     Fetch the required user's blogs
 router.get("/author/:id", auth, async (req, res) => {
+  //If the requested author is the currently logged in user then redirect them to their dashbaord
+  if (req.user) {
+    if (req.params.id.toString() === req.user._id.toString())
+      return res.redirect("/dashboard");
+  }
   try {
     try {
       const user = await User.findById(req.params.id);
@@ -302,6 +307,31 @@ router.get("/author/:id", auth, async (req, res) => {
         .sort({ timestamps: "desc" })
         .lean();
       return res.render("author", {
+        user,
+        posts: blogs,
+        isAuthenticated: req.user ? true : false,
+      });
+    } catch (error) {
+      return res.redirect("/error");
+    }
+  } catch (error) {
+    return res.redirect("/error");
+  }
+});
+
+//*route    /dashboard/
+//*desc     Fetch the logged in user's blogs
+router.get("/dashboard", auth, async (req, res) => {
+  if (!req.user) return res.redirect("/log-in");
+  try {
+    try {
+      const user = await User.findById(req.user._id);
+      if (!user) return res.redirect("/error");
+      const blogs = await Blog.find({ author: req.user._id })
+        .populate("author")
+        .sort({ timestamps: "desc" })
+        .lean();
+      return res.render("dashboard", {
         user,
         posts: blogs,
         isAuthenticated: req.user ? true : false,
