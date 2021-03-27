@@ -67,9 +67,9 @@
     <% } else { %>
         <div class="orderForms row">
             <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
-                <label for="quantity">Number of posts:</label>
+                <label for="quantity" class="qty">Number of posts:</label>
                 <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-                <button class="button  arrow" type="submit" style="min-width: 10em;" >Go</button>
+                <button class="button  arrow pagebtn" type="submit">Go</button>
             </form>
             <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
                 <select name="order" class="orderSelect">
@@ -83,38 +83,13 @@
                         <option value="old one first">Old one first</option>
                     <% }  %>
                 </select>
-                <button class="button  arrow" type="submit" style="min-width: 10em;"> Go</button>
+                <button class="button  arrow pagebtn" type="submit"> Go</button>
             </form>
         </div> 
         <% } %> 
     <hr>
-    <div class="row my-3">    
-        <% posts.forEach(function (post) { %>
-            <div class="post-preview col-md-5 mx-2 mx-md-auto py-3 my-3">
-                <h1> <%= post.blogTitle %> </h1>
-                <p class="post-date-font">Posted on <%= moment(new Date(post.timestamps)).format("dddd, MMMM Do YYYY, h:mm:ss a") %> </p>
-                <a href="/author/<%= post.author._id %> " class="p-2 mb-4">
-                    <i class="fas fa-user"></i>
-                    <%= post.author.userName %> 
-                </a><br>
-                <% if (post.category) { %>
-                    <div class="badge badge-pill badge-danger py-1 px-2">
-                        <%= post.category %> 
-                    </div>
-                <% } %>
-                <hr/>
-                <div class="post-content-font">
-
-                    <%- post.blogContent.substring(0,1000) + ("...") %>
-                </div>
-                <div>
-                    <a href="posts/<%= post._id %>"><button class="button read">Read More</button></a>
-                <i class="fa fa-comment fa-2x" style="float: right;" aria-hidden="true"><%= post.comments.length %></i>
-                </div>
-                
-
-            </div>
-        <% }); %>
+    <div class="my-3">    
+        <%- include("partials/posts", {posts}) -%>
     </div>
     <% if(search!="") {%>
         <% if (pages > 0) { %>
