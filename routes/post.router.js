@@ -43,6 +43,7 @@ router.get(
           title: post.blogTitle,
           content: post.blogContent,
           id: post._id,
+          photo:post.photo,
           comments: post.comments,
           category: post.category,
           author,

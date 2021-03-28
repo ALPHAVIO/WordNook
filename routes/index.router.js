@@ -162,11 +162,15 @@ router.post("/compose", auth,upload.single('photo'), function (req, res) {
   const postTitle = req.body.postTitle;
   const category = req.body.category;
   const postContent = req.body.postBody;
-  const photo = req.file.path
+  let photo="";
+  if(req.file){
+    photo=req.file.path;
+  }
   const blog = new Blog({
     blogTitle: postTitle,
     blogContent: postContent,
     category,
+    photo,
     comments: [],
     author: user._id,
   });
