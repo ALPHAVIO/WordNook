@@ -149,7 +149,7 @@ router.post(["/search"], auth, function (req, res) {
 
   Blog.find({
     blogTitle: { $regex: query, $options: "i" },
-    status: "Public" || "",
+    status: "Public",
   })
     .skip(perPage * currentPage - perPage)
     .sort({ timestamps: "desc" })
@@ -193,7 +193,7 @@ router.get(
 
     Blog.find({
       blogTitle: { $regex: query, $options: "i" },
-      status: "Public" || "",
+      status: "Public",
     })
       .populate("author")
       .sort({ timestamps: order === "new one first" ? "desc" : "asc" })
@@ -244,7 +244,7 @@ router.post("/category", auth, async (req, res, next) => {
   if (!category) {
     res.redirect("/");
   }
-  let posts = await Blog.find({ category, status: "Public" || "" }).populate(
+  let posts = await Blog.find({ category, status: "Public" }).populate(
     "author"
   );
   res.render("category", {

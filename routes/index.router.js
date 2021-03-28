@@ -70,7 +70,7 @@ router.get(
     if (req.query.perPage > 0) perPage = parseInt(req.query.perPage);
     const currentPage = req.params.page || 1;
     const order = req.query.order || "new one first";
-    Blog.find({ status: "Public" || "" })
+    Blog.find({ status: "Public" })
       .sort({ timestamps: order === "new one first" ? "desc" : "asc" })
       .populate("author")
       .skip(perPage * currentPage - perPage)
