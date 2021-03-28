@@ -3,20 +3,20 @@ const express = require("express");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
 
-const multer = require('multer');
+const multer = require("multer");
 
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './uploads/');
+  destination: function (req, file, cb) {
+    cb(null, "./uploads/");
   },
-  filename: function(req, file, cb) {
-    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
-  }
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
+  },
 });
 
 const fileFilter = (req, file, cb) => {
   // reject a file
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
     cb(null, true);
   } else {
     cb(null, false);
@@ -26,9 +26,9 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 5
+    fileSize: 1024 * 1024 * 5,
   },
-  fileFilter: fileFilter
+  fileFilter: fileFilter,
 });
 
 const router = express.Router();
@@ -69,7 +69,7 @@ router.get(
     if (req.query.perPage > 0) perPage = parseInt(req.query.perPage);
     const currentPage = req.params.page || 1;
     const order = req.query.order || "new one first";
-    Blog.find({})
+    Blog.find({ status: "Public" || "" })
       .sort({ timestamps: order === "new one first" ? "desc" : "asc" })
       .populate("author")
       .skip(perPage * currentPage - perPage)
@@ -154,19 +154,21 @@ router.get("/compose", auth, function (req, res) {
 });
 
 //Post request to save the new blogs to the DB
-router.post("/compose", auth,upload.single('photo'), function (req, res) {
+router.post("/compose", auth, upload.single("photo"), function (req, res) {
   const user = req.user;
   if (!user) {
     return res.status(401).redirect("/log-in");
   }
   const postTitle = req.body.postTitle;
   const category = req.body.category;
+  const status = req.body.status;
   const postContent = req.body.postBody;
-  const photo = req.file.path
+  // const photo = req.file.path;
   const blog = new Blog({
     blogTitle: postTitle,
     blogContent: postContent,
     category,
+    status,
     comments: [],
     author: user._id,
   });
