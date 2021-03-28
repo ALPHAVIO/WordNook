@@ -89,7 +89,14 @@
         <% } %> 
     <hr>
     <div class="my-3">    
-        <%- include("partials/posts", {posts}) -%>
+        <%# Check if there are posts for requested categories... %> 
+        <%if (posts.length) { %>
+            <%# If there are posts(length>=1) then display them through looping %> 
+            <%- include("partials/posts", {posts}) -%>
+            <%# If there are no posts(length=0) then display no blogs found %> 
+        <% } else { %>
+                <p class="mx-auto text-center text-danger">No Blogs Found...</p> 
+        <%}%>
     </div>
     <% if(search!="") {%>
         <% if (pages > 0) { %>
