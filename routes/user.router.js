@@ -42,6 +42,42 @@ router.get("/log-in", auth, (req, res) => {
   }
 });
 
+// to view own profile
+router.get("/read-profile", auth, async (req, res)=>{
+  const _id = req.user
+  const user = await User.findById(_id)
+  const blogs = await Blog.find({ author: req.params.id })
+        .populate("author")
+        .sort({ timestamps: "desc" })
+        .lean();
+  res.render('read-profile', {
+    user,
+    blogs,
+    isAuthenticated: req.user ? true : false,
+
+  })
+})
+
+router.post("/read-profile", auth, async (req, res)=>{
+  const updates = Object.keys(req.body)
+  const allowedUpdates = ['firstName', 'lastName', 'userName', 'email', 'password', 'confirmPassword']
+  const isValid = updates.every((update)=>allowedUpdates.includes(update))
+
+  if(!isValid){
+    res.status(400).send("invalid update property")
+  }
+
+  try{
+    const id = await req.user
+    const user = await User.findById(id._id)
+    updates.forEach((update)=>user[update] = req.body[update])
+    await user.save()
+    res.redirect('/')
+  }catch(e){
+    res.status(500).send(e)
+  }
+})
+
 //POST request for sign up
 router.post("/sign-up", (req, res) => {
   const {
