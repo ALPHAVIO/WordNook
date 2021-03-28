@@ -4,6 +4,7 @@ const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
 
 const multer = require("multer");
+const { isUndefined } = require("lodash");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -83,7 +84,7 @@ router.get(
               posts: foundBlogs,
               categories,
               current: currentPage,
-              pages: Math.ceil(count / perPage),
+              pages: Math.ceil(foundBlogs.length / perPage),
               search: "",
               perPage: perPage,
               order: order,

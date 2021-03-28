@@ -46,43 +46,36 @@ router.get(
     const user = req.user;
     let isAuthor = false;
     const requestedPostId = req.params.postId;
-    Blog.findOne(
-      { _id: requestedPostId, status: "Public" || " " },
-      async function (err, post) {
-        if (!err) {
-          // Check if the user and author of this post are same
-          if (
-            user &&
-            JSON.stringify(user._id) === JSON.stringify(post.author)
-          ) {
-            isAuthor = true;
-          }
-          //Sort the comments to show the recent one
-          post.comments = post.comments.sort((a, b) =>
-            a.timestamps > b.timestamps
-              ? -1
-              : a.timestamps < b.timestamps
-              ? 1
-              : 0
-          );
-          let author = await UserModel.findById(post.author);
-          res.render("post", {
-            title: post.blogTitle,
-            content: post.blogContent,
-            id: post._id,
-            comments: post.comments,
-            category: post.category,
-            author,
-            timestamps: post.timestamps,
-            isAuthor,
-            isAuthenticated: user ? true : false,
-            currentUser: user,
-          });
-        } else {
-          console.log(err);
+    Blog.findOne({ _id: requestedPostId }, async function (err, post) {
+      if (!err) {
+        // Check if the user and author of this post are same
+        if (user && JSON.stringify(user._id) === JSON.stringify(post.author)) {
+          isAuthor = true;
         }
+
+        if (post.status !== "Public") return res.redirect("/");
+        //Sort the comments to show the recent one
+        post.comments = post.comments.sort((a, b) =>
+          a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
+        );
+        // console.log(post.status);
+        let author = await UserModel.findById(post.author);
+        res.render("post", {
+          title: post.blogTitle,
+          content: post.blogContent,
+          id: post._id,
+          comments: post.comments,
+          category: post.category,
+          author,
+          timestamps: post.timestamps,
+          isAuthor,
+          isAuthenticated: user ? true : false,
+          currentUser: user,
+        });
+      } else {
+        console.log(err);
       }
-    );
+    });
   }
 );
 
