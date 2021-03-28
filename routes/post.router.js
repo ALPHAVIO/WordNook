@@ -43,6 +43,7 @@ router.get(
           title: post.blogTitle,
           content: post.blogContent,
           id: post._id,
+          photo:post.photo,
           comments: post.comments,
           category: post.category,
           author,
@@ -223,7 +224,7 @@ router.post("/category", auth, async (req, res, next) => {
 });
 
 //Edit Post route
-router.get("/posts/:id/edit", (req, res) => {
+router.get("/posts/:id/edit", auth, (req, res) => {
   Blog.findById(req.params.id, (err, fndBlog) => {
     if (err) {
       console.log(err);
