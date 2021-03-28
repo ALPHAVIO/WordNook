@@ -108,7 +108,6 @@ router.get("/about", auth, function (req, res) {
 router.get("/contact", auth, function (req, res) {
   res.render("contact", {
     contactContent: contactContent,
-    error: "",
     formData: {
       subject: "",
       email: "",
@@ -127,9 +126,9 @@ router.post("/contact", (req, res) => {
   sendMail(subject, email, message, (err, data) => {
     if (err) res.status(500).json({ message: "Error occurred!" });
     else {
+      req.flash("success","Email was sent successfully!")
       res.render("contact", {
-        contactContent: "Email was sent successfully!",
-        error: "",
+        contactContent : "Email was sent successfully!",
         formData: {
           subject: "",
           email: "",
@@ -145,6 +144,7 @@ router.post("/contact", (req, res) => {
 router.get("/compose", auth, function (req, res) {
   const user = req.user;
   if (!user) {
+    req.flash("error", "Please Log in before posting a Blog");
     return res.status(401).redirect("/log-in");
   }
   res.render("compose", {
@@ -157,6 +157,7 @@ router.get("/compose", auth, function (req, res) {
 router.post("/compose", auth,upload.single('photo'), function (req, res) {
   const user = req.user;
   if (!user) {
+    req.flash("error","Please Log in before posting a Blog");
     return res.status(401).redirect("/log-in");
   }
   const postTitle = req.body.postTitle;
@@ -171,6 +172,7 @@ router.post("/compose", auth,upload.single('photo'), function (req, res) {
     author: user._id,
   });
   blog.save();
+  req.flash("success","Blog Posted Successfully");
   res.redirect("/");
 });
 

@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3000;
 const connectDB = require("./config/db");
+const flash = require("connect-flash");
+const session = require("express-session");
 
 //Setting up the app middlewares and the ejs view engine-
 const app = express();
@@ -24,6 +26,21 @@ if (process.env.NODE_ENV !== "production") {
   const dotenv = require("dotenv");
   dotenv.config({ path: "./.env" });
 }
+
+// Using sessions for flash messages
+app.use(session({ 
+  secret:'DailyJournal', 
+  saveUninitialized: true, 
+  resave: true
+})); 
+
+app.use(flash());
+
+app.use(function(req, res, next){
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
+  next();
+});
 
 //Connecting to Mongo Database using ODM Mongoose-
 connectDB();

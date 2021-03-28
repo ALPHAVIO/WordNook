@@ -11,10 +11,10 @@ const router = express.Router();
 //GET request for Sign Up
 router.get("/sign-up", auth, (req, res) => {
   if (req.user) {
+    req.flash("error","Already logged in");
     res.redirect("/");
   } else {
     res.render("signUp", {
-      error: "",
       data: {
         firstName: "",
         lastName: "",
@@ -30,10 +30,10 @@ router.get("/sign-up", auth, (req, res) => {
 // GET request for Log In
 router.get("/log-in", auth, (req, res) => {
   if (req.user) {
+    req.flash("error","Already logged in");
     res.redirect("/");
   } else {
     res.render("logIn", {
-      error: "",
       data: {
         email: "",
         password: "",
@@ -192,6 +192,7 @@ router.post("/sign-up", (req, res) => {
         res.cookie("token", token, {
           httpOnly: true,
         });
+        req.flash("success",`Hi ${firstName} ${lastName}, Welcome to Daily Journal`);
         res.redirect("/");
       });
     });
@@ -243,6 +244,7 @@ router.post("/log-in", (req, res) => {
         httpOnly: true,
       });
 
+      req.flash("success", "Logged In successfully");
       res.redirect("/");
     });
   });
@@ -251,6 +253,7 @@ router.post("/log-in", (req, res) => {
 // Post route for log-out
 router.post("/log-out", auth, (req, res) => {
   res.clearCookie("token");
+  req.flash("success", "Logged Out Successfully");
   res.redirect("/");
 });
 
@@ -265,7 +268,10 @@ router.get("/author/:id", auth, async (req, res) => {
   try {
     try {
       const user = await User.findById(req.params.id);
-      if (!user) return res.redirect("/error");
+      if (!user){
+        req.flash("error", "User not found");
+        return res.redirect("/error");
+      }
       const blogs = await Blog.find({ author: req.params.id })
         .populate("author")
         .sort({ timestamps: "desc" })
@@ -276,9 +282,11 @@ router.get("/author/:id", auth, async (req, res) => {
         isAuthenticated: req.user ? true : false,
       });
     } catch (error) {
+      req.flash("error","Something went wrong");
       return res.redirect("/error");
     }
   } catch (error) {
+    req.flash("error","Something went wrong");
     return res.redirect("/error");
   }
 });
@@ -286,11 +294,17 @@ router.get("/author/:id", auth, async (req, res) => {
 //*route    /dashboard/
 //*desc     Fetch the logged in user's blogs
 router.get("/dashboard", auth, async (req, res) => {
-  if (!req.user) return res.redirect("/log-in");
+  if (!req.user){
+    req.flash("error","Please Login to see dashboard");
+    return res.redirect("/log-in");
+  }
   try {
     try {
       const user = await User.findById(req.user._id);
-      if (!user) return res.redirect("/error");
+      if (!user){
+        req.flash("error","User not found");
+        return res.redirect("/error");
+      }
       const blogs = await Blog.find({ author: req.user._id })
         .populate("author")
         .sort({ timestamps: "desc" })
@@ -301,9 +315,11 @@ router.get("/dashboard", auth, async (req, res) => {
         isAuthenticated: req.user ? true : false,
       });
     } catch (error) {
+      req.flash("error","Something went wrong");
       return res.redirect("/error");
     }
   } catch (error) {
+    req.flash("error","Something went wrong");
     return res.redirect("/error");
   }
 });

@@ -4,12 +4,6 @@
     <h1 class="heading-centre heading-bold normal-heading-font">Contact Us</h1>
     <p class="alert alert-success"> <%= contactContent %> </p> 
 
-    <% if(error) { %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
-    <% } %>
-
     <!-- contact form section -->
     <form action="/contact" method="POST" style="margin-top: 30px">
         <div class="form-group">

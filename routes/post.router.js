@@ -65,10 +65,12 @@ router.post("/posts/:postId/comment", auth, async function (req, res) {
     const { content } = req.body;
     //check if the user is authenticated
     if (!loggedUser) {
+      req.flash("error","You need to be logged in to post a comment");
       return res.status(401).redirect(req.baseUrl + "/sign-up");
     }
     //Server side form validation
     else if (content === "") {
+      req.flash("error","Empty comments cannot be posted");
       res.redirect(`/posts/${req.params.postId}`);
     } else {
       const doc = await Blog.findOne({ _id: req.params.postId });
@@ -83,10 +85,12 @@ router.post("/posts/:postId/comment", auth, async function (req, res) {
         { _id: req.params.postId },
         { comments: doc.comments }
       );
+      req.flash("success","Comment posted successfully");
       res.redirect(`/posts/${req.params.postId}`);
     }
   } catch (err) {
     if (err) console.log(err);
+    req.flash("error","Something went wrong");
     return res.redirect("back");
   }
 });
@@ -101,6 +105,7 @@ router.post(
     const commentNum = req.params.commentNum;
     if (!isUser) {
       // checking if user is authenticated
+      req.flash("error","You need to be logged in to do that");
       return res.status(401).redirect(req.baseUrl + "/sign-up");
     } else {
       const foundPost = await Blog.findOne({ _id: requestedPostId });
@@ -115,6 +120,7 @@ router.post(
           if (err) console.log(err);
         }
       );
+      req.flash("success","Comment deleted successfully");
       res.redirect(`/posts/${requestedPostId}`);
     }
   }
@@ -193,6 +199,7 @@ router.get(
 router.post("/posts/:postId/delete", auth, (req, res, next) => {
   const user = req.user;
   if (!user) {
+    req.flash("error","You need to be logged in to do that");
     return res.status(401).redirect("/log-in");
   }
 
@@ -200,6 +207,7 @@ router.post("/posts/:postId/delete", auth, (req, res, next) => {
   // console.log(requestedPostId)
   Blog.deleteOne({ _id: requestedPostId, author: user._id })
     .then(() => {
+      req.flash("success","Blog deleted");
       res.redirect("/");
     })
     .catch((error) => {
@@ -212,6 +220,7 @@ router.post("/posts/:postId/delete", auth, (req, res, next) => {
 router.post("/category", auth, async (req, res, next) => {
   const category = req.body.category;
   if (!category) {
+    req.flash("error","Something went wrong");
     res.redirect("/");
   }
   let posts = await Blog.find({ category }).populate("author");
@@ -227,10 +236,12 @@ router.get("/posts/:id/edit", (req, res) => {
   Blog.findById(req.params.id, (err, fndBlog) => {
     if (err) {
       console.log(err);
+      req.flash("error","Post not found");
+      return res.redirect("back");
     } else {
       res.render("edit", {
         blog: fndBlog,
-        isAuthenticated: req.user ? true : false,
+        isAuthenticated: req.user ? true : false
       });
     }
   });
@@ -240,8 +251,10 @@ router.get("/posts/:id/edit", (req, res) => {
 router.put("/posts/:id", (req, res) => {
   Blog.findByIdAndUpdate(req.params.id, req.body.post, (err, foundBlog) => {
     if (err) {
+      req.flash("error","Something went wrong");
       res.redirect("/");
     } else {
+      req.flash("success","Post updated successfully");
       res.redirect("/posts/" + req.params.id);
     }
   });
