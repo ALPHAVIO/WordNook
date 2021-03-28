@@ -234,10 +234,7 @@ router.post("/log-in", (req, res) => {
         });
       }
 
-      const token = jwt.sign(
-        { _id: doc._id, email },
-        process.env.SECRET_KEY
-      );
+      const token = jwt.sign({ _id: doc._id, email }, process.env.SECRET_KEY);
 
       res.cookie("token", token, {
         httpOnly: true,
@@ -266,7 +263,10 @@ router.get("/author/:id", auth, async (req, res) => {
     try {
       const user = await User.findById(req.params.id);
       if (!user) return res.redirect("/error");
-      const blogs = await Blog.find({ author: req.params.id })
+      const blogs = await Blog.find({
+        author: req.params.id,
+        status: "Public",
+      })
         .populate("author")
         .sort({ timestamps: "desc" })
         .lean();
