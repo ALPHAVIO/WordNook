@@ -14,6 +14,24 @@ router.use(bodyParser.json());
 const homeStartingContent =
   "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
 
+const categories = [
+  "IT & Software",
+  "Business",
+  "Personality Development",
+  "Design",
+  "Marketing",
+  "Lifestyle",
+  "Photography",
+  "Health & Fitness",
+  "Music",
+  "Academics",
+  "Language",
+  "Sports",
+  "Social media",
+  "History",
+  "Space and Research",
+];
+
 //Get request for posts page-
 router.get(
   [
@@ -34,10 +52,13 @@ router.get(
         if (user && JSON.stringify(user._id) === JSON.stringify(post.author)) {
           isAuthor = true;
         }
+
+        if (post.status !== "Public") return res.redirect("/");
         //Sort the comments to show the recent one
         post.comments = post.comments.sort((a, b) =>
           a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
         );
+        // console.log(post.status);
         let author = await UserModel.findById(post.author);
         res.render("post", {
           title: post.blogTitle,
@@ -127,9 +148,13 @@ router.post(["/search"], auth, function (req, res) {
   var perPage = 5;
   const currentPage = req.params.page || 1;
 
-  Blog.find({ blogTitle: { $regex: query, $options: "i" } })
+  Blog.find({
+    blogTitle: { $regex: query, $options: "i" },
+    status: "Public",
+  })
     .skip(perPage * currentPage - perPage)
     .sort({ timestamps: "desc" })
+    .populate("author")
     .limit(perPage)
     .exec(function (err, posts) {
       Blog.countDocuments(
@@ -139,6 +164,7 @@ router.post(["/search"], auth, function (req, res) {
             homeStartingContent: homeStartingContent,
             posts: posts,
             current: currentPage,
+            categories,
             pages: Math.ceil(count / perPage),
             search: query,
             perPage: perPage,
@@ -166,7 +192,11 @@ router.get(
     const order = req.query.order || "new one first";
     const currentPage = req.params.page || 1;
 
-    Blog.find({ blogTitle: { $regex: query, $options: "i" } })
+    Blog.find({
+      blogTitle: { $regex: query, $options: "i" },
+      status: "Public",
+    })
+      .populate("author")
       .sort({ timestamps: order === "new one first" ? "desc" : "asc" })
       .skip(perPage * currentPage - perPage)
       .limit(perPage)
@@ -215,7 +245,9 @@ router.post("/category", auth, async (req, res, next) => {
   if (!category) {
     res.redirect("/");
   }
-  let posts = await Blog.find({ category }).populate("author");
+  let posts = await Blog.find({ category, status: "Public" }).populate(
+    "author"
+  );
   res.render("category", {
     category,
     posts,
