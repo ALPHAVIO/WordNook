@@ -3,7 +3,7 @@ const express = require("express");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
 
-const multer = require('multer');
+const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -166,9 +166,9 @@ router.post("/compose", auth, upload.single("photo"), function (req, res) {
 
   const photo = req.file.path;
 
-  let photo="";
-  if(req.file){
-    photo=req.file.path;
+  // let photo="";
+  if (req.file) {
+    photo = req.file.path;
   }
 
   const blog = new Blog({
