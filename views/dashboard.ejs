@@ -1,14 +1,15 @@
 <%- include("partials/header", {isAuthenticated}) -%>
 <div class="container-fluid">
     <div class="row my-4">
-        <div class="col-lg-11 bg-light mx-2 mx-md-auto card p-0">
+        <div class="col-lg-11 card bg-light mx-2 mx-lg-auto card p-0">
+            
             <%# Display author's name %> 
             <div class="card-header text-center">
                 <h4><%= user.firstName %> <%= user.lastName %></h4>
                 <h6>@<%= user.userName %></h6>
             </div>
             <div class="card-body row accordion p-2" id="accordionExample">
-                <div class="col-md-6 mx-auto d-flex align-items-center justify-content-center">
+                <div class="col-md-6 mx-md-auto mx-2 d-flex align-items-center justify-content-center">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
