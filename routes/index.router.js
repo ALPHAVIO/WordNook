@@ -2,7 +2,6 @@
 const express = require("express");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
-
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -163,8 +162,6 @@ router.post("/compose", auth, upload.single("photo"), function (req, res) {
   const category = req.body.category;
   const status = req.body.status;
   const postContent = req.body.postBody;
-
-  const photo = req.file.path;
 
   let photo="";
   if(req.file){
