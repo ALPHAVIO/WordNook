@@ -164,7 +164,7 @@ router.post("/compose", auth, upload.single("photo"), function (req, res) {
   const status = req.body.status;
   const postContent = req.body.postBody;
 
-  const photo = req.file.path;
+  let photo;
 
   // let photo="";
   if (req.file) {

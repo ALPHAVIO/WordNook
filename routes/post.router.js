@@ -54,10 +54,13 @@ router.get(
         }
 
         if (
-          post.status !== "Public" &&
-          post.author._id.toString() !== user._id.toString()
-        )
+          post.status !== "Public" ||
+          (user && post.author._id.toString() !== user._id.toString())
+        ) {
           return res.redirect("/");
+          // if () {
+          // }
+        }
         //Sort the comments to show the recent one
         post.comments = post.comments.sort((a, b) =>
           a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
@@ -68,7 +71,7 @@ router.get(
           title: post.blogTitle,
           content: post.blogContent,
           id: post._id,
-          photo:post.photo,
+          photo: post.photo,
           comments: post.comments,
           category: post.category,
           author,
