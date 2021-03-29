@@ -3,8 +3,7 @@ const express = require("express");
 const auth = require("../middlewares/auth");
 const Blog = require("../models/Blog.model");
 
-const multer = require("multer");
-const { isUndefined } = require("lodash");
+const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -164,12 +163,20 @@ router.post("/compose", auth, upload.single("photo"), function (req, res) {
   const category = req.body.category;
   const status = req.body.status;
   const postContent = req.body.postBody;
-  // const photo = req.file.path;
+
+  const photo = req.file.path;
+
+  let photo="";
+  if(req.file){
+    photo=req.file.path;
+  }
+
   const blog = new Blog({
     blogTitle: postTitle,
     blogContent: postContent,
     category,
     status,
+    photo,
     comments: [],
     author: user._id,
   });
