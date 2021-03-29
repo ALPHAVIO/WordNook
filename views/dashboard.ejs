@@ -1,11 +1,12 @@
 <%- include("partials/header", {isAuthenticated}) -%>
 <div class="container-fluid">
     <div class="row my-4">
-        <div class="col-lg-11 card bg-light mx-2 mx-lg-auto card p-0">
-            
+        <div class="col-lg-11 card bg-light mx-2 mx-lg-auto card p-0">      
             <%# Display author's name %> 
             <div class="card-header text-center">
-                <h4><%= user.firstName %> <%= user.lastName %></h4>
+                <a href="/read-profile" class="text-info text-decoration-none">
+                    <h4><%= user.firstName %> <%= user.lastName %></h4>
+                </a>
                 <h6>@<%= user.userName %></h6>
             </div>
             <div class="card-body row accordion p-2" id="accordionExample">
