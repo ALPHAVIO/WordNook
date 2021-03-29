@@ -42,7 +42,7 @@
                                 <%- include("partials/posts", {posts}) -%>
                                 <%# If there are no posts(length=0) then display no blogs found %> 
                             <% } else { %>
-                                <p class="mx-auto text-danger">No Blogs Found...</p> 
+                                <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
                             <%}%>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                                 <%- include("partials/posts", {posts:posts.filter(post=>post.status==="Public")}) -%>
                                 <%# If there are no posts(length=0) then display no blogs found %> 
                             <% } else { %>
-                                <p class="mx-auto text-danger">No Blogs Found...</p> 
+                                <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
                             <%}%>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                                 <%- include("partials/posts", {posts:posts.filter(post=>post.status==="Private")}) -%>
                                 <%# If there are no posts(length=0) then display no blogs found %> 
                             <% } else { %>
-                                <p class="mx-auto text-danger">No Blogs Found...</p> 
+                                <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
                             <%}%>
                         </div>
                     </div>
