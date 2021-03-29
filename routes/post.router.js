@@ -266,6 +266,7 @@ router.get("/posts/:id/edit", (req, res) => {
     } else {
       res.render("edit", {
         blog: fndBlog,
+        categories,
         isAuthenticated: req.user ? true : false,
       });
     }
