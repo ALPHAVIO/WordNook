@@ -172,6 +172,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "AnanyaNegi",
+      "name": "Ananya Negi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54092197?v=4",
+      "profile": "https://ananya-negi.herokuapp.com/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
