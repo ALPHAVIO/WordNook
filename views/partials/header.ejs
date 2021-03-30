@@ -10,7 +10,35 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="icon" href="/images/favicon.ico" />
     <script src="https://kit.fontawesome.com/7a2242c499.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+      #topBtn{
+    position: fixed;
+    bottom: 75px;
+    left: 17px;
+    z-index: 1;
+  }
+  
+  #topBtn a{
+    height: 3rem;
+    width: 3rem;
+    text-align: center;
+    background: black;
+    display: block;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  #topBtn a span{
+    color: #f2f2f2;
+    line-height: 39px;
+    font-size: 28px;
+  } 
+  </style>
+  <div id="topBtn" title="Go to Top">
+    <a href="#"><span class="fa fa-angle-up"></span></a>
+  </div>
     <nav id="nav-id" class="navbar navbar-expand-md navbar-default darkmode--activated sticky-top">
         <div class="container">
           <a class="navbar-brand" href="/">DAILY <span class="navbar-brand-bold">JOURNAL</span></a>
@@ -63,7 +91,6 @@
         <div id="loader" class="pre"></div>
         <div class="container"></div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     </body>
 </head>
