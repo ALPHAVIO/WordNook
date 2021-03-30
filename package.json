@@ -1,7 +1,7 @@
 {
   "name": "ejs-challenge",
   "version": "1.0.0",
-  "description": "",
+  "description": "<div align=\"center\">\r   <h1>BlogSite</h1>\r   <img src=\"assets/New Banner.jpg\" />\r </div>",
   "main": "app.js",
   "engines": {
     "node": "14.15.1"
@@ -27,5 +27,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rimpi246/BlogSite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rimpi246/BlogSite/issues"
+  },
+  "homepage": "https://github.com/Rimpi246/BlogSite#readme"
 }
