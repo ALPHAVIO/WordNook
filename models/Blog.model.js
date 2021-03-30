@@ -6,9 +6,10 @@ const blogSchema = {
   blogTitle: String,
   blogContent: String,
   category: String,
+  status: String,
   comments: Array,
-  photo:{
-    type: String
+  photo: {
+    type: String,
   },
   timestamps: {
     type: Date,
