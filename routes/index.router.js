@@ -120,7 +120,7 @@ router.get('/contact', auth, function (req, res) {
 //post request for contact page
 router.post('/contact', (req, res) => {
   //requiring api for mailgun
-  const sendMail = require('../mail');
+  const sendMail = require('../middlewares/mail');
 
   const { subject, email, message } = req.body;
   sendMail(subject, email, message, (err, data) => {
