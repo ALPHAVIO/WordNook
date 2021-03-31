@@ -54,7 +54,7 @@ router.get(
         }
 
         if (
-          post.status === "Public" ||
+          post.status === 'Public' ||
           (user && post.author._id.toString() === user._id.toString())
         ) {
           //Sort the comments to show the recent one
@@ -67,7 +67,7 @@ router.get(
           );
           // console.log(post.status);
           let author = await UserModel.findById(post.author);
-          res.render("post", {
+          res.render('post', {
             title: post.blogTitle,
             content: post.blogContent,
             id: post._id,
@@ -81,7 +81,7 @@ router.get(
             currentUser: user,
           });
         } else {
-          return res.redirect("/");
+          return res.redirect('/');
         }
       } else {
         console.log(err);
