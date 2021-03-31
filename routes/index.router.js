@@ -62,7 +62,7 @@ const categories = [
 router.get(
   ['/', '/page/:page', '/page/:perPage', '/page/:page/:perPage', '/category'],
   auth,
-  async (req, res)=> {
+  async (req, res) => {
     var perPage = parseInt(req.params.perPage) || 5;
     var category = req.params.category || '';
     if (req.query.perPage > 0) perPage = parseInt(req.query.perPage);
