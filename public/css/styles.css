@@ -1,14 +1,14 @@
 /*font style: Quicksand*/
 
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
 
 /*font style: Patua One*/
 
-@import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
 
 /*font style: Open Sans*/
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
 :root {
   /*aesthetic theme*/
   --color-primary: #0d97ac;
@@ -25,11 +25,11 @@ body {
   width: 100%;
   min-height: 100vh;
   background-size: cover;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   opacity: 1;
   display: flex;
   flex-direction: column;
-  background-image: url("../images/bg4.jpg");
+  background-image: url('../images/bg4.jpg');
   background-size: cover;
   color: var(--color-primary);
 }
@@ -41,7 +41,7 @@ body {
   z-index: 1;
   overflow: visible;
   background: var(--color-primary)
-    url("https://i.pinimg.com/originals/34/cc/62/34cc62d1df1c8328f56ae7a7acf2e83a.gif")
+    url('https://i.pinimg.com/originals/34/cc/62/34cc62d1df1c8328f56ae7a7acf2e83a.gif')
     no-repeat center center;
 }
 
@@ -66,7 +66,6 @@ body {
   letter-spacing: 0.125rem;
   background-color: var(--color-text) !important;
   backdrop-filter: blur(10px);
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -97,13 +96,11 @@ body {
 .navbar-right {
   margin: 0;
   padding-top: 3vh;
-
 }
 
 .nav-link {
   font-weight: 600;
   font-size: 18px;
-
 }
 
 .navbar-right li a {
@@ -135,7 +132,7 @@ body {
 
 .navbar-right a::before,
 a::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 0%;
   height: 0.3vh;
@@ -192,7 +189,7 @@ a::after {
 }
 
 .normal-heading-font {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin-top: 3rem;
 }
 
@@ -206,9 +203,7 @@ a::after {
 }
 
 .content-body-font {
-
   font-size: 1.3rem;
-
 }
 
 /* Home page styles */
@@ -247,12 +242,13 @@ a::after {
 }
 
 .qty {
-    font-weight: bold;font-size: 1.4rem;
+  font-weight: bold;
+  font-size: 1.4rem;
 }
 /* Post page styles */
 
 .post-heading {
-  font-family: "Patua One", cursive;
+  font-family: 'Patua One', cursive;
   font-size: 3.4rem;
 }
 
@@ -274,27 +270,27 @@ a::after {
 }
 
 .form-control::-webkit-input-placeholder {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 150%;
 }
 
 .form-control:-ms-input-placeholder {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 150%;
 }
 
 .form-control:-moz-placeholder {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 150%;
 }
 
 .form-control::-ms-input-placeholder {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 150%;
 }
 
 .form-control::-moz-placeholder {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 150%;
 }
 
@@ -319,21 +315,21 @@ a::after {
 }
 
 .orderSelect {
-    padding: 0.2rem 0.4rem 0.36rem 0.4rem;
-    font-family: "Open Sans", sans-serif;
-    font-size: 130%;
-    border: 2px solid var(--color-primary);
-    border-radius: 8px;
+  padding: 0.2rem 0.4rem 0.36rem 0.4rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 130%;
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
 }
 
-input[name="perPage"] {
-    border: 2px solid var(--color-primary);
-    border-radius: 8px;
-    font-family: "Open Sans", sans-serif;
-    font-size: 110%;
-    text-align: center;
-    padding-bottom: 0.3rem;
-    padding-top: 0.13rem;
+input[name='perPage'] {
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 110%;
+  text-align: center;
+  padding-bottom: 0.3rem;
+  padding-top: 0.13rem;
 }
 
 .search-form {
@@ -372,7 +368,7 @@ input[name="perPage"] {
   display: block;
   width: 100%;
   border: none;
-  background-color:var(--color-primary);
+  background-color: var(--color-primary);
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
@@ -392,7 +388,7 @@ input[name="perPage"] {
 
 .button {
   display: inline-block;
-  font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+  font-family: 'Montserrat', 'Trebuchet MS', Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   position: relative;
   padding: 0.4em 1.4em;
@@ -414,8 +410,8 @@ input[name="perPage"] {
   padding-top: inherit;
   padding-bottom: inherit;
   width: 2.8em;
-  content: "\00a0";
-  font-family: "FontAwesome", sans-serif;
+  content: '\00a0';
+  font-family: 'FontAwesome', sans-serif;
   font-size: 1.2em;
   text-align: center;
   transition: 0.2s;
@@ -454,7 +450,7 @@ input[name="perPage"] {
 }
 
 .arrow:after {
-  content: "\F054";
+  content: '\F054';
 }
 
 .arrow:hover:after {
@@ -477,7 +473,7 @@ input[name="perPage"] {
 }
 
 .del:after {
-  content: "\F1F8";
+  content: '\F1F8';
 }
 
 .del:hover:after {
@@ -486,7 +482,7 @@ input[name="perPage"] {
 }
 
 .edit:after {
-	content: "\F044";
+  content: '\F044';
 }
 
 .pen {
@@ -503,7 +499,7 @@ input[name="perPage"] {
 }
 
 .pen:after {
-  content: "\F304";
+  content: '\F304';
 }
 
 .pen:hover:after {
@@ -529,7 +525,7 @@ input[name="perPage"] {
 }
 
 .read:after {
-  content: "\F4D5";
+  content: '\F4D5';
 }
 
 .read:hover:after {
@@ -540,7 +536,7 @@ input[name="perPage"] {
 }
 
 .search:after {
-  content: "\f002";
+  content: '\f002';
 }
 
 .search:hover:after {
@@ -564,7 +560,7 @@ input[name="perPage"] {
 }
 
 .commenting:after {
-  content: "\F075";
+  content: '\F075';
 }
 
 .commenting:hover:after {
@@ -589,7 +585,7 @@ input[name="perPage"] {
 }
 
 .publish:after {
-  content: "\F064";
+  content: '\F064';
 }
 
 .publish:hover:after {
@@ -600,23 +596,21 @@ input[name="perPage"] {
   text-indent: 0.1em;
 }
 
-
 .pagebtn {
-    min-width: 10em; 
-    padding-bottom: 0.2rem;
-    padding-top: 0.4rem;
+  min-width: 10em;
+  padding-bottom: 0.2rem;
+  padding-top: 0.4rem;
 }
-.content.like-active{
-  background-color:#e2532f  
+.content.like-active {
+  background-color: #e2532f;
 }
-.like:before{
+.like:before {
   color: black;
   content: 'Like';
 }
-.like.like-active:before{
- 
-  color:white;
-  content: "Liked";
+.like.like-active:before {
+  color: white;
+  content: 'Liked';
 }
 /*------------------------*/
 /* footer styles */
@@ -629,6 +623,6 @@ input[name="perPage"] {
 .footer-txt {
   color: var(--color-secondary);
 }
-.list-unstyled{
-margin-left: 1.125rem;
+.list-unstyled {
+  margin-left: 1.125rem;
 }

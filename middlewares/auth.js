@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/User.model");
+const jwt = require('jsonwebtoken');
+const User = require('../models/User.model');
 
 module.exports = (req, res, next) => {
   const token = req.cookies.token;
@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
 
     User.findById(payload._id, (err, user) => {
       if (err) {
-        return res.status(422).json("Oops! something went wrong!");
+        return res.status(422).json('Oops! something went wrong!');
       }
 
       if (!user) {
