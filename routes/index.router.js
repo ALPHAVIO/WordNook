@@ -1,21 +1,21 @@
 // requiring dependencies, models and middlewares
-const express = require("express");
-const auth = require("../middlewares/auth");
-const Blog = require("../models/Blog.model");
+const express = require('express');
+const auth = require('../middlewares/auth');
+const Blog = require('../models/Blog.model');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./uploads/");
+    cb(null, './uploads/');
   },
   filename: function (req, file, cb) {
-    cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
+    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
   },
 });
 
 const fileFilter = (req, file, cb) => {
   // reject a file
-  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true);
   } else {
     cb(null, false);
@@ -41,49 +41,49 @@ const contactContent =
   "Got a query to ask? Have an amazing idea? Loved our page? Okay! All you have to do is shoot a mail and we'll get back to you shortly.";
 
 const categories = [
-  "IT & Software",
-  "Business",
-  "Personality Development",
-  "Design",
-  "Marketing",
-  "Lifestyle",
-  "Photography",
-  "Health & Fitness",
-  "Music",
-  "Academics",
-  "Language",
-  "Sports",
-  "Social media",
-  "History",
-  "Space and Research",
+  'IT & Software',
+  'Business',
+  'Personality Development',
+  'Design',
+  'Marketing',
+  'Lifestyle',
+  'Photography',
+  'Health & Fitness',
+  'Music',
+  'Academics',
+  'Language',
+  'Sports',
+  'Social media',
+  'History',
+  'Space and Research',
 ];
 
 //Get request for home route-
 router.get(
-  ["/", "/page/:page", "/page/:perPage", "/page/:page/:perPage", "/category"],
+  ['/', '/page/:page', '/page/:perPage', '/page/:page/:perPage', '/category'],
   auth,
-  function (req, res) {
+  async (req, res) => {
     var perPage = parseInt(req.params.perPage) || 5;
-    var category = req.params.category || "";
+    var category = req.params.category || '';
     if (req.query.perPage > 0) perPage = parseInt(req.query.perPage);
     const currentPage = req.params.page || 1;
-    const order = req.query.order || "new one first";
-    Blog.find({ status: "Public" })
-      .sort({ timestamps: order === "new one first" ? "desc" : "asc" })
-      .populate("author")
+    const order = req.query.order || 'new one first';
+    Blog.find({ status: 'Public' })
+      .sort({ timestamps: order === 'new one first' ? 'desc' : 'asc' })
+      .populate('author')
       .skip(perPage * currentPage - perPage)
       .limit(perPage)
       .exec(function (err, foundBlogs) {
         Blog.count().exec(function (err, count) {
           if (err) console.log(err);
           else {
-            res.render("home", {
+            res.render('home', {
               homeStartingContent: homeStartingContent,
               posts: foundBlogs,
               categories,
               current: currentPage,
               pages: Math.ceil(foundBlogs.length / perPage),
-              search: "",
+              search: '',
               perPage: perPage,
               order: order,
               isAuthenticated: req.user ? true : false,
@@ -96,43 +96,43 @@ router.get(
 );
 
 //Get request for about page-
-router.get("/about", auth, function (req, res) {
-  res.render("about", {
+router.get('/about', auth, async (req, res) => {
+  res.render('about', {
     aboutContent: aboutContent,
     isAuthenticated: req.user ? true : false,
   });
 });
 
 //Get request for contact page-
-router.get("/contact", auth, function (req, res) {
-  res.render("contact", {
+router.get('/contact', auth, async (req, res) => {
+  res.render('contact', {
     contactContent: contactContent,
-    error: "",
+    error: '',
     formData: {
-      subject: "",
-      email: "",
-      message: "",
+      subject: '',
+      email: '',
+      message: '',
     },
     isAuthenticated: req.user ? true : false,
   });
 });
 
 //post request for contact page
-router.post("/contact", (req, res) => {
+router.post('/contact', async (req, res) => {
   //requiring api for mailgun
-  const sendMail = require("../mail");
+  const sendMail = require('../middlewares/mail');
 
   const { subject, email, message } = req.body;
   sendMail(subject, email, message, (err, data) => {
-    if (err) res.status(500).json({ message: "Error occurred!" });
+    if (err) res.status(500).json({ message: 'Error occurred!' });
     else {
-      res.render("contact", {
-        contactContent: "Email was sent successfully!",
-        error: "",
+      res.render('contact', {
+        contactContent: 'Email was sent successfully!',
+        error: '',
         formData: {
-          subject: "",
-          email: "",
-          message: "",
+          subject: '',
+          email: '',
+          message: '',
         },
         isAuthenticated: req.user ? true : false,
       });
@@ -141,31 +141,32 @@ router.post("/contact", (req, res) => {
 });
 
 //Get request for compose blog page-
-router.get("/compose", auth, function (req, res) {
+router.get('/compose', auth, async (req, res) => {
   const user = req.user;
   if (!user) {
-    return res.status(401).redirect("/log-in");
+    return res.status(401).redirect('/log-in');
   }
-  res.render("compose", {
+  res.render('compose', {
     categories,
     isAuthenticated: true,
   });
 });
 
 //Post request to save the new blogs to the DB
-router.post("/compose", auth, upload.single("photo"), function (req, res) {
+router.post('/compose', auth, upload.single('photo'), async (req, res) => {
   const user = req.user;
   if (!user) {
-    return res.status(401).redirect("/log-in");
+    return res.status(401).redirect('/log-in');
   }
   const postTitle = req.body.postTitle;
   const category = req.body.category;
   const status = req.body.status;
   const postContent = req.body.postBody;
 
-  let photo="";
-  if(req.file){
-    photo=req.file.path;
+  let photo = '';
+
+  if (req.file) {
+    photo = req.file.path;
   }
 
   const blog = new Blog({
@@ -178,7 +179,7 @@ router.post("/compose", auth, upload.single("photo"), function (req, res) {
     author: user._id,
   });
   blog.save();
-  res.redirect("/");
+  res.redirect('/');
 });
 
 module.exports = router;
