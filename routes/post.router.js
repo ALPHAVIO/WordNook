@@ -42,7 +42,7 @@ router.get(
     '/search/:query/:page/posts/:postId',
   ],
   auth,
-  function (req, res) {
+  async (req, res) => {
     const user = req.user;
     let isAuthor = false;
     const requestedPostId = req.params.postId;
@@ -85,7 +85,7 @@ router.get(
 );
 
 //Post request to create a comment
-router.post('/posts/:postId/comment', auth, async function (req, res) {
+router.post('/posts/:postId/comment', auth, async (req, res) => {
   try {
     const loggedUser = req.user;
     const { content } = req.body;
@@ -121,7 +121,7 @@ router.post('/posts/:postId/comment', auth, async function (req, res) {
 router.post(
   '/posts/:postId/comments/:commentNum',
   auth,
-  async function (req, res) {
+  async (req, res) => {
     const isUser = req.user ? true : false;
     const requestedPostId = req.params.postId;
     const commentNum = req.params.commentNum;
@@ -147,7 +147,7 @@ router.post(
 );
 
 //Post request to search by title
-router.post(['/search'], auth, function (req, res) {
+router.post(['/search'], auth, async (req, res) => {
   const query = req.body.query || req.params.query;
   var perPage = 5;
   const currentPage = req.params.page || 1;
@@ -189,7 +189,7 @@ router.get(
     '/search/:query',
   ],
   auth,
-  function (req, res) {
+  async (req, res) => {
     const query = req.params.query;
     var perPage = parseInt(req.params.perPage) || 5;
     if (req.query.perPage > 0) perPage = parseInt(req.query.perPage);
@@ -225,7 +225,7 @@ router.get(
 );
 
 //delete post route
-router.post('/posts/:postId/delete', auth, (req, res, next) => {
+router.post('/posts/:postId/delete', auth, async (req, res, next) => {
   const user = req.user;
   if (!user) {
     return res.status(401).redirect('/log-in');
@@ -260,7 +260,7 @@ router.post('/category', auth, async (req, res, next) => {
 });
 
 //Edit Post route
-router.get('/posts/:id/edit', auth, (req, res) => {
+router.get('/posts/:id/edit', auth, async (req, res) => {
   Blog.findById(req.params.id, (err, fndBlog) => {
     if (err) {
       console.log(err);
@@ -275,7 +275,7 @@ router.get('/posts/:id/edit', auth, (req, res) => {
 });
 
 //update post route
-router.put('/posts/:id', (req, res) => {
+router.put('/posts/:id', async (req, res) => {
   Blog.findByIdAndUpdate(req.params.id, req.body.post, (err, foundBlog) => {
     if (err) {
       res.redirect('/');
