@@ -6,6 +6,52 @@
                 <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="post[blogTitle]" value="<%= blog.blogTitle %>" autocomplete="off" required></input>
             </div>
             <div class="form-group">
+                <label>Status</label>
+                <select
+                  type="text"
+                  name="post[status]"
+                  class="form-control col-md-12 col-sm-12 col-xs-12"
+                  required
+
+                >
+                <% if (blog.status==="Public") { %>
+                    <option value="Public" selected>Public</option>
+                    <option value="Private">Private</option>
+                <% }else{ %>
+                    <option value="Public">Public</option>
+                    <option value="Private" selected>Private</option>
+                <% } %>
+                </select>
+                <p class="text-muted px-2">
+                  <strong>TIP:</strong>
+                  Save your posts in private status to save them as drafts.
+                </p>
+            </div>
+            <div className="form-group">
+                <label>Category:</label>
+                <select
+                  type="text"
+                    name="post[category]"
+                  class="form-control col-md-12 col-sm-12 col-xs-12"
+                  required
+                >
+                <% categories.forEach(item => { %>
+                    <% if (blog.category===item) { %>
+                        <option value="<%= item %>"
+                            selected
+                            >
+                          <%= item %> 
+                        </option>
+                    <% }else{ %>
+                        <option value="<%= item %>"
+                            >
+                          <%= item %> 
+                        </option>
+                    <% } %>
+                <% }) %>
+                </select>
+            </div>
+            <div class="form-group">
                 <label>Post</label>
                 <textarea class="form-control" id='content' type="text" name="post[blogContent]" rows="3" autocomplete="off" required><%= blog.blogContent%></textarea>
                 <script>
