@@ -62,7 +62,7 @@ const categories = [
 router.get(
   ['/', '/page/:page', '/page/:perPage', '/page/:page/:perPage', '/category'],
   auth,
-  function (req, res) {
+  async (req, res) => {
     var perPage = parseInt(req.params.perPage) || 5;
     var category = req.params.category || '';
     if (req.query.perPage > 0) perPage = parseInt(req.query.perPage);
@@ -96,7 +96,7 @@ router.get(
 );
 
 //Get request for about page-
-router.get('/about', auth, function (req, res) {
+router.get('/about', auth, async (req, res) => {
   res.render('about', {
     aboutContent: aboutContent,
     isAuthenticated: req.user ? true : false,
@@ -104,7 +104,7 @@ router.get('/about', auth, function (req, res) {
 });
 
 //Get request for contact page-
-router.get('/contact', auth, function (req, res) {
+router.get('/contact', auth, async (req, res) => {
   res.render('contact', {
     contactContent: contactContent,
     error: '',
@@ -118,7 +118,7 @@ router.get('/contact', auth, function (req, res) {
 });
 
 //post request for contact page
-router.post('/contact', (req, res) => {
+router.post('/contact', async (req, res) => {
   //requiring api for mailgun
   const sendMail = require('../middlewares/mail');
 
@@ -141,7 +141,7 @@ router.post('/contact', (req, res) => {
 });
 
 //Get request for compose blog page-
-router.get('/compose', auth, function (req, res) {
+router.get('/compose', auth, async (req, res) => {
   const user = req.user;
   if (!user) {
     return res.status(401).redirect('/log-in');
@@ -153,7 +153,7 @@ router.get('/compose', auth, function (req, res) {
 });
 
 //Post request to save the new blogs to the DB
-router.post('/compose', auth, upload.single('photo'), function (req, res) {
+router.post('/compose', auth, upload.single('photo'), async (req, res) => {
   const user = req.user;
   if (!user) {
     return res.status(401).redirect('/log-in');
