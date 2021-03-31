@@ -1,6 +1,6 @@
 <div class="row">
     <% posts.forEach(function (post) { %>
-        <div class="post-preview col-md-5 mx-2 mx-md-auto py-3 my-3">
+        <div class="post-preview col-lg-5 mx-2 mx-md-auto py-3 my-3">
             <div class="my-1">
                 <a href="/author/<%= post.author._id %> " class="mb-4" style="font-size: 22px;font-weight: bold;">
                     <i class="fas fa-user"></i>
@@ -14,8 +14,11 @@
                     <%= post.category %> 
                 </div>
             <% } %>
+            <p class="text-muted d-flex">
+                <%- post.blogContent.substring(0,50) %> <span>...</span>
+            </p>
             <div class="mt-2">
-                <a href="/posts/<%= post._id %>"><button class="button read">Read</button></a>
+                <a href="/posts/<%= post._id %>"><button class="button read">Read More</button></a>
                 <i class="fa fa-comment fa-2x" style="float: right;" aria-hidden="true"><%= post.comments.length %></i>
             </div>
             
