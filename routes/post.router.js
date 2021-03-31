@@ -52,8 +52,12 @@ router.get(
         if (user && JSON.stringify(user._id) === JSON.stringify(post.author)) {
           isAuthor = true;
         }
+        if (
+          post.status !== 'Public' &&
+          post.author._id.toString() !== user._id.toString()
+        )
+          return res.redirect('/');
 
-        if (post.status !== 'Public') return res.redirect('/');
         //Sort the comments to show the recent one
         post.comments = post.comments.sort((a, b) =>
           a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
@@ -263,6 +267,7 @@ router.get('/posts/:id/edit', auth, (req, res) => {
     } else {
       res.render('edit', {
         blog: fndBlog,
+        categories,
         isAuthenticated: req.user ? true : false,
       });
     }

@@ -13,50 +13,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <nav id="nav-id" class="navbar navbar-expand-md navbar-default darkmode--activated sticky-top">
         <div class="container">
-            <div class="navbar-header d-flex">
-                <a class="navbar-brand" href="/">DAILY <span class="navbar-brand-bold">JOURNAL</span></a
-          >
+          <a class="navbar-brand" href="/">DAILY <span class="navbar-brand-bold">JOURNAL</span></a>
           <button
-            class="navbar-toggler ml-auto"
-            data-toggle="collapse"
-            data-target="#navbar"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbar"
+          aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"
           >
             <i class="fas fa-bars"></i>
           </button>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="navbar-nav ml-md-auto align-items-center">
-            <li id="home" class="nav-item">
-              <a class="nav-link text-info" href="/">HOME</a>
+        
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-md-auto align-items-center">
+              <li id="home" class="nav-item">
+                <a class="nav-link text-info" href="/">HOME</a>
+              </li>
+              <li id="about" class="nav-item">
+                  <a class="nav-link text-info" href="/about">ABOUT</a>
+              </li>
+              <li id="contact" class="nav-item">
+                  <a class="nav-link text-info" href="/contact">CONTACT US</a>
+              </li>
+              <% if(isAuthenticated) { %>
+                <li id="read-profile" class="nav-item">
+                  <a class="nav-link text-info" href="/read-profile"><i class="fas fa-user"></i> </a>
                 </li>
-                <li id="about" class="nav-item">
-                    <a class="nav-link text-info" href="/about">ABOUT</a>
+                <li>
+                  <a class="nav-link text-info" href="/dashboard">DASHBOARD</a>
                 </li>
-                <li id="contact" class="nav-item">
-                    <a class="nav-link text-info" href="/contact">CONTACT US</a>
+                <li id="log-out">
+                    <form action="/log-out" method="post">
+                        <button class="btn btn-info btn-sm text-white logout" type="submit" name="log-out">Log out</button>
+                    </form>
                 </li>
-                <% if(isAuthenticated) { %>
-                  <li id="read-profile" class="nav-item">
-                    <a class="nav-link text-info" href="/read-profile"><i class="fas fa-user"></i> </a>
-                </li>
-                  <li>
-                    <a class="nav-link text-info" href="/dashboard">DASHBOARD</a>
+              <% }else{ %>
+                  <li id="log-in">
+                    <a href="/log-in" class="btn btn-info btn-sm text-white" role="button">Log in</a>
                   </li>
-                    <li id="log-out">
-                        <form action="/log-out" method="post">
-                            <button class="btn btn-info btn-sm text-white logout" type="submit" name="log-out">Log out</button>
-                        </form>
-                    </li>
-                <% }else{ %>
-                    <li id="log-in">
-                      <a href="/log-in" class="btn btn-info btn-sm text-white" role="button">Log in</a>
-                    </li>
-                    <li id="sign-up">
-                      <a href="/sign-up" class="btn btn-info btn-sm text-white" role="button"> Sign up</a>
-                    </li>
-                <% } %>
+                  <li id="sign-up">
+                    <a href="/sign-up" class="btn btn-info btn-sm text-white" role="button"> Sign up</a>
+                  </li>
+              <% } %>
             </ul>
-            </div>
+          </div>
         </div>
     </nav>
 
