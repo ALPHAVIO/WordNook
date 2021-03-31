@@ -54,29 +54,35 @@ router.get(
         }
 
         if (
-          post.status !== 'Public' &&
-          post.author._id.toString() !== user._id.toString()
-        )
-          return res.redirect('/');
-        //Sort the comments to show the recent one
-        post.comments = post.comments.sort((a, b) =>
-          a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
-        );
-        // console.log(post.status);
-        let author = await UserModel.findById(post.author);
-        res.render('post', {
-          title: post.blogTitle,
-          content: post.blogContent,
-          id: post._id,
-          photo: post.photo,
-          comments: post.comments,
-          category: post.category,
-          author,
-          timestamps: post.timestamps,
-          isAuthor,
-          isAuthenticated: user ? true : false,
-          currentUser: user,
-        });
+          post.status === "Public" ||
+          (user && post.author._id.toString() === user._id.toString())
+        ) {
+          //Sort the comments to show the recent one
+          post.comments = post.comments.sort((a, b) =>
+            a.timestamps > b.timestamps
+              ? -1
+              : a.timestamps < b.timestamps
+              ? 1
+              : 0
+          );
+          // console.log(post.status);
+          let author = await UserModel.findById(post.author);
+          res.render("post", {
+            title: post.blogTitle,
+            content: post.blogContent,
+            id: post._id,
+            photo: post.photo,
+            comments: post.comments,
+            category: post.category,
+            author,
+            timestamps: post.timestamps,
+            isAuthor,
+            isAuthenticated: user ? true : false,
+            currentUser: user,
+          });
+        } else {
+          return res.redirect("/");
+        }
       } else {
         console.log(err);
       }

@@ -1,21 +1,76 @@
 <%- include("partials/header", {isAuthenticated}) -%>
-<div class="container">
+<div class="container-fluid">
     <div class="row my-4">
-        <div class="col-lg-10 mx-2 mx-md-auto card p-0">
+        <div class="col-lg-11 card bg-light mx-2 mx-lg-auto card p-0">      
             <%# Display author's name %> 
             <div class="card-header text-center">
-                <h4><%= user.firstName %> <%= user.lastName %></h4>
+                <a href="/read-profile" class="text-info text-decoration-none">
+                    <h4><%= user.firstName %> <%= user.lastName %></h4>
+                </a>
                 <h6>@<%= user.userName %></h6>
             </div>
-            <div class="card-body p-2">
-                <%# Check if there are posts for requested categories... %> 
-                <%if (posts.length) { %>
-                    <%# If there are posts(length>=1) then display them through looping %> 
-                    <%- include("partials/posts", {posts}) -%>
-                    <%# If there are no posts(length=0) then display no blogs found %> 
-                <% } else { %>
-                    <p class="mx-auto text-danger">No Blogs Found...</p> 
-                <%}%>
+            <div class="card-body row accordion p-2" id="accordionExample">
+                <div class="col-md-6 mx-md-auto mx-2 d-flex align-items-center justify-content-center">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          All Blogs
+                        </button>
+                      </h2>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Public Blogs
+                        </button>
+                      </h2>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Private Blogs
+                          </button>
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-lg-12 mx-md-auto mx-2">
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <%# Check if there are posts for requested categories... %> 
+                            <%if (posts.length) { %>
+                                <%# If there are posts(length>=1) then display them through looping %> 
+                                <%- include("partials/posts", {posts}) -%>
+                                <%# If there are no posts(length=0) then display no blogs found %> 
+                            <% } else { %>
+                                <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
+                            <%}%>
+                        </div>
+                    </div>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <%# Check if there are posts for requested categories... %> 
+                            <%if (posts.length) { %>
+                                <%# If there are posts(length>=1) then display them through looping %> 
+                                <%- include("partials/posts", {posts:posts.filter(post=>post.status==="Public")}) -%>
+                                <%# If there are no posts(length=0) then display no blogs found %> 
+                            <% } else { %>
+                                <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
+                            <%}%>
+                        </div>
+                    </div>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <%# Check if there are posts for requested categories... %> 
+                            <%if (posts.length) { %>
+                                <%# If there are posts(length>=1) then display them through looping %> 
+                                <%- include("partials/posts", {posts:posts.filter(post=>post.status==="Private")}) -%>
+                                <%# If there are no posts(length=0) then display no blogs found %> 
+                            <% } else { %>
+                                <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
