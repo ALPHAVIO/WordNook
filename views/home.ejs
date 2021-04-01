@@ -28,6 +28,7 @@
                     name="category"
                     required
                     >
+                    <option value="" disabled hidden selected>Select a category</option>
                     <% categories.forEach(item => { %>
                         <option value="<%= item %>">
                             <%= item %>
