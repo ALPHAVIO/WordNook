@@ -9,7 +9,7 @@ const Blog = require('../models/Blog.model');
 const router = express.Router();
 
 //GET request for Sign Up
-router.get('/sign-up', auth, (req, res) => {
+router.get('/sign-up', auth, async (req, res) => {
   if (req.user) {
     res.redirect('/');
   } else {
@@ -28,7 +28,7 @@ router.get('/sign-up', auth, (req, res) => {
 });
 
 // GET request for Log In
-router.get('/log-in', auth, (req, res) => {
+router.get('/log-in', auth, async (req, res) => {
   if (req.user) {
     res.redirect('/');
   } else {
@@ -85,7 +85,7 @@ router.post('/read-profile', auth, async (req, res) => {
 });
 
 //POST request for sign up
-router.post('/sign-up', (req, res) => {
+router.post('/sign-up', async (req, res) => {
   const {
     firstName,
     lastName,
@@ -241,7 +241,7 @@ router.post('/sign-up', (req, res) => {
 });
 
 //POST request for log in
-router.post('/log-in', (req, res) => {
+router.post('/log-in', async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -288,7 +288,7 @@ router.post('/log-in', (req, res) => {
 });
 
 // Post route for log-out
-router.post('/log-out', auth, (req, res) => {
+router.post('/log-out', auth, async (req, res) => {
   res.clearCookie('token');
   res.redirect('/');
 });

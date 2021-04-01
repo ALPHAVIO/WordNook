@@ -42,7 +42,7 @@ router.get(
     '/search/:query/:page/posts/:postId',
   ],
   auth,
-  function (req, res) {
+  async (req, res) => {
     const user = req.user;
     let isAuthor = false;
     const requestedPostId = req.params.postId;
@@ -54,29 +54,35 @@ router.get(
         }
 
         if (
-          post.status !== 'Public' &&
-          post.author._id.toString() !== user._id.toString()
-        )
+          post.status === 'Public' ||
+          (user && post.author._id.toString() === user._id.toString())
+        ) {
+          //Sort the comments to show the recent one
+          post.comments = post.comments.sort((a, b) =>
+            a.timestamps > b.timestamps
+              ? -1
+              : a.timestamps < b.timestamps
+              ? 1
+              : 0
+          );
+          // console.log(post.status);
+          let author = await UserModel.findById(post.author);
+          res.render('post', {
+            title: post.blogTitle,
+            content: post.blogContent,
+            id: post._id,
+            photo: post.photo,
+            comments: post.comments,
+            category: post.category,
+            author,
+            timestamps: post.timestamps,
+            isAuthor,
+            isAuthenticated: user ? true : false,
+            currentUser: user,
+          });
+        } else {
           return res.redirect('/');
-        //Sort the comments to show the recent one
-        post.comments = post.comments.sort((a, b) =>
-          a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
-        );
-        // console.log(post.status);
-        let author = await UserModel.findById(post.author);
-        res.render('post', {
-          title: post.blogTitle,
-          content: post.blogContent,
-          id: post._id,
-          photo: post.photo,
-          comments: post.comments,
-          category: post.category,
-          author,
-          timestamps: post.timestamps,
-          isAuthor,
-          isAuthenticated: user ? true : false,
-          currentUser: user,
-        });
+        }
       } else {
         console.log(err);
       }
@@ -85,7 +91,7 @@ router.get(
 );
 
 //Post request to create a comment
-router.post('/posts/:postId/comment', auth, async function (req, res) {
+router.post('/posts/:postId/comment', auth, async (req, res) => {
   try {
     const loggedUser = req.user;
     const { content } = req.body;
@@ -118,36 +124,32 @@ router.post('/posts/:postId/comment', auth, async function (req, res) {
 });
 
 // Delete comment Route
-router.post(
-  '/posts/:postId/comments/:commentNum',
-  auth,
-  async function (req, res) {
-    const isUser = req.user ? true : false;
-    const requestedPostId = req.params.postId;
-    const commentNum = req.params.commentNum;
-    if (!isUser) {
-      // checking if user is authenticated
-      return res.status(401).redirect(req.baseUrl + '/sign-up');
-    } else {
-      const foundPost = await Blog.findOne({ _id: requestedPostId });
-      foundPost.comments = foundPost.comments.sort((a, b) =>
-        a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
-      );
-      foundPost.comments.splice(commentNum, 1);
-      await Blog.updateOne(
-        { _id: requestedPostId },
-        { comments: foundPost.comments },
-        function (err, foundPost) {
-          if (err) console.log(err);
-        }
-      );
-      res.redirect(`/posts/${requestedPostId}`);
-    }
+router.post('/posts/:postId/comments/:commentNum', auth, async (req, res) => {
+  const isUser = req.user ? true : false;
+  const requestedPostId = req.params.postId;
+  const commentNum = req.params.commentNum;
+  if (!isUser) {
+    // checking if user is authenticated
+    return res.status(401).redirect(req.baseUrl + '/sign-up');
+  } else {
+    const foundPost = await Blog.findOne({ _id: requestedPostId });
+    foundPost.comments = foundPost.comments.sort((a, b) =>
+      a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
+    );
+    foundPost.comments.splice(commentNum, 1);
+    await Blog.updateOne(
+      { _id: requestedPostId },
+      { comments: foundPost.comments },
+      function (err, foundPost) {
+        if (err) console.log(err);
+      }
+    );
+    res.redirect(`/posts/${requestedPostId}`);
   }
-);
+});
 
 //Post request to search by title
-router.post(['/search'], auth, function (req, res) {
+router.post(['/search'], auth, async (req, res) => {
   const query = req.body.query || req.params.query;
   var perPage = 5;
   const currentPage = req.params.page || 1;
@@ -189,7 +191,7 @@ router.get(
     '/search/:query',
   ],
   auth,
-  function (req, res) {
+  async (req, res) => {
     const query = req.params.query;
     var perPage = parseInt(req.params.perPage) || 5;
     if (req.query.perPage > 0) perPage = parseInt(req.query.perPage);
@@ -225,7 +227,7 @@ router.get(
 );
 
 //delete post route
-router.post('/posts/:postId/delete', auth, (req, res, next) => {
+router.post('/posts/:postId/delete', auth, async (req, res, next) => {
   const user = req.user;
   if (!user) {
     return res.status(401).redirect('/log-in');
@@ -260,7 +262,7 @@ router.post('/category', auth, async (req, res, next) => {
 });
 
 //Edit Post route
-router.get('/posts/:id/edit', auth, (req, res) => {
+router.get('/posts/:id/edit', auth, async (req, res) => {
   Blog.findById(req.params.id, (err, fndBlog) => {
     if (err) {
       console.log(err);
@@ -275,7 +277,7 @@ router.get('/posts/:id/edit', auth, (req, res) => {
 });
 
 //update post route
-router.put('/posts/:id', (req, res) => {
+router.put('/posts/:id', async (req, res) => {
   Blog.findByIdAndUpdate(req.params.id, req.body.post, (err, foundBlog) => {
     if (err) {
       res.redirect('/');
