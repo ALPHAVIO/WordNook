@@ -1,4 +1,4 @@
-var loader = document.getElementById("loader");
+var loader = document.getElementById('loader');
 
 function loadNow(opacity) {
   if (opacity <= 0) {
@@ -12,10 +12,10 @@ function loadNow(opacity) {
 }
 
 function displayContent() {
-  document.getElementById("loader").style.display = "none";
+  document.getElementById('loader').style.display = 'none';
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  loader = document.getElementById("loader");
+document.addEventListener('DOMContentLoaded', function () {
+  loader = document.getElementById('loader');
   loadNow(1);
 });
