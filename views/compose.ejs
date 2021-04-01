@@ -8,6 +8,22 @@
             <label>Title</label>
             <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="postTitle" autocomplete="off" required></input>
         </div>
+        <div class="form-group">
+            <label>Status</label>
+            <select
+              type="text"
+              name="status"
+              class="form-control col-md-12 col-sm-12 col-xs-12"
+              required
+            >
+                <option value="Public">Public</option>
+                <option value="Private">Private</option>
+            </select>
+            <p class="text-muted px-2">
+              <strong>TIP:</strong>
+              Save your posts in private status to save them as drafts.
+            </p>
+        </div>
         <div className="form-group">
             <label>Category:</label>
             <select
