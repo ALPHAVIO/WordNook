@@ -305,6 +305,13 @@ router.get('/author/:id', auth, async (req, res) => {
     try {
       const user = await User.findById(req.params.id);
       if (!user) return res.redirect('/error');
+      var toggleunfollow = false;
+      user.followers.forEach((item) => {
+        if (item.toString() === req.user._id.toString()){
+           toggleunfollow = true;
+        } 
+      })
+      
       const blogs = await Blog.find({
         author: req.params.id,
         status: 'Public',
@@ -314,6 +321,7 @@ router.get('/author/:id', auth, async (req, res) => {
         .lean();
       return res.render('author', {
         user,
+        toggleunfollow,
         posts: blogs,
         isAuthenticated: req.user ? true : false,
       });
@@ -349,5 +357,52 @@ router.get('/dashboard', auth, async (req, res) => {
     return res.redirect('/error');
   }
 });
+
+router.get('/follow/:id', auth, async (req, res) => {
+  if (!req.user) return res.redirect('/log-in');
+
+  User.findByIdAndUpdate(req.params.id, {
+    $push: { followers: req.user._id }
+  }, { new: true },
+    (err, result) => {
+      
+      if (err) {
+        return res.status(422).json({ error: err })
+      }
+      User.findByIdAndUpdate(req.user._id, {
+        $push: { following: req.params.id }
+      }, { new: true }).select("-password").then(result => {
+        return res.redirect(`/author/${req.params.id}`)
+      }).catch(err => {
+        return res.status(422).json({ error: err })
+      })
+    })
+  })
+
+router.get('/unfollow/:id', auth, async (req, res) => {
+  if (!req.user) return res.redirect('/log-in');
+
+  User.findByIdAndUpdate(req.params.id, {
+    $pull: { followers: req.user._id }
+  }, { new: true },
+    (err, result) => {
+      
+      if (err) {
+        return res.status(422).json({ error: err })
+      }
+      User.findByIdAndUpdate(req.user._id, {
+        $pull: { following: req.params.id }
+      }, { new: true }).select("-password").then(result => {
+        return res.redirect(`/author/${req.params.id}`)
+      }).catch(err => {
+        return res.status(422).json({ error: err })
+      })
+    })
+  })
+
+  
+
+
+
 
 module.exports = router;

@@ -6,6 +6,15 @@
             <div class="card-header text-center">
                 <h4><%= user.firstName %> <%= user.lastName %></h4>
                 <h6>@<%= user.userName %></h6>
+                <ul class="navbar-nav ml-md-auto align-items-center">
+                    <li class="nav-item">
+                        <a class=" text-info" style="cursor:pointer" ><%= user.followers.length %> followers</a> |
+                        <a class=" text-info" style="cursor:pointer" ><%= user.following.length %> following</a>
+                    </li>
+
+                </ul>
+                
+                
             </div>
             <div class="card-body p-2">
                 <%# Check if there are posts for requested categories... %> 
