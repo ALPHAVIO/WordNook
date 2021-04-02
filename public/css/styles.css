@@ -68,6 +68,24 @@ body {
     backdrop-filter: blur(10px);
 }
 
+/* styles for logo */
+#logo {
+    max-height: 5%;
+    max-width: 5%;
+    margin-right: 3vw;
+}
+
+@media screen and (max-width: 800px) {
+    #logo {
+        max-height: 9%;
+        max-width: 9%;
+        margin-right: 2vw;
+    }
+    .navbar-brand {
+        margin-right: 35vw;
+    }
+}
+
 @media only screen and (min-width: 768px) {
     .navbar {
         height: 10vh;
