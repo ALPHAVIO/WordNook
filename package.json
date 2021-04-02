@@ -29,7 +29,7 @@
     "netmask": "^2.0.1",
     "nodemailer": "^6.5.0",
     "nodemailer-mailgun-transport": "^2.0.2",
-    "pac-resolver": "^4.1.0",
+    "pac-resolver": "^4.2.0",
     "package-lock": "^1.0.5"
   },
   "devDependencies": {
