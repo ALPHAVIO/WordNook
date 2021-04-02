@@ -1,6 +1,5 @@
 *.ejs
-package.json
-package-lock.json
+*.json
 .all-contributorsrc
 CONTRIBUTING.md
 CODE_OF_CONDUCT.md
