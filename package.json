@@ -24,7 +24,7 @@
     "lodash": "^4.17.21",
     "method-override": "^3.0.0",
     "moment": "^2.29.1",
-    "mongoose": "^5.12.2",
+    "mongoose": "^5.12.3",
     "multer": "^1.4.2",
     "netmask": "^2.0.1",
     "nodemailer": "^6.5.0",
