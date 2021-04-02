@@ -644,3 +644,7 @@ input[name='perPage'] {
 .list-unstyled {
     margin-left: 1.125rem;
 }
+
+.difference-fix {
+    mix-blend-mode: difference !important;
+}
