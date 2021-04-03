@@ -32,6 +32,7 @@
               class="form-control col-md-12 col-sm-12 col-xs-12"
               required
             >
+            <option value="" disabled hidden selected>Select a category</option>
             <% categories.forEach(item => { %>
                 <option value="<%= item %>">
                   <%= item %> 
