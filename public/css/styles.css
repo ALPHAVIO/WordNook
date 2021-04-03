@@ -454,12 +454,20 @@ input[name='perPage'] {
     min-width: 15em;
 }
 
-.arrow {
+.f-btn{
+    font-family: 'Montserrat', 'Trebuchet MS', Helvetica, sans-serif;
+    color: white;
+    transition: 0.2s;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.arrow,.f-btn {
     background: var(--color-primary);
 }
 
-.arrow:hover {
+.arrow:hover,.f-btn:hover {
     background: #e75d3b;
+    color: white;
 }
 
 .arrow:active,
