@@ -158,7 +158,7 @@ router.post('/compose', auth, upload.single('photo'), async (req, res) => {
   if (!user) {
     return res.status(401).redirect('/log-in');
   }
-  const postTitle = req.body.postTitle;
+  const postTitle = capitalize(req.body.postTitle);
   const category = req.body.category;
   const status = req.body.status;
   const postContent = req.body.postBody;
@@ -183,3 +183,7 @@ router.post('/compose', auth, upload.single('photo'), async (req, res) => {
 });
 
 module.exports = router;
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
