@@ -65,7 +65,6 @@ router.post('/read-profile', auth, async (req, res) => {
     'userName',
     'email',
     'password',
-    'confirmPassword',
   ];
   const isValid = updates.every((update) => allowedUpdates.includes(update));
 
@@ -223,7 +222,7 @@ router.post('/sign-up', async (req, res) => {
               userName,
               email,
               password,
-              confirmPassword,
+              
             },
           });
         }
