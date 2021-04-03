@@ -221,19 +221,19 @@ a::after {
 }
 
 .content-body-font {
-  font-size: 1.3rem;
+    font-size: 1.3rem;
 }
 
-.f-s-22px{
-  font-size: 22px;
+.f-s-22px {
+    font-size: 22px;
 }
 
-.f-s-2-4rem{
-  font-size: 2.4rem;
+.f-s-2-4rem {
+    font-size: 2.4rem;
 }
 
-.fw-600{
-  font-weight:600;
+.fw-600 {
+    font-weight: 600;
 }
 
 /* Home page styles */
@@ -276,8 +276,8 @@ a::after {
     font-size: 1.4rem;
 }
 
-.min-w-10em{
-  min-width: 10em;
+.min-w-10em {
+    min-width: 10em;
 }
 
 /* Post page styles */
@@ -665,51 +665,51 @@ input[name='perPage'] {
 .difference-fix {
     mix-blend-mode: difference !important;
 }
-.list-unstyled{
-margin-left: 1.125rem;
+.list-unstyled {
+    margin-left: 1.125rem;
 }
 
-.footer-bg{
-  background-color:#07527e;
+.footer-bg {
+    background-color: #07527e;
 }
 
-.pl-5-per{
-  padding-left: 5%;
+.pl-5-per {
+    padding-left: 5%;
 }
 
-.pr-3-per{
-  padding-right:3%;
+.pr-3-per {
+    padding-right: 3%;
 }
 
-.footer-bg-dark{
-  background-color:rgb(14, 50, 80);
+.footer-bg-dark {
+    background-color: rgb(14, 50, 80);
 }
 
-.footer-heading{
-  color:rgb(255, 231, 10);
+.footer-heading {
+    color: rgb(255, 231, 10);
 }
 
-.social-icon{
-  font-size: 2rem;
-  margin-right:1em
+.social-icon {
+    font-size: 2rem;
+    margin-right: 1em;
 }
 
-.facebook{
-  color:#7ca1f3;
+.facebook {
+    color: #7ca1f3;
 }
 
-.instagram{
-  color:#fbad50;
+.instagram {
+    color: #fbad50;
 }
 
-.linkedin{
-  color:#0e89a8;
+.linkedin {
+    color: #0e89a8;
 }
 
-.youtube{
-  color:#FF0000;
+.youtube {
+    color: #ff0000;
 }
 
-.twitter{
-  color:#00abee;
+.twitter {
+    color: #00abee;
 }
