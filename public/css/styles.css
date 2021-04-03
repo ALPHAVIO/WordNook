@@ -622,14 +622,6 @@ input[name='perPage'] {
 .content.like-active {
     background-color: #e2532f;
 }
-.like:before {
-    color: black;
-    content: 'Like';
-}
-.like.like-active:before {
-    color: white;
-    content: 'Liked';
-}
 /*------------------------*/
 /* footer styles */
 

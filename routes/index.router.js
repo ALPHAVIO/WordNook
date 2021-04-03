@@ -177,6 +177,7 @@ router.post('/compose', auth, upload.single('photo'), async (req, res) => {
     photo,
     comments: [],
     author: user._id,
+    likes:0
   });
   blog.save();
   res.redirect('/');
