@@ -152,6 +152,11 @@ router.get('/compose', auth, async (req, res) => {
   });
 });
 
+//Capitalizing the first letter of the title of the blog
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 //Post request to save the new blogs to the DB
 router.post('/compose', auth, upload.single('photo'), async (req, res) => {
   const user = req.user;
@@ -184,6 +189,3 @@ router.post('/compose', auth, upload.single('photo'), async (req, res) => {
 
 module.exports = router;
 
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
