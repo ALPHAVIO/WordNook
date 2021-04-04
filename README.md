@@ -142,6 +142,7 @@ show collections
   <tr>
     <td align="center"><a href="https://github.com/Pranav016"><img src="https://avatars.githubusercontent.com/u/54665036?s=460&u=1bff30cf96a1502a7abd09755f179197007bc345&v=4" width="100px;" alt=""/><br /><sub><b>Pranav Mendiratta</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=Pranav016" title="Code">💻</a><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=Pranav016" title="Documentation">📖</a> <a href="https://github.com/ALPHAVIO/BlogSite/commits?author=Pranav016" title="Maintenance">🚧</a></td>
       <td align="center"><a href="https://ananya-negi.herokuapp.com/"><img src="https://avatars.githubusercontent.com/u/54092197?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ananya Negi</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=AnanyaNegi" title="Code">💻</a> <a href="https://github.com/ALPHAVIO/BlogSite/commits?author=AnanyaNegi" title="Documentation">📖</a> <a href="#maintenance-AnanyaNegi" title="Maintenance">🚧</a></td>
+	<td align="center"><a href="https://www.linkedin.com/in/rushankhan/"><img src="https://avatars.githubusercontent.com/u/56950471?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rushan Khan</b></sub></a><br /><a href="https://github.com/ALPHAVIO/BlogSite/commits?author=RushanKhan1" title="Code">💻</a> <a href="https://github.com/ALPHAVIO/BlogSite/commits?author=RushanKhan1" title="Documentation">📖</a> <a href="#maintenance-RushanKhan1" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
