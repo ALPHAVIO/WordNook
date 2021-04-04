@@ -661,3 +661,37 @@ input[name='perPage'] {
 .difference-fix {
     mix-blend-mode: difference !important;
 }
+
+/* Custom ScrollBar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    width: 0px;
+    border-radius: 0px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 10px;
+    border-radius: 5px;
+    background-color: #129fb4;
+    background-image: -webkit-linear-gradient(
+        45deg,
+        #e2532f 20%,
+        transparent 20%,
+        transparent 40%,
+        #e2532f 40%,
+        #e2532f 60%,
+        transparent 60%,
+        transparent 80%,
+        #e2532f 80%
+    );
+}
+
+::-webkit-scrollbar-thumb:hover {
+    transition: all 0.1s ease-in-out;
+    filter: blur(20px);
+}
