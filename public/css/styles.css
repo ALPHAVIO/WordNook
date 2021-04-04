@@ -565,7 +565,16 @@ input[name='perPage'] {
     animation: none;
     transform: scale(1.4);
 }
-
+.search {
+    background: var(--color-primary);
+}
+.search:hover {
+    background: #e75d3b;
+}
+.search:active,
+.search:focus {
+    background: var(--color-secondary);
+}
 .search:after {
     content: '\f002';
 }
