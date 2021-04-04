@@ -129,7 +129,8 @@ body {
 }
 
 .navbar-nav li a:hover {
-    color: var(--color-secondary) !important;
+     color: var(--color-secondary) !important;
+    background-color: var(--color-text);
 }
 
 /* navbar links */
