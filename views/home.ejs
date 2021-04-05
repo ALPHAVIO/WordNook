@@ -1,15 +1,15 @@
 <%- include("partials/header", {isAuthenticated}) -%>
 
 <div class="container">
-    <h2 class="normal-heading-font heading fw-600">Hi there!</h2>
+    <h2 class="normal-heading-font heading fweight-600">Hi there!</h2>
     <p class="content-body-font"> <%= homeStartingContent %> </p> 
     <div class="row">
         <div class="col-lg-3 col-sm-12 d-flex flex-column align-items-center">
-            <h3 class="normal-heading-font fw-600">Anything New?</h3>
+            <h3 class="normal-heading-font fweight-600">Anything New?</h3>
             <a href="/compose"><button class="button  pen">Compose</button></a>
         </div>
         <div class="col-lg-9 col-sm-12">
-            <h3 class="normal-heading-font fw-600">Looking for something....</h3>
+            <h3 class="normal-heading-font fweight-600">Looking for something....</h3>
             <form action="/search" method="POST">
                 <div class="form-group search-form">
                     <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
@@ -19,7 +19,7 @@
         </div>
         <% if (categories) { %>
         <div class="col-md-6 mt-0 mb-2 mx-2 mx-md-auto text-center">
-            <h3 class="normal-heading-font fw-600">Filter Category:</h3>
+            <h3 class="normal-heading-font fweight-600">Filter Category:</h3>
             <form action="/category" method="POST" class="d-flex align-items-center justify-content-center">
                 <div class="form-group">
                     <select

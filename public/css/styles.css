@@ -67,6 +67,7 @@ body {
     background-color: var(--color-text) !important;
     backdrop-filter: blur(10px);
 }
+/* -------------------------------------------------- */
 
 /* styles for logo */
 #logo {
@@ -131,7 +132,7 @@ body {
 .navbar-nav li a:hover {
     color: var(--color-secondary) !important;
 }
-
+/* ---------------------------------------------------- */
 /* navbar links */
 
 .logout {
@@ -145,7 +146,7 @@ body {
     border-radius: 4px;
     color: var(--color-secondary);
 }
-
+/* ---------------------------------------------------- */
 /*navbar animation*/
 
 .navbar-right a::before,
@@ -179,7 +180,7 @@ a::after {
     width: 100%;
     transition: 0s;
 }
-
+/* ---------------------------------------------------------------- */
 /* login page styles */
 
 .log-in-btn {
@@ -193,13 +194,13 @@ a::after {
     color: var(--color-secondary) !important;
     background-color: whitesmoke;
 }
-
+/* ------------------------------------------------------- */
 /* sign up page styles */
 
 .sign-up-place {
     color: var(--color-secondary);
 }
-
+/* ------------------------------------------------------- */
 /* text styles */
 
 .heading-bold {
@@ -224,18 +225,18 @@ a::after {
     font-size: 1.3rem;
 }
 
-.f-s-22px {
+.f-size-22px {
     font-size: 22px;
 }
 
-.f-s-2-4rem {
+.f-size-2-4rem {
     font-size: 2.4rem;
 }
 
-.fw-600 {
+.fweight-600 {
     font-weight: 600;
 }
-
+/* --------------------------------------------------------------- */
 /* Home page styles */
 
 .anynew,
@@ -279,7 +280,7 @@ a::after {
 .min-w-10em {
     min-width: 10em;
 }
-
+/* ------------------------------------------------------------- */
 /* Post page styles */
 
 .post-heading {
@@ -294,7 +295,7 @@ a::after {
     margin-bottom: 1.3rem;
     box-shadow: 0rem 0rem 0.07rem 0rem;
 }
-
+/* ------------------------------------------------------------ */
 /* Input boxes and placeholder text styles */
 
 .form-control {
@@ -344,7 +345,6 @@ a::after {
 }
 
 .orderForms {
-    /*display:flex;*/
     align-items: center;
     justify-content: space-between;
 }
@@ -418,7 +418,7 @@ input[name='perPage'] {
     width: 3.8rem !important;
     height: 3.2rem !important;
 }
-
+/* ------------------------------------------------------- */
 /* Button Styles */
 
 .button {
@@ -647,7 +647,7 @@ input[name='perPage'] {
     color: white;
     content: 'Liked';
 }
-/*------------------------*/
+/*----------------------------------------------------*/
 /* footer styles */
 
 .footer-class {
@@ -713,3 +713,4 @@ input[name='perPage'] {
 .twitter {
     color: #00abee;
 }
+/* ---------------------------------------------------- */
