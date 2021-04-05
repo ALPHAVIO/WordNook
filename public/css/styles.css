@@ -65,10 +65,10 @@ body {
     font-size: 1.5rem;
     letter-spacing: 0.125rem;
     background-color: var(--color-text) !important;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(0.625rem);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 50rem) {
     #logo {
         max-height: 2.25rem;
         max-width: 2rem;
@@ -79,7 +79,7 @@ body {
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 48rem) {
     .navbar {
         height: 10vh;
     }
@@ -111,7 +111,7 @@ body {
 
 .nav-link {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 .navbar-right li a {
@@ -129,14 +129,14 @@ body {
 /* navbar links */
 
 .logout {
-    margin-bottom: 3px;
+    margin-bottom: 0.188rem;
     background-color: var(--color-primary);
 }
 
 .logout:hover {
     background-color: var(--color-text);
-    border: solid 0.5px var(--color-secondary) !important;
-    border-radius: 4px;
+    border: solid 0.031rem var(--color-secondary) !important;
+    border-radius: 0.25rem;
     color: var(--color-secondary);
 }
 
@@ -179,11 +179,11 @@ a::after {
 .log-in-btn {
     color: var(--color-text);
     background-color: var(--color-secondary);
-    border: solid 1px var(--color-secondary);
+    border: solid 0.063rem var(--color-secondary);
 }
 
 .log-in-btn:hover {
-    border: solid 1px var(--color-secondary);
+    border: solid 0.063rem var(--color-secondary);
     color: var(--color-secondary) !important;
     background-color: whitesmoke;
 }
@@ -222,7 +222,7 @@ a::after {
 
 .anynew,
 .anylook {
-    margin-top: 25px;
+    margin-top: 1.563rem;
 }
 
 .posts-section {
@@ -276,9 +276,9 @@ a::after {
 
 .form-control {
     width: 100%;
-    border: 2px solid var(--color-secondary);
-    height: 50px;
-    border-radius: 8px;
+    border: 0.125rem solid var(--color-secondary);
+    height: 3.125rem;
+    border-radius: 0.5rem;
 }
 
 .form-control::-webkit-input-placeholder {
@@ -330,13 +330,13 @@ a::after {
     padding: 0.2rem 0.4rem 0.36rem 0.4rem;
     font-family: 'Open Sans', sans-serif;
     font-size: 130%;
-    border: 2px solid var(--color-primary);
-    border-radius: 8px;
+    border: 0.125rem solid var(--color-primary);
+    border-radius: 0.5rem;
 }
 
 input[name='perPage'] {
-    border: 2px solid var(--color-primary);
-    border-radius: 8px;
+    border: 0.125rem solid var(--color-primary);
+    border-radius: 0.5rem;
     font-family: 'Open Sans', sans-serif;
     font-size: 110%;
     text-align: center;
@@ -381,8 +381,8 @@ input[name='perPage'] {
     width: 100%;
     border: none;
     background-color: var(--color-primary);
-    padding: 14px 28px;
-    font-size: 16px;
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
     cursor: pointer;
     text-align: center;
 }
@@ -409,8 +409,8 @@ input[name='perPage'] {
     border: none;
     color: white;
     transition: 0.2s;
-    border: 3px solid white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 0.188rem solid white;
+    box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.5), 0 0.375rem 1.25rem 0 rgba(0, 0, 0, 0.19);
 }
 
 .button:before,
@@ -484,7 +484,7 @@ input[name='perPage'] {
 
 .del {
     background: var(--color-secondary);
-    margin-left: 5px;
+    margin-left: 0.313rem;
 }
 
 .del:hover {
