@@ -457,18 +457,19 @@ input[name='perPage'] {
         0 0.375rem 1.25rem 0 rgba(0, 0, 0, 0.19);
 }
 
-.btnFrame {
+.arrow,
+.f-btn {
     background: var(--color-primary);
 }
 
-
-.btnFrame:hover {
+.arrow:hover,
+.f-btn:hover {
     background: #e75d3b;
     color: white;
 }
 
-.btnFrame:active,
-.btnFrame:focus {
+.arrow:active,
+.arrow:focus {
     background: var(--color-secondary);
 }
 
@@ -508,6 +509,18 @@ input[name='perPage'] {
     content: '\F044';
 }
 
+.pen {
+    background: var(--color-primary);
+}
+
+.pen:hover {
+    background: #e75d3b;
+}
+
+.pen:active,
+.pen:focus {
+    background: var(--color-secondary);
+}
 
 .pen:after {
     content: '\F304';
