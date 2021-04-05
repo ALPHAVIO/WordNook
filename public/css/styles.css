@@ -126,6 +126,10 @@ body {
     background-color: var(--color-text);
 }
 
+.btn{
+    margin:6px;
+}
+
 /* navbar links */
 
 .logout {
