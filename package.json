@@ -1,7 +1,7 @@
 {
   "name": "ejs-challenge",
   "version": "1.0.0",
-  "description": "<div align=\"center\">\r   <h1>BlogSite</h1>\r   <img src=\"assets/New Banner.jpg\" />\r </div>",
+  "description": "",
   "main": "app.js",
   "engines": {
     "node": "14.15.1"
@@ -35,13 +35,5 @@
   "devDependencies": {
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Shivam-Shandilya1/BlogSite.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Shivam-Shandilya1/BlogSite/issues"
-  },
-  "homepage": "https://github.com/Shivam-Shandilya1/BlogSite#readme"
+  }
 }
