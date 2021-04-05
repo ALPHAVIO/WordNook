@@ -349,7 +349,7 @@ router.get('/dashboard', auth, async (req, res) => {
                 .populate('author')
                 .sort({ timestamps: 'desc' })
                 .lean();
-            const allusers = await User.find({})
+            const allusers = await User.find({});
             return res.render('dashboard', {
                 user,
                 allusers,
