@@ -23,3 +23,8 @@ const blogSchema = {
 
 //Making a MongoDB model for the schema-
 module.exports = mongoose.model('Blog', blogSchema);
+    likes: {
+        type: Number,
+        default: 0,
+    },
+};
