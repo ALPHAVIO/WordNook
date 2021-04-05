@@ -229,7 +229,6 @@ router.post('/sign-up', async(req, res) => {
                     });
                 } else {
                     //Sending the Confermation email
-                    console.log(req.body);
                     const transport = nodemailer.createTransport({
                         service: 'Gmail',
                         auth: {
