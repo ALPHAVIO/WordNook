@@ -14,3 +14,9 @@ const options = {
 
 const darkmode = new Darkmode(options);
 darkmode.showWidget();
+
+let button = document.getElementsByClassName('darkmode-toggle')[0];
+button.addEventListener('click', () => {
+    let image = document.getElementById('blog-image');
+    image.classList.toggle('difference-fix');
+});

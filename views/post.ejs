@@ -13,7 +13,7 @@
             <div class="card-content p-2">
                 <!-- If there is an image attached with the post then only render the image -->
                 <% if(photo){ %>
-                    <img src="..\<%- photo %>" alt="Image attached with the post" class="img-fluid pb-2">
+                    <img src="..\<%- photo %>" alt="Image attached with the post" class="img-fluid pb-2" id="blog-image">
                 <% } %>
                 <%- content %>
                 <!-- If this user is the author then only render the delete button-->

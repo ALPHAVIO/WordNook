@@ -65,7 +65,6 @@ router.post('/read-profile', auth, async (req, res) => {
         'userName',
         'email',
         'password',
-        'confirmPassword',
     ];
     const isValid = updates.every((update) => allowedUpdates.includes(update));
 
@@ -223,7 +222,6 @@ router.post('/sign-up', async (req, res) => {
                             userName,
                             email,
                             password,
-                            confirmPassword,
                         },
                     });
                 }
@@ -307,9 +305,6 @@ router.get('/author/:id', auth, async (req, res) => {
         if (req.params.id.toString() === req.user._id.toString())
             return res.redirect('/dashboard');
     }
-    // }else {
-    //     return res.redirect('/log-in');
-    // }
     try {
         try {
             const user = await User.findById(req.params.id);
