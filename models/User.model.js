@@ -28,11 +28,11 @@ const UserSchema = new Schema({
     status: {
         type: String,
         enum: ['Pending', 'Active'],
-        default: 'Pending'
+        default: 'Pending',
     },
     confirmationCode: {
         type: String,
-        unique: true
+        unique: true,
     },
 });
 // hash the password if it is modified

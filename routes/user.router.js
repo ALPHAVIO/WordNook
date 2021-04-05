@@ -209,8 +209,10 @@ router.post('/sign-up', async(req, res) => {
                 });
             }
             //This means that this is a valid new user
-            req.body.status = "Pending";
-            req.body.confirmationCode = jwt.sign({ email: req.body.email }, process.env.SECRET_KEY);
+            req.body.status = 'Pending';
+            req.body.confirmationCode = jwt.sign({ email: req.body.email },
+                process.env.SECRET_KEY
+            );
             const newUser = new User(req.body);
 
             newUser.save((err, doc) => {
@@ -229,36 +231,38 @@ router.post('/sign-up', async(req, res) => {
                     //Sending the Confermation email
                     console.log(req.body);
                     const transport = nodemailer.createTransport({
-                        service: "Gmail",
+                        service: 'Gmail',
                         auth: {
                             user: process.env.EMAIL,
                             pass: process.env.PASS,
                         },
                     });
-                    transport.sendMail({
-                        from: process.env.EMAIL,
-                        to: email,
-                        subject: "Please confirm your account",
-                        html: `<h1>Email Confirmation</h1>
+                    transport
+                        .sendMail({
+                            from: process.env.EMAIL,
+                            to: email,
+                            subject: 'Please confirm your account',
+                            html: `<h1>Email Confirmation</h1>
                             <h2>Hello ${userName}</h2>
                             <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
                             <a href=https://alphavio-daily-journal.herokuapp.com/confirm/${req.body.confirmationCode}> Click here</a>
                             </div>`,
-                    }).catch(err => {
-                        if (err) {
-                            console.log(err);
-                            return res.status(422).render('logIn', {
-                                error: 'Oops something went wrong!',
-                                data: {
-                                    firstName,
-                                    lastName,
-                                    userName,
-                                    email,
-                                    password,
-                                },
-                            });
-                        }
-                    });
+                        })
+                        .catch((err) => {
+                            if (err) {
+                                console.log(err);
+                                return res.status(422).render('logIn', {
+                                    error: 'Oops something went wrong!',
+                                    data: {
+                                        firstName,
+                                        lastName,
+                                        userName,
+                                        email,
+                                        password,
+                                    },
+                                });
+                            }
+                        });
                     return res.status(401).render('login', {
                         error: 'Pending Account. Please Verify Your Email',
                         data: {
@@ -272,37 +276,36 @@ router.post('/sign-up', async(req, res) => {
     });
 });
 
-
 //This route will recieve a get request when the user clicks on the confirmation link
-router.get("/confirm/:confirmationCode", (req, res, next) => {
+router.get('/confirm/:confirmationCode', (req, res, next) => {
     //find the user with this confirmation code
     User.findOne({
-        confirmationCode: req.params.confirmationCode,
-    }).then((user) => {
-        if (!user) {
-            return res.status(404).send({ message: "User Not found." });
-        }
-        user.status = "Active";
-        const email = user.email;
-        const password = "";
-        user.save((err) => {
-            if (err) {
-                res.status(500).send({ message: err });
-                return;
-            } else {
-                return res.status(401).render('login', {
-                    error: 'Account verified. Please Login Your Email',
-                    data: {
-                        email,
-                        password,
-                    },
-                });
+            confirmationCode: req.params.confirmationCode,
+        })
+        .then((user) => {
+            if (!user) {
+                return res.status(404).send({ message: 'User Not found.' });
             }
-        });
-    }).catch((e) => console.log("error : ", e));
-
-})
-
+            user.status = 'Active';
+            const email = user.email;
+            const password = '';
+            user.save((err) => {
+                if (err) {
+                    res.status(500).send({ message: err });
+                    return;
+                } else {
+                    return res.status(401).render('login', {
+                        error: 'Account verified. Please Login Your Email',
+                        data: {
+                            email,
+                            password,
+                        },
+                    });
+                }
+            });
+        })
+        .catch((e) => console.log('error : ', e));
+});
 
 //POST request for log in
 router.post('/log-in', async(req, res) => {
@@ -328,14 +331,14 @@ router.post('/log-in', async(req, res) => {
                 },
             });
         }
-        if (doc.status != "Active") {
+        if (doc.status != 'Active') {
             return res.status(401).render('login', {
                 error: 'Pending Account. Please Verify Your Email',
                 data: {
                     email,
                     password,
                 },
-            })
+            });
         }
         bcrypt.compare(password, doc.password, (err, matched) => {
             if (err || !matched) {
