@@ -19,6 +19,10 @@ const blogSchema = {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  likes: {
+    type: Number,
+    default: 0,
+  }
 };
 
 //Making a MongoDB model for the schema-

@@ -74,6 +74,7 @@ router.get(
             photo: post.photo,
             comments: post.comments,
             category: post.category,
+            likesCount:post.likes,
             author,
             timestamps: post.timestamps,
             isAuthor,
@@ -275,6 +276,28 @@ router.get('/posts/:id/edit', auth, async (req, res) => {
     }
   });
 });
+
+//Like functionality routes
+router.put('/posts/:id/like',async(req,res)=>{
+  const foundBlog=await Blog.findById({"_id":req.params.id});
+
+    if(foundBlog==null){
+      return res.sendStatus(404);
+    }
+    foundBlog.likes++;
+    foundBlog.save();
+    res.redirect(`/posts/${req.params.id}`);
+})
+router.put('/posts/:id/dislike',async(req,res)=>{
+  const foundBlog=await Blog.findById({"_id":req.params.id});
+
+    if(foundBlog==null){
+      return res.sendStatus(404);
+    }
+    foundBlog.likes--;
+    foundBlog.save();
+    res.redirect(`/posts/${req.params.id}`);
+})
 
 //update post route
 router.put('/posts/:id', async (req, res) => {
