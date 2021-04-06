@@ -708,7 +708,6 @@ input[name='perPage'] {
 }
 /* ---------------------------------------------------- */
 
-
 /* Custom ScrollBar */
 
 ::-webkit-scrollbar {
@@ -742,4 +741,3 @@ input[name='perPage'] {
     transition: all 0.1s ease-in-out;
     filter: blur(20px);
 }
-
