@@ -304,6 +304,8 @@ router.get('/author/:id', auth, async (req, res) => {
     if (req.user) {
         if (req.params.id.toString() === req.user._id.toString())
             return res.redirect('/dashboard');
+    }else {
+        return res.redirect('/log-in')
     }
     try {
         try {
