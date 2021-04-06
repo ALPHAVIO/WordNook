@@ -9,8 +9,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js -e js,ejs",
-    "lint": "eslint .",
-    "lint-fix": "eslint --fix ."
+    "lint-check": "eslint .",
+    "lint": "eslint --fix ."
   },
   "author": "",
   "license": "ISC",

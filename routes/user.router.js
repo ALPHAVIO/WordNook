@@ -1,14 +1,14 @@
 // requiring dependencies, models and middlewares
 const express = require('express');
-const User = require('../models/User.model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const User = require('../models/User.model');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
 
 const router = express.Router();
 
-//GET request for Sign Up
+// GET request for Sign Up
 router.get('/sign-up', auth, async (req, res) => {
     if (req.user) {
         res.redirect('/');
@@ -53,7 +53,7 @@ router.get('/read-profile', auth, async (req, res) => {
     res.render('read-profile', {
         user,
         blogs,
-        isAuthenticated: req.user ? true : false,
+        isAuthenticated: !!req.user,
     });
 });
 
@@ -83,7 +83,7 @@ router.post('/read-profile', auth, async (req, res) => {
     }
 });
 
-//POST request for sign up
+// POST request for sign up
 router.post('/sign-up', async (req, res) => {
     const {
         firstName,
@@ -231,7 +231,7 @@ router.post('/sign-up', async (req, res) => {
                     process.env.SECRET_KEY
                 );
 
-                //Send back the token to the user as a httpOnly cookie
+                // Send back the token to the user as a httpOnly cookie
                 res.cookie('token', token, {
                     httpOnly: true,
                 });
@@ -241,7 +241,7 @@ router.post('/sign-up', async (req, res) => {
     });
 });
 
-//POST request for log in
+// POST request for log in
 router.post('/log-in', async (req, res) => {
     const { email, password } = req.body;
 
@@ -297,10 +297,10 @@ router.post('/log-out', auth, async (req, res) => {
     res.redirect('/');
 });
 
-//*route    /author/:id
-//*desc     Fetch the required user's blogs
+//* route    /author/:id
+//* desc     Fetch the required user's blogs
 router.get('/author/:id', auth, async (req, res) => {
-    //If the requested author is the currently logged in user then redirect them to their dashbaord
+    // If the requested author is the currently logged in user then redirect them to their dashbaord
     if (req.user) {
         if (req.params.id.toString() === req.user._id.toString())
             return res.redirect('/dashboard');
@@ -311,7 +311,7 @@ router.get('/author/:id', auth, async (req, res) => {
         try {
             const user = await User.findById(req.params.id);
             if (!user) return res.redirect('/error');
-            var toggleunfollow = false;
+            let toggleunfollow = false;
             user.followers.forEach((item) => {
                 if (item.toString() === req.user._id.toString()) {
                     toggleunfollow = true;
@@ -329,7 +329,7 @@ router.get('/author/:id', auth, async (req, res) => {
                 user,
                 toggleunfollow,
                 posts: blogs,
-                isAuthenticated: req.user ? true : false,
+                isAuthenticated: !!req.user,
             });
         } catch (error) {
             return res.redirect('/error');
@@ -339,8 +339,8 @@ router.get('/author/:id', auth, async (req, res) => {
     }
 });
 
-//*route    /dashboard/
-//*desc     Fetch the logged in user's blogs
+//* route    /dashboard/
+//* desc     Fetch the logged in user's blogs
 router.get('/dashboard', auth, async (req, res) => {
     if (!req.user) return res.redirect('/log-in');
     try {
@@ -356,7 +356,7 @@ router.get('/dashboard', auth, async (req, res) => {
                 user,
                 allusers,
                 posts: blogs,
-                isAuthenticated: req.user ? true : false,
+                isAuthenticated: !!req.user,
             });
         } catch (error) {
             return res.redirect('/error');
@@ -387,12 +387,8 @@ router.get('/follow/:id', auth, async (req, res) => {
                 { new: true }
             )
                 .select('-password')
-                .then((result) => {
-                    return res.redirect(`/author/${req.params.id}`);
-                })
-                .catch((err) => {
-                    return res.status(422).json({ error: err });
-                });
+                .then((result) => res.redirect(`/author/${req.params.id}`))
+                .catch((err) => res.status(422).json({ error: err }));
         }
     );
 });
@@ -418,12 +414,8 @@ router.get('/unfollow/:id', auth, async (req, res) => {
                 { new: true }
             )
                 .select('-password')
-                .then((result) => {
-                    return res.redirect(`/author/${req.params.id}`);
-                })
-                .catch((err) => {
-                    return res.status(422).json({ error: err });
-                });
+                .then((result) => res.redirect(`/author/${req.params.id}`))
+                .catch((err) => res.status(422).json({ error: err }));
         }
     );
 });
