@@ -6,14 +6,14 @@
     <div class="row">
         <div class="col-lg-3 col-sm-12 d-flex flex-column align-items-center">
             <h3 class="normal-heading-font fweight-600">Anything New?</h3>
-            <a href="/compose"><button class="button  pen">Compose</button></a>
+            <a href="/compose"><button class="button  pen btnFrame">Compose</button></a>
         </div>
         <div class="col-lg-9 col-sm-12">
             <h3 class="normal-heading-font fweight-600">Looking for something....</h3>
             <form action="/search" method="POST">
                 <div class="form-group search-form">
                     <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
-                    <button class="button  search ml-3">Search</button>
+                    <button class="button  search ml-3 btnFrame">Search</button>
                 </div>
             </form>
         </div>
@@ -37,7 +37,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn ml-2 f-btn">Filter</button>
+                    <button type="submit" class="btn ml-2 f-btn btnFrame">Filter</button>
                 </div>
             </form>
           </div>
@@ -48,7 +48,7 @@
                 <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
                     <label class="label" for="quantity">Number of posts to display on this page:</label>
                     <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-                    <button class="button  arrow min-w-10em" type="submit"> Go</button>
+                    <button class="button  arrow min-w-10em btnFrame" type="submit"> Go</button>
                 </form>
                 <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
                     <select name="order" class="orderSelect">
@@ -62,7 +62,7 @@
                             <option value="old one first">Old one first</option>
                         <% }  %>
                     </select>
-                    <button class="button  arrow min-w-10em" type="submit"> Go</button>
+                    <button class="button  arrow min-w-10em btnFrame" type="submit"> Go</button>
                 </form>
         </div>
     <% } else { %>
@@ -70,7 +70,7 @@
             <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
                 <label for="quantity" class="qty">Number of posts:</label>
                 <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-                <button class="button  arrow pagebtn" type="submit">Go</button>
+                <button class="button  arrow pagebtn btnFrame" type="submit">Go</button>
             </form>
             <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
                 <select name="order" class="orderSelect">
@@ -84,7 +84,7 @@
                         <option value="old one first">Old one first</option>
                     <% }  %>
                 </select>
-                <button class="button  arrow pagebtn" type="submit"> Go</button>
+                <button class="button  arrow pagebtn btnFrame" type="submit"> Go</button>
             </form>
         </div> 
         <% } %> 
