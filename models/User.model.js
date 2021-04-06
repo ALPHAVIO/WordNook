@@ -29,6 +29,7 @@ const UserSchema = new Schema({
     },
     followers: [{ type: ObjectId, ref: 'User' }],
     following: [{ type: ObjectId, ref: 'User' }],
+    likedPosts : [{type: ObjectId, ref: 'Blog'}]
 });
 // hash the password if it is modified
 UserSchema.pre('save', async function (next) {
