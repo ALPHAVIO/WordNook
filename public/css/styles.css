@@ -468,7 +468,13 @@ input[name='perPage'] {
 .button {
     min-width: 15em;
 }
-
+.btnFrame{
+    background: var(--color-primary);
+}
+.btnFrame:hover{
+        background: #e75d3b;
+        color: white;
+}
 .f-btn {
     font-family: 'Montserrat', 'Trebuchet MS', Helvetica, sans-serif;
     color: white;
@@ -478,19 +484,7 @@ input[name='perPage'] {
         0 0.375rem 1.25rem 0 rgba(0, 0, 0, 0.19);
 }
 
-.arrow,
-.f-btn {
-    background: var(--color-primary);
-}
-
-.arrow:hover,
-.f-btn:hover {
-    background: #e75d3b;
-    color: white;
-}
-
-.arrow:active,
-.arrow:focus {
+.btnFrame:active,.btnFrame:focus {
     background: var(--color-secondary);
 }
 
@@ -528,19 +522,6 @@ input[name='perPage'] {
 
 .edit:after {
     content: '\F044';
-}
-
-.pen {
-    background: var(--color-primary);
-}
-
-.pen:hover {
-    background: #e75d3b;
-}
-
-.pen:active,
-.pen:focus {
-    background: var(--color-secondary);
 }
 
 .pen:after {
