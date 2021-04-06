@@ -71,15 +71,19 @@ router.get(
                     // console.log(post.status);
                     const author = await UserModel.findById(post.author);
                     let isLiked = false;
-                    if(user){
+                    if (user) {
                         const currUser = await UserModel.findById(user._id);
-                        isLiked = currUser.likedPosts.includes(req.params.postId) ? true : false;    
+                        isLiked = currUser.likedPosts.includes(
+                            req.params.postId
+                        )
+                            ? true
+                            : false;
                     }
                     res.render('post', {
                         title: post.blogTitle,
                         content: post.blogContent,
                         id: post._id,
-                        photo: post.photo, 
+                        photo: post.photo,
                         comments: post.comments,
                         category: post.category,
                         likesCount: post.likes,
@@ -88,7 +92,7 @@ router.get(
                         isAuthor,
                         isAuthenticated: !!user,
                         currentUser: user,
-                        isLiked : isLiked
+                        isLiked: isLiked,
                     });
                 } else {
                     return res.redirect('/');
@@ -286,35 +290,35 @@ router.get('/posts/:id/edit', auth, async (req, res) => {
 });
 
 // Like functionality routes
-router.put('/posts/:id/like',auth, async (req, res) => {
-    const {user} = req;
-    if(!user){
+router.put('/posts/:id/like', auth, async (req, res) => {
+    const { user } = req;
+    if (!user) {
         return res.redirect('/log-in');
     }
     const foundBlog = await Blog.findById({ _id: req.params.id });
-    
+
     if (foundBlog == null) {
         return res.sendStatus(404);
     }
-    const currUser = await UserModel.findById({_id: req.user._id});
+    const currUser = await UserModel.findById({ _id: req.user._id });
     currUser.likedPosts.push(foundBlog._id);
     foundBlog.likes++;
     foundBlog.save();
     currUser.save();
     res.redirect(`/posts/${req.params.id}`);
 });
-router.put('/posts/:id/dislike',auth, async (req, res) => {
+router.put('/posts/:id/dislike', auth, async (req, res) => {
     const foundBlog = await Blog.findById({ _id: req.params.id });
 
     if (foundBlog == null) {
         return res.sendStatus(404);
     }
-    if(!req.user){
+    if (!req.user) {
         return res.redirect('/log-in');
     }
-    const currUser = await UserModel.findById({_id: req.user._id});
+    const currUser = await UserModel.findById({ _id: req.user._id });
     let index = currUser.likedPosts.indexOf(foundBlog._id);
-    currUser.likedPosts.splice(index,1);
+    currUser.likedPosts.splice(index, 1);
     foundBlog.likes--;
     foundBlog.save();
     currUser.save();
