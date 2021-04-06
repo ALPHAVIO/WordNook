@@ -67,19 +67,13 @@ body {
     background-color: var(--color-text) !important;
     backdrop-filter: blur(10px);
 }
-
-/* styles for logo */
-#logo {
-    max-height: 5%;
-    max-width: 5%;
-    margin-right: 3vw;
-}
+/* -------------------------------------------------- */
 
 @media screen and (max-width: 800px) {
     #logo {
-        max-height: 9%;
-        max-width: 9%;
-        margin-right: 2vw;
+        max-height: 2.25rem;
+        max-width: 2rem;
+        margin-right: 0.25rem;
     }
     .navbar-brand {
         margin-right: 35vw;
@@ -133,6 +127,10 @@ body {
     background-color: var(--color-text);
 }
 
+.btn {
+    margin: 6px;
+}
+/* ---------------------------------------------------- */
 /* navbar links */
 
 .logout {
@@ -146,7 +144,7 @@ body {
     border-radius: 4px;
     color: var(--color-secondary);
 }
-
+/* ---------------------------------------------------- */
 /*navbar animation*/
 
 .navbar-right a::before,
@@ -180,7 +178,7 @@ a::after {
     width: 100%;
     transition: 0s;
 }
-
+/* ---------------------------------------------------------------- */
 /* login page styles */
 
 .log-in-btn {
@@ -194,13 +192,13 @@ a::after {
     color: var(--color-secondary) !important;
     background-color: whitesmoke;
 }
-
+/* ------------------------------------------------------- */
 /* sign up page styles */
 
 .sign-up-place {
     color: var(--color-secondary);
 }
-
+/* ------------------------------------------------------- */
 /* text styles */
 
 .heading-bold {
@@ -225,6 +223,18 @@ a::after {
     font-size: 1.3rem;
 }
 
+.f-size-22px {
+    font-size: 22px;
+}
+
+.f-size-2-4rem {
+    font-size: 2.4rem;
+}
+
+.fweight-600 {
+    font-weight: 600;
+}
+/* --------------------------------------------------------------- */
 /* Home page styles */
 
 .anynew,
@@ -264,6 +274,11 @@ a::after {
     font-weight: bold;
     font-size: 1.4rem;
 }
+
+.min-w-10em {
+    min-width: 10em;
+}
+/* ------------------------------------------------------------- */
 /* Post page styles */
 
 .post-heading {
@@ -278,7 +293,7 @@ a::after {
     margin-bottom: 1.3rem;
     box-shadow: 0rem 0rem 0.07rem 0rem;
 }
-
+/* ------------------------------------------------------------ */
 /* Input boxes and placeholder text styles */
 
 .form-control {
@@ -328,7 +343,6 @@ a::after {
 }
 
 .orderForms {
-    /*display:flex;*/
     align-items: center;
     justify-content: space-between;
 }
@@ -402,7 +416,7 @@ input[name='perPage'] {
     width: 3.8rem !important;
     height: 3.2rem !important;
 }
-
+/* ------------------------------------------------------- */
 /* Button Styles */
 
 .button {
@@ -643,7 +657,7 @@ input[name='perPage'] {
     color: white;
     content: 'Liked';
 }
-/*------------------------*/
+/*----------------------------------------------------*/
 /* footer styles */
 
 .footer-class {
@@ -661,3 +675,52 @@ input[name='perPage'] {
 .difference-fix {
     mix-blend-mode: difference !important;
 }
+.list-unstyled {
+    margin-left: 1.125rem;
+}
+
+.footer-bg {
+    background-color: #07527e;
+}
+
+.pl-5-per {
+    padding-left: 5%;
+}
+
+.pr-3-per {
+    padding-right: 3%;
+}
+
+.footer-bg-dark {
+    background-color: rgb(14, 50, 80);
+}
+
+.footer-heading {
+    color: rgb(255, 231, 10);
+}
+
+.social-icon {
+    font-size: 2rem;
+    margin-right: 1em;
+}
+
+.facebook {
+    color: #7ca1f3;
+}
+
+.instagram {
+    color: #fbad50;
+}
+
+.linkedin {
+    color: #0e89a8;
+}
+
+.youtube {
+    color: #ff0000;
+}
+
+.twitter {
+    color: #00abee;
+}
+/* ---------------------------------------------------- */

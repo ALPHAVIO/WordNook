@@ -1,4 +1,6 @@
 <%- include("partials/header", {isAuthenticated}) -%>
+
+
 <div class="container-fluid">
     <div class="row my-4">
         <div class="col-lg-11 card bg-light mx-2 mx-lg-auto card p-0">      
@@ -8,7 +10,85 @@
                     <h4><%= user.firstName %> <%= user.lastName %></h4>
                 </a>
                 <h6>@<%= user.userName %></h6>
+
+                    <%# Followers and Following section using accoridian %> 
+                <div class="accordion" id="accordionfollow">
+
+                    <div class="col-md-6 mx-md-auto mx-2 d-flex align-items-center justify-content-center"> 
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFollowers">
+                                <div class="text-info accordion-button" style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseFollowers" aria-expanded="false" aria-controls="collapseFollowers"  ><%= user.followers.length %> followers</div> 
+                            </h2>
+                        </div>
+
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFollowing">
+                                <div class="text-info accordion-button" style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseFollowing" aria-expanded="false" aria-controls="collapseFollowing"  ><%= user.following.length %> following</div> 
+                            </h2>
+                            
+                        </div>    
+                    </div>    
+                  
+                    <%# Followers list  %> 
+                    <div id="collapseFollowers" class="accordion-collapse collapse" aria-labelledby="headingFollowers" data-bs-parent="#accordionfollow"  >
+                        <div class="col-lg-12 mx-md-auto mx-2">
+                            <div class="accordion-body">
+                                <%# Check if there are followers for the current user %> 
+                                <%if (user.followers.length) { %>
+                                    <%# If there are followers(length>=1) then display them through looping %> 
+                                    <h5>Your Followers</h5> 
+                                    <% user.followers.forEach((followerid) => { %>
+                                        <% allusers.forEach((user) => { %>
+                                            <% if( String(followerid) === String(user._id) ){ %>                                                
+                                                <ul style="list-style-type: none;">
+                                                    <li> <a class="text-success font-weight-bold" href= "/author/<%= followerid %>"> @<%= user.userName %></a></li>  
+                                                </ul>                                            
+                                            <% } %>
+                                        <% }) %>
+                                    <% }) %>
+                                    
+                                    <%# If there are no followers(length=0) then display no followers found %> 
+                                <% } else { %>
+                                    <p class="mx-auto text-danger text-center">No followers found!!</p> 
+                                <%}%>
+                            </div>
+                        </div>
+                    </div>
+
+                    <%# Following list  %> 
+                    <div id="collapseFollowing" class="accordion-collapse collapse" aria-labelledby="headingFollowing" data-bs-parent="#accordionfollow"  >
+                        <div class="col-lg-12 mx-md-auto mx-2">
+                            <div class="accordion-body">
+                                <%# Check if there are followings for the current user %> 
+                                <%if (user.following.length) { %>
+                                    <%# If there are following(length>=1) then display them through looping %> 
+                                    <h5>Your Followings</h5> 
+                                    <% user.following.forEach((followingid) => { %>
+                                        <% allusers.forEach((user) => { %>
+                                            <% if( String(followingid) === String(user._id) ){ %>                                                
+                                                <ul style="list-style-type: none;">
+                                                    <li> <a class="text-success font-weight-bold" href= "/author/<%= followingid %>"> @<%= user.userName %></a></li>  
+                                                </ul>                                            
+                                            <% } %>
+                                        <% }) %>
+                                    <% }) %>
+                                    <%# If there are no following(length=0) then display no following found %> 
+                                <% } else { %>
+                                    <p class="mx-auto text-danger text-center">No followings found!!</p> 
+                                <%}%>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                    
             </div>
+           
+           
+
+
             <div class="card-body row accordion p-2" id="accordionExample">
                 <div class="col-md-6 mx-md-auto mx-2 d-flex align-items-center justify-content-center">
                     <div class="accordion-item">

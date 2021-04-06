@@ -1,25 +1,25 @@
 <%- include("partials/header", {isAuthenticated}) -%>
 
 <div class="container">
-    <h2 class="normal-heading-font heading" style="font-weight:600;">Hi there!</h2>
+    <h2 class="normal-heading-font heading fweight-600">Hi there!</h2>
     <p class="content-body-font"> <%= homeStartingContent %> </p> 
     <div class="row">
         <div class="col-lg-3 col-sm-12 d-flex flex-column align-items-center">
-            <h3 class="normal-heading-font" style="font-weight:600;">Anything New?</h3>
+            <h3 class="normal-heading-font fweight-600">Anything New?</h3>
             <a href="/compose"><button class="button  pen">Compose</button></a>
         </div>
         <div class="col-lg-9 col-sm-12">
-            <h3 class="normal-heading-font" style="font-weight:600;">Looking for something....</h3>
+            <h3 class="normal-heading-font fweight-600">Looking for something....</h3>
             <form action="/search" method="POST">
                 <div class="form-group search-form">
                     <input class="form-control" type="text" name="query" placeholder="Type down your query"autocomplete="off"  value="<%= search %>" required></input>
-                    <button class="button  search" style="margin-left: 1em;">Search</button>
+                    <button class="button  search ml-3">Search</button>
                 </div>
             </form>
         </div>
         <% if (categories) { %>
         <div class="col-md-6 mt-0 mb-2 mx-2 mx-md-auto text-center">
-            <h3 class="normal-heading-font" style="font-weight:600;">Filter Category:</h3>
+            <h3 class="normal-heading-font fweight-600">Filter Category:</h3>
             <form action="/category" method="POST" class="d-flex align-items-center justify-content-center">
                 <div class="form-group">
                     <select
@@ -48,7 +48,7 @@
                 <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
                     <label class="label" for="quantity">Number of posts to display on this page:</label>
                     <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-                    <button class="button  arrow" type="submit" style="min-width: 10em;"> Go</button>
+                    <button class="button  arrow min-w-10em" type="submit"> Go</button>
                 </form>
                 <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
                     <select name="order" class="orderSelect">
@@ -62,7 +62,7 @@
                             <option value="old one first">Old one first</option>
                         <% }  %>
                     </select>
-                    <button class="button  arrow" type="submit" style="min-width: 10em;;"> Go</button>
+                    <button class="button  arrow min-w-10em" type="submit"> Go</button>
                 </form>
         </div>
     <% } else { %>

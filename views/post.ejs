@@ -36,13 +36,22 @@
         </div>
         <div class="col-lg-4 mx-1 mx-md-auto">
             <!-- number of comments -->
-            <h6 class="text-muted mt-4 mt-lg-0" style="font-weight: 600"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h6>
+            <h6 class="text-muted mt-4 mt-lg-0 fweight-600"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h6>
             
             <!-- like button -->
             <div class="like-btn">
               <div class="content">
                 <span class="like_icon"></span>
-                <div class="like"></div>
+                <div><%= likesCount %> likes</div>
+                <% if(likesCount ==0){ %>
+                    <form action="/posts/<%=id%>/like?_method=PUT" method="POST">
+                        <button class="btn btn-primary" type="submit"><i class="far fa-thumbs-up mr-1"></i> Like</button>
+                    </form>
+                <% }else if(likesCount >0){ %>
+                    <form action="/posts/<%=id%>/dislike?_method=PUT" method="POST">
+                        <button class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up mr-1"></i>Liked</button>
+                    </form>
+                <% } %> 
               </div>
             </div>
             
@@ -65,8 +74,8 @@
             <% } %>
 
             <!-- add comment section -->
-            <h3 class="normal-heading-font" style="font-weight:600;">Add a comment</h3>
-            <form action="/posts/<%=id%>/comment" method="POST" style="margin-bottom: 3vh;">
+            <h3 class="normal-heading-font fweight-600">Add a comment</h3>
+            <form action="/posts/<%=id%>/comment" method="POST" class="mb-4">
                 <div class="form-group">
                     <label>Content</label>
                     <textarea name="content" ></textarea>
