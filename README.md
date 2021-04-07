@@ -12,9 +12,10 @@
 ## About-
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+<!-- DeepSource Badge and Dependabot Status badges -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-) [![DeepSource](https://deepsource.io/gh/ALPHAVIO/BlogSite.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/ALPHAVIO/BlogSite/?ref=repository-badge) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/BlogSite)](https://dependabot.com) 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/BlogSite)](https://dependabot.com)  
+
 
 - 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
 <br/>

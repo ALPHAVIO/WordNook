@@ -1,16 +1,16 @@
 // requiring dependencies, models and middlewares
 const express = require('express');
-const User = require('../models/User.model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const User = require('../models/User.model');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
 const nodemailer = require('nodemailer');
 
 const router = express.Router();
 
-//GET request for Sign Up
-router.get('/sign-up', auth, async(req, res) => {
+// GET request for Sign Up
+router.get('/sign-up', auth, async (req, res) => {
     if (req.user) {
         res.redirect('/');
     } else {
@@ -54,7 +54,7 @@ router.get('/read-profile', auth, async(req, res) => {
     res.render('read-profile', {
         user,
         blogs,
-        isAuthenticated: req.user ? true : false,
+        isAuthenticated: !!req.user,
     });
 });
 
@@ -83,9 +83,8 @@ router.post('/read-profile', auth, async(req, res) => {
         res.status(500).send(e);
     }
 });
-
-//POST request for sign up
-router.post('/sign-up', async(req, res) => {
+// POST request for sign up
+router.post('/sign-up', async (req, res) => {
     const {
         firstName,
         lastName,
@@ -122,9 +121,41 @@ router.post('/sign-up', async(req, res) => {
     const pwdRegex = new RegExp(
         /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
     );
+    const firstAndLastNameRegex = new RegExp(/^[a-zA-Z]+$/);
     if (userName.length < 6 || userName.length > 12) {
         return res.status(500).render('signUp', {
             error: 'Username should be between 6 to 12 character',
+            data: {
+                firstName,
+                lastName,
+                userName,
+                email,
+                password,
+                confirmPassword,
+            },
+        });
+    }
+
+    //Validation for firstName which accept only alphabet character
+    //call trim method on firstName if user by mistake give space after or before firstName
+
+    if (!firstAndLastNameRegex.test(firstName.trim())) {
+        return res.status(500).render('signUp', {
+            error: 'First Name must contain only alphabet character',
+            data: {
+                firstName,
+                lastName,
+                userName,
+                email,
+                password,
+                confirmPassword,
+            },
+        });
+    }
+
+    if (!firstAndLastNameRegex.test(lastName.trim())) {
+        return res.status(500).render('signUp', {
+            error: 'Last Name must contain only alphabet character',
             data: {
                 firstName,
                 lastName,
@@ -270,6 +301,16 @@ router.post('/sign-up', async(req, res) => {
                         },
                     });
                 }
+                const token = jwt.sign(
+                    { _id: doc._id },
+                    process.env.SECRET_KEY
+                );
+
+                // Send back the token to the user as a httpOnly cookie
+                res.cookie('token', token, {
+                    httpOnly: true,
+                });
+                res.redirect('/');
             });
         });
     });
@@ -305,9 +346,8 @@ router.get('/confirm/:confirmationCode', (req, res, next) => {
         })
         .catch((e) => console.log('error : ', e));
 });
-
-//POST request for log in
-router.post('/log-in', async(req, res) => {
+// POST request for log in
+router.post('/log-in', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -369,18 +409,30 @@ router.post('/log-out', auth, async(req, res) => {
     res.redirect('/');
 });
 
-//*route    /author/:id
-//*desc     Fetch the required user's blogs
-router.get('/author/:id', auth, async(req, res) => {
-    //If the requested author is the currently logged in user then redirect them to their dashbaord
+//* route    /author/:id
+//* desc     Fetch the required user's blogs
+router.get('/author/:id', auth, async (req, res) => {
+    // If the requested author is the currently logged in user then redirect them to their dashbaord
     if (req.user) {
         if (req.params.id.toString() === req.user._id.toString())
             return res.redirect('/dashboard');
+    } else {
+        return res.redirect('/log-in');
     }
     try {
         try {
             const user = await User.findById(req.params.id);
             if (!user) return res.redirect('/error');
+            let toggleunfollow = false;
+            user.followers.forEach((item) => {
+                if (item.toString() === req.user._id.toString()) {
+                    toggleunfollow = true;
+                }
+            });
+            const likedBlogs = await Blog.find({
+                _id: { $in: user.likedPosts },
+                status: 'Public',
+            });
             const blogs = await Blog.find({
                     author: req.params.id,
                     status: 'Public',
@@ -390,8 +442,10 @@ router.get('/author/:id', auth, async(req, res) => {
                 .lean();
             return res.render('author', {
                 user,
+                toggleunfollow,
                 posts: blogs,
-                isAuthenticated: req.user ? true : false,
+                isAuthenticated: !!req.user,
+                likedBlogs: likedBlogs,
             });
         } catch (error) {
             return res.redirect('/error');
@@ -401,9 +455,9 @@ router.get('/author/:id', auth, async(req, res) => {
     }
 });
 
-//*route    /dashboard/
-//*desc     Fetch the logged in user's blogs
-router.get('/dashboard', auth, async(req, res) => {
+//* route    /dashboard/
+//* desc     Fetch the logged in user's blogs
+router.get('/dashboard', auth, async (req, res) => {
     if (!req.user) return res.redirect('/log-in');
     try {
         try {
@@ -413,10 +467,16 @@ router.get('/dashboard', auth, async(req, res) => {
                 .populate('author')
                 .sort({ timestamps: 'desc' })
                 .lean();
+            const allusers = await User.find({});
+            const likedBlogs = await Blog.find({
+                _id: { $in: user.likedPosts },
+            });
             return res.render('dashboard', {
                 user,
+                allusers,
                 posts: blogs,
-                isAuthenticated: req.user ? true : false,
+                isAuthenticated: !!req.user,
+                likedBlogs: likedBlogs,
             });
         } catch (error) {
             return res.redirect('/error');
@@ -424,6 +484,60 @@ router.get('/dashboard', auth, async(req, res) => {
     } catch (error) {
         return res.redirect('/error');
     }
+});
+
+router.get('/follow/:id', auth, async (req, res) => {
+    if (!req.user) return res.redirect('/log-in');
+
+    User.findByIdAndUpdate(
+        req.params.id,
+        {
+            $push: { followers: req.user._id },
+        },
+        { new: true },
+        (err, result) => {
+            if (err) {
+                return res.status(422).json({ error: err });
+            }
+            User.findByIdAndUpdate(
+                req.user._id,
+                {
+                    $push: { following: req.params.id },
+                },
+                { new: true }
+            )
+                .select('-password')
+                .then((result) => res.redirect(`/author/${req.params.id}`))
+                .catch((err) => res.status(422).json({ error: err }));
+        }
+    );
+});
+
+router.get('/unfollow/:id', auth, async (req, res) => {
+    if (!req.user) return res.redirect('/log-in');
+
+    User.findByIdAndUpdate(
+        req.params.id,
+        {
+            $pull: { followers: req.user._id },
+        },
+        { new: true },
+        (err, result) => {
+            if (err) {
+                return res.status(422).json({ error: err });
+            }
+            User.findByIdAndUpdate(
+                req.user._id,
+                {
+                    $pull: { following: req.params.id },
+                },
+                { new: true }
+            )
+                .select('-password')
+                .then((result) => res.redirect(`/author/${req.params.id}`))
+                .catch((err) => res.status(422).json({ error: err }));
+        }
+    );
 });
 
 module.exports = router;

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
+const { ObjectId } = Schema.Types;
 
 const UserSchema = new Schema({
     firstName: {
@@ -34,6 +36,9 @@ const UserSchema = new Schema({
         type: String,
         unique: true,
     },
+    followers: [{ type: ObjectId, ref: 'User' }],
+    following: [{ type: ObjectId, ref: 'User' }],
+    likedPosts: [{ type: ObjectId, ref: 'Blog' }],
 });
 // hash the password if it is modified
 UserSchema.pre('save', async function(next) {
