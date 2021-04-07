@@ -27,12 +27,21 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    status: {
+        type: String,
+        enum: ['Pending', 'Active'],
+        default: 'Pending',
+    },
+    confirmationCode: {
+        type: String,
+        unique: true,
+    },
     followers: [{ type: ObjectId, ref: 'User' }],
     following: [{ type: ObjectId, ref: 'User' }],
     likedPosts: [{ type: ObjectId, ref: 'Blog' }],
 });
 // hash the password if it is modified
-UserSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function(next) {
     const user = this;
     if (user.isModified('password')) {
         user.password = await bcrypt.hash(user.password, 8);
