@@ -122,9 +122,7 @@ router.post('/sign-up', async (req, res) => {
     const pwdRegex = new RegExp(
         /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
     );
-    const firstAndLastNameRegex = new RegExp(
-        /^[a-zA-Z]+$/
-    );
+    const firstAndLastNameRegex = new RegExp(/^[a-zA-Z]+$/);
     if (userName.length < 6 || userName.length > 12) {
         return res.status(500).render('signUp', {
             error: 'Username should be between 6 to 12 character',
@@ -141,7 +139,7 @@ router.post('/sign-up', async (req, res) => {
 
     //Validation for firstName which accept only alphabet character
     //call trim method on firstName if user by mistake give space after or before firstName
-   
+
     if (!firstAndLastNameRegex.test(firstName.trim())) {
         return res.status(500).render('signUp', {
             error: 'First Name must contain only alphabet character',
