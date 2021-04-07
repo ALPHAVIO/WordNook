@@ -42,7 +42,7 @@
             <div class="like-btn">
               <div class="content">
                 <span class="like_icon"></span>
-                <div><%= likesCount %> likes</div>
+                <div><%= likesCount %> <% if(likesCount>1 || likesCount===0) { %> likes <% } else  {%> like <% } %></div>
                 <% if(!isLiked){ %>
                     <form action="/posts/<%=id%>/like?_method=PUT" method="POST">
                         <button class="btn btn-primary" type="submit"><i class="far fa-thumbs-up mr-1"></i> Like</button>
