@@ -317,7 +317,7 @@ router.get('/author/:id', auth, async (req, res) => {
                     toggleunfollow = true;
                 }
             });
-
+            const likedBlogs = await Blog.find({ '_id' : {$in : user.likedPosts}, status:'Public'});
             const blogs = await Blog.find({
                 author: req.params.id,
                 status: 'Public',
@@ -330,6 +330,7 @@ router.get('/author/:id', auth, async (req, res) => {
                 toggleunfollow,
                 posts: blogs,
                 isAuthenticated: !!req.user,
+                likedBlogs: likedBlogs
             });
         } catch (error) {
             return res.redirect('/error');
@@ -352,11 +353,13 @@ router.get('/dashboard', auth, async (req, res) => {
                 .sort({ timestamps: 'desc' })
                 .lean();
             const allusers = await User.find({});
+            const likedBlogs = await Blog.find({ '_id' : {$in : user.likedPosts}});
             return res.render('dashboard', {
                 user,
                 allusers,
                 posts: blogs,
                 isAuthenticated: !!req.user,
+                likedBlogs: likedBlogs
             });
         } catch (error) {
             return res.redirect('/error');
