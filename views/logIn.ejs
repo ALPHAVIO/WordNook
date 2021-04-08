@@ -19,9 +19,23 @@
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input class="form-control col-md-12 col-sm-12 col-xs-12" type="password" name="password"
+                        <input id="password" class="form-control col-md-12 col-sm-12 col-xs-12" type="password" name="password"
                             autocomplete="off" value="<%= data.password %>" required>
+                        <span class="password-icon"><i class="fa fa-eye" id="eye" onclick="togglePassword()"></i></span>
                     </div>
+                    <script>
+                        var state = false;
+                        function togglePassword() {
+                            if(state) {
+                                document.getElementById("password").setAttribute("type", "password");
+                                document.getElementById("eye").classList.remove('fa-eye-slash');
+                            } else {
+                                document.getElementById("password").setAttribute("type", "text");
+                                document.getElementById("eye").classList.add('fa-eye-slash');
+                            }
+                            state = !state;
+                        }
+                    </script>
                     <div class="text-center">
                         New User? <a href="/sign-up">Sign Up</a>
                     </div>
