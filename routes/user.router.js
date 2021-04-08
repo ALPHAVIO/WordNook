@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 
 // GET request for Sign Up
-router.get('/sign-up', auth, async(req, res) => {
+router.get('/sign-up', auth, async (req, res) => {
     if (req.user) {
         res.redirect('/');
     } else {
@@ -29,7 +29,7 @@ router.get('/sign-up', auth, async(req, res) => {
 });
 
 // GET request for Log In
-router.get('/log-in', auth, async(req, res) => {
+router.get('/log-in', auth, async (req, res) => {
     if (req.user) {
         res.redirect('/');
     } else {
@@ -44,7 +44,7 @@ router.get('/log-in', auth, async(req, res) => {
 });
 
 // to view own profile
-router.get('/read-profile', auth, async(req, res) => {
+router.get('/read-profile', auth, async (req, res) => {
     const _id = req.user;
     const user = await User.findById(_id);
     const blogs = await Blog.find({ author: req.params.id })
@@ -58,7 +58,7 @@ router.get('/read-profile', auth, async(req, res) => {
     });
 });
 
-router.post('/read-profile', auth, async(req, res) => {
+router.post('/read-profile', auth, async (req, res) => {
     const updates = Object.keys(req.body);
     const allowedUpdates = [
         'firstName',
@@ -85,7 +85,7 @@ router.post('/read-profile', auth, async(req, res) => {
 });
 
 // POST request for sign up
-router.post('/sign-up', async(req, res) => {
+router.post('/sign-up', async (req, res) => {
     const {
         firstName,
         lastName,
@@ -96,7 +96,8 @@ router.post('/sign-up', async(req, res) => {
     } = req.body;
 
     // Check if all the fields are filled
-    if (!firstName ||
+    if (
+        !firstName ||
         !lastName ||
         !userName ||
         !email ||
@@ -184,7 +185,8 @@ router.post('/sign-up', async(req, res) => {
 
     if (pwdRegex.test(password)) {
         return res.status(500).render('signUp', {
-            error: 'Your password must contain a minimum of 8 letter, with at least a symbol, upper and lower case letters and a number',
+            error:
+                'Your password must contain a minimum of 8 letter, with at least a symbol, upper and lower case letters and a number',
             data: {
                 firstName,
                 lastName,
@@ -242,7 +244,8 @@ router.post('/sign-up', async(req, res) => {
             }
             //This means that this is a valid new user
             req.body.status = 'Pending';
-            req.body.confirmationCode = jwt.sign({ email: req.body.email },
+            req.body.confirmationCode = jwt.sign(
+                { email: req.body.email },
                 process.env.SECRET_KEY
             );
             const newUser = new User(req.body);
@@ -311,8 +314,8 @@ router.post('/sign-up', async(req, res) => {
 router.get('/confirm/:confirmationCode', (req, res, next) => {
     //find the user with this confirmation code
     User.findOne({
-            confirmationCode: req.params.confirmationCode,
-        })
+        confirmationCode: req.params.confirmationCode,
+    })
         .then((user) => {
             if (!user) {
                 return res.status(404).send({ message: 'User Not found.' });
@@ -339,7 +342,7 @@ router.get('/confirm/:confirmationCode', (req, res, next) => {
 });
 
 // POST request for log in
-router.post('/log-in', async(req, res) => {
+router.post('/log-in', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -382,7 +385,8 @@ router.post('/log-in', async(req, res) => {
                 });
             }
 
-            const token = jwt.sign({ _id: doc._id, email },
+            const token = jwt.sign(
+                { _id: doc._id, email },
                 process.env.SECRET_KEY
             );
 
@@ -396,14 +400,14 @@ router.post('/log-in', async(req, res) => {
 });
 
 // Post route for log-out
-router.post('/log-out', auth, async(req, res) => {
+router.post('/log-out', auth, async (req, res) => {
     res.clearCookie('token');
     res.redirect('/');
 });
 
 //* route    /author/:id
 //* desc     Fetch the required user's blogs
-router.get('/author/:id', auth, async(req, res) => {
+router.get('/author/:id', auth, async (req, res) => {
     // If the requested author is the currently logged in user then redirect them to their dashbaord
     if (req.user) {
         if (req.params.id.toString() === req.user._id.toString())
@@ -426,9 +430,9 @@ router.get('/author/:id', auth, async(req, res) => {
                 status: 'Public',
             });
             const blogs = await Blog.find({
-                    author: req.params.id,
-                    status: 'Public',
-                })
+                author: req.params.id,
+                status: 'Public',
+            })
                 .populate('author')
                 .sort({ timestamps: 'desc' })
                 .lean();
@@ -449,7 +453,7 @@ router.get('/author/:id', auth, async(req, res) => {
 
 //* route    /dashboard/
 //* desc     Fetch the logged in user's blogs
-router.get('/dashboard', auth, async(req, res) => {
+router.get('/dashboard', auth, async (req, res) => {
     if (!req.user) return res.redirect('/log-in');
     try {
         try {
@@ -478,22 +482,26 @@ router.get('/dashboard', auth, async(req, res) => {
     }
 });
 
-router.get('/follow/:id', auth, async(req, res) => {
+router.get('/follow/:id', auth, async (req, res) => {
     if (!req.user) return res.redirect('/log-in');
 
     User.findByIdAndUpdate(
-        req.params.id, {
+        req.params.id,
+        {
             $push: { followers: req.user._id },
-        }, { new: true },
+        },
+        { new: true },
         (err, result) => {
             if (err) {
                 return res.status(422).json({ error: err });
             }
             User.findByIdAndUpdate(
-                    req.user._id, {
-                        $push: { following: req.params.id },
-                    }, { new: true }
-                )
+                req.user._id,
+                {
+                    $push: { following: req.params.id },
+                },
+                { new: true }
+            )
                 .select('-password')
                 .then((result) => res.redirect(`/author/${req.params.id}`))
                 .catch((err) => res.status(422).json({ error: err }));
@@ -501,22 +509,26 @@ router.get('/follow/:id', auth, async(req, res) => {
     );
 });
 
-router.get('/unfollow/:id', auth, async(req, res) => {
+router.get('/unfollow/:id', auth, async (req, res) => {
     if (!req.user) return res.redirect('/log-in');
 
     User.findByIdAndUpdate(
-        req.params.id, {
+        req.params.id,
+        {
             $pull: { followers: req.user._id },
-        }, { new: true },
+        },
+        { new: true },
         (err, result) => {
             if (err) {
                 return res.status(422).json({ error: err });
             }
             User.findByIdAndUpdate(
-                    req.user._id, {
-                        $pull: { following: req.params.id },
-                    }, { new: true }
-                )
+                req.user._id,
+                {
+                    $pull: { following: req.params.id },
+                },
+                { new: true }
+            )
                 .select('-password')
                 .then((result) => res.redirect(`/author/${req.params.id}`))
                 .catch((err) => res.status(422).json({ error: err }));
