@@ -489,8 +489,8 @@ input[name='perPage'] {
     background: var(--color-secondary);
 }
 
-.likebtn:after{
-    content:'\F164';
+.likebtn:after {
+    content: '\F164';
 }
 
 .arrow:after {
