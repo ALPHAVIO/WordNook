@@ -1,4 +1,4 @@
-<%- include("partials/header", {isAuthenticated}) -%>
+<%- include("../partials/header", {isAuthenticated}) -%>
     <div class="container-centre mt-5">
         <form action="/posts/<%=blog._id%>?_method=PUT" method="POST">
             <div class="form-group">
@@ -64,4 +64,4 @@
         </form>
     </div>
     <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
-<%- include("partials/footer") -%>
+<%- include("../partials/footer") -%>
