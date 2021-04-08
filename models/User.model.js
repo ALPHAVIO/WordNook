@@ -27,6 +27,15 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    status: {
+        type: String,
+        enum: ['Pending', 'Active'],
+        default: 'Pending',
+    },
+    confirmationCode: {
+        type: String,
+        unique: true,
+    },
     followers: [{ type: ObjectId, ref: 'User' }],
     following: [{ type: ObjectId, ref: 'User' }],
     likedPosts: [{ type: ObjectId, ref: 'Blog' }],
