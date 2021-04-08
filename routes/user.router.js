@@ -142,7 +142,7 @@ router.post('/sign-up', async (req, res) => {
     //call trim method on firstName if user by mistake give space after or before firstName
 
     if (!firstAndLastNameRegex.test(firstName.trim())) {
-        return res.status(500).render('signUp', {
+        return res.status(500).render('./auth/signUp', {
             error: 'First Name must contain only alphabet character',
             data: {
                 firstName,
@@ -156,7 +156,7 @@ router.post('/sign-up', async (req, res) => {
     }
 
     if (!firstAndLastNameRegex.test(lastName.trim())) {
-        return res.status(500).render('signUp', {
+        return res.status(500).render('./auth/signUp', {
             error: 'Last Name must contain only alphabet character',
             data: {
                 firstName,
@@ -285,7 +285,7 @@ router.post('/sign-up', async (req, res) => {
                         .catch((err) => {
                             if (err) {
                                 console.log(err);
-                                return res.status(422).render('logIn', {
+                                return res.status(422).render('./auth/logIn', {
                                     error: 'Oops something went wrong!',
                                     data: {
                                         firstName,
@@ -297,7 +297,7 @@ router.post('/sign-up', async (req, res) => {
                                 });
                             }
                         });
-                    return res.status(401).render('logIn', {
+                    return res.status(401).render('./auth/logIn', {
                         error: 'Pending Account. Please Verify Your Email',
                         data: {
                             email,
@@ -328,7 +328,7 @@ router.get('/confirm/:confirmationCode', (req, res, next) => {
                     res.status(500).send({ message: err });
                     return;
                 } else {
-                    return res.status(401).render('logIn', {
+                    return res.status(401).render('./auth/logIn', {
                         error: 'Account verified. Please Login Your Email',
                         data: {
                             email,
@@ -366,7 +366,7 @@ router.post('/log-in', async (req, res) => {
             });
         }
         if (doc.status != 'Active') {
-            return res.status(401).render('logIn', {
+            return res.status(401).render('./auth/logIn', {
                 error: 'Pending Account. Please Verify Your Email',
                 data: {
                     email,
