@@ -200,10 +200,10 @@ a::after {
 .password-icon {
     position: absolute;
     top: 70%;
-    right: 15px;
+    right: 0.938rem;
     transform: translate(0, -50%);
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25rem;
     background: none;
 }
 
