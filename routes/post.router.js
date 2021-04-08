@@ -70,7 +70,7 @@ router.get(
                     );
                     // console.log(post.status);
                     let author = await UserModel.findById(post.author);
-                    res.render('post', {
+                    res.render('./postitems/post', {
                         title: post.blogTitle,
                         content: post.blogContent,
                         id: post._id,
@@ -174,7 +174,7 @@ router.post(['/search'], auth, async (req, res) => {
             Blog.countDocuments(
                 { blogTitle: { $regex: query, $options: 'i' } },
                 function (err, count) {
-                    res.render('home', {
+                    res.render('./navitems/home', {
                         homeStartingContent: homeStartingContent,
                         posts: posts,
                         current: currentPage,
@@ -218,7 +218,7 @@ router.get(
                 Blog.countDocuments(
                     { blogTitle: { $regex: query, $options: 'i' } },
                     function (err, count) {
-                        res.render('home', {
+                        res.render('./navitems/home', {
                             homeStartingContent: homeStartingContent,
                             posts: posts,
                             current: currentPage,
@@ -262,7 +262,7 @@ router.post('/category', auth, async (req, res, next) => {
     let posts = await Blog.find({ category, status: 'Public' }).populate(
         'author'
     );
-    res.render('category', {
+    res.render('./postitems/category', {
         category,
         posts,
         isAuthenticated: req.user ? true : false,
@@ -275,7 +275,7 @@ router.get('/posts/:id/edit', auth, async (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render('edit', {
+            res.render('./postitems/edit', {
                 blog: fndBlog,
                 categories,
                 isAuthenticated: req.user ? true : false,

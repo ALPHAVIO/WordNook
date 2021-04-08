@@ -1,4 +1,4 @@
-<%- include("partials/header", {isAuthenticated}) -%>
+<%- include("../partials/header", {isAuthenticated}) -%>
 
 
 <div class="container-fluid">
@@ -119,7 +119,7 @@
                             <%# Check if there are posts for requested categories... %> 
                             <%if (posts.length) { %>
                                 <%# If there are posts(length>=1) then display them through looping %> 
-                                <%- include("partials/posts", {posts}) -%>
+                                <%- include("../partials/posts", {posts}) -%>
                                 <%# If there are no posts(length=0) then display no blogs found %> 
                             <% } else { %>
                                 <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
@@ -131,7 +131,7 @@
                             <%# Check if there are posts for requested categories... %> 
                             <%if (posts.length) { %>
                                 <%# If there are posts(length>=1) then display them through looping %> 
-                                <%- include("partials/posts", {posts:posts.filter(post=>post.status==="Public")}) -%>
+                                <%- include("../partials/posts", {posts:posts.filter(post=>post.status==="Public")}) -%>
                                 <%# If there are no posts(length=0) then display no blogs found %> 
                             <% } else { %>
                                 <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
@@ -143,7 +143,7 @@
                             <%# Check if there are posts for requested categories... %> 
                             <%if (posts.length) { %>
                                 <%# If there are posts(length>=1) then display them through looping %> 
-                                <%- include("partials/posts", {posts:posts.filter(post=>post.status==="Private")}) -%>
+                                <%- include("../partials/posts", {posts:posts.filter(post=>post.status==="Private")}) -%>
                                 <%# If there are no posts(length=0) then display no blogs found %> 
                             <% } else { %>
                                 <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
@@ -155,4 +155,4 @@
         </div>
     </div>
 </div>
-<%- include("partials/footer") -%>
+<%- include("../partials/footer") -%>

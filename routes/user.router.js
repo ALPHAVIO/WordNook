@@ -13,7 +13,7 @@ router.get('/sign-up', auth, async (req, res) => {
     if (req.user) {
         res.redirect('/');
     } else {
-        res.render('signUp', {
+        res.render('./auth/signUp', {
             error: '',
             data: {
                 firstName: '',
@@ -32,7 +32,7 @@ router.get('/log-in', auth, async (req, res) => {
     if (req.user) {
         res.redirect('/');
     } else {
-        res.render('logIn', {
+        res.render('./auth/logIn', {
             error: '',
             data: {
                 email: '',
@@ -50,7 +50,7 @@ router.get('/read-profile', auth, async (req, res) => {
         .populate('author')
         .sort({ timestamps: 'desc' })
         .lean();
-    res.render('read-profile', {
+    res.render('./useritems/read-profile', {
         user,
         blogs,
         isAuthenticated: req.user ? true : false,
@@ -103,7 +103,7 @@ router.post('/sign-up', async (req, res) => {
         !password ||
         !confirmPassword
     ) {
-        return res.status(422).render('signUp', {
+        return res.status(422).render('./auth/signUp', {
             error: 'Please add all the fields!',
             data: {
                 firstName: firstName || '',
@@ -123,7 +123,7 @@ router.post('/sign-up', async (req, res) => {
         /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
     );
     if (userName.length < 6 || userName.length > 12) {
-        return res.status(500).render('signUp', {
+        return res.status(500).render('./auth/signUp', {
             error: 'Username should be between 6 to 12 character',
             data: {
                 firstName,
@@ -137,7 +137,7 @@ router.post('/sign-up', async (req, res) => {
     }
 
     if (!emailRegx.test(email)) {
-        return res.status(500).render('signUp', {
+        return res.status(500).render('./auth/signUp', {
             error: 'Please enter a valid email address',
             data: {
                 firstName,
@@ -151,7 +151,7 @@ router.post('/sign-up', async (req, res) => {
     }
 
     if (pwdRegex.test(password)) {
-        return res.status(500).render('signUp', {
+        return res.status(500).render('./auth/signUp', {
             error:
                 'Your password must contain a minimum of 8 letter, with at least a symbol, upper and lower case letters and a number',
             data: {
@@ -165,7 +165,7 @@ router.post('/sign-up', async (req, res) => {
     }
 
     if (password !== confirmPassword) {
-        return res.status(500).render('signUp', {
+        return res.status(500).render('./auth/signUp', {
             error: 'Password does not match',
             data: {
                 firstName,
@@ -183,7 +183,7 @@ router.post('/sign-up', async (req, res) => {
             let error = 'Username already taken!';
             if (doc.email == email) error = 'Email already taken!';
             console.log(error);
-            return res.status(401).render('logIn', {
+            return res.status(401).render('./auth/logIn', {
                 error,
                 data: {
                     firstName,
@@ -197,7 +197,7 @@ router.post('/sign-up', async (req, res) => {
         }
         User.findOne({ userName }, (err, doc) => {
             if (doc) {
-                return res.status(401).render('logIn', {
+                return res.status(401).render('./auth/logIn', {
                     error: 'Username already taken!',
                     data: {
                         firstName,
@@ -214,7 +214,7 @@ router.post('/sign-up', async (req, res) => {
 
             newUser.save((err, doc) => {
                 if (err || !doc) {
-                    return res.status(422).render('logIn', {
+                    return res.status(422).render('./auth/logIn', {
                         error: 'Oops something went wrong!',
                         data: {
                             firstName,
@@ -246,7 +246,7 @@ router.post('/log-in', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        res.status(401).render('logIn', {
+        res.status(401).render('./auth/logIn', {
             error: 'Please add all the fields!',
             data: {
                 email: email || '',
@@ -257,7 +257,7 @@ router.post('/log-in', async (req, res) => {
 
     User.findOne({ email }, (err, doc) => {
         if (err || !doc) {
-            return res.status(401).render('logIn', {
+            return res.status(401).render('./auth/logIn', {
                 error: 'Invalid email or password!',
                 data: {
                     email,
@@ -268,7 +268,7 @@ router.post('/log-in', async (req, res) => {
 
         bcrypt.compare(password, doc.password, (err, matched) => {
             if (err || !matched) {
-                return res.status(401).render('logIn', {
+                return res.status(401).render('./auth/logIn', {
                     error: 'Invalid email or password!',
                     data: {
                         email,
@@ -304,8 +304,8 @@ router.get('/author/:id', auth, async (req, res) => {
     if (req.user) {
         if (req.params.id.toString() === req.user._id.toString())
             return res.redirect('/dashboard');
-    } else {
-        return res.redirect('/log-in');
+    }else {
+        return res.redirect('/log-in')
     }
     try {
         try {
@@ -325,7 +325,7 @@ router.get('/author/:id', auth, async (req, res) => {
                 .populate('author')
                 .sort({ timestamps: 'desc' })
                 .lean();
-            return res.render('author', {
+            return res.render('./useritems/author', {
                 user,
                 toggleunfollow,
                 posts: blogs,
@@ -351,8 +351,8 @@ router.get('/dashboard', auth, async (req, res) => {
                 .populate('author')
                 .sort({ timestamps: 'desc' })
                 .lean();
-            const allusers = await User.find({});
-            return res.render('dashboard', {
+            const allusers = await User.find({})
+            return res.render('./useritems/dashboard', {
                 user,
                 allusers,
                 posts: blogs,
