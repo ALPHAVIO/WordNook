@@ -80,7 +80,7 @@ router.get(
                 Blog.count().exec((err, count) => {
                     if (err) console.log(err);
                     else {
-                        res.render( './navitems/home', {
+                        res.render('./navitems/home', {
                             homeStartingContent: homeStartingContent,
                             posts: foundBlogs,
                             categories,
@@ -100,7 +100,7 @@ router.get(
 
 // Get request for about page-
 router.get('/about', auth, async (req, res) => {
-    res.render( './navitems/about', {
+    res.render('./navitems/about', {
         aboutContent: aboutContent,
         isAuthenticated: !!req.user,
     });
@@ -129,7 +129,7 @@ router.post('/contact', async (req, res) => {
     sendMail(subject, email, message, (err, data) => {
         if (err) res.status(500).json({ message: 'Error occurred!' });
         else {
-            res.render( './navitems/contact', {
+            res.render('./navitems/contact', {
                 contactContent: 'Email was sent successfully!',
                 error: '',
                 formData: {
