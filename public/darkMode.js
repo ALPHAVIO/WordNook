@@ -1,5 +1,5 @@
 const options = {
-    bottom: '1.5rem', // default: '32px'
+    bottom: '0.6rem', // default: '32px'
     right: 'unset', // default: '32px'
     left: '1.125rem', // default: 'unset'
     time: '0.5s', // default: '0.3s'
