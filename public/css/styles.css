@@ -192,6 +192,21 @@ a::after {
     color: var(--color-secondary) !important;
     background-color: whitesmoke;
 }
+.form-group {
+    position: relative;
+    width: 100%;
+}
+
+.password-icon {
+    position: absolute;
+    top: 70%;
+    right: 0.938rem;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    font-size: 1.25rem;
+    background: none;
+}
+
 /* ------------------------------------------------------- */
 /* sign up page styles */
 
