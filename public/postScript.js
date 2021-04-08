@@ -1,6 +1,6 @@
 // Like display mechanism
-$(document).ready(function () {
-    $('.content').click(function () {
+$(document).ready(() => {
+    $('.content').click(() => {
         $('.content').toggleClass('like-active');
         $('.like').toggleClass('like-active');
         $('.like_icon').toggleClass('like-active');

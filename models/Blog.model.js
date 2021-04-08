@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-//Setting up schema for the collection-
+const { Schema } = mongoose;
+
+// Setting up schema for the collection-
 const blogSchema = {
     blogTitle: String,
     blogContent: String,
@@ -25,5 +26,5 @@ const blogSchema = {
     },
 };
 
-//Making a MongoDB model for the schema-
+// Making a MongoDB model for the schema-
 module.exports = mongoose.model('Blog', blogSchema);

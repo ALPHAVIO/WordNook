@@ -1,5 +1,5 @@
 const options = {
-    bottom: '1.5rem', // default: '32px'
+    bottom: '0.6rem', // default: '32px'
     right: 'unset', // default: '32px'
     left: '1.125rem', // default: 'unset'
     time: '0.5s', // default: '0.3s'
@@ -15,8 +15,8 @@ const options = {
 const darkmode = new Darkmode(options);
 darkmode.showWidget();
 
-let button = document.getElementsByClassName('darkmode-toggle')[0];
+const button = document.getElementsByClassName('darkmode-toggle')[0];
 button.addEventListener('click', () => {
-    let image = document.getElementById('blog-image');
+    const image = document.getElementById('blog-image');
     image.classList.toggle('difference-fix');
 });

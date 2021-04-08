@@ -1,8 +1,8 @@
 // requiring dependencies, models and middlewares
 const express = require('express');
+const multer = require('multer');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
-const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -35,7 +35,7 @@ const upload = multer({
 
 const router = express.Router();
 
-//Default Texts-
+// Default Texts-
 const homeStartingContent =
     "I'm Daily Journal, your best pal. What do I do? Well, I'm here to help you out. I'll be there to listen to your thoughts or share with you my pal's ideas and few amazing blogs.That's all? Not yet. I'm here to take you on a wonderful journey of unlimited thoughts and help you find your twin souls too!!! Sounds great? Here we go....Let's get started.";
 const aboutContent =
@@ -61,13 +61,13 @@ const categories = [
     'Space and Research',
 ];
 
-//Get request for home route-
+// Get request for home route-
 router.get(
     ['/', '/page/:page', '/page/:perPage', '/page/:page/:perPage', '/category'],
     auth,
     async (req, res) => {
-        var perPage = parseInt(req.params.perPage) || 5;
-        var category = req.params.category || '';
+        let perPage = parseInt(req.params.perPage) || 5;
+        const category = req.params.category || '';
         if (req.query.perPage > 0) perPage = parseInt(req.query.perPage);
         const currentPage = req.params.page || 1;
         const order = req.query.order || 'new one first';
@@ -76,8 +76,8 @@ router.get(
             .populate('author')
             .skip(perPage * currentPage - perPage)
             .limit(perPage)
-            .exec(function (err, foundBlogs) {
-                Blog.count().exec(function (err, count) {
+            .exec((err, foundBlogs) => {
+                Blog.count().exec((err, count) => {
                     if (err) console.log(err);
                     else {
                         res.render( './navitems/home', {
@@ -89,7 +89,7 @@ router.get(
                             search: '',
                             perPage: perPage,
                             order: order,
-                            isAuthenticated: req.user ? true : false,
+                            isAuthenticated: !!req.user,
                             // currentUser: req.user,
                         });
                     }
@@ -98,15 +98,15 @@ router.get(
     }
 );
 
-//Get request for about page-
+// Get request for about page-
 router.get('/about', auth, async (req, res) => {
     res.render( './navitems/about', {
         aboutContent: aboutContent,
-        isAuthenticated: req.user ? true : false,
+        isAuthenticated: !!req.user,
     });
 });
 
-//Get request for contact page-
+// Get request for contact page-
 router.get('/contact', auth, async (req, res) => {
     res.render('./navitems/contact', {
         contactContent: contactContent,
@@ -116,13 +116,13 @@ router.get('/contact', auth, async (req, res) => {
             email: '',
             message: '',
         },
-        isAuthenticated: req.user ? true : false,
+        isAuthenticated: !!req.user,
     });
 });
 
-//post request for contact page
+// post request for contact page
 router.post('/contact', async (req, res) => {
-    //requiring api for mailgun
+    // requiring api for mailgun
     const sendMail = require('../middlewares/mail');
 
     const { subject, email, message } = req.body;
@@ -137,15 +137,15 @@ router.post('/contact', async (req, res) => {
                     email: '',
                     message: '',
                 },
-                isAuthenticated: req.user ? true : false,
+                isAuthenticated: !!req.user,
             });
         }
     });
 });
 
-//Get request for compose blog page-
+// Get request for compose blog page-
 router.get('/compose', auth, async (req, res) => {
-    const user = req.user;
+    const { user } = req;
     if (!user) {
         return res.status(401).redirect('/log-in');
     }
@@ -155,20 +155,20 @@ router.get('/compose', auth, async (req, res) => {
     });
 });
 
-//Capitalizing the first letter of the title of the blog
+// Capitalizing the first letter of the title of the blog
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-//Post request to save the new blogs to the DB
+// Post request to save the new blogs to the DB
 router.post('/compose', auth, upload.single('photo'), async (req, res) => {
-    const user = req.user;
+    const { user } = req;
     if (!user) {
         return res.status(401).redirect('/log-in');
     }
     const postTitle = capitalize(req.body.postTitle);
-    const category = req.body.category;
-    const status = req.body.status;
+    const { category } = req.body;
+    const { status } = req.body;
     const postContent = req.body.postBody;
 
     let photo = '';

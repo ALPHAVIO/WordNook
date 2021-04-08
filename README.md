@@ -12,9 +12,10 @@
 ## About-
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+<!-- DeepSource Badge and Dependabot Status badges -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-) [![DeepSource](https://deepsource.io/gh/ALPHAVIO/BlogSite.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/ALPHAVIO/BlogSite/?ref=repository-badge) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/BlogSite)](https://dependabot.com) 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/BlogSite)](https://dependabot.com)  
+
 
 - 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
 <br/>
@@ -76,6 +77,8 @@ npm install
   ```
   SECRET_KEY = AlphaVio
   URL = mongodb://localhost:27017/blogDB
+  EMAIL = *Type the email that will send verification emails on sign-up*
+  PASS = *password for the email*
   ```
 <br/>
 
@@ -121,21 +124,25 @@ show collections
 <db name> .find()
 ```
 
-#### Project Deployed on Heroku : [Link](https://alphavio-daily-journal.herokuapp.com)
+#### Project Deployed on Heroku : [Visit BlogSite](https://alphavio-daily-journal.herokuapp.com)
+
+<hr>
 
 ## Open Source Events Project is associated with:
 
-<img align="right" src="assets/event1.png" width = "100" height = "80"><b>1. JGEC Winter of Code</b>
+<img align="right" src="assets/event1.png" width = "120" height = "100"><b>1. JGEC Winter of Code</b>
 
 - JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into Open Source contribution and get the realm of Software Development.
 
-<img align="right" src="assets/event2.png" width = "100" height = "80"><b>2. Mexili Winter of Code</b>
+<img align="right" src="assets/event2.png" width = "120" height = "100"><b>2. Mexili Winter of Code</b>
 
 - Mexili is a Free and Open Source organization whose motivation is to funnel learning and implementation through Open Source Software Development.
 
-<img align="right" src="assets/event3.png" width = "100" height = "80"><b>3. GirlScript Summer of Code</b>
+<img align="right" src="assets/event3.png" width = "120" height = "100"><b>3. GirlScript Summer of Code</b>
 
 - GirlScript Summer of Code is the 3 month long Open Source program  conducted by GirlScript Foundation, started in 2018, with an aim to help beginners get started with Open Source Development while encouraging diversity.
+
+<hr>
 
 ## Maintainers ✨
 <table>
@@ -187,3 +194,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+<hr>
+
+## Stargazers over time 🌟
+
+[![Stargazers over time](https://starchart.cc/ALPHAVIO/BlogSite.svg)](https://starchart.cc/ALPHAVIO/BlogSite)
+      
