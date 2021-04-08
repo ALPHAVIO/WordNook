@@ -488,6 +488,7 @@ input[name='perPage'] {
 .btnFrame:focus {
     background: var(--color-secondary);
 }
+
 .likebtn:after{
     content:'\F164';
 }
