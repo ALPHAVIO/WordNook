@@ -297,7 +297,7 @@ router.post('/sign-up', async (req, res) => {
                                 });
                             }
                         });
-                    return res.status(401).render('login', {
+                    return res.status(401).render('logIn', {
                         error: 'Pending Account. Please Verify Your Email',
                         data: {
                             email,
@@ -328,7 +328,7 @@ router.get('/confirm/:confirmationCode', (req, res, next) => {
                     res.status(500).send({ message: err });
                     return;
                 } else {
-                    return res.status(401).render('login', {
+                    return res.status(401).render('logIn', {
                         error: 'Account verified. Please Login Your Email',
                         data: {
                             email,
@@ -366,7 +366,7 @@ router.post('/log-in', async (req, res) => {
             });
         }
         if (doc.status != 'Active') {
-            return res.status(401).render('login', {
+            return res.status(401).render('logIn', {
                 error: 'Pending Account. Please Verify Your Email',
                 data: {
                     email,
