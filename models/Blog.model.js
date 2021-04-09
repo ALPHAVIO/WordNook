@@ -20,6 +20,10 @@ const blogSchema = {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
+    noOfViews:{
+        type:Number,
+        default:0,
+    },
     likes: {
         type: Number,
         default: 0,
