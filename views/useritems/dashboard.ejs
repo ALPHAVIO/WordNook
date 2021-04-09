@@ -7,7 +7,10 @@
             <%# Display author's name %> 
             <div class="card-header text-center">
                 <a href="/read-profile" class="text-info text-decoration-none">
-                    <h4><%= user.firstName %> <%= user.lastName %></h4>
+                    <h4>
+                        <%= user.firstName %> <%= user.lastName %> 
+                        <a class="text-info float-end" href="/read-profile"><i class="fas fa-2x fa-user-edit"></i> </a>
+                    </h4>
                 </a>
                 <h6>@<%= user.userName %></h6>
 
@@ -162,7 +165,7 @@
                             <%# Check if there are posts for requested categories... %> 
                             <%if (likedBlogs.length) { %>
                                 <%# If there are posts(length>=1) then display them through looping %> 
-                                <%- include("partials/posts", {posts:likedBlogs}) -%>
+                                <%- include("../partials/posts", {posts:likedBlogs}) -%>
                                 <%# If there are no posts(length=0) then display no blogs found %> 
                             <% } else { %>
                                 <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
