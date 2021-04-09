@@ -62,7 +62,7 @@ router.get(
                 ) {
                     //increment no. of views of the post.
                     post.noOfViews++;
-                    post.save();  
+                    post.save();
                     // Sort the comments to show the recent one
                     post.comments = post.comments.sort((a, b) =>
                         a.timestamps > b.timestamps
@@ -90,7 +90,7 @@ router.get(
                         comments: post.comments,
                         category: post.category,
                         likesCount: post.likes,
-                        noOfViews:post.noOfViews,
+                        noOfViews: post.noOfViews,
                         author,
                         timestamps: post.timestamps,
                         isAuthor,
