@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User.model');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
-const nodemailer = require('nodemailer');
 
 const router = express.Router();
 
@@ -242,12 +241,6 @@ router.post('/sign-up', async (req, res) => {
                     },
                 });
             }
-            //This means that this is a valid new user
-            req.body.status = 'Pending';
-            req.body.confirmationCode = jwt.sign(
-                { email: req.body.email },
-                process.env.SECRET_KEY
-            );
             const newUser = new User(req.body);
 
             newUser.save((err, doc) => {
@@ -262,83 +255,20 @@ router.post('/sign-up', async (req, res) => {
                             password,
                         },
                     });
-                } else {
-                    //Sending the Confermation email
-                    const transport = nodemailer.createTransport({
-                        service: 'Gmail',
-                        auth: {
-                            user: process.env.EMAIL,
-                            pass: process.env.PASS,
-                        },
-                    });
-                    transport
-                        .sendMail({
-                            from: process.env.EMAIL,
-                            to: email,
-                            subject: 'Please confirm your account',
-                            html: `<h1>Email Confirmation</h1>
-                            <h2>Hello ${userName}</h2>
-                            <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-                            <a href=https://alphavio-daily-journal.herokuapp.com/confirm/${req.body.confirmationCode}> Click here</a>
-                            </div>`,
-                        })
-                        .catch((err) => {
-                            if (err) {
-                                console.log(err);
-                                return res.status(422).render('./auth/logIn', {
-                                    error: 'Oops something went wrong!',
-                                    data: {
-                                        firstName,
-                                        lastName,
-                                        userName,
-                                        email,
-                                        password,
-                                    },
-                                });
-                            }
-                        });
-                    return res.status(401).render('./auth/logIn', {
-                        error: 'Pending Account. Please Verify Your Email',
-                        data: {
-                            email,
-                            password,
-                        },
-                    });
                 }
+                const token = jwt.sign(
+                    { _id: doc._id },
+                    process.env.SECRET_KEY
+                );
+
+                // Send back the token to the user as a httpOnly cookie
+                res.cookie('token', token, {
+                    httpOnly: true,
+                });
+                res.redirect('/');
             });
         });
     });
-});
-
-//This route will recieve a get request when the user clicks on the confirmation link
-router.get('/confirm/:confirmationCode', (req, res, next) => {
-    //find the user with this confirmation code
-    User.findOne({
-        confirmationCode: req.params.confirmationCode,
-    })
-        .then((user) => {
-            if (!user) {
-                return res.status(404).send({ message: 'User Not found.' });
-            }
-            user.status = 'Active';
-            const email = user.email;
-            const password = '';
-            user.save((err) => {
-                if (err) {
-                    res.status(500).send({ message: err });
-                    return;
-                } else {
-                    return res.status(401).render('./auth/logIn', {
-                        error: 'Account verified. Please Login Your Email',
-                        data: {
-                            email,
-                            password,
-                        },
-                    });
-                }
-            });
-        })
-        .catch((e) => console.log('error : ', e));
 });
 
 // POST request for log in
@@ -359,15 +289,6 @@ router.post('/log-in', async (req, res) => {
         if (err || !doc) {
             return res.status(401).render('./auth/logIn', {
                 error: 'Invalid email or password!',
-                data: {
-                    email,
-                    password,
-                },
-            });
-        }
-        if (doc.status != 'Active') {
-            return res.status(401).render('./auth/logIn', {
-                error: 'Pending Account. Please Verify Your Email',
                 data: {
                     email,
                     password,
