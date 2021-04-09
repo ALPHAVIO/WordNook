@@ -279,7 +279,7 @@ router.post('/sign-up', async (req, res) => {
                             html: `<h1>Email Confirmation</h1>
                             <h2>Hello ${userName}</h2>
                             <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-                            <a href=https://alphavio-daily-journal.herokuapp.com/confirm/${req.body.confirmationCode}> Click here</a>
+                            <a href=http://${req.headers.host}/confirm/${req.body.confirmationCode}> Click here</a>
                             </div>`,
                         })
                         .catch((err) => {
