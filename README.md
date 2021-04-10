@@ -77,8 +77,6 @@ npm install
   ```
   SECRET_KEY = AlphaVio
   URL = mongodb://localhost:27017/blogDB
-  EMAIL = *Type the email that will send verification emails on sign-up*
-  PASS = *password for the email*
   ```
 <br/>
 
