@@ -194,7 +194,6 @@ a::after {
 }
 .form-group {
     position: relative;
-    width: 100%;
 }
 
 .password-icon {
