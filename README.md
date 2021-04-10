@@ -1,12 +1,12 @@
 <div align="center">
   <h1>BlogSite</h1>
-  <img src="assets/New Banner.jpg" />
+  <img src="./assets/asset-sub/New Banner.jpg"/>
 </div>
 
 # A sneak peek into what we have here-
   
  <p align="center">
- <img src="assets/blogsitegiff.gif" align = "center"  width=600px/>
+ <img src="./assets/asset-sub/blogsitegiff.gif" align = "center"  width=600px/>
  </p>
 
 ## About-
@@ -125,15 +125,15 @@ show collections
 
 ## Open Source Events Project is associated with:
 
-<img align="right" src="assets/event1.png" width = "100" height = "80"><b>1. JGEC Winter of Code</b>
+<img align="right" src="./assets/asset-sub/event1.png" width = "100" height = "80"><b>1. JGEC Winter of Code</b>
 
 - JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into Open Source contribution and get the realm of Software Development.
 
-<img align="right" src="assets/event2.png" width = "100" height = "80"><b>2. Mexili Winter of Code</b>
+<img align="right" src="./assets/asset-sub/event2.png" width = "100" height = "80"><b>2. Mexili Winter of Code</b>
 
 - Mexili is a Free and Open Source organization whose motivation is to funnel learning and implementation through Open Source Software Development.
 
-<img align="right" src="assets/event3.png" width = "100" height = "80"><b>3. GirlScript Summer of Code</b>
+<img align="right" src="./assets/asset-sub/event3.png" width = "100" height = "80"><b>3. GirlScript Summer of Code</b>
 
 - GirlScript Summer of Code is the 3 month long Open Source program  conducted by GirlScript Foundation, started in 2018, with an aim to help beginners get started with Open Source Development while encouraging diversity.
 
