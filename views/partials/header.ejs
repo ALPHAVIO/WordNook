@@ -29,13 +29,13 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-md-auto align-items-center">
               <li id="home" class="nav-item">
-                <a class="nav-link text-info" href="/">HOME</a>
+                <a class="nav-link text-info" href="/" style="color: #e2532f !important">HOME</a>
               </li>
               <li id="about" class="nav-item">
-                  <a class="nav-link text-info" href="/about">ABOUT</a>
+                  <a class="nav-link text-info" href="/about" style="color: #e2532f !important">ABOUT</a>
               </li>
               <li id="contact" class="nav-item">
-                  <a class="nav-link text-info" href="/contact">CONTACT US</a>
+                  <a class="nav-link text-info" href="/contact" style="color: #e2532f !important">CONTACT US</a>
               </li>
               <% if(isAuthenticated) { %>
                 <li>
@@ -48,10 +48,10 @@
                 </li>
               <% }else{ %>
                   <li id="log-in">
-                    <a href="/log-in" class="btn btn-info btn-sm text-white" role="button">Log in</a>
+                    <a href="/log-in" class="btn btn-info btn-sm text-white" role="button" style="background-color: #0d97ac !important">Log in</a>
                   </li>
                   <li id="sign-up">
-                    <a href="/sign-up" class="btn btn-info btn-sm text-white" role="button"> Sign up</a>
+                    <a href="/sign-up" class="btn btn-info btn-sm text-white" role="button" style="background-color: #0d97ac !important"> Sign up</a>
                   </li>
               <% } %>
             </ul>
