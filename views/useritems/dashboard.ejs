@@ -6,12 +6,12 @@
         <div class="col-lg-11 card bg-light mx-2 mx-lg-auto card p-0">      
             <%# Display author's name %> 
             <div class="card-header text-center">
-                <a href="/read-profile" class="text-info text-decoration-none">
-                    <h4>
+                <h4>
+                    <a href="/read-profile" class="text-info text-decoration-none">
                         <%= user.firstName %> <%= user.lastName %> 
-                        <a class="text-info float-end" href="/read-profile"><i class="fas fa-2x fa-user-edit"></i> </a>
-                    </h4>
-                </a>
+                        <i class="fas fa-user-edit pl-3"></i>
+                    </a>
+                </h4>
                 <h6>@<%= user.userName %></h6>
 
                     <%# Followers and Following section using accoridian %> 
