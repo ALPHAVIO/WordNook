@@ -2,7 +2,7 @@
 
 <div class="container">
     <h2 class="normal-heading-font heading fweight-600">Hi there!</h2>
-    <p class="content-body-font"> <%= homeStartingContent %> </p> 
+    <p class="content-body-font"> <%= homeStartingContent %> </p>
     <div class="row">
         <div class="col-lg-3 col-sm-12 d-flex flex-column align-items-center">
             <h3 class="normal-heading-font fweight-600">Anything New?</h3>
@@ -33,7 +33,7 @@
                         <option value="<%= item %>">
                             <%= item %>
                         </option>
-                        <% }) %>     
+                        <% }) %>
                     </select>
                 </div>
                 <div class="form-group">
@@ -52,11 +52,11 @@
                 </form>
                 <form action="/search/<%= search %>/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
                     <select name="order" class="orderSelect">
-                        <% if(order==='new one first') {%> 
+                        <% if(order==='new one first') {%>
                             <option value="new one first" selected>New one first</option>
                         <% }else {%>
-                            <option value="new one first">New one first</option> 
-                        <% }if(order==='old one first') {%> 
+                            <option value="new one first">New one first</option>
+                        <% }if(order==='old one first') {%>
                             <option value="old one first" selected>Old one first</option>
                         <%} else {%>
                             <option value="old one first">Old one first</option>
@@ -74,11 +74,11 @@
             </form>
             <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
                 <select name="order" class="orderSelect">
-                    <% if(order==='new one first') {%> 
+                    <% if(order==='new one first') {%>
                         <option value="new one first" selected>New one first</option>
                     <% }else {%>
-                        <option value="new one first">New one first</option> 
-                    <% }if(order==='old one first') {%> 
+                        <option value="new one first">New one first</option>
+                    <% }if(order==='old one first') {%>
                         <option value="old one first" selected>Old one first</option>
                     <%} else {%>
                         <option value="old one first">Old one first</option>
@@ -86,15 +86,15 @@
                 </select>
                 <button class="button  arrow pagebtn btnFrame" type="submit"> Go</button>
             </form>
-        </div> 
-        <% } %> 
+        </div>
+        <% } %>
     <hr>
-    <div class="my-3">    
-        <%# Check if there are posts for requested categories... %> 
+    <div class="my-3">
+        <%# Check if there are posts for requested categories... %>
         <%if (posts.length) { %>
-            <%# If there are posts(length>=1) then display them through looping %> 
+            <%# If there are posts(length>=1) then display them through looping %>
             <%- include("../partials/posts", {posts}) -%>
-            <%# If there are no posts(length=0) then display no blogs found %> 
+            <%# If there are no posts(length=0) then display no blogs found %>
         <% } else { %>
                 <p class="mx-auto text-center text-danger">No Blogs Found...</p> 
         <%}%>
@@ -159,4 +159,3 @@
 </div>
 
 <%- include("../partials/footer") -%>
-

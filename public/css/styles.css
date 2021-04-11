@@ -31,7 +31,7 @@ body {
     flex-direction: column;
     background-image: url('../images/bg4.jpg');
     background-size: cover;
-    color: var(--color-primary);
+    color: black;
 }
 
 #loader {
@@ -88,12 +88,12 @@ body {
 
 .navbar-brand {
     font-size: 3.5vw;
-    color: var(--color-secondary) !important;
+    color: var(--color-primary) !important;
 }
 
 .navbar-brand:hover {
     font-size: 3.5vw;
-    color: var(--color-primary) !important;
+    color: var(--color-secondary) !important;
 }
 
 .navbar-brand a {
@@ -312,7 +312,7 @@ a::after {
 
 .form-control {
     width: 100%;
-    border: 2px solid var(--color-secondary);
+    border: 2px solid var(--color-primary);
     height: 50px;
     border-radius: 8px;
 }
@@ -697,7 +697,7 @@ input[name='perPage'] {
 }
 
 .footer-heading {
-    color: rgb(255, 231, 10);
+    color: black;
 }
 
 .social-icon {
@@ -706,23 +706,23 @@ input[name='perPage'] {
 }
 
 .facebook {
-    color: #7ca1f3;
+    color: white;
 }
 
 .instagram {
-    color: #fbad50;
+    color: white;
 }
 
 .linkedin {
-    color: #0e89a8;
+    color: white;
 }
 
 .youtube {
-    color: #ff0000;
+    color: white;
 }
 
 .twitter {
-    color: #00abee;
+    color: white;
 }
 /* ---------------------------------------------------- */
 
