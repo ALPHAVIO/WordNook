@@ -56,7 +56,15 @@ body {
 }
 
 /* styles for navbar */
+.text-info {
+    color: #e2532f!important;
+}
 
+.btn-info {
+    color: #fff;
+    background-color: #0d97ac;
+    border-color: #0d97ac;
+}
 .navbar {
     padding-top: 1vh;
     border: 0;
