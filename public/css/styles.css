@@ -54,6 +54,14 @@ body {
     margin: auto;
     max-width: 65vw;
 }
+/* styles for input boxes */
+input[name='perPage']{
+    border: 2px solid #e2532f !important;
+
+}
+.orderSelect{
+    border: 2px solid #e2532f !important;
+}
 
 /* styles for navbar */
 
