@@ -36,11 +36,13 @@
                         <label class="sign-up-place">Password</label>
                         <input class="form-control col-md-12 col-sm-12 col-xs-12" type="password" id="password" name="password"
                             autocomplete="off" value="<%= data.password %>" required></input>
+                        <span class="password-icon"><i class="fa fa-eye" id="eye" onclick="togglePassword()"></i></span>
                     </div>
                     <div class="form-group">
                         <label class="sign-up-place">Confirm Password</label>
                         <input class="form-control col-md-12 col-sm-12 col-xs-12" type="password" id="confirmPassword" name="confirmPassword"
                             autocomplete="off" value="<%= data.confirmPassword %>" required></input>
+                        <span class="password-icon"><i class="fa fa-eye" id="eye2" onclick="togglePassword('confirmPassword','eye2')"></i></span>
                     </div>
                     <div class="registrationFormAlert" style="color:red;" id="CheckPasswordMatch"></div>
                     <div class="text-center">
@@ -51,4 +53,5 @@
             </div>
     </div>
     <script type="text/javascript" src="/js/checkPasswordMatch.js" defer></script>
+    <script type="text/javascript" src="/js/showHidePassword.js"></script>
 <%- include("../partials/footer") -%>
