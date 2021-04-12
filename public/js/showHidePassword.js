@@ -1,5 +1,5 @@
 let state = false;
-function togglePassword(target='password',icon='eye') {
+function togglePassword(target = 'password', icon = 'eye') {
     if (state) {
         document.getElementById(target).setAttribute('type', 'password');
         document.getElementById(icon).classList.remove('fa-eye-slash');
