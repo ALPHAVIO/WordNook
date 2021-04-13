@@ -765,7 +765,7 @@ input[name='perPage'] {
 
 .back-to-top {
     position: fixed;
-    bottom: 25px;
+    bottom: 0.5rem;
     right: 47%;
     display: none;
 }
