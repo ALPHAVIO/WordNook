@@ -11,7 +11,7 @@ Below you will find the process and workflow used to review and merge your chang
 - If you want to add or change a major feature, create an issue and discuss with the maintainer what you would like to change.
 - If you want to work on an Existing Issues or an Issue that you created, check if anyone is working on that issue.
 - If no one is working on the issue, just comment and start working on it otherwise wait for the Issue to be assigned to you.
-![IssuesDemo](assets/assets-sub/issues.jpg)
+![IssuesDemo](assets/sub/issues.jpg)
 
 ## Step 1 : Fork the Project  
 - Fork this Repository. This will create a Local Copy of this Repository on your Github Profile. Keep a reference to the original project in `upstream` remote.  
@@ -20,7 +20,7 @@ $ git clone https://github.com/<your-username>/<repo-name>
 $ cd BlogSite
 $ git remote add upstream https://github.com/ALPHAVIO/BlogSite
 ```  
-![ForkDemo](assets/assets-sub/fork.jpg)
+![ForkDemo](assets/sub/fork.jpg)
 
 - If you have already forked the project, update your copy before working.  
 ```  
@@ -79,13 +79,13 @@ $ git commit -m "message"
 $ git push -u origin Branch_Name  
 ```  
 - Here is how your branch will look in the fork.
-![BranchDemo](assets/assets-sub/branch.jpg)
+![BranchDemo](assets/sub/branch.jpg)
 
 ## Step 7 : Pull Request  
 - Go to your repository in browser and click on compare and pull requests. Then add a title and description to your pull request that explains your contribution.  
-![pullrequest-send](assets/assets-sub/pr.jpg)  
+![pullrequest-send](assets/sub/pr.jpg)  
 
-![pullrequest-description](assets/assets-sub/pullrequest-description.jpg)
+![pullrequest-description](assets/sub/pullrequest-description.jpg)
 - Voila! Your Pull Request has been submitted and will be reviewed by the moderators and merged.🥳  
 
 ## Linting
