@@ -29,7 +29,7 @@ body {
     opacity: 1;
     display: flex;
     flex-direction: column;
-    background-image: url('../images/bg4.jpg');
+    background-image: url('../../assets/main/bg4.jpg');
     background-size: cover;
     color: var(--color-primary);
 }
