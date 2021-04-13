@@ -194,7 +194,6 @@ a::after {
 }
 .form-group {
     position: relative;
-    width: 100%;
 }
 
 .password-icon {
@@ -366,12 +365,12 @@ a::after {
     padding: 0.2rem 0.4rem 0.36rem 0.4rem;
     font-family: 'Open Sans', sans-serif;
     font-size: 130%;
-    border: 2px solid var(--color-primary);
+    border: 2px solid var(--color-secondary);
     border-radius: 8px;
 }
 
 input[name='perPage'] {
-    border: 2px solid var(--color-primary);
+    border: 2px solid var(--color-secondary);
     border-radius: 8px;
     font-family: 'Open Sans', sans-serif;
     font-size: 110%;
@@ -759,4 +758,14 @@ input[name='perPage'] {
 ::-webkit-scrollbar-thumb:hover {
     transition: all 0.1s ease-in-out;
     filter: blur(20px);
+}
+
+/* -------------------------------------------- */
+/* Scroll To Top Button */
+
+.back-to-top {
+    position: fixed;
+    bottom: 0.5rem;
+    right: 47%;
+    display: none;
 }

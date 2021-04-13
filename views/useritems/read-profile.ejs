@@ -37,7 +37,8 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="password">Password:</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="password" for="password" name="password">
+                            <input class="form-control" type="password" name="password" id="password">
+                            <span class="password-icon pb-3 pr-3"><i class="fa fa-eye" id="eye" onclick="togglePassword()"></i></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,4 +54,5 @@
         </div>
     </div>
     <hr>
+    <script type="text/javascript" src="/js/showHidePassword.js"></script>
 <%- include("../partials/footer") -%>
