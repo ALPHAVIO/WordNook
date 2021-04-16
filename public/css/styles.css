@@ -769,3 +769,9 @@ input[name='perPage'] {
     right: 47%;
     display: none;
 }
+
+/* Flag button */
+.btn-flag {
+    color: white;
+    background: var(--color-secondary);
+}

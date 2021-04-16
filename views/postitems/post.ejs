@@ -63,6 +63,9 @@
                         <h5>
                             <i class="fas fa-user"></i>
                             <strong><%= comments[i].name %></strong>
+                            <form class="float-end" action="/posts/<%=id%>/comments/<%=i%>/flag" method="post">
+                                <button class="btn btn-flag" title="Flag as Inappropriate" type="submit"><i class="fas fa-flag"></i></button>
+                            </form>
                         </h5>
                     </a>
                     <p class="post-date-font"><%= moment(new Date(comments[i].timestamps*1000)).format("dddd, MMMM Do YYYY, h:mm:ss a") %></p>
