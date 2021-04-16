@@ -127,6 +127,7 @@ router.post('/posts/:postId/comment', auth, async (req, res) => {
                 authorId: loggedUser._id,
                 content: content,
                 timestamps: Math.floor(Date.now() / 1000),
+                flags: 0,
             });
 
             await Blog.updateOne(
@@ -164,6 +165,41 @@ router.post('/posts/:postId/comments/:commentNum', auth, async (req, res) => {
     );
     res.redirect(`/posts/${requestedPostId}`);
 });
+
+router.post(
+    '/posts/:postId/comments/:commentNum/flag',
+    auth,
+    async (req, res) => {
+        const isUser = !!req.user;
+        const requestedPostId = req.params.postId;
+        const { commentNum } = req.params;
+        if (!isUser) {
+            // checking if user is authenticated
+            return res.status(401).redirect(`${req.baseUrl}/sign-up`);
+        }
+        const foundPost = await Blog.findOne({ _id: requestedPostId });
+        foundPost.comments = foundPost.comments.sort((a, b) =>
+            a.timestamps > b.timestamps
+                ? -1
+                : a.timestamps < b.timestamps
+                ? 1
+                : 0
+        );
+        foundPost.comments[commentNum].flags++;
+        // If number of flags is greater than or equal to 3 delete that comment
+        if (foundPost.comments[commentNum].flags >= 3) {
+            foundPost.comments.splice(commentNum, 1);
+        }
+        await Blog.updateOne(
+            { _id: requestedPostId },
+            { comments: foundPost.comments },
+            (err, foundPost) => {
+                if (err) console.log(err);
+            }
+        );
+        res.redirect(`/posts/${requestedPostId}`);
+    }
+);
 
 // Post request to search by title
 router.post(['/search'], auth, async (req, res) => {
