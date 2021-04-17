@@ -74,8 +74,9 @@ router.get(
                     // console.log(post.status);
                     const author = await UserModel.findById(post.author);
                     let isLiked = false;
+                    let currUser
                     if (user) {
-                        const currUser = await UserModel.findById(user._id);
+                        currUser = await UserModel.findById(user._id);
                         isLiked = currUser.likedPosts.includes(
                             req.params.postId
                         )
@@ -95,7 +96,7 @@ router.get(
                         timestamps: post.timestamps,
                         isAuthor,
                         isAuthenticated: !!user,
-                        currentUser: user,
+                        currentUser: currUser,
                         isLiked: isLiked,
                     });
                 } else {
