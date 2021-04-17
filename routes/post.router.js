@@ -74,7 +74,7 @@ router.get(
                     // console.log(post.status);
                     const author = await UserModel.findById(post.author);
                     let isLiked = false;
-                    let currUser
+                    let currUser;
                     if (user) {
                         currUser = await UserModel.findById(user._id);
                         isLiked = currUser.likedPosts.includes(
@@ -156,15 +156,22 @@ router.post('/posts/:postId/comments/:commentNum', auth, async (req, res) => {
     foundPost.comments = foundPost.comments.sort((a, b) =>
         a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
     );
-    foundPost.comments.splice(commentNum, 1);
-    await Blog.updateOne(
-        { _id: requestedPostId },
-        { comments: foundPost.comments },
-        (err, foundPost) => {
-            if (err) console.log(err);
-        }
-    );
-    res.redirect(`/posts/${requestedPostId}`);
+    if (
+        foundPost.comments[commentNum].authorId.toString() ===
+        req.user._id.toString()
+    ) {
+        foundPost.comments.splice(commentNum, 1);
+        await Blog.updateOne(
+            { _id: requestedPostId },
+            { comments: foundPost.comments },
+            (err, foundPost) => {
+                if (err) console.log(err);
+            }
+        );
+        res.redirect(`/posts/${requestedPostId}`);
+    } else {
+        res.render('404', { isAuthenticated: isUser });
+    }
 });
 
 router.post(
