@@ -127,7 +127,7 @@ router.post('/posts/:postId/comment', auth, async (req, res) => {
                 authorId: loggedUser._id,
                 content: content,
                 timestamps: Math.floor(Date.now() / 1000),
-                flags: 0,
+                flags: [],
             });
 
             await Blog.updateOne(
@@ -185,9 +185,14 @@ router.post(
                 ? 1
                 : 0
         );
-        foundPost.comments[commentNum].flags++;
+        const currUser = await UserModel.findById({ _id: req.user._id });
+        if (foundPost.comments[commentNum].flags.includes(currUser.userName)) {
+            // This user have already flagged this comment
+            return res.redirect(`/posts/${requestedPostId}`);
+        }
+        foundPost.comments[commentNum].flags.push(currUser.userName);
         // If number of flags is greater than or equal to 3 delete that comment
-        if (foundPost.comments[commentNum].flags >= 3) {
+        if (foundPost.comments[commentNum].flags.length >= 3) {
             foundPost.comments.splice(commentNum, 1);
         }
         await Blog.updateOne(
