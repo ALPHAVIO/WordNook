@@ -68,9 +68,11 @@
                     <p class="post-date-font"><%= moment(new Date(comments[i].timestamps*1000)).format("dddd, MMMM Do YYYY, h:mm:ss a") %></p>
                     <hr/>
                     <%- comments[i].content %>
-                    <form  action="/posts/<%=id%>/comments/<%=i%>" method="post">
-                        <button class="button  del" type="submit">Delete</button>
-                    </form>
+                    <% if(currentUser && comments[i].authorId.toString() === currentUser._id.toString()){ %>
+                        <form action="/posts/<%=id%>/comments/<%=i%>" method="post">
+                            <button class="button  del" type="submit">Delete</button>
+                        </form>
+                    <% } %>
                 </div>
             <% } %>
 
