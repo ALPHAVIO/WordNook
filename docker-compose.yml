@@ -1,0 +1,19 @@
+version: "3"
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    environment:
+      - PORT=4000
+    ports:
+      - "4000:4000"
+    links:
+      - mongodb
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    command: mongod

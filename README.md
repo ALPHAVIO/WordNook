@@ -111,6 +111,19 @@ http://localhost:3000/
 
 * Now you are all set to use this project.
 
+### Using Docker
+
+* Install [Docker](https://docs.docker.com/engine/install/), from the given link.
+
+* Once Docker is installed, use the following two commands to run the app in the root dicrectory:
+  * `docker-compose build` , This command will build the project
+  * `COMPOSE_HTTP_TIMEOUT=200 docker-compose up`, This command will run the container.
+  
+* You can open the project on `localhost:4000` on the machine.
+
+Note: If you are using docker-desktop on Windows Or WSL2 i.e Windows Subsystem For Linux, you can use the GUI Options to run the containers 
+
+
 **Disclaimer-**  
 The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as 
 ```
