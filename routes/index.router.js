@@ -3,6 +3,7 @@ const express = require('express');
 const multer = require('multer');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
+const Testimonial=require('../models/Testimonial.model');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -142,6 +143,19 @@ router.post('/contact', async (req, res) => {
         }
     });
 });
+// Get request for testimonial-write page-
+router.get("/testimonial-write",auth,async(req,res)=>{
+    const { user } = req;
+    if (!user) {
+        return res.status(401).redirect('/log-in');
+    }
+
+    res.render('./postitems/testimonial-write',{
+        isAuthenticated:true,
+
+    })
+})
+
 
 // Get request for compose blog page-
 router.get('/compose', auth, async (req, res) => {
@@ -159,6 +173,21 @@ router.get('/compose', auth, async (req, res) => {
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+//Post request to add testimonials
+router.post('/testimonial-write',auth,async(req,res)=>{
+    const { user } = req;
+    if(!user){
+        return res.status(401).redirect('/log-in');
+    }
+    const {views}=req.body;
+    const testimonial=new Testimonial({
+        author:user.name,
+        views
+    })
+    testimonial.save();
+    res.redirect("/")
+})
 
 // Post request to save the new blogs to the DB
 router.post('/compose', auth, upload.single('photo'), async (req, res) => {
