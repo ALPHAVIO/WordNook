@@ -32,6 +32,7 @@ body {
     background-image: url('../images/bg4.jpg');
     background-size: cover;
     color: var(--color-primary);
+    scroll-behavior: smooth;
 }
 
 #loader {
@@ -764,8 +765,17 @@ input[name='perPage'] {
 /* Scroll To Top Button */
 
 .back-to-top {
+    background: transparent;
     position: fixed;
     bottom: 0.5rem;
-    right: 47%;
-    display: none;
+    right: 49%;
+    color: #FFF !important;
+    border: 2px solid;
+    background-color: var(--color-primary);
+    transition: all 0.5s ease-in-out;
+}
+
+.back-to-top:hover, .back-to-top:focus  {
+    background-color: var(--color-secondary);
+    border-radius: 5em;
 }
