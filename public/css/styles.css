@@ -769,13 +769,14 @@ input[name='perPage'] {
     position: fixed;
     bottom: 0.5rem;
     right: 49%;
-    color: #FFF !important;
+    color: #fff !important;
     border: 2px solid;
     background-color: var(--color-primary);
     transition: all 0.5s ease-in-out;
 }
 
-.back-to-top:hover, .back-to-top:focus  {
+.back-to-top:hover,
+.back-to-top:focus {
     background-color: var(--color-secondary);
     border-radius: 5em;
 }
