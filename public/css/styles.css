@@ -779,3 +779,9 @@ input[name='perPage'] {
     background-color: var(--color-secondary);
     border-radius: 5em;
 }
+
+/* Flag button */
+.btn-flag {
+    color: white;
+    background: var(--color-secondary);
+}
