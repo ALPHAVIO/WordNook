@@ -36,13 +36,16 @@
 * Drop a :star: on the GitHub repository.
 <br/>
 
+* Download [Git](https://git-scm.com/downloads) (when you install Git, Git Bash also gets installed by default)
+<br/>
+
 * Download and install a code/ text editor.
     - Recommended-
         - [Download VS Code](https://code.visualstudio.com/download)
         - [Download Atom](https://atom.io/)
 <br/>
 
-* Download [Node Js and npm(Node package manager)](https://nodejs.org/en/) (when you download Node, npm also gets installed by default)
+* Download [Node Js and npm(Node package manager)](https://nodejs.org/en/) (when you install Node, npm also gets installed by default)
 <br/>
 
 * Mongo DB community editition is free and a great software in order to work with MongoDB applications. [Download Mongo DB community editition](https://docs.mongodb.com/manual/administration/install-community/)
@@ -53,7 +56,7 @@
 
 * Clone the repository by running command
 ```
-git clone https://github.com/ <your user-name> /BlogSite.git
+git clone https://github.com/<your user-name>/BlogSite.git
 ```
 in your git bash.
 <br/>
@@ -88,7 +91,7 @@ mongod
 
 * Run this command to start the project.
 ```
-npm run start
+npm start
 ```
 
 * Run this command to start the project as a developer.
@@ -130,7 +133,7 @@ show collections
 
 <img align="right" src="assets/event1.png" width = "120" height = "100"><b>1. JGEC Winter of Code</b>
 
-- JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into Open Source contribution and get the realm of Software Development.
+- JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into the realm of Open Source contribution and Software Development.
 
 <img align="right" src="assets/event2.png" width = "120" height = "100"><b>2. Mexili Winter of Code</b>
 
