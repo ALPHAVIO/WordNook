@@ -32,6 +32,7 @@ body {
     background-image: url('../images/bg4.jpg');
     background-size: cover;
     color: var(--color-primary);
+    scroll-behavior: smooth;
 }
 
 #loader {
@@ -113,16 +114,9 @@ body {
 .nav-link {
     font-weight: 600;
     font-size: 18px;
+    color: var(--color-primary);
 }
-
-.navbar-right li a {
-    color: var(--color-primary) !important;
-    font-weight: bold;
-    margin: 0.4rem 0.6rem 0.3rem 0.6rem;
-    padding: 0.4rem 0.7rem 0.2rem 0.3rem;
-}
-
-.navbar-nav li a:hover {
+.nav-link:hover {
     color: var(--color-secondary) !important;
     background-color: var(--color-text);
 }
@@ -764,10 +758,20 @@ input[name='perPage'] {
 /* Scroll To Top Button */
 
 .back-to-top {
+    background: transparent;
     position: fixed;
     bottom: 0.5rem;
-    right: 47%;
-    display: none;
+    right: 49%;
+    color: #fff !important;
+    border: 2px solid;
+    background-color: var(--color-primary);
+    transition: all 0.5s ease-in-out;
+}
+
+.back-to-top:hover,
+.back-to-top:focus {
+    background-color: var(--color-secondary);
+    border-radius: 5em;
 }
 
 /* Flag button */
