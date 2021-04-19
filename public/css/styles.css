@@ -114,16 +114,9 @@ body {
 .nav-link {
     font-weight: 600;
     font-size: 18px;
+    color: var(--color-primary);
 }
-
-.navbar-right li a {
-    color: var(--color-primary) !important;
-    font-weight: bold;
-    margin: 0.4rem 0.6rem 0.3rem 0.6rem;
-    padding: 0.4rem 0.7rem 0.2rem 0.3rem;
-}
-
-.navbar-nav li a:hover {
+.nav-link:hover {
     color: var(--color-secondary) !important;
     background-color: var(--color-text);
 }
