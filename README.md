@@ -13,7 +13,8 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- DeepSource Badge and Dependabot Status badges -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-) [![DeepSource](https://deepsource.io/gh/ALPHAVIO/BlogSite.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/ALPHAVIO/BlogSite/?ref=repository-badge) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/BlogSite)](https://dependabot.com) 
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-) [![GitHub issues](https://img.shields.io/github/issues/ALPHAVIO/BlogSite?color=green&logo=github&style=flat)](https://github.com/ALPHAVIO/BlogSite/issues) [![GitHub PRs](https://img.shields.io/github/issues-pr/ALPHAVIO/BlogSite?style=flat&logo=github)](https://github.com/ALPHAVIO/BlogSite/pulls) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/BlogSite)](https://dependabot.com)  
+**DeepSource:** [![DeepSource](https://deepsource.io/gh/ALPHAVIO/BlogSite.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/ALPHAVIO/BlogSite/?ref=repository-badge)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
