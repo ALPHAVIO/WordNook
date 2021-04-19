@@ -3,11 +3,14 @@
   <img src="assets/New Banner.jpg" />
 </div>
 
-# A sneak peek into what we have here-
+<hr>
   
- <p align="center">
+<div align="center">
+ <h1>A sneak peek into what we have here</h1>
  <img src="assets/blogsitegiff.gif" align = "center"  width=600px/>
- </p>
+</div>
+
+<hr>
 
 ## About-
 
@@ -23,6 +26,8 @@
 
 - This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).  [Visit BlogSite](https://alphavio-daily-journal.herokuapp.com)
 
+<hr>
+
 ## Tech Stack-
 <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
 <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
@@ -31,6 +36,8 @@
 <img alt="Express.js" src="https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge"/>
 <img alt="Mongoose" src ="https://img.shields.io/badge/Mongoose-%234ea94b.svg?&style=for-the-badge&logo=Mongoose&logoColor=white"/>
 <img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/>
+
+<hr>
 
 ## Environment Setup for local use-
 
