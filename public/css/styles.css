@@ -114,9 +114,14 @@ body {
 .nav-link {
     font-weight: 600;
     font-size: 18px;
+    color: var(--color-primary);
+}
+.nav-link:hover {
+    color: var(--color-secondary) !important;
+    background-color: var(--color-text);
 }
 
-.navbar-right li a {
+/* .navbar-right li a {
     color: var(--color-primary) !important;
     font-weight: bold;
     margin: 0.4rem 0.6rem 0.3rem 0.6rem;
@@ -126,7 +131,7 @@ body {
 .navbar-nav li a:hover {
     color: var(--color-secondary) !important;
     background-color: var(--color-text);
-}
+} */
 
 .btn {
     margin: 6px;
