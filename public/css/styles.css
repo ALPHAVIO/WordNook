@@ -779,3 +779,7 @@ input[name='perPage'] {
     color: white;
     background: var(--color-secondary);
 }
+
+.primary-font {
+    color: var(--color-primary);
+}
