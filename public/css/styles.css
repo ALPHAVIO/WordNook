@@ -760,8 +760,8 @@ input[name='perPage'] {
 .back-to-top {
     background: transparent;
     position: fixed;
-    bottom: 0.5rem;
-    right: 49%;
+    bottom: 5.5rem;
+    right: 2%;
     color: #fff !important;
     border: 2px solid;
     background-color: var(--color-primary);
