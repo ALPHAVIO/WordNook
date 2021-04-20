@@ -586,7 +586,7 @@ input[name='perPage'] {
 }
 
 .commenting {
-    background: var(--color-primary);
+    background: var(--color-secondary);
 }
 
 .commenting:hover {
