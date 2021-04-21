@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js -e js,ejs",
+    "eslint-prettier-check": "eslint-config-prettier ./App.js",
     "lint-check": "eslint .",
     "lint": "eslint --fix ."
   },
