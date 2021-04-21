@@ -6,7 +6,7 @@
             <!-- edit form column -->
             <div class="col-md-9 personal-info">
                 <h3>Personal info</h3>
-                <form class="form-horizontal" role="form" method='post' action="/read-profile">
+                <form class="form-horizontal" role="form" method='post' action="/read-profile" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="col-lg-3 control-label" for="firstName" >First name:</label>
                         <div class="col-lg-8">
@@ -29,6 +29,12 @@
                         <label class="col-lg-3 control-label" for="email">Email:</label>
                         <div class="col-lg-8">
                             <input class="form-control" type="text" for="email" value="<%= user.email %>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label" for="photo">Profile Picture(Leave empty if you don't want to update profile picture)</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="file" id="photo" name="photo" >
                         </div>
                     </div>
                     <p>
