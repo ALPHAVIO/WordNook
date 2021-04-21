@@ -766,6 +766,7 @@ input[name='perPage'] {
     border: 2px solid;
     background-color: var(--color-primary);
     transition: all 0.5s ease-in-out;
+    z-index: 9999;
 }
 
 .back-to-top:hover,
