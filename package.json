@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "app.js",
 	"engines": {
-		"node": "14.15.1"
+		"node": "16.0.0"
 	},
 	"scripts": {
 		"start": "node app.js",
@@ -32,8 +32,7 @@
 		"netmask": "^2.0.2",
 		"nodemailer": "^6.5.0",
 		"nodemailer-mailgun-transport": "^2.0.3",
-		"pac-resolver": "^4.2.0",
-		"package-lock": "^1.0.5"
+		"pac-resolver": "^4.2.0"
 	},
 	"devDependencies": {
 		"eslint": "^7.24.0",
