@@ -14,6 +14,7 @@
 	--color-primary: #0d97ac;
 	--color-secondary: #e2532f;
 	--color-tertiary: #dda033;
+    --color-danger: #ff0000;
 	--color-side: #065125;
 	--color-text: #e5e7eb;
 }
@@ -476,6 +477,16 @@ input[name='perPage'] {
 .button {
 	min-width: 15em;
 }
+
+.button-cancel {
+    background-color: var(--color-danger) !important;
+    color: white;
+    text-align: center;
+}
+.button-cancel:hover {
+    background: var(--color-danger) !important;
+}
+
 .btnFrame {
 	background: var(--color-primary);
 }
