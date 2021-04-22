@@ -787,23 +787,23 @@ input[name='perPage'] {
 
   .testimonials-clean h2 {
     font-weight:bold;
-    margin-bottom:40px;
-    padding-top:40px;
+    margin-bottom:2.5rem;
+    padding-top:2.5rem;
     color:inherit;
 
   }
 
   @media (max-width:767px) {
     .testimonials-clean h2 {
-      margin-bottom:25px;
-      padding-top:25px;
-      font-size:24px;
+      margin-bottom:1.56rem;
+      padding-top:1.56rem;
+      font-size:1.5rem;
     }
   }
 
   .testimonials-clean .intro {
-    font-size:16px;
-    max-width:500px;
+    font-size:1rem;
+    max-width:31.25rem;
     margin:0 auto;
   }
 
@@ -812,21 +812,21 @@ input[name='perPage'] {
   }
 
   .testimonials-clean .people {
-    padding:50px 0 20px;
+    padding:3.125rem 0 1.25rem;
   }
 
   .testimonials-clean .item {
     margin-bottom:32px;
   }
 
-  @media (min-width:768px) {
+  @media (min-width:48px) {
     .testimonials-clean .item {
-      height:220px;
+      height:12.5rem;
     }
   }
 
   .testimonials-clean .item .box {
-    padding:30px;
+    padding:1.875rem;
     background-color:#fff;
     position:relative;
   }
@@ -834,41 +834,41 @@ input[name='perPage'] {
   .testimonials-clean .item .box:after {
     content:'';
     position:absolute;
-    left:30px;
-    bottom:-24px;
+    left:1.875rem;
+    bottom:-1.5rem;
     width:0;
     height:0;
-    border:15px solid transparent;
-    border-width:12px 15px;
+    border:0.938rem solid transparent;
+    border-width:0.75rem 0.938rem;
     border-top-color:#fff;
   }
 
   .testimonials-clean .item .author {
-    margin-top:28px;
-    padding-left:25px;
+    margin-top:1.75rem;
+    padding-left:1.563rem;
   }
 
   .testimonials-clean .item .name {
     font-weight:bold;
-    margin-bottom:2px;
+    margin-bottom:0.125rem;
     color:inherit;
   }
 
   .testimonials-clean .item .title {
-    font-size:13px;
+    font-size:0.813rem;
     color:#9da9ae;
   }
 
   .testimonials-clean .item .description {
-    font-size:15px;
+    font-size:0.938rem;
     margin-bottom:0;
   }
 
   .testimonials-clean .item img {
-    max-width:40px;
+    max-width:2.5rem;
     float:left;
-    margin-right:12px;
-    margin-top:-5px;
+    margin-right:0.75rem;
+    margin-top:-0.313rem;
   }
 
   .complete{
@@ -881,7 +881,7 @@ input[name='perPage'] {
     font-weight: 400;
     margin-bottom:5%;
     background-color:var(--color-primary);
-    border-radius: 5px solid white !important;
+    border-radius:0.313rem solid white !important;
     color: white;
     background: var(--color-secondary);
 }

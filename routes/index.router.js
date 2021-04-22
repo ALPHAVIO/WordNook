@@ -3,6 +3,7 @@ const express = require('express');
 const multer = require('multer');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
+const testimonial=require("../testimonial")
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -90,6 +91,7 @@ router.get(
                             perPage: perPage,
                             order: order,
                             isAuthenticated: !!req.user,
+                            testimonial
                             // currentUser: req.user,
                         });
                     }
@@ -142,18 +144,6 @@ router.post('/contact', async (req, res) => {
         }
     });
 });
-// Get request for testimonial-write page-
-router.get("/testimonial-write",auth,async(req,res)=>{
-    const { user } = req;
-    if (!user) {
-        return res.status(401).redirect('/log-in');
-    }
-
-    res.render('./postitems/testimonial-write',{
-        isAuthenticated:true,
-
-    })
-})
 
 
 // Get request for compose blog page-
