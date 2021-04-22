@@ -19,6 +19,9 @@
 		"radix": "off",
 		"no-param-reassign": "off",
 		"no-nested-ternary": "off",
-		"no-plusplus": "off"
+		"no-plusplus": "off",
+		// conflicting properties of prettier and eslint
+		"arrow-body-style": "off",
+		"prefer-arrow-callback": "off"
 	}
 }
