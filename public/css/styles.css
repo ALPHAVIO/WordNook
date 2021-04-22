@@ -586,7 +586,7 @@ input[name='perPage'] {
 }
 
 .commenting {
-    background: var(--color-primary);
+    background: var(--color-secondary);
 }
 
 .commenting:hover {
@@ -760,12 +760,13 @@ input[name='perPage'] {
 .back-to-top {
     background: transparent;
     position: fixed;
-    bottom: 0.5rem;
-    right: 49%;
+    bottom: 5.5rem;
+    right: 2%;
     color: #fff !important;
     border: 2px solid;
     background-color: var(--color-primary);
     transition: all 0.5s ease-in-out;
+    z-index: 9999;
 }
 
 .back-to-top:hover,
@@ -778,4 +779,8 @@ input[name='perPage'] {
 .btn-flag {
     color: white;
     background: var(--color-secondary);
+}
+
+.primary-font {
+    color: var(--color-primary);
 }
