@@ -779,3 +779,10 @@ input[name='perPage'] {
     color: white;
     background: var(--color-secondary);
 }
+
+/* Profile Image Style */
+
+.profile-img {
+    width: 20%;
+    border-radius: 10%;
+}
