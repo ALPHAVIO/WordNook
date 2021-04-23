@@ -795,3 +795,10 @@ input[name='perPage'] {
 .primary-font {
 	color: var(--color-primary);
 }
+
+/* Profile Image Style */
+
+.profile-img {
+    width: 20%;
+    border-radius: 10%;
+}

@@ -6,6 +6,8 @@
         <div class="col-lg-11 card bg-light mx-2 mx-lg-auto card p-0">      
             <%# Display author's name %> 
             <div class="card-header text-center">
+                <%# Display author's profile %>
+                <img src="<%= user.photo %>" class="img-thumbnail mx-auto profile-img" alt="User Profile Image">
                 <h4>
                     <a href="/read-profile" class="text-decoration-none primary-font">
                         <%= user.firstName %> <%= user.lastName %> 

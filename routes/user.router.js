@@ -2,6 +2,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
 const User = require('../models/User.model');
 const auth = require('../middlewares/auth');
 const {
@@ -9,6 +10,35 @@ const {
 	loginValidation,
 } = require('../middlewares/validations/user.js');
 const Blog = require('../models/Blog.model');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(
+            null,
+            new Date().toISOString().replace(/:/g, '-') + file.originalname
+        );
+    },
+});
+
+const fileFilter = (req, file, cb) => {
+    // reject a file
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+};
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5,
+    },
+    fileFilter: fileFilter,
+});
 
 const router = express.Router();
 
@@ -60,92 +90,107 @@ router.get('/read-profile', auth, async (req, res) => {
 		isAuthenticated: !!req.user,
 	});
 });
+router.post('/read-profile', upload.single('photo'), auth, async (req, res) => {
+    const updates = Object.keys(req.body);
+    const allowedUpdates = [
+        'firstName',
+        'lastName',
+        'userName',
+        'email',
+        'password',
+    ];
+    const isValid = updates.every((update) => allowedUpdates.includes(update));
 
-router.post('/read-profile', auth, async (req, res) => {
-	const updates = Object.keys(req.body);
-	const allowedUpdates = [
-		'firstName',
-		'lastName',
-		'userName',
-		'email',
-		'password',
-	];
-	const isValid = updates.every((update) => allowedUpdates.includes(update));
-
-	if (!isValid) {
-		res.status(400).send('invalid update property');
-	}
-
-	try {
-		const id = await req.user;
-		const user = await User.findById(id._id);
-		updates.forEach((update) => {
-			user[update] = req.body[update];
-		});
-		await user.save();
-		res.redirect('/');
-	} catch (e) {
-		res.status(500).send(e);
-	}
+    if (!isValid) {
+        res.status(400).send('invalid update property');
+    }
+    if (req.file) {
+        updates.push('photo');
+        req.body.photo = req.file.path;
+    }
+    try {
+        const id = await req.user;
+        const user = await User.findById(id._id);
+        updates.forEach((update) => (user[update] = req.body[update]));
+        await user.save();
+        res.redirect('/');
+    } catch (e) {
+        res.status(500).send(e);
+    }
 });
 
 // POST request for sign up
-router.post('/sign-up', signupValidation, async (req, res) => {
-	const {
-		firstName,
-		lastName,
-		userName,
-		email,
-		password,
-		confirmPassword,
-	} = req.body;
+router.post(
+    '/sign-up',
+    upload.single('photo'),
+    signupValidation,
+    async (req, res) => {
+        const {
+            firstName,
+            lastName,
+            userName,
+            email,
+            password,
+            confirmPassword,
+        } = req.body;
 
-	// Check if the username or email already taken
-	// eslint-disable-next-line
-	User.findOne({ $or: [{ email }, { userName }] }, (err, doc) => {
-		User.findOne({ userName }, (err, doc) => {
-			if (doc) {
-				return res.status(401).render('./auth/logIn', {
-					error: 'Username already taken!',
-					data: {
-						firstName,
-						lastName,
-						userName,
-						password,
-						email,
-						confirmPassword,
-					},
-				});
-			}
-			const newUser = new User(req.body);
+        // Check if the username or email already taken
+        User.findOne({ $or: [{ email }, { userName }] }, (err, doc) => {
+            User.findOne({ userName }, (err, doc) => {
+                if (doc) {
+                    return res.status(401).render('./auth/logIn', {
+                        error: 'Username already taken!',
+                        data: {
+                            firstName,
+                            lastName,
+                            userName,
+                            password,
+                            email,
+                            confirmPassword,
+                        },
+                    });
+                }
+                let photo = '';
+                if (req.file) {
+                    photo = req.file.path;
+                }
+                const newUser = new User({
+                    firstName,
+                    lastName,
+                    userName,
+                    password,
+                    email,
+                    photo,
+                });
 
-			newUser.save((err, doc) => {
-				if (err || !doc) {
-					return res.status(422).render('./auth/logIn', {
-						error: 'Oops something went wrong!',
-						data: {
-							firstName,
-							lastName,
-							userName,
-							email,
-							password,
-						},
-					});
-				}
-				const token = jwt.sign(
-					{ _id: doc._id },
-					process.env.SECRET_KEY
-				);
+                newUser.save((err, doc) => {
+                    if (err || !doc) {
+                        return res.status(422).render('./auth/logIn', {
+                            error: 'Oops something went wrong!',
+                            data: {
+                                firstName,
+                                lastName,
+                                userName,
+                                email,
+                                password,
+                            },
+                        });
+                    }
+                    const token = jwt.sign(
+                        { _id: doc._id },
+                        process.env.SECRET_KEY
+                    );
 
-				// Send back the token to the user as a httpOnly cookie
-				res.cookie('token', token, {
-					httpOnly: true,
-				});
-				res.redirect('/');
-			});
-		});
-	});
-});
+                    // Send back the token to the user as a httpOnly cookie
+                    res.cookie('token', token, {
+                        httpOnly: true,
+                    });
+                    res.redirect('/');
+                });
+            });
+        });
+    }
+);
 
 // POST request for log in
 router.post('/log-in', loginValidation, async (req, res) => {
