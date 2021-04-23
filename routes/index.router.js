@@ -123,7 +123,7 @@ router.get('/contact', auth, async (req, res) => {
 // post request for contact page
 router.post('/contact', async (req, res) => {
 	const { subject, email, message } = req.body;
-	// eslint-disable-line
+	// eslint-disable-next-linee
 	const sendMail = require('../middlewares/mail');
 	sendMail(subject, email, message, (err) => {
 		if (err) res.status(500).json({ message: 'Error occurred!' });
