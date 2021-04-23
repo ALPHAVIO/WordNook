@@ -1,4 +1,4 @@
-<%- include("../partials/header", {isAuthenticated, user, blogs}) -%>
+<%- include("../partials/header", {isAuthenticated, user}) -%>
     <div class="container">
         <h1>Edit Profile</h1>
         <hr>
@@ -6,6 +6,12 @@
             <!-- edit form column -->
             <div class="col-md-9 personal-info">
                 <h3>Personal info</h3>
+                <!-- display error if any while submitting the form -->
+                <% if(error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
                 <form class="form-horizontal" role="form" method='post' action="/read-profile" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="col-lg-3 control-label" for="firstName" >First name:</label>
