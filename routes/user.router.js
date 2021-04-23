@@ -111,6 +111,7 @@ router.post('/read-profile', upload.single('photo'), auth, async (req, res) => {
 	try {
 		const id = await req.user;
 		const user = await User.findById(id._id);
+		// eslint-disable-next-line
 		updates.forEach((update) => (user[update] = req.body[update]));
 		await user.save();
 		res.redirect('/');
@@ -135,7 +136,7 @@ router.post(
 		} = req.body;
 
 		// Check if the username or email already taken
-		User.findOne({ $or: [{ email }, { userName }] }, (err, doc) => {
+		User.findOne({ $or: [{ email }, { userName }] }, () => {
 			User.findOne({ userName }, (err, doc) => {
 				if (doc) {
 					return res.status(401).render('./auth/logIn', {
