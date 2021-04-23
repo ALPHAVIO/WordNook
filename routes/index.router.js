@@ -3,6 +3,10 @@ const express = require('express');
 const multer = require('multer');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
+const sendMail =
+	process.env.NODE_ENV === 'production'
+		? require('../middlewares/mail')
+		: 'dummy';
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -123,8 +127,6 @@ router.get('/contact', auth, async (req, res) => {
 // post request for contact page
 router.post('/contact', async (req, res) => {
 	const { subject, email, message } = req.body;
-	// eslint-disable-next-line
-	const sendMail = require('../middlewares/mail');
 	sendMail(subject, email, message, (err) => {
 		if (err) res.status(500).json({ message: 'Error occurred!' });
 		else {
