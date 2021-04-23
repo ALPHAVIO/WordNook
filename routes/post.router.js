@@ -60,7 +60,7 @@ router.get(
                     post.status === 'Public' ||
                     (user && post.author._id.toString() === user._id.toString())
                 ) {
-                    //increment no. of views of the post.
+                    // increment no. of views of the post.
                     post.noOfViews++;
                     post.save();
                     // Sort the comments to show the recent one
@@ -77,11 +77,9 @@ router.get(
                     let currUser;
                     if (user) {
                         currUser = await UserModel.findById(user._id);
-                        isLiked = currUser.likedPosts.includes(
+                        isLiked = !!currUser.likedPosts.includes(
                             req.params.postId
-                        )
-                            ? true
-                            : false;
+                        );
                     }
                     res.render('./postitems/post', {
                         title: post.blogTitle,
@@ -370,7 +368,7 @@ router.put('/posts/:id/dislike', auth, async (req, res) => {
         return res.redirect('/log-in');
     }
     const currUser = await UserModel.findById({ _id: req.user._id });
-    let index = currUser.likedPosts.indexOf(foundBlog._id);
+    const index = currUser.likedPosts.indexOf(foundBlog._id);
     currUser.likedPosts.splice(index, 1);
     foundBlog.likes--;
     foundBlog.save();

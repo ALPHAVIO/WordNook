@@ -1,5 +1,5 @@
-const User = require('../../models/User.model');
 const express = require('express');
+const User = require('../../models/User.model');
 
 const emailRegx = new RegExp(
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -62,7 +62,7 @@ module.exports.signupValidation = (req, res, next) => {
     } = req.body;
 
     let error;
-    let data = {
+    const data = {
         firstName: firstName || '',
         lastName: lastName || '',
         userName: userName || '',
@@ -130,7 +130,7 @@ module.exports.signupValidation = (req, res, next) => {
 module.exports.loginValidation = (req, res, next) => {
     const { email, password } = req.body;
 
-    let data = {
+    const data = {
         email: email || '',
         password: password || '',
     };
