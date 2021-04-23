@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const PORT = process.env.PORT || 3000;
 const connectDB = require('./config/db');
@@ -21,8 +22,7 @@ app.use('/uploads', express.static('uploads'));
 
 // When in development mode then only require the dotenv module
 if (process.env.NODE_ENV !== 'production') {
-    const dotenv = require('dotenv');
-    dotenv.config({ path: './.env' });
+	dotenv.config({ path: './.env' });
 }
 
 // Connecting to Mongo Database using ODM Mongoose-
@@ -40,13 +40,13 @@ app.use(require('./routes/post.router'));
 
 // routing to 404 in case of unavilable urls.
 app.use('*', (req, res) => {
-    res.render('404', {
-        isAuthenticated: !!req.user,
-    });
+	res.render('404', {
+		isAuthenticated: !!req.user,
+	});
 });
 
 // Launching the server on port 3000 in development mode-
 app.listen(PORT, () => {
-    // eslint-disable-next-line no-console
-    console.log(`Server started on port: ${PORT}`);
+	// eslint-disable-next-line no-console
+	console.log(`Server started on port: ${PORT}`);
 });

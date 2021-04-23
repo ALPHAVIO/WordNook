@@ -9,7 +9,7 @@
                 <%# Display author's profile %>
                 <img src="<%= user.photo %>" class="img-thumbnail mx-auto profile-img" alt="User Profile Image">
                 <h4>
-                    <a href="/read-profile" class="text-info text-decoration-none">
+                    <a href="/read-profile" class="text-decoration-none primary-font">
                         <%= user.firstName %> <%= user.lastName %> 
                         <i class="fas fa-user-edit pl-3"></i>
                     </a>
@@ -23,14 +23,14 @@
                         
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFollowers">
-                                <div class="text-info accordion-button" style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseFollowers" aria-expanded="false" aria-controls="collapseFollowers"  ><%= user.followers.length %> followers</div> 
+                                <div class="accordion-button primary-font" style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseFollowers" aria-expanded="false" aria-controls="collapseFollowers"  ><%= user.followers.length %> followers</div> 
                             </h2>
                         </div>
 
                         
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFollowing">
-                                <div class="text-info accordion-button" style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseFollowing" aria-expanded="false" aria-controls="collapseFollowing"  ><%= user.following.length %> following</div> 
+                                <div class="accordion-button primary-font" style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseFollowing" aria-expanded="false" aria-controls="collapseFollowing"  ><%= user.following.length %> following</div> 
                             </h2>
                             
                         </div>    
