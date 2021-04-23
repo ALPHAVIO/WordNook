@@ -5,35 +5,35 @@ const { Schema } = mongoose;
 const { ObjectId } = Schema.Types;
 
 const UserSchema = new Schema({
-    firstName: {
-        type: String,
-        required: true,
-    },
-    lastName: {
-        type: String,
-        required: true,
-    },
-    userName: {
-        type: String,
-        unique: true,
-        required: true,
-    },
-    email: {
-        type: String,
-        unique: true,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
-    photo: {
-        type: String,
-        default: '/images/Default_Profile.jpg',
-    },
-    followers: [{ type: ObjectId, ref: 'User' }],
-    following: [{ type: ObjectId, ref: 'User' }],
-    likedPosts: [{ type: ObjectId, ref: 'Blog' }],
+	firstName: {
+		type: String,
+		required: true,
+	},
+	lastName: {
+		type: String,
+		required: true,
+	},
+	userName: {
+		type: String,
+		unique: true,
+		required: true,
+	},
+	email: {
+		type: String,
+		unique: true,
+		required: true,
+	},
+	password: {
+		type: String,
+		required: true,
+	},
+	photo: {
+		type: String,
+		default: '/images/Default_Profile.jpg',
+	},
+	followers: [{ type: ObjectId, ref: 'User' }],
+	following: [{ type: ObjectId, ref: 'User' }],
+	likedPosts: [{ type: ObjectId, ref: 'Blog' }],
 });
 // hash the password if it is modified
 UserSchema.pre('save', async function (next) {

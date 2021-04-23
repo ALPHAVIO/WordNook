@@ -799,6 +799,6 @@ input[name='perPage'] {
 /* Profile Image Style */
 
 .profile-img {
-    width: 20%;
-    border-radius: 10%;
+	width: 20%;
+	border-radius: 10%;
 }
