@@ -6,7 +6,7 @@ const Blog = require('../models/Blog.model');
 const sendMail =
 	process.env.NODE_ENV === 'production'
 		? require('../middlewares/mail')
-		: 'dummy';
+		: 'development';
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
