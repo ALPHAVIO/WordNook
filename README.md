@@ -17,6 +17,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- DeepSource Badge and Dependabot Status badges -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-) ![Forks](https://img.shields.io/github/forks/ALPHAVIO/WordNook?style=social) ![Stars](https://img.shields.io/github/stars/ALPHAVIO/WordNook?style=social) [![GitHub issues](https://img.shields.io/github/issues/ALPHAVIO/WordNook?color=green&logo=github&style=flat)](https://github.com/ALPHAVIO/WordNook/issues) [![GitHub PRs](https://img.shields.io/github/issues-pr/ALPHAVIO/WordNook?style=flat&logo=github)](https://github.com/ALPHAVIO/WordNook/pulls) ![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/WordNook)  
+<!-- **DeepSource:** [![DeepSource](https://deepsource.io/gh/ALPHAVIO/WordNook.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/ALPHAVIO/WordNook/?ref=repository-badge) -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
