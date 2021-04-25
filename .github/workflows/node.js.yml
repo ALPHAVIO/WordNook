@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build_&_lint-check:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
