@@ -710,6 +710,10 @@ input[name='perPage'] {
 	margin-right: 1em;
 }
 
+.social-icon:hover {
+    opacity: 0.5;
+}
+
 .facebook {
 	color: #7ca1f3;
 }
