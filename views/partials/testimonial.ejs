@@ -4,7 +4,6 @@
         <ul class="carousel-indicators">
             <li data-target="#demo" data-slide-to="0" class="active"></li>
             <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
         </ul>
         <!-- The slideshow -->
         <div class="carousel-inner">
@@ -13,85 +12,32 @@
                     <div class="container">
                         <div class="intro">
                             <h2 class="text-center">Testimonials </h2>
-                            <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.lorem5 Lorem
-                                ipsum dolor sit amet.</p>
-                        </div>
-                        <div class="row people">
-                            <% for (let i=0; i <testimonial.length-6; i++ ) { %>
+                            <p class="text-center">Fee free to write ...</p></div>
+                        <div class="row people"><% for (let i=0; i <testimonial.length-3; i++ ) { %>
                                 <div class="col-md-6 col-lg-4 item">
                                     <div class="box">
-                                        <p class="description">
-                                            <%= testimonial[i].views %>
-                                    </div>
+                                        <p class="description"><%= testimonial[i].views %></p></div>
                                     <div class="author"><img class="rounded-circle" src="https://picsum.photos/200/300">
-                                        <h5 class="name">
-                                            <%= testimonial[i].author %>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <% }%>
-                        </div>
+                                        <h5 class="name"><%= testimonial[i].author %></h5>
+                                    </div></div>
+                                <% }%></div>
                         <a href="/testimonial-write"><button class="test-button">Write a testimonial </button> </a>
-                    </div>
-                </div>
-            </div>
+                    </div></div></div>
             <div class="carousel-item">
                 <div class="testimonials-clean">
                     <div class="container">
                         <div class="intro">
                             <h2 class="text-center">Testimonials </h2>
-                            <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.lorem5 Lorem
-                                ipsum dolor sit amet.</p>
-                        </div>
+                            <p class="text-center">Fee free to write ...</p></div>
                         <div class="row people">
-                            <% for (let i=3; i <testimonial.length-3; i++ ) { %>
+                            <% for (let i=3; i <testimonial.length; i++ ) { %>
                                 <div class="col-md-6 col-lg-4 item">
                                     <div class="box">
-                                        <p class="description">
-                                            <%= testimonial[i].views %>
-                                    </div>
+                                        <p class="description"><%= testimonial[i].views %></p></div>
                                     <div class="author"><img class="rounded-circle" src="https://picsum.photos/200/300">
-                                        <h5 class="name">
-                                            <%= testimonial[i].author %>
-                                        </h5>
-                                    </div>
-                                </div>
+                                        <h5 class="name"><%= testimonial[i].author %></h5>
+                                    </div> </div>
                                 <% }%>
-                        </div>
-                    </div>
+                        </div></div>
                     <a href="/testimonial-write"><button class="test-button">Write a testimonial </button> </a>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="testimonials-clean">
-                    <div class="container">
-                        <div class="intro">
-                            <h2 class="text-center">Testimonials </h2>
-                            <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.lorem5 Lorem
-                                ipsum dolor sit amet.</p>
-                        </div>
-                        <div class="row people">
-                            <% for (let i=6; i <testimonial.length; i++ ) { %>
-                                <div class="col-md-6 col-lg-4 item">
-                                    <div class="box">
-                                        <p class="description">
-                                            <%= testimonial[i].views %>
-                                    </div>
-                                    <div class="author"><img class="rounded-circle" src="https://picsum.photos/200/300">
-                                        <h5 class="name">
-                                            <%= testimonial[i].author %>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <% }%>
-                        </div>
-                    </div>
-                    <a href="/testimonial-write"><button class="test-button">Write a testimonial </button> </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
+                </div></div></div></div></div></div></div>
