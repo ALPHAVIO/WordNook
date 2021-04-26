@@ -45,11 +45,11 @@
                 <div><%= likesCount %> <% if(likesCount>1 || likesCount===0) { %> likes <% } else  {%> like <% } %></div>
                 <% if(!isLiked){ %>
                     <form action="/posts/<%=id%>/like?_method=PUT" method="POST">
-                        <button class="button btn-primary likebtn" type="submit"> Like</button>
+                        <button class="button likebtn" type="submit"> Like</button>
                     </form>
                 <% }else{ %>
                     <form action="/posts/<%=id%>/dislike?_method=PUT" method="POST">
-                        <button class="button btn-primary likebtn" type="submit">Liked</button>
+                        <button class="button likebtn" type="submit">Liked</button>
                     </form>
                 <% } %> 
                 <div><%=noOfViews%> views</div>
@@ -97,7 +97,7 @@
                 </div>
                 <button class="button commenting" type="submit" name="publish">Post comment</button>
             </form>
-    
+
         </div>
     </div>
 </div>
