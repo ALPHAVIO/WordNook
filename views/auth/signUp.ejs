@@ -11,7 +11,7 @@
         <% } %>
             <!-- sign-up form section -->
             <div class="container-centre">
-                <form action="/sign-up" method="POST">
+                <form action="/sign-up" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="sign-up-place">First Name</label>
                         <input class="form-control col-md-12 col-sm-12 col-xs-12" type="text" name="firstName"
@@ -43,6 +43,10 @@
                         <input class="form-control col-md-12 col-sm-12 col-xs-12" type="password" id="confirmPassword" name="confirmPassword"
                             autocomplete="off" value="<%= data.confirmPassword %>" required></input>
                         <span class="password-icon"><i class="fa fa-eye" id="eye2" onclick="togglePassword('confirmPassword','eye2')"></i></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Choose Profile Image (Optional)</label>
+                        <input type="file" name="photo" id="photo" />
                     </div>
                     <div class="registrationFormAlert" style="color:red;" id="CheckPasswordMatch"></div>
                     <div class="text-center">

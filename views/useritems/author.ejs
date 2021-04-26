@@ -4,6 +4,8 @@
             <div class="col-lg-10 mx-2 mx-md-auto card p-0">
                 <%# Display author's name %>
                     <div class="card-header text-center">
+                        <%# Display author's profile %>
+                        <img src="<%= user.photo %>" class="img-thumbnail mx-auto profile-img" alt="User Profile Image">
                         <h4>AUTHOR: <%= user.firstName %>
                                 <%= user.lastName %>
                         </h4>

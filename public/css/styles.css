@@ -795,6 +795,7 @@ input[name='perPage'] {
 .primary-font {
 	color: var(--color-primary);
 }
+
 /* ---------------------------------------------------------------- */
 /* testimonial page styles */
 .testimonials-clean {
@@ -904,4 +905,11 @@ input[name='perPage'] {
     border-radius:0.313rem solid white !important;
     color: white;
     background: var(--color-secondary);
+
+/* Profile Image Style */
+
+.profile-img {
+	width: 20%;
+	border-radius: 10%;
+
 }

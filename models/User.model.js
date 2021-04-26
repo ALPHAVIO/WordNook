@@ -27,6 +27,10 @@ const UserSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	photo: {
+		type: String,
+		default: '/images/Default_Profile.jpg',
+	},
 	followers: [{ type: ObjectId, ref: 'User' }],
 	following: [{ type: ObjectId, ref: 'User' }],
 	likedPosts: [{ type: ObjectId, ref: 'Blog' }],
