@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>WordNook</h1>
+  <p align="center"><img src="assets/wordnook-banner.png"></p>
   <img src="assets/New Banner.jpg" />
 </div>
 
