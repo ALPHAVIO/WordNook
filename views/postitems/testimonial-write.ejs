@@ -1,0 +1,17 @@
+<%- include("../partials/header", {isAuthenticated}) -%>
+
+<div class="col-md-6 mx-2 mx-md-auto my-2 content-body-font">
+    <h1 class="heading-centre heading-bold normal-heading-font">Add Your Views</h1>
+
+
+    <form action="/testimonial-write" method="POST" class="mt-4">
+        <div class="form-group">
+            <label>Views:</label>
+            <textarea class="form-control col-md-12 col-sm-12 col-xs-12" rows="6" name="views"  required></textarea>
+        </div>
+        <button class="btn btn-primary block" type="submit" size="50dp">Add the testimonial</button>
+    </form>
+</div>
+
+
+<%- include("../partials/footer") -%>

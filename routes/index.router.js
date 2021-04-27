@@ -3,6 +3,8 @@ const express = require('express');
 const multer = require('multer');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
+const testimonial = require('../dummy-data/testimonial');
+
 const sendMail =
 	process.env.NODE_ENV === 'production'
 		? require('../middlewares/mail')
@@ -94,6 +96,7 @@ router.get(
 							perPage: perPage,
 							order: order,
 							isAuthenticated: !!req.user,
+							testimonial,
 							// currentUser: req.user,
 						});
 					}
