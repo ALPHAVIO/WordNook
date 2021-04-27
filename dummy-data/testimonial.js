@@ -1,10 +1,12 @@
 const testimonial = [
 	{
-		views:'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
+		views:
+			'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
 		author: 'John Benson',
 	},
 	{
-		views:'This Platform is great source of motivation , it will motivate you to do something on your own then share it us .',
+		views:
+			'This Platform is great source of motivation , it will motivate you to do something on your own then share it us .',
 		author: 'Riya chokri',
 	},
 	{
@@ -12,7 +14,8 @@ const testimonial = [
 		author: 'Siya Roy',
 	},
 	{
-		views:'It is great website for learning new things which People daily share with us .',
+		views:
+			'It is great website for learning new things which People daily share with us .',
 		author: 'Aashish Chauhan',
 	},
 	{
@@ -20,11 +23,13 @@ const testimonial = [
 		author: 'Sima Goaur',
 	},
 	{
-		views:'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
+		views:
+			'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
 		author: 'Abhniav Raj',
 	},
 	{
-		views:'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
+		views:
+			'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
 		author: 'Anubhav Bassi',
 	},
 	{
@@ -32,7 +37,8 @@ const testimonial = [
 		author: 'Tarun Kumar',
 	},
 	{
-		views:'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
+		views:
+			'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
 		author: 'Madhu Bakshi',
 	},
 ];
