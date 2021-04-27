@@ -2,6 +2,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const auth = require('../middlewares/auth');
+
 const router = express.Router();
 router.use(methodOverride('_method'));
 router.use(bodyParser.json());
