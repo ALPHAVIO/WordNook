@@ -896,12 +896,26 @@ input[name='perPage'] {
 }
 .test-button{
     font-size: 1.5rem;
-    margin-left: 40%;
+    margin-left: 43%;
     margin-right: auto;
     font-weight: 400;
-    margin-bottom:5%;
+    margin-bottom:4%;
     background-color:var(--color-primary);
     border-radius:0.313rem solid white !important;
     color: white;
     background: var(--color-secondary);
+}
+@media (max-width:1000px) {
+	.test-button{
+		margin-left: 40%;
+		margin-bottom:6%;
+
+	}
+}
+@media (max-width:900px) {
+	.test-button{
+		margin-left: 32%;
+		margin-bottom:7%;
+
+	}
 }

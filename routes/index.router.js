@@ -3,11 +3,10 @@ const express = require('express');
 const multer = require('multer');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
-const testimonial=require("../testimonial")
+const testimonial = require('../testimonial');
 
 // requiring api for mailgun
 const sendMail = require('../middlewares/mail');
-
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -95,7 +94,7 @@ router.get(
 							perPage: perPage,
 							order: order,
 							isAuthenticated: !!req.user,
-              testimonial
+							testimonial,
 							// currentUser: req.user,
 						});
 					}
@@ -145,7 +144,6 @@ router.post('/contact', async (req, res) => {
 		}
 	});
 });
-
 
 // Get request for compose blog page-
 router.get('/compose', auth, async (req, res) => {
