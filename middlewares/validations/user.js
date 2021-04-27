@@ -124,9 +124,52 @@ module.exports.signupValidation = (req, res, next) => {
 	return next();
 };
 
-// module.exports.updateValidation = (req, res, next) => {
-//     // check username
-// };
+module.exports.updateValidation = async (req, res, next) => {
+	const { firstName, lastName, userName } = req.body;
+	const userId = req.user._id;
+	const user = await User.findById({ _id: userId });
+	let error;
+
+	error = checkFirstName(firstName);
+	if (error) {
+		return res.status(422).render('./useritems/read-profile', {
+			user,
+			isAuthenticated: !!req.user,
+			error,
+		});
+	}
+	error = checkLastName(lastName);
+	if (error) {
+		return res.status(422).render('./useritems/read-profile', {
+			user,
+			isAuthenticated: !!req.user,
+			error,
+		});
+	}
+
+	// check userName
+	if (userName.length < 6 || userName.length > 12) {
+		error = 'Username is invalid!';
+	}
+
+	const otherUser = await User.findOne({ userName });
+
+	if (otherUser) {
+		if (otherUser._id.toString() !== userId.toString()) {
+			error = 'Username already taken!';
+		}
+	}
+
+	if (error) {
+		return res.render('./useritems/read-profile', {
+			user,
+			isAuthenticated: !!req.user,
+			error,
+		});
+	}
+
+	return next();
+};
 
 module.exports.loginValidation = (req, res, next) => {
 	const { email, password } = req.body;
