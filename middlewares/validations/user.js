@@ -47,7 +47,7 @@ function checkEmail(email) {
 }
 
 function checkPassword(password) {
-	if (pwdRegex.test(password)) {
+	if (!pwdRegex.test(password)) {
 		return 'Your password must contain a minimum of 8 letter, with at least a symbol, upper and lower case letters and a number';
 	}
 }
@@ -112,7 +112,12 @@ module.exports.signupValidation = (req, res, next) => {
 			.status(422)
 			.render('./auth/signup', { error: error, data: data });
 	}
-	checkPassword(password);
+	error = checkPassword(password);
+	if (error) {
+		return res
+			.status(422)
+			.render('./auth/signup', { error: error, data: data });
+	}
 	// check password == confirm password
 	if (password !== confirmPassword) {
 		return res.status(500).render('./auth/signUp', {
@@ -125,7 +130,7 @@ module.exports.signupValidation = (req, res, next) => {
 };
 
 module.exports.updateValidation = async (req, res, next) => {
-	const { firstName, lastName, userName } = req.body;
+	const { firstName, lastName, userName, password } = req.body;
 	const userId = req.user._id;
 	const user = await User.findById({ _id: userId });
 	let error;
@@ -160,6 +165,15 @@ module.exports.updateValidation = async (req, res, next) => {
 		}
 	}
 
+	if (error) {
+		return res.render('./useritems/read-profile', {
+			user,
+			isAuthenticated: !!req.user,
+			error,
+		});
+	}
+
+	error = checkPassword(password);
 	if (error) {
 		return res.render('./useritems/read-profile', {
 			user,
