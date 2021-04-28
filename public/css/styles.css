@@ -806,3 +806,124 @@ input[name='perPage'] {
 	width: 20%;
 	border-radius: 10%;
 }
+/* ---------------------------------------------------------------- */
+/* testimonial page styles */
+.testimonials-clean {
+	color: #313437;
+}
+
+.testimonials-clean p {
+	color: #7d8285;
+}
+
+.testimonials-clean h2 {
+	font-weight: bold;
+	margin-bottom: 2.5rem;
+	padding-top: 2.5rem;
+	color: inherit;
+}
+
+@media (max-width: 767px) {
+	.testimonials-clean h2 {
+		margin-bottom: 1.56rem;
+		padding-top: 1.56rem;
+		font-size: 1.5rem;
+	}
+}
+
+.testimonials-clean .intro {
+	font-size: 1rem;
+	max-width: 31.25rem;
+	margin: 0 auto;
+}
+
+.testimonials-clean .intro p {
+	margin-bottom: 0;
+}
+
+.testimonials-clean .people {
+	padding: 3.125rem 0 1.25rem;
+}
+
+.testimonials-clean .item {
+	margin-bottom: 32px;
+}
+
+@media (min-width: 48px) {
+	.testimonials-clean .item {
+		height: 12.5rem;
+	}
+}
+
+.testimonials-clean .item .box {
+	padding: 1.875rem;
+	background-color: #fff;
+	position: relative;
+}
+
+.testimonials-clean .item .box:after {
+	content: '';
+	position: absolute;
+	left: 1.875rem;
+	bottom: -1.5rem;
+	width: 0;
+	height: 0;
+	border: 0.938rem solid transparent;
+	border-width: 0.75rem 0.938rem;
+	border-top-color: #fff;
+}
+
+.testimonials-clean .item .author {
+	margin-top: 1.75rem;
+	padding-left: 1.563rem;
+}
+
+.testimonials-clean .item .name {
+	font-weight: bold;
+	margin-bottom: 0.125rem;
+	color: inherit;
+}
+
+.testimonials-clean .item .title {
+	font-size: 0.813rem;
+	color: #9da9ae;
+}
+
+.testimonials-clean .item .description {
+	font-size: 0.938rem;
+	margin-bottom: 0;
+}
+
+.testimonials-clean .item img {
+	max-width: 2.5rem;
+	float: left;
+	margin-right: 0.75rem;
+	margin-top: -0.313rem;
+}
+
+.complete {
+	background-color: #eef4f7;
+}
+.test-button {
+	font-size: 1.5rem;
+	margin-left: 43%;
+	margin-right: auto;
+	font-weight: 400;
+	margin-bottom: 4%;
+	background-color: var(--color-primary);
+	border-radius: 0.313rem solid white !important;
+	color: white;
+	background: var(--color-secondary);
+}
+@media (max-width: 1000px) {
+	.test-button {
+		margin-left: 40%;
+		margin-bottom: 6%;
+	}
+}
+@media (max-width: 900px) {
+	.test-button {
+		margin-left: 32%;
+		margin-bottom: 7%;
+	}
+}

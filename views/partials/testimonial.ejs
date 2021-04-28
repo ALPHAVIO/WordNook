@@ -1,0 +1,48 @@
+<div class="complete">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        <!-- The slideshow -->
+        <% var isFirst=true; %>
+            <div class="carousel-inner">
+                <div class="testimonials-clean">
+                    <div class="container">
+                        <div class="intro">
+                            <h2 class="text-center">Testimonials </h2>
+                            <p class="text-center">Feel free to write ...</p>
+                        </div>
+                        <% for(let j=0;j<=6;j=j+3) { %>
+                            <div class="carousel-item <%= isFirst?'active':'' %> ">
+                                <div class="carousel-inner">
+                                <div class="row people">
+                                    <% for (let i=j; i <j+3; i++ ) { %>
+                                        <div class="col-md-6 col-lg-4 item">
+                                            <div class="box">
+                                                <p class="description">
+                                                    <%= testimonial[i].views %>
+                                                </p>
+                                            </div>
+                                            <div class="author"><img class="rounded-circle"
+                                                    src="https://picsum.photos/200/300">
+                                                <h5 class="name">
+                                                    <%= testimonial[i].author %>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                </div>
+                                </div>
+                            </div>
+                            <% isFirst=false %>
+                                <% } %>
+                    </div>
+                </div>
+            </div>
+            <a href="/testimonial-write"><button class="test-button">Write a testimonial</button></a>
+    </div>
+</div> 
+ 
