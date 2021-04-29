@@ -156,18 +156,17 @@ router.post(
 						},
 					});
 				}
-				let photo = '';
-				if (req.file) {
-					photo = req.file.path;
-				}
-				const newUser = new User({
+				const data = {
 					firstName,
 					lastName,
 					userName,
 					password,
 					email,
-					photo,
-				});
+				};
+				if (req.file) {
+					data.photo = req.file.path;
+				}
+				const newUser = new User(data);
 
 				newUser.save((err, doc) => {
 					if (err || !doc) {
