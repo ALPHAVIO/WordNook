@@ -1,11 +1,10 @@
 <%- include("../partials/header", {isAuthenticated}) -%>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0" nonce="aDn2woTH"></script>
 <div class="container-fluid">
     <div class="share-dialog">
         <header>
           <h3 class="dialog-title d-inline-block">Share this post</h3>
-          <button class="close-button float-end"><svg><use href="#close"></use></svg></button>
+          <button class="close-button float-end"><svg class="mr-0"><use href="#close"></use></svg></button>
         </header>
         <div class="targets">
             <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fword-nook.herokuapp.com%2Fposts%2F<%= id %>&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
@@ -33,7 +32,7 @@
           <button class="btn btn-primary float-end" onclick="copy()">Copy Link</button>
         </div>
       </div>
-      <svg class="hidden">
+      <svg class="d-none">
         <defs>
           <symbol id="twitter" viewBox="0 0 24 24" fill="#1da1f2" stroke="#1da1f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></symbol>
           

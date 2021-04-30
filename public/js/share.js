@@ -6,22 +6,22 @@ const shareDialog = document.querySelector('.share-dialog');
 const closeButton = document.querySelector('.close-button');
 
 shareButton.addEventListener('click', (event) => {
-	// if (navigator.share) {
-	// 	// Web Share API is supported
-	// 	navigator
-	// 		.share({
-	// 			title,
-	// 			url,
-	// 			text: `Checkout this Blog By ${author} at WordNook`,
-	// 		})
-	// 		.then(() => {
-	// 			console.log('Thanks for sharing!');
-	// 		})
-	// 		.catch(console.error);
-	// } else {
-	// Fallback
-	shareDialog.classList.add('is-open');
-	// }
+	if (navigator.share) {
+		// Web Share API is supported
+		navigator
+			.share({
+				title,
+				url,
+				text: `Checkout this Blog By ${author} at WordNook`,
+			})
+			.then(() => {
+				console.log('Thanks for sharing!');
+			})
+			.catch(console.error);
+	} else {
+		// Fallback
+		shareDialog.classList.add('is-open');
+	}
 });
 
 closeButton.addEventListener('click', (event) => {

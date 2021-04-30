@@ -958,10 +958,6 @@ input[name='perPage'] {
 	}
 }
 
-.hidden {
-	display: none;
-}
-
 svg {
 	width: 20px;
 	height: 20px;
@@ -1004,8 +1000,4 @@ svg {
 	background-color: transparent;
 	border: none;
 	padding: 0;
-}
-
-.close-button svg {
-	margin-right: 0;
 }
