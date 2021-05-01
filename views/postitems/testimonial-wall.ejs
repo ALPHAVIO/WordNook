@@ -1,0 +1,18 @@
+<%- include("../partials/header") -%>
+
+<div class="container testimonial-wall">
+    <h1>Testimonials</h1>
+   <div class="container testimonials-clean testimonial-data">
+        <ol>
+            <% testimonials.forEach(function(testimonial){ %>
+                <div class="container">
+                    <h3><li class="name"><%= testimonial.author %> </h3></li>
+                    <p class="description"><%= testimonial.views %> </p>
+                </div>
+            <% }) %>
+        </ol>
+   </div>
+</div>
+
+
+<%- include("../partials/footer") -%>
