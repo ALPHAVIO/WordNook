@@ -931,6 +931,19 @@ input[name='perPage'] {
 	margin-top: -0.313rem;
 }
 
+.testimonial-wall {
+	padding: 3.125rem;
+}
+
+.testimonial-data {
+	padding-top: 1.875rem;
+}
+
+.testimonial-data .description {
+	font-size: 1.7rem;
+	color: #766161;
+}
+
 .complete {
 	background-color: #eef4f7;
 }
