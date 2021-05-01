@@ -73,7 +73,7 @@ npm run lint-check
 npm run lint
 ```
 - If some files have changed by above command, you have to repeat Step 4
-- Note : If you get error, you have to install eslint by using following command
+- Note : If you get error "eslint is not recognised", then you have to install eslint by using following command
 ```
 npm install -g eslint 
 ```
