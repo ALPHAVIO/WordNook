@@ -932,11 +932,11 @@ input[name='perPage'] {
 }
 
 .testimonial-wall {
-	padding: 50px;
+	padding: 3.125rem;
 }
 
 .testimonial-data {
-	padding-top: 30px;
+	padding-top: 1.875rem;
 }
 
 .testimonial-data .description {
