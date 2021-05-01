@@ -14,5 +14,8 @@
    </div>
 </div>
 
+<% if (isAuthenticated) { %>
+    <%- include("../partials/testimonial-write") -%> 
+<% } %>
 
 <%- include("../partials/footer") -%>

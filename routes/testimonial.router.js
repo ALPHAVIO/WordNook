@@ -17,22 +17,33 @@ router.get('/testimonial-wall', auth, async (req, res) => {
 	});
 }); 
 
-// Get request for testimonial-write page-
-router.get('/testimonial-write', auth, async (req, res) => {
-	const { user } = req;
-	if (!user) {
-		return res.status(401).redirect('/log-in');
-	}
-	res.render('./postitems/testimonial-write', {
-		isAuthenticated: true,
+router.post('/testimonial-wall', auth, async (req, res) => {
+	var inputViews = req.body.views;
+	testimonials.push({
+		views: inputViews,
+		author: req.user.name,
 	});
-	res.redirect('/');
+	console.log(inputViews);
+	console.log(req.user.name);
+	res.redirect('/testimonial-wall');
 });
-router.post('/testimonial-write', auth, async (req, res) => {
-	const { user } = req;
-	if (!user) {
-		return res.status(401).redirect('/log-in');
-	}
-	res.redirect('/');
-});
+ 
+// // Get request for testimonial-write page-
+// router.get('/testimonial-write', auth, async (req, res) => {
+// 	const { user } = req;
+// 	if (!user) {
+// 		return res.status(401).redirect('/log-in');
+// 	}
+// 	res.render('./postitems/testimonial-write', {
+// 		isAuthenticated: true,
+// 	});
+// 	// res.redirect('/');
+// });
+// router.post('/testimonial-write', auth, async (req, res) => {
+// 	const { user } = req;
+// 	if (!user) {
+// 		return res.status(401).redirect('/log-in');
+// 	}
+// 	// res.redirect('/');
+// });
 module.exports = router;
