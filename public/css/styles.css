@@ -944,6 +944,10 @@ input[name='perPage'] {
 	color: #766161;
 }
 
+.testimonial-add-heading {
+	color: white;
+}
+
 .complete {
 	background-color: #eef4f7;
 }

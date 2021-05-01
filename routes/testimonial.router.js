@@ -2,6 +2,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const auth = require('../middlewares/auth');
+const User = require('../models/User.model');
 const testimonials = require('../dummy-data/testimonial');
 
 
@@ -17,14 +18,16 @@ router.get('/testimonial-wall', auth, async (req, res) => {
 	});
 }); 
 
+// Post request for testimonial-wall
 router.post('/testimonial-wall', auth, async (req, res) => {
-	var inputViews = req.body.views;
+	const inputViews = req.body.views;
+	const _id = req.user;
+	const user = await User.findById(_id);
+	const inputAuthor = user.firstName + " " + user.lastName;
 	testimonials.push({
 		views: inputViews,
-		author: req.user.name,
+		author: inputAuthor,
 	});
-	console.log(inputViews);
-	console.log(req.user.name);
 	res.redirect('/testimonial-wall');
 });
  
