@@ -113,7 +113,20 @@ npm run dev
 http://localhost:3000/
 ```
 <br/>
-
+* Note - You must lint your code before making any Pull Request  
+- To check for any linting errors, run command:
+```
+npm run lint-check
+```
+- To fix linting errors, run command:
+```
+npm run lint
+```
+- If some files have changed by above command, you have to repeat Step 4
+- Note : If you get error "eslint is not recognised", then you have to install eslint by using following command
+```
+npm install -g eslint 
+```
 * You can learn more about EJS template engine and its syntax to know how we can use it inside our HTML using the [documentation](https://ejs.co/#docs)
 <br/>
 

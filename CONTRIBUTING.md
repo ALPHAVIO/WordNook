@@ -64,11 +64,11 @@ $ git add .
 $ git add <file name>
 ```
 ## Step 5 : Lint Your Code  
-- To check for any linting errors:
+- To check for any linting errors, run command:
 ```
 npm run lint-check
 ```
-- To fix linting errors:
+- To fix linting errors, run command:
 ```
 npm run lint
 ```
