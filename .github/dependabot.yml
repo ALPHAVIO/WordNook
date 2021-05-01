@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: nodemailer-mailgun-transport
+    versions:
+    - 2.0.3
+  - dependency-name: netmask
+    versions:
+    - 2.0.2
+  - dependency-name: mongoose
+    versions:
+    - 5.11.15
+    - 5.11.16
