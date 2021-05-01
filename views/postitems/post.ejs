@@ -1,5 +1,7 @@
 <%- include("../partials/header", {isAuthenticated}) -%>
+<div id="fb-root"></div>
 <div class="container-fluid">
+    <%- include("../partials/shareDialog", {id: id}) -%>
     <div class="row align-items-start">
         <div class="col-lg-6 card mx-2 mx-lg-auto p-0">
             <div class="card-header p-1 text-center">
@@ -28,7 +30,7 @@
             </div>
             <div class="card-footer text-center">
                 <p class="post-date-font">Posted on <%= moment(new Date(timestamps)).format("dddd, MMMM Do YYYY, h:mm:ss a") %> </p>
-                <a href="/author/<%= author._id %> " class="p-2 mb-4">
+                <a class="author-name" href="/author/<%= author._id %> " class="p-2 mb-4">
                     <i class="fas fa-user"></i>
                     <%= author.userName %> 
                 </a>
@@ -52,6 +54,9 @@
                         <button class="button likebtn" type="submit">Liked</button>
                     </form>
                 <% } %> 
+                <button class="share-button">
+                    Share
+                </button>
                 <div><%=noOfViews%> views</div>
               </div>
             </div>
@@ -102,8 +107,8 @@
     </div>
 </div>
 <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
-<script type="text/javascript" src="/js/postScript.js"> 
-</script>
+<script type="text/javascript" src="/js/postScript.js"></script>
+<script type="text/javascript" src="/js/share.js"></script>
 
 <%- include("../partials/footer") -%>
 
