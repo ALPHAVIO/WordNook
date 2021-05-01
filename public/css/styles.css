@@ -957,3 +957,49 @@ input[name='perPage'] {
 		margin-bottom: 7%;
 	}
 }
+/* ----------------------------------------------------------- */
+/* Share Feature Styles */
+svg {
+	width: 20px;
+	height: 20px;
+	margin-right: 7px;
+}
+
+.share-dialog {
+	display: none;
+	width: 95%;
+	max-width: 500px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+	z-index: -1;
+	border: 1px solid #ddd;
+	padding: 20px;
+	border-radius: 4px;
+	background-color: #fff;
+}
+
+.share-dialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.share-dialog.is-open {
+	display: block;
+	z-index: 2;
+}
+
+.targets {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+	margin-bottom: 20px;
+}
+
+.close-button {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+}
+/* ------------------------------------------------------------- */
