@@ -42,7 +42,11 @@
                     </div>
                 </div>
             </div>
-            <a href="/testimonial-wall"><button class="button pen test-button">Write a testimonial</button></a>
+            <% if (isAuthenticated) { %>
+                <a href="/testimonial-wall"><button class="button pen test-button">Write a testimonial</button></a>
+            <% }else{ %>
+                <a href="/log-in"><button class="button pen test-button">Write a testimonial</button></a>
+            <% } %> 
     </div>
 </div> 
  
