@@ -953,9 +953,29 @@ input[name='perPage'] {
 	padding-bottom: 4rem;
 }
 
-.add-new-testimonial {
+.write-testimonial-btn,
+.add-testimonial-btn {
 	width: fit-content;
+}
+
+.write-testimonial-btn {
 	float: right;
+}
+
+.add-testimonial-btn {
+	padding-right: initial;
+    padding-left: initial;
+	margin-left: 9.75rem;
+	margin-right: 9.75rem;
+}
+
+.add-testimonial-btn:before{
+	background: fixed;
+}
+
+.add-testimonial-btn::before,
+.add-testimonial-btn:after{
+	position: static;
 }
 
 .complete {

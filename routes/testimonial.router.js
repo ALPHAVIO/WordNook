@@ -22,12 +22,12 @@ router.post('/testimonial-wall', auth, async (req, res) => {
 	const inputViews = req.body.views;
 	const _id = req.user;
 	const user = await User.findById(_id);
-	const inputAuthor = user.firstName + " " + user.lastName;
+	const inputAuthor = `${user.firstName} ${user.lastName}`;
 	testimonials.push({
 		views: inputViews,
 		author: inputAuthor,
 	});
 	res.redirect('/testimonial-wall');
 });
- 
+
 module.exports = router;
