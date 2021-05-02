@@ -948,6 +948,16 @@ input[name='perPage'] {
 	color: white;
 }
 
+.testimonial-write-div {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
+.add-new-testimonial {
+	width: fit-content;
+	float: right;
+}
+
 .complete {
 	background-color: #eef4f7;
 }
