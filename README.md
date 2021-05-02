@@ -118,6 +118,22 @@ http://localhost:3000/
 <br/>
 
 * Now you are all set to use this project.
+<br/>
+
+* Note - You must lint your code before making any Pull Request  
+- To check for any linting errors, run command:
+```
+npm run lint-check
+```
+- To fix linting errors, run command:
+```
+npm run lint
+```
+- If some files have changed by above command, you have to repeat Step 4
+- Note : If you get error "eslint is not recognised", then you have to install eslint by using following command
+```
+npm install -g eslint 
+```
 
 **Disclaimer-**  
 The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as 

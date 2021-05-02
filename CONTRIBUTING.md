@@ -63,15 +63,29 @@ $ git add .
 # To add only a few files to Branch_Name
 $ git add <file name>
 ```
+## Step 5 : Lint Your Code  
+- To check for any linting errors, run command:
+```
+npm run lint-check
+```
+- To fix linting errors, run command:
+```
+npm run lint
+```
+- If some files have changed by above command, you have to repeat Step 4
+- Note : If you get error "eslint is not recognised", then you have to install eslint by using following command
+```
+npm install -g eslint 
+```
 
-## Step 5 : Commit  
+## Step 6 : Commit  
 - To commit give a descriptive message for the convenience of reviewer by:  
 ```
 # This message get associated with all files you have changed  
 $ git commit -m "message"  
 ```  
 
-## Step 6 : Upload your changes   
+## Step 7 : Upload your changes   
 - When your work is ready and complies with the project conventions, upload your changes to your fork:  
 
 ```  
@@ -81,7 +95,7 @@ $ git push -u origin Branch_Name
 - Here is how your branch will look in the fork.
 ![BranchDemo](assets/branch.jpg)
 
-## Step 7 : Pull Request  
+## Step 8 : Pull Request  
 - Go to your repository in browser and click on compare and pull requests. Then add a title and description to your pull request that explains your contribution.  
 ![pullrequest-send](assets/pr.jpg)  
 
