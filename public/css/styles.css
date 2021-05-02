@@ -961,6 +961,10 @@ input[name='perPage'] {
 	.test-button{
 		margin-bottom: 12%;
 	}
+	.testimonials-clean .item .box {
+		max-width: 70vw;
+		margin-left: 12%;
+	}
 }	
 /* ----------------------------------------------------------- */
 /* Share Feature Styles */
