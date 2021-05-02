@@ -1006,7 +1006,4 @@ svg {
 .share-button:after {
 	content: '\f14d';
 }
-.share-button {
-	min-width: 10em;
-}
 /* ------------------------------------------------------------- */
