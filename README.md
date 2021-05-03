@@ -91,7 +91,7 @@ npm install
   ```
 <br/>
 
-* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
+* Testing: Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
 ```
 mongod
 ```
@@ -122,11 +122,11 @@ http://localhost:3000/
 
 **Note -**  
 You must lint your code before making any Pull Request  
-- To check for any linting errors, run command:
+- To check for any linting errors, run the command:
 ```
 npm run lint-check
 ```
-- To fix linting errors, run command:
+- To fix linting errors, run the command:
 ```
 npm run lint
 ```
@@ -154,7 +154,7 @@ show collections
 
 <img align="right" src="assets/event1.png" width = "120" height = "100"><b>1. JGEC Winter of Code</b>
 
-- JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into the realm of Open Source contribution and Software Development.
+- JWoC ( JGEC Winter of Code) is a program organized by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into the realm of Open Source contribution and Software Development.
 
 <img align="right" src="assets/event2.png" width = "120" height = "100"><b>2. Mexili Winter of Code</b>
 
@@ -162,7 +162,7 @@ show collections
 
 <img align="right" src="assets/event3.png" width = "120" height = "100"><b>3. GirlScript Summer of Code</b>
 
-- GirlScript Summer of Code is the 3 month long Open Source program  conducted by GirlScript Foundation, started in 2018, with an aim to help beginners get started with Open Source Development while encouraging diversity.
+- GirlScript Summer of Code is the 3 month-long Open Source program conducted by GirlScript Foundation, started in 2018, with an aim to help beginners get started with Open Source Development while encouraging diversity.
 
 <hr>
 
@@ -213,7 +213,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+<!-- ALL-CONTRIBUTORS-LIST: END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
@@ -223,3 +223,5 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 [![Stargazers over time](https://starchart.cc/ALPHAVIO/WordNook.svg)](https://starchart.cc/ALPHAVIO/WordNook)
       
+
+
