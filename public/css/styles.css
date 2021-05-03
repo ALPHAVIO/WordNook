@@ -674,7 +674,7 @@ input[name='perPage'] {
 	color: var(--color-secondary);
 }
 .list-unstyled {
-	margin-left: 1.125rem;
+	margin: 0px;
 }
 
 .difference-fix {
@@ -682,7 +682,7 @@ input[name='perPage'] {
 }
 
 .list-unstyled {
-	margin-left: 1.125rem;
+	margin: 0px;
 }
 
 .footer-bg {
