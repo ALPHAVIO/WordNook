@@ -957,15 +957,15 @@ input[name='perPage'] {
 	color: white;
 	background: var(--color-secondary);
 }
-@media only screen and (max-width:768px) {
-	.test-button{
+@media only screen and (max-width: 768px) {
+	.test-button {
 		margin-bottom: 12%;
 	}
 	.testimonials-clean .item .box {
 		max-width: 70vw;
 		margin-left: 12%;
 	}
-}	
+}
 /* ----------------------------------------------------------- */
 /* Share Feature Styles */
 svg {
@@ -1019,31 +1019,31 @@ svg {
 /* ---------------------------------------------------------------- */
 /* testimonial indicator styling*/
 .carousel-indicators li {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin: 15px;
-    text-indent: 0;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--color-primary);
-    box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);    
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin: 15px;
+	text-indent: 0;
+	cursor: pointer;
+	border: none;
+	border-radius: 50%;
+	background-color: var(--color-primary);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .carousel-indicators .active {
-    width: 16px;
-    height: 16px;
-    margin: 15px;
-    background-color: var(--color-secondary);
+	width: 16px;
+	height: 16px;
+	margin: 15px;
+	background-color: var(--color-secondary);
 }
 .carousel-control-prev-icon {
 	position: absolute;
 	left: 10%;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%230d97ac' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%230d97ac' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
 }
 
 .carousel-control-next-icon {
 	position: absolute;
 	right: 10%;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%230d97ac' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%230d97ac' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
