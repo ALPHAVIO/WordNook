@@ -944,6 +944,24 @@ input[name='perPage'] {
 	color: #766161;
 }
 
+.testimonial-add-heading {
+	color: white;
+}
+
+.testimonial-write-div {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
+.pos-testimonial-wall-btn1 {
+	float: right;
+}
+
+.pos-testimonial-wall-btn2 {
+	margin-left: 9.563rem;
+	margin-right: 9.563rem;
+}
+
 .complete {
 	background-color: #eef4f7;
 }

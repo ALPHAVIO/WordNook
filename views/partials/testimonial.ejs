@@ -50,9 +50,11 @@
                 </div>
             </div>
             <div class="text-center">
-                <a href="/testimonial-write">
-                    <button class="button pen test-button">Write a testimonial</button>
-                </a>
+                <% if (isAuthenticated) { %>
+                    <a href="/testimonial-wall#testimonial-write"><button class="button pen test-button">Write a testimonial</button></a>
+                <% }else{ %>
+                    <a href="/log-in"><button class="button pen test-button">Write a testimonial</button></a>
+                <% } %> 
             </div>
     </div>
 </div>

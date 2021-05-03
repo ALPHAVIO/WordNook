@@ -1,8 +1,13 @@
 <%- include("../partials/header") -%>
 
 <div class="container testimonial-wall">
+    <% if (isAuthenticated) { %>
+        <form action="#testimonial-write">
+            <button class="button pen test-button pos-testimonial-wall-btn1">Write new testimonial</button>
+        </form>
+    <% } %>
     <h1>Testimonials</h1>
-   <div class="container testimonials-clean testimonial-data">
+    <div class="container testimonials-clean testimonial-data">
         <ol>
             <% testimonials.forEach(function(testimonial){ %>
                 <div class="container">
@@ -11,8 +16,11 @@
                 </div>
             <% }) %>
         </ol>
-   </div>
+    </div>
 </div>
 
+<% if (isAuthenticated) { %>
+    <%- include("../testimonials/testimonial-write") -%> 
+<% } %>
 
 <%- include("../partials/footer") -%>
