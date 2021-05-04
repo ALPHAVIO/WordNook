@@ -130,7 +130,14 @@ npm run lint-check
 ```
 npm run lint
 ```
-Check again for any errors that need to be resolved manually and if the application works fine after you lint the code.  
+Check again for any errors that need to be resolved manually and if the application works fine after you lint the code.
+
+- If your git throws error that lockfile version-2 is causing issue or is not compatible with your system.
+- Then Check your npm version, Run Command:
+``` 
+npm --version
+```
+- It should be at version 7.11.12, if you use node version 15.x and above then you will face problem.
 
 **Disclaimer-**  
 The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as 
