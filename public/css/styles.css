@@ -833,7 +833,7 @@ input[name='perPage'] {
 /* Profile Image Style */
 
 .profile-img {
-	width: 10%;
+	height: 25vh;
 	border-radius: 10%;
 }
 /* ---------------------------------------------------------------- */
