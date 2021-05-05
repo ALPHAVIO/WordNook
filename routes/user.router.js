@@ -3,6 +3,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
+const methodOverride = require('method-override');
 const User = require('../models/User.model');
 const auth = require('../middlewares/auth');
 const {
@@ -42,7 +43,7 @@ const upload = multer({
 });
 
 const router = express.Router();
-
+router.use(methodOverride('_method'));
 // GET request for Sign Up
 router.get('/sign-up', auth, async (req, res) => {
 	if (req.user) {
@@ -371,6 +372,18 @@ router.get('/unfollow/:id', auth, async (req, res) => {
 				.catch((err) => res.status(422).json({ error: err }));
 		}
 	);
+});
+
+router.delete('/profile/:userId/delete', auth, async (req, res) => {
+	if (!req.user) return res.redirect('/log-in');
+	const { userId } = req.params;
+	if (req.user._id.toString() !== userId.toString())
+		return res.render('404', { isAuthenticated: !!req.user });
+
+	const user = await User.findById({ _id: userId });
+	user.photo = '/images/Default_Profile.jpg';
+	await user.save();
+	res.redirect('/dashboard');
 });
 
 module.exports = router;
