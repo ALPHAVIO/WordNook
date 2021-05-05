@@ -102,6 +102,8 @@ mongod
 npm start
 ```
 
+or
+
 * Run this command to start the project as a developer.
 ```
 npm run dev
