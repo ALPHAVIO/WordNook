@@ -119,34 +119,7 @@ http://localhost:3000/
 * You can learn more about EJS template engine and its syntax to know how we can use it inside our HTML using the [documentation](https://ejs.co/#docs)
 <br/>
 
-* Now you are all set to use this project.
-<br/>
-
-**Note -**  
-You must lint your code before making any Pull Request  
-- To check for any linting errors, run command:
-```
-npm run lint-check
-```
-- To fix linting errors, run command:
-```
-npm run lint
-```
-Check again for any errors that need to be resolved manually and if the application works fine after you lint the code.  
-
-- If your git throws error that lockfile version-2 is causing issue or it is not compatible with your system.
-- Then Check your npm version, Run Command:
-``` 
- npm --version
-```
-- npm version should be 7 and above for lockfile version-2 that would come by default if you have a node version 15 and above
-
-
-**Disclaimer-**  
-The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as 
-```
-API-KEY = <your-api-key>
-```  
+* Now you are all set to use this project.  
 
 #### Some useful Mongo DB commands if you are using the terminal instead of the GUI-
 ```
@@ -157,6 +130,35 @@ show collections
 ```
 
 #### Project Deployed on Heroku : [Visit WordNook](https://word-nook.herokuapp.com/)
+
+<hr>
+
+### Note -
+1. You must lint your code before making any Pull Request  
+	- To check for any linting errors, run command:
+	```
+	npm run lint-check
+	```
+	- To fix linting errors, run command:
+	```
+	npm run lint
+	```
+	**Check again for any errors that need to be resolved manually and if the application works fine after you lint the code.**  
+
+1. If your git shows an issue with your `package-lock.json` while installing dependencies or throws error that **lockfile version-2** is not compatible with your system
+	Then check your npm version by running command
+	``` 
+	 npm --version
+	```
+	**npm version should be 7 and above for lockfile version-2 that would come by default if you have a node version 15 and above.**
+	[List of Node.js releases and corresponding npm versions](https://nodejs.org/en/download/releases/)
+
+
+### Disclaimer-
+The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as 
+```
+API-KEY = <your-api-key>
+```  
 
 <hr>
 
