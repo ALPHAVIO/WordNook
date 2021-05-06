@@ -134,7 +134,7 @@ show collections
 <hr>
 
 ### Note -
-1. You must lint your code before making any Pull Request  
+1. **You must lint your code before making any Pull Request** 
 	- To check for any linting errors, run command:
 	```
 	npm run lint-check
@@ -150,7 +150,7 @@ show collections
 	``` 
 	 npm --version
 	```
-	**npm version should be 7 and above for lockfile version-2 that would come by default if you have a node version 15 and above.**
+	**npm version should be 7 and above for lockfile version-2 that would come by default if you have a node version 15 and above.**  
 	[List of Node.js releases and corresponding npm versions](https://nodejs.org/en/download/releases/)
 
 
