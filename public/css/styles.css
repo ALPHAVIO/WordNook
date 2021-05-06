@@ -836,6 +836,12 @@ input[name='perPage'] {
 	height: 25vh;
 	border-radius: 10%;
 }
+
+.delete-img-btn {
+	height: fit-content;
+	margin-left: -2.5em;
+	z-index: 1;
+}
 /* ---------------------------------------------------------------- */
 /* testimonial page styles */
 .testimonials-clean {
