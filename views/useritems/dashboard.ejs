@@ -9,8 +9,10 @@
                 <%# Display author's profile %>
                 <div class="profile d-flex justify-content-center">
                     <img src="<%= user.photo %>" class="img-thumbnail profile-img" alt="User Profile Image">
-                    <button type="button" class="btn btn-danger btn-sm delete-img-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-trash-alt"></i></button>
-  
+                    <% if(user.photo !== '/images/Default_Profile.jpg'){ %>
+                        <button type="button" class="btn btn-danger btn-sm delete-img-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-trash-alt"></i></button>
+                    <% } %>
+                    
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
