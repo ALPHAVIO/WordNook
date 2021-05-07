@@ -1,6 +1,6 @@
 <div align="center">
   <h1>WordNook</h1>
-  <img src="assets/New Banner.jpg" />
+  <img src="assets/WordNook.png" />
 </div>
 
 <hr>
@@ -18,15 +18,16 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- DeepSource Badge and Dependabot Status badges -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-) ![Forks](https://img.shields.io/github/forks/ALPHAVIO/WordNook?style=social) ![Stars](https://img.shields.io/github/stars/ALPHAVIO/WordNook?style=social) [![GitHub issues](https://img.shields.io/github/issues/ALPHAVIO/WordNook?color=green&logo=github&style=flat)](https://github.com/ALPHAVIO/WordNook/issues) [![GitHub PRs](https://img.shields.io/github/issues-pr/ALPHAVIO/WordNook?style=flat&logo=github)](https://github.com/ALPHAVIO/WordNook/pulls) ![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/WordNook)  
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-) ![Forks](https://img.shields.io/github/forks/ALPHAVIO/WordNook?style=social) ![Stars](https://img.shields.io/github/stars/ALPHAVIO/WordNook?style=social) [![GitHub issues](https://img.shields.io/github/issues/ALPHAVIO/WordNook?color=green&logo=github&style=flat)](https://github.com/ALPHAVIO/WordNook/issues) [![GitHub PRs](https://img.shields.io/github/issues-pr/ALPHAVIO/WordNook?style=flat&logo=github)](https://github.com/ALPHAVIO/WordNook/pulls) ![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ALPHAVIO/WordNook)
+
 <!-- **DeepSource:** [![DeepSource](https://deepsource.io/gh/ALPHAVIO/WordNook.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/ALPHAVIO/WordNook/?ref=repository-badge) -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+-   'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
 
-- 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.  
-
-- This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).  
-[Visit website](https://word-nook.herokuapp.com/)
+-   This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).  
+    [Visit website](https://word-nook.herokuapp.com/)
 
 <hr>
 
@@ -40,87 +41,100 @@
 
 ## Environment Setup for local use-
 
-* Drop a :star: on the GitHub repository.
-<br/>
+-   Drop a :star: on the GitHub repository.
+    <br/>
 
-* Download [Git](https://git-scm.com/downloads) (when you install Git, Git Bash also gets installed by default)
-<br/>
+-   Download [Git](https://git-scm.com/downloads) (when you install Git, Git Bash also gets installed by default)
+    <br/>
 
-* Download and install a code/ text editor.
-    - Recommended-
-        - [Download VS Code](https://code.visualstudio.com/download)
-        - [Download Atom](https://atom.io/)
-<br/>
+-   Download and install a code/ text editor. - Recommended- - [Download VS Code](https://code.visualstudio.com/download) - [Download Atom](https://atom.io/)
+    <br/>
 
-* Download [Node Js and npm(Node package manager)](https://nodejs.org/en/) (when you install Node, npm also gets installed by default)
-<br/>
+-   Download [Node Js and npm(Node package manager)](https://nodejs.org/en/) (when you install Node, npm also gets installed by default)
+    <br/>
 
-* Mongo DB community editition is free and a great software in order to work with MongoDB applications. [Download Mongo DB community editition](https://docs.mongodb.com/manual/administration/install-community/)
-<br/>
+-   Mongo DB community editition is free and a great software in order to work with MongoDB applications. [Download Mongo DB community editition](https://docs.mongodb.com/manual/administration/install-community/)
+    <br/>
 
-* Robo 3T is a desktop graphical user interface (GUI) for Mongo DB. It can help to skip running all the Mongo DB commands manually every time we want to access the data. [Download Robo 3T](https://robomongo.org/download) **(optional)**
-<br/>
+-   Robo 3T is a desktop graphical user interface (GUI) for Mongo DB. It can help to skip running all the Mongo DB commands manually every time we want to access the data. [Download Robo 3T](https://robomongo.org/download) **(optional)**
+    <br/>
 
-* Clone the repository by running command
+-   Clone the repository by running command
+
 ```
 git clone https://github.com/<your user-name>/WordNook.git
 ```
+
 in your git bash.
 <br/>
 
-* Run command `cd WordNook`.
-<br/>
+-   Run command `cd WordNook`.
+    <br/>
 
-* Run this command to install all dependencies for the project.
+-   Run this command to install all dependencies for the project.
+
 ```
 npm install
 ```
 
 <br/>
 
-* Adding secret key for JWT auth.
-  * Run this command when inside the root directory to make a `.env` file.
-  ```
-  touch .env
-  ```
-  * Now add this to the `.env` file
-  ```
-  SECRET_KEY = AlphaVio
-  URL = mongodb://localhost:27017/blogDB
-  ```
-<br/>
+-   Adding secret key for JWT auth.
 
-* Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
+    -   Run this command when inside the root directory to make a `.env` file.
+
+    ```
+    touch .env
+    ```
+
+    -   Now add this to the `.env` file
+
+    ```
+    SECRET_KEY = AlphaVio
+    URL = mongodb://localhost:27017/blogDB
+    ```
+
+    <br/>
+
+-   Testing : Run this command on your terminal/ bash to start the Mongo server on port 27017(default).
+
 ```
 mongod
 ```
+
 <br/>
 
-* Run this command to start the project.
+-   Run this command to start the project.
+
 ```
 npm start
 ```
 
 or
 
-* Run this command to start the project as a developer.
+-   Run this command to start the project as a developer.
+
 ```
 npm run dev
 ```
+
 <br/>
 
-* Open link to view the website in your browser window if it doesn't open automatically.
+-   Open link to view the website in your browser window if it doesn't open automatically.
+
 ```
 http://localhost:3000/
 ```
+
 <br/>
 
-* You can learn more about EJS template engine and its syntax to know how we can use it inside our HTML using the [documentation](https://ejs.co/#docs)
-<br/>
+-   You can learn more about EJS template engine and its syntax to know how we can use it inside our HTML using the [documentation](https://ejs.co/#docs)
+    <br/>
 
-* Now you are all set to use this project.  
+-   Now you are all set to use this project.
 
 #### Some useful Mongo DB commands if you are using the terminal instead of the GUI-
+
 ```
 show dbs
 use db <db name>
@@ -133,31 +147,38 @@ show collections
 <hr>
 
 ### Note -
-1. **You must lint your code before making any Pull Request** 
-	- To check for any linting errors, run command:
-	```
-	npm run lint-check
-	```
-	- To fix linting errors, run command:
-	```
-	npm run lint
-	```
-	**Check again for any errors that need to be resolved manually and if the application works fine after you lint the code.**  
+
+1. **You must lint your code before making any Pull Request**
+
+    - To check for any linting errors, run command:
+
+    ```
+    npm run lint-check
+    ```
+
+    - To fix linting errors, run command:
+
+    ```
+    npm run lint
+    ```
+
+    **Check again for any errors that need to be resolved manually and if the application works fine after you lint the code.**
 
 1. If your git shows an issue with your `package-lock.json` while installing dependencies or throws error that **lockfile version-2** is not compatible with your system
-	Then check your npm version by running command
-	``` 
-	 npm --version
-	```
-	**npm version should be 7 and above for lockfile version-2 that would come by default if you have a node version 15 and above.**  
-	[List of Node.js releases and corresponding npm versions](https://nodejs.org/en/download/releases/)
-
+   Then check your npm version by running command
+    ```
+     npm --version
+    ```
+    **npm version should be 7 and above for lockfile version-2 that would come by default if you have a node version 15 and above.**  
+    [List of Node.js releases and corresponding npm versions](https://nodejs.org/en/download/releases/)
 
 ### Disclaimer-
-The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as 
+
+The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as
+
 ```
 API-KEY = <your-api-key>
-```  
+```
 
 <hr>
 
@@ -165,19 +186,20 @@ API-KEY = <your-api-key>
 
 <img align="right" src="assets/event1.png" width = "120" height = "100"><b>1. JGEC Winter of Code</b>
 
-- JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into the realm of Open Source contribution and Software Development.
+-   JWoC ( JGEC Winter of Code) is a program organised by Developers JGEC in collaboration with Sristi 2020 which helps students to plunge into the realm of Open Source contribution and Software Development.
 
 <img align="right" src="assets/event2.png" width = "120" height = "100"><b>2. Mexili Winter of Code</b>
 
-- Mexili is a Free and Open Source organization whose motivation is to funnel learning and implementation through Open Source Software Development.
+-   Mexili is a Free and Open Source organization whose motivation is to funnel learning and implementation through Open Source Software Development.
 
 <img align="right" src="assets/event3.png" width = "120" height = "100"><b>3. GirlScript Summer of Code</b>
 
-- GirlScript Summer of Code is the 3 month long Open Source program  conducted by GirlScript Foundation, started in 2018, with an aim to help beginners get started with Open Source Development while encouraging diversity.
+-   GirlScript Summer of Code is the 3 month long Open Source program conducted by GirlScript Foundation, started in 2018, with an aim to help beginners get started with Open Source Development while encouraging diversity.
 
 <hr>
 
 ## Maintainers ✨
+
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Pranav016"><img src="https://avatars.githubusercontent.com/u/54665036?s=460&u=1bff30cf96a1502a7abd09755f179197007bc345&v=4" width="100px;" alt=""/><br /><sub><b>Pranav Mendiratta</b></sub></a><br /><a href="https://github.com/ALPHAVIO/WordNook/commits?author=Pranav016" title="Code">💻</a><a href="https://github.com/ALPHAVIO/WordNook/commits?author=Pranav016" title="Documentation">📖</a> <a href="https://github.com/ALPHAVIO/WordNook/commits?author=Pranav016" title="Maintenance">🚧</a></td>
@@ -233,4 +255,3 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 ## Stargazers over time 🌟
 
 [![Stargazers over time](https://starchart.cc/ALPHAVIO/WordNook.svg)](https://starchart.cc/ALPHAVIO/WordNook)
-      
