@@ -82,12 +82,6 @@ body {
 	}
 }
 
-@media only screen and (min-width: 768px) {
-	.navbar {
-		height: 15vh;
-	}
-}
-
 .navbar-brand {
 	font-size: 3.5vw;
 	color: var(--color-secondary) !important;
@@ -266,7 +260,7 @@ a::after {
 
 .post-preview {
 	background-color: rgba(229, 231, 235, 0.5);
-	margin: 0.8rem;
+	/* margin: 0.8rem; */
 	padding: 1.9rem;
 	border-radius: 1rem;
 }
