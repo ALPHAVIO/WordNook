@@ -34,6 +34,7 @@ body {
 	background-size: cover;
 	color: var(--color-primary);
 	scroll-behavior: smooth;
+	overflow-x: hidden;
 }
 
 #loader {
@@ -764,6 +765,17 @@ input[name='perPage'] {
 }
 .rounded-social-buttons .fa-twitter, .fa-facebook, .fa-linkedin, .fa-youtube, .fa-instagram {
 	font-size: 25px;
+}
+@media only screen and (max-width: 976px) {
+.rounded-social-buttons .social-button {
+	width: 2.75rem;
+	height:2.75rem;
+	line-height: 1em;
+}
+.rounded-social-buttons .fa-twitter, .fa-facebook, .fa-linkedin, .fa-youtube, .fa-instagram {
+	   margin-top: 0.75rem;
+		font-size: 20px;
+}
 }
 .rounded-social-buttons .social-button.facebook {
 	background: #3b5998;
