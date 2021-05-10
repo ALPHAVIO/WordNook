@@ -113,6 +113,7 @@ router.post(
 			updates.push('photo');
 			req.body.photo = req.file.path;
 		}
+		req.body.email = req.body.email.toLowerCase();
 		try {
 			const id = await req.user;
 			const user = await User.findById(id._id);
@@ -142,59 +143,62 @@ router.post(
 		} = req.body;
 
 		// Check if the username or email already taken
-		User.findOne({ $or: [{ email }, { userName }] }, () => {
-			User.findOne({ userName }, (err, doc) => {
-				if (doc) {
-					return res.status(401).render('./auth/logIn', {
-						error: 'Username already taken!',
-						data: {
-							firstName,
-							lastName,
-							userName,
-							password,
-							email,
-							confirmPassword,
-						},
-					});
-				}
-				const data = {
-					firstName,
-					lastName,
-					userName,
-					password,
-					email,
-				};
-				if (req.file) {
-					data.photo = req.file.path;
-				}
-				const newUser = new User(data);
-
-				newUser.save((err, doc) => {
-					if (err || !doc) {
-						return res.status(422).render('./auth/logIn', {
-							error: 'Oops something went wrong!',
+		User.findOne(
+			{ $or: [{ email: email.toLowerCase() }, { userName }] },
+			() => {
+				User.findOne({ userName }, (err, doc) => {
+					if (doc) {
+						return res.status(401).render('./auth/logIn', {
+							error: 'Username already taken!',
 							data: {
 								firstName,
 								lastName,
 								userName,
-								email,
 								password,
+								email,
+								confirmPassword,
 							},
 						});
 					}
-					const token = jwt.sign(
-						{ _id: doc._id },
-						process.env.SECRET_KEY
-					);
+					const data = {
+						firstName,
+						lastName,
+						userName,
+						password,
+						email: email.toLowerCase(),
+					};
+					if (req.file) {
+						data.photo = req.file.path;
+					}
+					const newUser = new User(data);
 
-					// Send back the token to the user as a httpOnly cookie
-					res.cookie('token', token, {
-						httpOnly: true,
+					newUser.save((err, doc) => {
+						if (err || !doc) {
+							return res.status(422).render('./auth/logIn', {
+								error: 'Oops something went wrong!',
+								data: {
+									firstName,
+									lastName,
+									userName,
+									email,
+									password,
+								},
+							});
+						}
+						const token = jwt.sign(
+							{ _id: doc._id },
+							process.env.SECRET_KEY
+						);
+
+						// Send back the token to the user as a httpOnly cookie
+						res.cookie('token', token, {
+							httpOnly: true,
+						});
+						res.redirect('/');
 					});
-					res.redirect('/');
 				});
-			});
-		});
+			}
+		);
 	}
 );
 
@@ -202,7 +206,7 @@ router.post(
 router.post('/log-in', loginValidation, async (req, res) => {
 	const { email, password } = req.body;
 
-	User.findOne({ email }, (err, doc) => {
+	User.findOne({ email: email.toLowerCase() }, (err, doc) => {
 		if (err || !doc) {
 			return res.status(401).render('./auth/logIn', {
 				error: 'Invalid email or password!',

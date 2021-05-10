@@ -106,7 +106,7 @@ module.exports.signupValidation = (req, res, next) => {
 			.status(422)
 			.render('./auth/signup', { error: error, data: data });
 	}
-	error = checkEmail(email);
+	error = checkEmail(email.toLowerCase());
 	if (error) {
 		return res
 			.status(422)
@@ -179,7 +179,7 @@ module.exports.updateValidation = async (req, res, next) => {
 		error = 'Email invalid!';
 	}
 
-	otherUser = await User.findOne({ email });
+	otherUser = await User.findOne({ email: email.toLowerCase() });
 	if (otherUser) {
 		if (otherUser._id.toString() !== userId.toString()) {
 			error = 'Email already registered with other account';
