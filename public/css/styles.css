@@ -813,7 +813,7 @@ input[name='perPage'] {
 /* ---------------------------------------------------- */
 
 /* Custom ScrollBar */
-
+/* For Chrome and Safari */
 ::-webkit-scrollbar {
 	width: 10px;
 }
@@ -844,6 +844,12 @@ input[name='perPage'] {
 ::-webkit-scrollbar-thumb:hover {
 	transition: all 0.1s ease-in-out;
 	filter: blur(20px);
+}
+/* For Firefox */
+:root {
+	overflow-y: scroll;
+	scrollbar-color: #0fadc5 rgb(255, 255, 255);
+	scrollbar-width: thin;
 }
 
 /* -------------------------------------------- */
