@@ -437,26 +437,6 @@ input[name='perPage'] {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.test-wall-btn {
-	left: 80%;
-	margin-top: 2rem;
-	display: inline-block;
-	font-family: 'Montserrat', 'Trebuchet MS', Helvetica, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	position: relative;
-	padding: 0.4em 1.4em;
-	background: var(--color-secondary);
-	border: none;
-	color: white;
-	transition: 0.2s;
-	border: 3px solid white;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.test-wall-btn:hover {
-	background: #129fb4;
-}
-
 .button:before,
 .button:after {
 	position: absolute;
@@ -501,6 +481,17 @@ input[name='perPage'] {
 	background: var(--color-danger) !important;
 }
 
+.test-wall-btn {
+	left: 80%;
+	margin-top: 2rem;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	min-width: 10em;
+}
+
+.test-wall-btn:before,.test-wall-btn:after {
+	width: 0rem;
+}
 .btnFrame {
 	background: var(--color-primary);
 }
