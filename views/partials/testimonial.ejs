@@ -18,31 +18,43 @@
                         <% for(let j=0;j<=6;j=j+3) { %>
                             <div class="carousel-item <%= isFirst?'active':'' %> ">
                                 <div class="carousel-inner">
-                                <div class="row people">
-                                    <% for (let i=j; i <j+3; i++ ) { %>
-                                        <div class="col-md-6 col-lg-4 item">
-                                            <div class="box">
-                                                <p class="description">
-                                                    <%= testimonial[i].views %>
-                                                </p>
+                                    <div class="row people">
+                                        <% for (let i=j; i <j+3; i++ ) { %>
+                                            <div class="col-md-6 col-lg-4 item">
+                                                <div class="box">
+                                                    <p class="description">
+                                                        <%= testimonial[i].views %>
+                                                    </p>
+                                                </div>
+                                                <div class="author"><img class="rounded-circle"
+                                                        src="https://picsum.photos/200/300">
+                                                    <h5 class="name">
+                                                        <%= testimonial[i].author %>
+                                                    </h5>
+                                                </div>
                                             </div>
-                                            <div class="author"><img class="rounded-circle"
-                                                    src="https://picsum.photos/200/300">
-                                                <h5 class="name">
-                                                    <%= testimonial[i].author %>
-                                                </h5>
-                                            </div>
-                                        </div>
                                         <% } %>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- Left and right controls -->
+                            <a class="carousel-control-prev control" href="#demo" data-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </a>
+                            <a class="carousel-control-next control" href="#demo" data-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </a>
                             <% isFirst=false %>
-                                <% } %>
+                        <% } %>
                     </div>
                 </div>
             </div>
-            <a href="/testimonial-write"><button class="button pen test-button">Write a testimonial</button></a>
+            <div class="text-center">
+                <% if (isAuthenticated) { %>
+                    <a href="/testimonial-wall#testimonial-write"><button class="button pen test-button">Write a testimonial</button></a>
+                <% }else{ %>
+                    <a href="/log-in"><button class="button pen test-button">Write a testimonial</button></a>
+                <% } %> 
+            </div>
     </div>
-</div> 
- 
+</div>

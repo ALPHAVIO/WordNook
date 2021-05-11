@@ -106,7 +106,7 @@ module.exports.signupValidation = (req, res, next) => {
 			.status(422)
 			.render('./auth/signup', { error: error, data: data });
 	}
-	error = checkEmail(email);
+	error = checkEmail(email.toLowerCase());
 	if (error) {
 		return res
 			.status(422)
@@ -130,10 +130,11 @@ module.exports.signupValidation = (req, res, next) => {
 };
 
 module.exports.updateValidation = async (req, res, next) => {
-	const { firstName, lastName, userName, password } = req.body;
+	const { firstName, lastName, userName, email, password } = req.body;
 	const userId = req.user._id;
 	const user = await User.findById({ _id: userId });
 	let error;
+	let otherUser;
 
 	error = checkFirstName(firstName);
 	if (error) {
@@ -157,7 +158,7 @@ module.exports.updateValidation = async (req, res, next) => {
 		error = 'Username is invalid!';
 	}
 
-	const otherUser = await User.findOne({ userName });
+	otherUser = await User.findOne({ userName });
 
 	if (otherUser) {
 		if (otherUser._id.toString() !== userId.toString()) {
@@ -165,6 +166,25 @@ module.exports.updateValidation = async (req, res, next) => {
 		}
 	}
 
+	if (error) {
+		return res.render('./useritems/read-profile', {
+			user,
+			isAuthenticated: !!req.user,
+			error,
+		});
+	}
+
+	// check email
+	if (!emailRegx.test(email)) {
+		error = 'Email invalid!';
+	}
+
+	otherUser = await User.findOne({ email: email.toLowerCase() });
+	if (otherUser) {
+		if (otherUser._id.toString() !== userId.toString()) {
+			error = 'Email already registered with other account';
+		}
+	}
 	if (error) {
 		return res.render('./useritems/read-profile', {
 			user,

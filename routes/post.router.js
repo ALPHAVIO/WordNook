@@ -341,6 +341,25 @@ router.get('/posts/:id/edit', auth, async (req, res) => {
 	});
 });
 
+router.put('/posts/:postId', auth, async (req, res) => {
+	if (!req.user) return res.redirect('/log-in');
+
+	try {
+		const blog = await Blog.findById({ _id: req.params.postId });
+		const { blogTitle, status, category, blogContent } = req.body.post;
+		blog.blogTitle = blogTitle;
+		blog.status = status;
+		blog.category = category;
+		blog.blogContent = blogContent;
+
+		await blog.save();
+
+		return res.redirect(`/posts/${req.params.postId}`);
+	} catch (e) {
+		return res.render('404', { isAuthenticated: !!req.user });
+	}
+});
+
 // Like functionality routes
 router.put('/posts/:id/like', auth, async (req, res) => {
 	const { user } = req;

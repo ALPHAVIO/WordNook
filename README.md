@@ -1,6 +1,6 @@
 <div align="center">
   <h1>WordNook</h1>
-  <img src="assets/New Banner.jpg" />
+  <img src="assets/WordNook.png" />
 </div>
 
 <hr>
@@ -12,6 +12,8 @@
 
 <hr>
 
+<div align="center">
+
 ## About-
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
@@ -21,21 +23,18 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
-- 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.
-<br/>
+- 'Blog' and 'blogging' are now loosely used for content creation and sharing on social media, especially when the content is long-form and one creates and shares content on regular basis.  
 
-- This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).  [Visit website](https://word-nook.herokuapp.com/)
+- This is a dynamically updating Blog posting website developed primarily using Node Js with EJS template engine and Mongoose as ODM(Object Data Modeling library).  
+[Visit website](https://word-nook.herokuapp.com/)
 
 <hr>
 
 ## Tech Stack-
-<img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
-<img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
-<img alt="EJS template engine" src="https://img.shields.io/badge/EJS template engine%20-%23039BE5.svg?&style=for-the-badge&logo=EJStemplateengine"/>
-<img alt="NodeJS" src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
-<img alt="Express.js" src="https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge"/>
-<img alt="Mongoose" src ="https://img.shields.io/badge/Mongoose-%234ea94b.svg?&style=for-the-badge&logo=Mongoose&logoColor=white"/>
-<img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/>
+
+<img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/> <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/> <img alt="EJS template engine" src="https://img.shields.io/badge/EJS template engine%20-%23039BE5.svg?&style=for-the-badge&logo=EJStemplateengine"/> <img alt="NodeJS" src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/> <img alt="Express.js" src="https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge"/> <img alt="Mongoose" src ="https://img.shields.io/badge/Mongoose-%234ea94b.svg?&style=for-the-badge&logo=Mongoose&logoColor=white"/> <img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/>
+
+</div>
 
 <hr>
 
@@ -102,6 +101,8 @@ mongod
 npm start
 ```
 
+or
+
 * Run this command to start the project as a developer.
 ```
 npm run dev
@@ -117,29 +118,7 @@ http://localhost:3000/
 * You can learn more about EJS template engine and its syntax to know how we can use it inside our HTML using the [documentation](https://ejs.co/#docs)
 <br/>
 
-* Now you are all set to use this project.
-<br/>
-
-* Note - You must lint your code before making any Pull Request  
-- To check for any linting errors, run command:
-```
-npm run lint-check
-```
-- To fix linting errors, run command:
-```
-npm run lint
-```
-- If some files have changed by above command, you have to repeat Step 4
-- Note : If you get error "eslint is not recognised", then you have to install eslint by using following command
-```
-npm install -g eslint 
-```
-
-**Disclaimer-**  
-The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as 
-```
-API-KEY = <your-api-key>
-```  
+* Now you are all set to use this project.  
 
 #### Some useful Mongo DB commands if you are using the terminal instead of the GUI-
 ```
@@ -150,6 +129,35 @@ show collections
 ```
 
 #### Project Deployed on Heroku : [Visit WordNook](https://word-nook.herokuapp.com/)
+
+<hr>
+
+### Note -
+1. **You must lint your code before making any Pull Request** 
+	- To check for any linting errors, run command:
+	```
+	npm run lint-check
+	```
+	- To fix linting errors, run command:
+	```
+	npm run lint
+	```
+	**Check again for any errors that need to be resolved manually and if the application works fine after you lint the code.**  
+
+1. If your git shows an issue with your `package-lock.json` while installing dependencies or throws error that **lockfile version-2** is not compatible with your system
+	Then check your npm version by running command
+	``` 
+	 npm --version
+	```
+	**npm version should be 7 and above for lockfile version-2 that would come by default if you have a node version 15 and above.**  
+	[List of Node.js releases and corresponding npm versions](https://nodejs.org/en/download/releases/)
+
+
+### Disclaimer-
+The `Contact Us` feature might not work in the local environment since the API-Key has not been shared. If you still want to work on it, generate your own API key from [Mail Gun](https://www.mailgun.com/) and include it in the `.env` file as 
+```
+API-KEY = <your-api-key>
+```  
 
 <hr>
 
