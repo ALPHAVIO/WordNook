@@ -1,18 +1,33 @@
 <%- include("../partials/header") -%>
 
-<div class="container testimonial-wall">
-    <h1>Testimonials</h1>
-   <div class="container testimonials-clean testimonial-data">
-        <ol>
-            <% testimonials.forEach(function(testimonial){ %>
-                <div class="container">
-                    <h3><li class="name"><%= testimonial.author %> </h3></li>
-                    <p class="description"><%= testimonial.views %> </p>
-                </div>
-            <% }) %>
-        </ol>
-   </div>
-</div>
+    <div class="container testimonial-wall">
+        <h1 class="d-flex justify-content-center font-weight-bolder">Testimonials</h1>
+        <div class="container testimonials-clean mt-5 testimonial-data">
+            <div class="container mt-5"></div>
+            <div class="row">
+
+                <% testimonials.forEach(function(testimonial){ %>
+                    <div class="col-lg-10 col-sm-12 testimonial-card-div mx-auto my-3">
+                        <!-- CUSTOM BLOCKQUOTE -->
+                        <blockquote class="blockquote blockquote-custom p-5 shadow rounded">
+                            <div class="blockquote-custom-icon bg-info shadow-sm"><i
+                                    class="fa fa-quote-left text-dark"></i></div>
+                            <p class="mb-0 mt-2 font-italic text-white">"<%= testimonial.views %>"</p>
+                            <footer class="blockquote-footer text-white font-weight-bolder pt-4 mt-4 border-top">
+                                <cite title="font-weight-bolder"><%= testimonial.author %></cite>
+                            </footer>
+                        </blockquote><!-- END -->
+                        
+                    </div>
 
 
-<%- include("../partials/footer") -%>
+
+                    <% }) %>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <%- include("../partials/footer") -%>
