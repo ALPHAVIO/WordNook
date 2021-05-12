@@ -1124,3 +1124,83 @@ svg {
 	right: 10%;
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%230d97ac' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
+
+/* contact  form  style  */
+
+.container-form {
+	max-width: 800px;
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	border-radius: 10%;
+}
+
+#contact-form {
+	padding: 5%;
+	margin: 10% 0;
+}
+
+.styled-input {
+	float: left;
+	width: 60vw;
+	margin: 1rem 0;
+	position: relative;
+	border-radius: 4px;
+	border: 3px solid transparent !important;
+}
+
+.styled-input label {
+	color: #999;
+	padding: 0.5rem 30px 1rem 30px;
+	position: absolute;
+	top: 5%;
+	left: 0;
+	-webkit-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+	pointer-events: none;
+}
+
+.styled-input.wide {
+	width: 100%;
+}
+
+#contact-form input[type='email'],
+#contact-form input[type='text'],
+#contact-form textarea {
+	width: 100%;
+	border: 1px solid #ccc;
+	background: #fff;
+	margin: 0 0 5px;
+	padding: 15px;
+	background-color: #f2f6f8;
+	box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
+	border-radius: 2rem;
+}
+
+.send-btn {
+	padding: 2% 6%;
+	border-radius: 25%;
+	display: inline-block;
+	background: var(--color-secondary);
+	color: white;
+	font-size: 100%;
+	text-align: center;
+	border: 2px solid white;
+	cursor: pointer;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06),
+		0 2px 10px 0 rgba(0, 0, 0, 0.07);
+	-webkit-transition: all 300ms ease;
+	transition: all 300ms ease;
+	margin-left: 35%;
+}
+
+.send-btn:hover {
+	transform: translateY(1px);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.09);
+}
+.alert-success {
+	width: 80%;
+	margin: 3% auto;
+	box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
+}
