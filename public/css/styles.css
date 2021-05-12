@@ -1132,18 +1132,18 @@ svg {
 	width: 80%;
 	margin: 0 auto;
 	position: relative;
-	border-top: 15px solid var(--color-primary);
-	box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	border-radius: 10%;
 }
 
 #contact-form {
 	padding: 5%;
-	margin: 14% 0;
+	margin: 10% 0;
 }
 
 .styled-input {
 	float: left;
-	width: 293px;
+	width: 60vw;
 	margin: 1rem 0;
 	position: relative;
 	border-radius: 4px;
@@ -1154,7 +1154,7 @@ svg {
 	color: #999;
 	padding: 0.5rem 30px 1rem 30px;
 	position: absolute;
-	top: 15px;
+	top: 5%;
 	left: 0;
 	-webkit-transition: all 0.25s ease;
 	transition: all 0.25s ease;
@@ -1162,8 +1162,7 @@ svg {
 }
 
 .styled-input.wide {
-	width: 650px;
-	max-width: 100%;
+	width: 100%;
 }
 
 #contact-form input[type='email'],
