@@ -36,6 +36,10 @@ body {
 	scroll-behavior: smooth;
 }
 
+.outline-text {
+	text-shadow: -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff, 1px 1px 0px #fff;
+}
+
 #loader {
 	position: fixed;
 	width: 100%;
