@@ -810,6 +810,23 @@ input[name='perPage'] {
 	border-color: #125688;
 }
 
+@media (max-width: 400px) {
+	.rounded-social-buttons {
+		margin-right: 2rem;
+	}
+	.rounded-social-buttons .social-button {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.rounded-social-buttons .fa-twitter,
+	.fa-facebook,
+	.fa-linkedin,
+	.fa-youtube,
+	.fa-instagram {
+		font-size: 100%;
+	}
+}
+
 /* ---------------------------------------------------- */
 
 /* Custom ScrollBar */
