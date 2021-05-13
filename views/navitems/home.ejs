@@ -67,13 +67,15 @@
         </div>
     <% } else { %>
         <div class="orderForms row">
-            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
+            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center ">
                 <label for="quantity" class="qty">Number of posts:</label>
+                <div>
                 <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-                <button class="button  arrow pagebtn btnFrame" type="submit">Go</button>
+                <button class="button arrow pagebtn btnFrame" type="submit">Go</button>
+                </div>
             </form>
-            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
-                <select name="order" class="orderSelect">
+            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center py-4">
+                <select name="order" class="orderSelect mb-2">
                     <% if(order==='new one first') {%> 
                         <option value="new one first" selected>New one first</option>
                     <% }else {%>
