@@ -308,27 +308,37 @@ a::after {
 
 .form-control::-webkit-input-placeholder {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 150%;
+	font-size: 100%;
+	font-weight:normal;
+
 }
 
 .form-control:-ms-input-placeholder {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 150%;
+	font-size: 100%;
+	font-weight:normal;
+
 }
 
 .form-control:-moz-placeholder {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 150%;
+	font-size: 100%;
+	font-weight:normal;
+
 }
 
 .form-control::-ms-input-placeholder {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 150%;
+	font-size: 100%;
+	font-weight:normal;
+
 }
 
 .form-control::-moz-placeholder {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 150%;
+	font-size: 100%;
+	font-weight:normal;
+
 }
 
 .quantityForm {
