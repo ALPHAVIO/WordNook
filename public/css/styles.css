@@ -492,6 +492,19 @@ input[name='perPage'] {
 .test-wall-btn:before,.test-wall-btn:after {
 	width: 0rem;
 }
+
+@media (max-width: 650px) {
+	.test-wall-btn{
+		left: 65%;
+	}
+}
+
+@media (max-width: 480px) {
+	.test-wall-btn{
+		left: 50%;
+	}
+}
+
 .btnFrame {
 	background: var(--color-primary);
 }
