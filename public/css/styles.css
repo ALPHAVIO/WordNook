@@ -937,7 +937,7 @@ input[name='perPage'] {
 }
 
 .testimonials-clean .item {
-	margin-bottom: 34px;
+	margin-bottom: 2.125rem;
 }
 
 @media (min-width: 48px) {
