@@ -932,10 +932,12 @@ input[name='perPage'] {
 
 .testimonials-clean .people {
 	padding: 3.125rem 0 1.25rem;
+	display: flex;
+	justify-content: center;
 }
 
 .testimonials-clean .item {
-	margin-bottom: 32px;
+	margin-bottom: 34px;
 }
 
 @media (min-width: 48px) {
@@ -1034,7 +1036,7 @@ input[name='perPage'] {
 	color: white;
 	background: var(--color-secondary);
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1076px) {
 	.test-button {
 		margin-bottom: 12%;
 	}
