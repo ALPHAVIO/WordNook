@@ -78,6 +78,20 @@ router.get('/log-in', auth, async (req, res) => {
 	}
 });
 
+router.get('/forgot-password', auth, async(req, res)=>{
+	if(req.user){
+		res.redirect('/');
+	}else{
+		res.render('./auth/forgotPassword', {
+			error: '',
+			data: {
+				email: '',
+				password: '',
+			},
+		});
+	}
+});
+
 // to view own profile
 router.get('/read-profile', auth, async (req, res) => {
 	const _id = req.user;
