@@ -67,6 +67,20 @@ const categories = [
 	'Space and Research',
 ];
 
+const images = [
+	
+	'https://image.freepik.com/free-photo/crying-with-closed-eyes-young-blonde-guy-wearing-yellow-t-shirt-isolated-green-with-copy-space_141793-86027.jpg',
+	'https://image.freepik.com/free-photo/cheerful-middle-aged-woman-with-curly-hair_1262-20859.jpg',
+	'https://image.freepik.com/free-photo/portrait-smiling-handsome-male-doctor-man_171337-5055.jpg',
+	'https://image.freepik.com/free-photo/woman-posing-chair_144627-38963.jpg',
+	'https://image.freepik.com/free-photo/low-angle-man-dancing_23-2148666507.jpg',
+	'https://image.freepik.com/free-photo/potrait-attractive-woman-leather-jacket_144627-13969.jpg',
+	'https://img.freepik.com/free-photo/potrait-young-beautiful-woman_144627-13955.jpg?size=338&ext=jpg',
+	'https://image.freepik.com/free-photo/potrait-shot-asian-man-resign-employer-action-with-hold-tie_7180-1983.jpg',
+	'https://image.freepik.com/free-photo/front-view-male-student-wearing-black-backpack-holding-copybooks-files-blue-wall_140725-42636.jpg',
+
+]
+
 // Get request for home route-
 router.get(
 	['/', '/page/:page', '/page/:perPage', '/page/:page/:perPage', '/category'],
@@ -97,6 +111,7 @@ router.get(
 							order: order,
 							isAuthenticated: !!req.user,
 							testimonial,
+							images,
 							// currentUser: req.user,
 						});
 					}

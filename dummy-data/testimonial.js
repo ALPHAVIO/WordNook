@@ -11,26 +11,26 @@ const testimonial = [
 	},
 	{
 		views: 'It is great Platform to share your experience to help others .',
-		author: 'Siya Roy',
+		author: 'Anubhav Bassi',
 	},
 	{
 		views:
 			'It is great website for learning new things which People daily share with us .',
-		author: 'Aashish Chauhan',
+		author: 'Aashi Chauhan',
 	},
 	{
 		views: 'You can maintain your Daily Journal and it will be secure .',
-		author: 'Sima Goaur',
+		author: 'Sumit Goaur',
 	},
 	{
 		views:
 			'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
-		author: 'Abhniav Raj',
+		author: 'Anuva Raj',
 	},
 	{
 		views:
 			'This is a very good website .You are free to share your thoughts . Give words to your thoughts',
-		author: 'Anubhav Bassi',
+		author: 'Ananya Singh',
 	},
 	{
 		views: 'You can experience something good . Just try it .',

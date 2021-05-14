@@ -989,10 +989,11 @@ input[name='perPage'] {
 }
 
 .testimonials-clean .item img {
-	max-width: 2.5rem;
+	width: 60px;
 	float: left;
 	margin-right: 0.75rem;
 	margin-top: -0.313rem;
+	height: 60px;
 }
 
 .testimonial-wall {
