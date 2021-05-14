@@ -486,6 +486,30 @@ input[name='perPage'] {
 	background: var(--color-danger) !important;
 }
 
+.test-wall-btn {
+	left: 80%;
+	margin-top: 2rem;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	min-width: 10em;
+}
+
+.test-wall-btn:before,.test-wall-btn:after {
+	width: 0rem;
+}
+
+@media (max-width: 650px) {
+	.test-wall-btn{
+		left: 65%;
+	}
+}
+
+@media (max-width: 480px) {
+	.test-wall-btn{
+		left: 50%;
+	}
+}
+
 .btnFrame {
 	background: var(--color-primary);
 }
