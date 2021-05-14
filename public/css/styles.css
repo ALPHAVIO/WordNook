@@ -405,6 +405,30 @@ input[name='perPage'] {
 	font-weight: 800;
 }
 
+.compose-form{
+	padding-top: 5%;
+	padding-bottom: 5%;
+	padding-right: 3%;
+	padding-left: 3%;
+	border-radius: 2rem;
+	background-color: #f2f6f8;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+	 rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+	 rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+	 rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+	 rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.compose-status ,
+.compose-category,
+.compose-post,
+.compose-title,
+.compose-file{
+	font-weight: bold;
+	font-size: larger;
+}
+
+
 .block {
 	display: block;
 	width: 100%;
@@ -1145,6 +1169,7 @@ svg {
 	padding: 5%;
 	margin: 10% 0;
 }
+
 
 .styled-input {
 	float: left;
