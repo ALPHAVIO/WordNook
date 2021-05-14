@@ -78,10 +78,10 @@ router.get('/log-in', auth, async (req, res) => {
 	}
 });
 
-router.get('/forgot-password', auth, async(req, res)=>{
-	if(req.user){
+router.get('/forgot-password', auth, async (req, res) => {
+	if (req.user) {
 		res.redirect('/');
-	}else{
+	} else {
 		res.render('./auth/forgotPassword', {
 			error: '',
 			data: {
