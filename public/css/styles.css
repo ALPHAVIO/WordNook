@@ -1278,10 +1278,7 @@ svg {
 /* read-profile form form styling  */
 
 .edit-form{
-	padding-top: 5%;
-	padding-bottom: 5%;
-	padding-right: 0%;
-	padding-left: 0%;
+	padding: 5% 0;
 	border-radius: 2rem;
 	background-color: #f2f6f8;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -1325,4 +1322,8 @@ svg {
 
 .personal-para{
 	text-align: center;
+}
+
+.edit-btn{
+	margin-left: 15%;
 }
