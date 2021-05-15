@@ -53,14 +53,8 @@ function checkPassword(password) {
 }
 
 module.exports.signupValidation = (req, res, next) => {
-	const {
-		firstName,
-		lastName,
-		userName,
-		email,
-		password,
-		confirmPassword,
-	} = req.body;
+	const { firstName, lastName, userName, email, password, confirmPassword } =
+		req.body;
 
 	let error;
 	const data = {
