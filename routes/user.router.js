@@ -49,7 +49,7 @@ router.get('/sign-up', auth, async (req, res) => {
 	if (req.user) {
 		res.redirect('/');
 	} else {
-		res.render('./auth/signUp', {
+		res.set('Content-Type', 'application/json').render('./auth/signUp', {
 			error: '',
 			data: {
 				firstName: '',
