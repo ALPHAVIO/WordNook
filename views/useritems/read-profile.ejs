@@ -1,64 +1,62 @@
 <%- include("../partials/header", {isAuthenticated, user}) -%>
-    <div class="container">
-        <h1>Edit Profile</h1>
+<div class="container-centre edit-profile">
+    <h1 class="heading-centre heading-bold normal-heading-font">Edit Profile</h1>
         <hr>
-        <div class="row">
             <!-- edit form column -->
-            <div class="col-md-9 personal-info">
-                <h3>Personal info</h3>
-                <!-- display error if any while submitting the form -->
+            <h3 class="personal-para">Personal info</h3>
+            <!-- display error if any while submitting the form -->
                 <% if(error) { %>
                     <div class="alert alert-danger" role="alert">
                         <%= error %>
                     </div>
                 <% } %>
-                <form class="form-horizontal" role="form" method='post' action="/read-profile" enctype="multipart/form-data">
+                <form class="form-horizontal edit-form" role="form" method='post' action="/read-profile" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label" for="firstName" >First name:</label>
-                        <div class="col-lg-8">
+                        <label class="col-lg-3 control-label profile-firstname" for="firstName" >First name:</label>
+                        <div class="col-12">
                             <input class="form-control" type="text" for="firstName" name="firstName" value="<%= user.firstName %>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label" for="lastName">Last name:</label>
-                        <div class="col-lg-8">
+                        <label class="col-lg-3 control-label profile-lastname" for="lastName" >Last name:</label>
+                        <div class="col-12">
                             <input class="form-control" type="text" for="lastName" name="lastName" value="<%= user.lastName %>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label" for="userName">User name:</label>
-                        <div class="col-lg-8">
+                        <label class="col-lg-3 control-label profile-username" for="userName" >User name:</label>
+                        <div class="col-12">
                             <input class="form-control" type="text" for="userName" name="userName" value="<%= user.userName %>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label" for="email">Email:</label>
-                        <div class="col-lg-8">
+                        <label class="col-12 control-label profile-email" for="email">Email:</label>
+                        <div class="col-12">
                             <input class="form-control" type="text" for="email" name="email" value="<%= user.email %>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-8 control-label" for="photo">Profile Picture(Leave empty if you don't want to update profile picture)</label>
-                        <div class="col-lg-8">
-                            <input type="file" name="photo">
+                        <label class="col-12 control-label profile-file" for="photo" >Profile Picture(Leave empty if you don't want to update profile picture)</label>
+                        <div class="col-12">
+                            <input type="file" name="photo" class="profile-photo">
                         </div>
                     </div>
-                    <p>
-                        <h2>Please enter the old password to confirm changes or new password to change the password.</h2>
+                    <p class="password-info">
+                        Please enter the old password to confirm changes <br>or new password to change the password.
                     </p>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="password">Password:</label>
-                        <div class="col-md-8">
+                        <label class="col-md-3 control-label profile-password" for="password" >Password:</label>
+                        <div class="col-12">
                             <input class="form-control" type="password" name="password" id="password">
                             <span class="password-icon pb-3 pr-3"><i class="fa fa-eye" id="eye" onclick="togglePassword()"></i></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label"></label>
-                        <div class="col-md-8">
-                            <input type="submit" class="btnFrame button px-4" value="Save Changes">
+                        <div class="col-12 edit-btn">
+                            <input type="submit" class="btnFrame button px-4 mb-2" value="Save Changes">
                             <span></span>
-                            <input type="reset" class="button button-cancel px-4" value="Cancel">
+                            <input type="reset" class="button button-cancel px-4 mb-2" value="Cancel">
                         </div>
                     </div>
                 </form>
