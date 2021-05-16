@@ -726,10 +726,6 @@ input[name='perPage'] {
 	mix-blend-mode: difference !important;
 }
 
-.list-unstyled {
-	margin: 0px;
-}
-
 .footer-bg {
 	background-color: #07527e;
 }
