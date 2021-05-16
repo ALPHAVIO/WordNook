@@ -1262,16 +1262,13 @@ svg {
 
 /* read-profile form form styling  */
 
-.edit-form{
+.edit-form {
 	padding: 5% 0;
 	border-radius: 2rem;
 	background-color: #f2f6f8;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-	 rgba(0, 0, 0, 0.12) 0px -12px 30px, 
-	 rgba(0, 0, 0, 0.12) 0px 4px 6px, 
-	 rgba(0, 0, 0, 0.17) 0px 12px 13px, 
-	 rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
+		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .profile-file,
@@ -1280,24 +1277,22 @@ svg {
 .profile-username,
 .profile-email,
 .profile-password,
-.profile-photo{
+.profile-photo {
 	font-weight: bold;
 	font-size: larger;
 }
 
-.password-info{
+.password-info {
 	margin-left: 3%;
-	font-size:130%;
+	font-size: 130%;
 	font-weight: bold;
-
 }
 
 #profile-info input[type='text'],
 #profile-info input[type='password'],
-#profile-info input[type='email']
-{
+#profile-info input[type='email'] {
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-	            rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .edit-profile {
@@ -1305,10 +1300,10 @@ svg {
 	max-width: 75vw;
 }
 
-.personal-para{
+.personal-para {
 	text-align: center;
 }
 
-.edit-btn{
+.edit-btn {
 	margin-left: 15%;
 }
