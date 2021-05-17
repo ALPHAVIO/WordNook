@@ -296,6 +296,10 @@ a::after {
 	margin-bottom: 1.3rem;
 	box-shadow: 0rem 0rem 0.07rem 0rem;
 }
+
+.views-badge {
+	background-color: var(--color-primary);
+}
 /* ------------------------------------------------------------ */
 /* Input boxes and placeholder text styles */
 
