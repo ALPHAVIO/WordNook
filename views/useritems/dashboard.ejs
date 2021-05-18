@@ -118,7 +118,7 @@
 
 
             <div class="card-body row accordion p-2" id="accordionExample">
-                <div class="col-md-6 mx-md-auto mx-2 d-flex align-items-center justify-content-center">
+                <div class="col-md-8 mx-md-auto mx-2 d-flex align-items-center justify-content-center">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -147,7 +147,16 @@
                           </button>
                         </h2>
                     </div>
+                    <!-- My following blogs tab -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            My Following Blogs
+                          </button>
+                        </h2>
+                    </div>
                 </div>
+
                 <div class="col-lg-12 mx-md-auto mx-2">
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
@@ -191,6 +200,18 @@
                             <%if (likedBlogs.length) { %>
                                 <%# If there are posts(length>=1) then display them through looping %> 
                                 <%- include("../partials/posts", {posts:likedBlogs}) -%>
+                                <%# If there are no posts(length=0) then display no blogs found %> 
+                            <% } else { %>
+                                <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
+                            <%}%>
+                        </div>
+                    </div>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <%# Check if there are posts for requested categories... %> 
+                            <%if (myfollowingBlogs.length) { %>
+                                <%# If there are posts(length>=1) then display them through looping %> 
+                                <%- include("../partials/posts", {posts:myfollowingBlogs}) -%>
                                 <%# If there are no posts(length=0) then display no blogs found %> 
                             <% } else { %>
                                 <p class="mx-auto text-danger text-center">No Blogs Found...</p> 
