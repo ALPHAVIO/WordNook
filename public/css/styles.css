@@ -1312,10 +1312,10 @@ svg {
 }
 
 /* dashborad styling  */
-
 .dashboard-center{
 	margin: 6% auto 6% auto;
 	max-width: 90vw;
+	border-radius: 2rem ;
 	background-color: #f2f6f8;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
 	 rgba(0, 0, 0, 0.12) 0px -12px 30px, 
