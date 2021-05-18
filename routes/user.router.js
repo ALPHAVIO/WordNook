@@ -10,7 +10,7 @@ const {
 	signupValidation,
 	updateValidation,
 	loginValidation,
-} = require('../middlewares/validations/user.js');
+} = require('../middlewares/validations/user');
 const Blog = require('../models/Blog.model');
 
 const storage = multer.diskStorage({
