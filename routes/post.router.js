@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
 const UserModel = require('../models/User.model');
-const Comment = require('../models/Comment.model.js');
+const Comment = require('../models/Comment.model');
 
 const router = express.Router();
 router.use(methodOverride('_method'));
