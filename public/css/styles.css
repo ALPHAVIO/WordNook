@@ -70,15 +70,29 @@ body {
 	backdrop-filter: blur(10px);
 }
 /* -------------------------------------------------- */
-
+#logo{
+	margin-top:-15px;
+	width:12rem;
+	height:7rem;
+	/* max-height:13rem;
+	max-width:25rem; */
+}
 @media screen and (max-width: 800px) {
 	#logo {
-		max-height: 2.25rem;
-		max-width: 2rem;
-		margin-right: 0.25rem;
+		max-height: 6rem;
+		max-width: 10rem;
 	}
 	.navbar-brand {
 		margin-right: 35vw;
+	}
+}
+
+@media screen and (max-width:360px)
+{
+	#logo{
+		margin-top:-5px;
+		max-height:4rem;
+		max-width:8rem;
 	}
 }
 
