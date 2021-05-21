@@ -1,7 +1,8 @@
 <%- include("../partials/header", {isAuthenticated}) -%>
 
 <div class="container">
-    <h2 class="normal-heading-font heading fweight-600">Hi there!</h2>
+    <a href="/testimonial-wall"><button class="test-wall-btn  button">Testimonial Wall</button></a>
+    <h2 class="normal-heading-font heading mt-n3 fweight-600">Hi there!</h2>
     <p class="content-body-font"> <%= homeStartingContent %> </p> 
     <div class="row">
         <div class="col-lg-3 col-sm-12 d-flex flex-column align-items-center">
@@ -67,13 +68,15 @@
         </div>
     <% } else { %>
         <div class="orderForms row">
-            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
+            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center ">
                 <label for="quantity" class="qty">Number of posts:</label>
+                <div>
                 <input type="number" name="perPage" min="1" max="10" value=<%= perPage %>>
-                <button class="button  arrow pagebtn btnFrame" type="submit">Go</button>
+                <button class="button arrow pagebtn btnFrame" type="submit">Go</button>
+                </div>
             </form>
-            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center">
-                <select name="order" class="orderSelect">
+            <form action="/page/<%= current %>/<%= perPage %>" method="GET" class="quantityForm col-sm-6 text-center py-4">
+                <select name="order" class="orderSelect mb-2">
                     <% if(order==='new one first') {%> 
                         <option value="new one first" selected>New one first</option>
                     <% }else {%>

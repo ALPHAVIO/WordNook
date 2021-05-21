@@ -9,7 +9,7 @@ const blogSchema = {
 	blogContent: String,
 	category: String,
 	status: String,
-	comments: Array,
+	comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
 	photo: {
 		type: String,
 	},

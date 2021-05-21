@@ -1,11 +1,10 @@
 <%- include("../partials/header", {isAuthenticated}) -%>
 
 
-<div class="container-fluid">
-    <div class="row my-4">
-        <div class="col-lg-11 card bg-light mx-2 mx-lg-auto card p-0">      
+<div class="container-center dashboard-center">
+        <div class="col-lg-12 bg-light  p-0 dashboard-box">      
             <%# Display author's name %> 
-            <div class="card-header text-center">
+            <div class="text-center">
                 <%# Display author's profile %>
                 <div class="profile d-flex justify-content-center">
                     <img src="<%= user.photo %>" class="img-thumbnail profile-img" alt="User Profile Image">
@@ -117,35 +116,35 @@
            
 
 
-            <div class="card-body row accordion p-2" id="accordionExample">
-                <div class="col-md-6 mx-md-auto mx-2 d-flex align-items-center justify-content-center">
+            <div class="card-body row accordion " id="accordionExample">
+                <div class="col-md-6 mx-md-auto d-flex align-items-center justify-content-center">
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingOne">
+                      <h5 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                           All Blogs
                         </button>
-                      </h2>
+                      </h5>
                     </div>
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingTwo">
+                      <h5 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                           Public Blogs
                         </button>
-                      </h2>
+                      </h5>
                     </div>
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
+                        <h5 class="accordion-header" id="headingThree">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Private Blogs
                           </button>
-                        </h2>
+                        </h5>
                     </div>
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFour">
+                        <h5 class="accordion-header" id="headingFour">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                             Liked Blogs
                           </button>
-                        </h2>
+                        </h5>
                     </div>
                 </div>
                 <div class="col-lg-12 mx-md-auto mx-2">
@@ -200,6 +199,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 <%- include("../partials/footer") -%>

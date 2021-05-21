@@ -53,6 +53,7 @@ function checkPassword(password) {
 }
 
 module.exports.signupValidation = (req, res, next) => {
+	// prettier-ignore
 	const {
 		firstName,
 		lastName,
