@@ -80,10 +80,10 @@ body {
 	backdrop-filter: blur(10px);
 }
 /* -------------------------------------------------- */
-#logo{
-	margin-top:-15px;
-	width:12rem;
-	height:7rem;
+#logo {
+	margin-top: -15px;
+	width: 12rem;
+	height: 7rem;
 }
 @media screen and (max-width: 800px) {
 	#logo {
@@ -95,12 +95,11 @@ body {
 	}
 }
 
-@media screen and (max-width:360px)
-{
-	#logo{
-		margin-top:-5px;
-		max-height:4rem;
-		max-width:8rem;
+@media screen and (max-width: 360px) {
+	#logo {
+		margin-top: -5px;
+		max-height: 4rem;
+		max-width: 8rem;
 	}
 }
 
