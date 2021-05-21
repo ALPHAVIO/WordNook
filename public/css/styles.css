@@ -74,8 +74,6 @@ body {
 	margin-top:-15px;
 	width:12rem;
 	height:7rem;
-	/* max-height:13rem;
-	max-width:25rem; */
 }
 @media screen and (max-width: 800px) {
 	#logo {
