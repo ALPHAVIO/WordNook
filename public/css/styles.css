@@ -1042,7 +1042,7 @@ input[name='perPage'] {
 
 .testimonials-clean .item .box {
 	padding: 1.875rem;
-	background-color: #9FC5E8;
+	background-color: #9fc5e8;
 	position: relative;
 }
 
@@ -1055,7 +1055,7 @@ input[name='perPage'] {
 	height: 0;
 	border: 0.938rem solid transparent;
 	border-width: 0.75rem 0.938rem;
-	border-top-color: #9FC5E8;
+	border-top-color: #9fc5e8;
 }
 
 .testimonials-clean .item .author {
