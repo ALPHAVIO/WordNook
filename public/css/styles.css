@@ -19,7 +19,7 @@
 	--color-text: #e5e7eb;
 }
 
-:is(h1, h2, h3, h4, h5, h6, p){
+:is(h1, h2, h3, h4, h5, h6, p) {
 	text-shadow: 1px 1px 1px white;
 	font-weight: bold;
 }
@@ -42,7 +42,8 @@ body {
 }
 
 .outline-text {
-	text-shadow: -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff, 1px 1px 0px #fff;
+	text-shadow: -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff,
+		1px 1px 0px #fff;
 }
 
 #loader {
