@@ -954,8 +954,11 @@ input[name='perPage'] {
 /* Profile Image Style */
 
 .profile-img {
-	height: 25vh;
-	border-radius: 10%;
+	height: 20vh;
+	margin: 2% auto 3% auto;
+	border-radius: 50%;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+		rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .delete-img-btn {
@@ -1306,4 +1309,22 @@ svg {
 
 .edit-btn {
 	margin-left: 15%;
+}
+
+/* dashborad styling  */
+.dashboard-center {
+	margin: 6% auto 6% auto;
+	max-width: 90vw;
+	border-radius: 2rem;
+	background-color: #f2f6f8;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.dashboard-box {
+	border-radius: 2rem;
+	background-color: #f2f6f8;
+	border-left: 3px solid var(--color-secondary);
+	border-right: 3px solid var(--color-secondary);
 }

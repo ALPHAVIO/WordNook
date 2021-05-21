@@ -10,7 +10,7 @@ const {
 	signupValidation,
 	updateValidation,
 	loginValidation,
-} = require('../middlewares/validations/user.js');
+} = require('../middlewares/validations/user');
 const Blog = require('../models/Blog.model');
 
 const storage = multer.diskStorage({
@@ -308,17 +308,17 @@ router.get('/dashboard', auth, async (req, res) => {
 			const allusers = await User.find({});
 			const likedBlogs = await Blog.find({
 				_id: { $in: user.likedPosts },
-			}).populate("author");
+			}).populate('author');
 			const myfollowingBlogs = await Blog.find({
-				author : { $in: user.following },
-			}).populate("author")
+				author: { $in: user.following },
+			}).populate('author');
 			return res.render('./useritems/dashboard', {
 				user,
 				allusers,
 				posts: blogs,
 				isAuthenticated: !!req.user,
 				likedBlogs,
-				myfollowingBlogs
+				myfollowingBlogs,
 			});
 		} catch (error) {
 			return res.redirect('/error');

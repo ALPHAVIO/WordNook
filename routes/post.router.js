@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
 const UserModel = require('../models/User.model');
+const Comment = require('../models/Comment.model');
 
 const router = express.Router();
 router.use(methodOverride('_method'));
@@ -47,64 +48,67 @@ router.get(
 		const { user } = req;
 		let isAuthor = false;
 		const requestedPostId = req.params.postId;
-		Blog.findOne({ _id: requestedPostId }, async (err, post) => {
-			if (!err) {
-				// Check if the user and author of this post are same
-				if (
-					user &&
-					JSON.stringify(user._id) === JSON.stringify(post.author)
-				) {
-					isAuthor = true;
-				}
-
-				if (
-					post.status === 'Public' ||
-					(user && post.author._id.toString() === user._id.toString())
-				) {
-					// increment no. of views of the post.
-					post.noOfViews++;
-					post.save();
-					// Sort the comments to show the recent one
-					post.comments = post.comments.sort((a, b) =>
-						a.timestamps > b.timestamps
-							? -1
-							: a.timestamps < b.timestamps
-							? 1
-							: 0
-					);
-					// console.log(post.status);
-					const author = await UserModel.findById(post.author);
-					let isLiked = false;
-					let currUser;
-					if (user) {
-						currUser = await UserModel.findById(user._id);
-						isLiked = !!currUser.likedPosts.includes(
-							req.params.postId
-						);
+		Blog.findOne({ _id: requestedPostId })
+			.populate('comments')
+			.exec(async (err, post) => {
+				if (!err) {
+					// Check if the user and author of this post are same
+					if (
+						user &&
+						JSON.stringify(user._id) === JSON.stringify(post.author)
+					) {
+						isAuthor = true;
 					}
-					res.render('./postitems/post', {
-						title: post.blogTitle,
-						content: post.blogContent,
-						id: post._id,
-						photo: post.photo,
-						comments: post.comments,
-						category: post.category,
-						likesCount: post.likes,
-						noOfViews: post.noOfViews,
-						author,
-						timestamps: post.timestamps,
-						isAuthor,
-						isAuthenticated: !!user,
-						currentUser: currUser,
-						isLiked: isLiked,
-					});
+
+					if (
+						post.status === 'Public' ||
+						(user &&
+							post.author._id.toString() === user._id.toString())
+					) {
+						// increment no. of views of the post.
+						post.noOfViews++;
+						post.save();
+						// Sort the comments to show the recent one
+						post.comments = post.comments.sort((a, b) =>
+							a.timestamps > b.timestamps
+								? -1
+								: a.timestamps < b.timestamps
+								? 1
+								: 0
+						);
+						// console.log(post.status);
+						const author = await UserModel.findById(post.author);
+						let isLiked = false;
+						let currUser;
+						if (user) {
+							currUser = await UserModel.findById(user._id);
+							isLiked = !!currUser.likedPosts.includes(
+								req.params.postId
+							);
+						}
+						res.render('./postitems/post', {
+							title: post.blogTitle,
+							content: post.blogContent,
+							id: post._id,
+							photo: post.photo,
+							comments: post.comments,
+							category: post.category,
+							likesCount: post.likes,
+							noOfViews: post.noOfViews,
+							author,
+							timestamps: post.timestamps,
+							isAuthor,
+							isAuthenticated: !!user,
+							currentUser: currUser,
+							isLiked: isLiked,
+						});
+					} else {
+						return res.redirect('/');
+					}
 				} else {
-					return res.redirect('/');
+					console.log(err);
 				}
-			} else {
-				console.log(err);
-			}
-		});
+			});
 	}
 );
 
@@ -121,14 +125,16 @@ router.post('/posts/:postId/comment', auth, async (req, res) => {
 		if (content === '') {
 			res.redirect(`/posts/${req.params.postId}`);
 		} else {
-			const doc = await Blog.findOne({ _id: req.params.postId });
-			doc.comments.push({
+			const newComment = new Comment({
 				name: loggedUser.name,
 				authorId: loggedUser._id,
 				content: content,
 				timestamps: Math.floor(Date.now() / 1000),
 				flags: [],
 			});
+			const com = await newComment.save();
+			const doc = await Blog.findOne({ _id: req.params.postId });
+			doc.comments.push(com._id);
 
 			await Blog.updateOne(
 				{ _id: req.params.postId },
@@ -151,7 +157,9 @@ router.post('/posts/:postId/comments/:commentNum', auth, async (req, res) => {
 		// checking if user is authenticated
 		return res.status(401).redirect(`${req.baseUrl}/sign-up`);
 	}
-	const foundPost = await Blog.findOne({ _id: requestedPostId });
+	const foundPost = await Blog.findOne({ _id: requestedPostId })
+		.populate('comments')
+		.exec();
 	foundPost.comments = foundPost.comments.sort((a, b) =>
 		a.timestamps > b.timestamps ? -1 : a.timestamps < b.timestamps ? 1 : 0
 	);
@@ -159,6 +167,7 @@ router.post('/posts/:postId/comments/:commentNum', auth, async (req, res) => {
 		foundPost.comments[commentNum].authorId.toString() ===
 		req.user._id.toString()
 	) {
+		await Comment.deleteOne({ _id: foundPost.comments[commentNum]._id });
 		foundPost.comments.splice(commentNum, 1);
 		await Blog.updateOne(
 			{ _id: requestedPostId },
@@ -184,7 +193,9 @@ router.post(
 			// checking if user is authenticated
 			return res.status(401).redirect(`${req.baseUrl}/sign-up`);
 		}
-		const foundPost = await Blog.findOne({ _id: requestedPostId });
+		const foundPost = await Blog.findOne({ _id: requestedPostId })
+			.populate('comments')
+			.exec();
 		foundPost.comments = foundPost.comments.sort((a, b) =>
 			a.timestamps > b.timestamps
 				? -1
@@ -200,6 +211,7 @@ router.post(
 		foundPost.comments[commentNum].flags.push(currUser.userName);
 		// If number of flags is greater than or equal to 3 delete that comment
 		if (foundPost.comments[commentNum].flags.length >= 3) {
+			await Comment.deleteOne({ _id: foundPost.comments[commentNum] });
 			foundPost.comments.splice(commentNum, 1);
 		}
 		await Blog.updateOne(
@@ -208,6 +220,10 @@ router.post(
 			(err) => {
 				if (err) console.log(err);
 			}
+		);
+		await Comment.updateOne(
+			{ _id: foundPost.comments[commentNum]._id },
+			{ flags: foundPost.comments[commentNum].flags }
 		);
 		res.redirect(`/posts/${requestedPostId}`);
 	}
