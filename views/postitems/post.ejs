@@ -38,13 +38,14 @@
         </div>
         <div class="col-lg-4 mx-1 mx-md-auto">
             <!-- number of comments -->
-            <h6 class="text-muted mt-4 mt-lg-0 fweight-600"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></h6>
-            
+            <div class="d-flex justify-content-start mb-3">
+                <div class="mr-5 lead"><span class="badge rounded-pill bg-danger"> <%= comments.length %> <% if(comments.length>1 || comments.length===0) { %> comments <% } else  {%> comment <% } %></span></div>
+                <div class="lead"><span class="badge rounded-pill bg-danger"><%= likesCount %> <% if(likesCount>1 || likesCount===0) { %> likes <% } else  {%> like <% } %></span></div>
+            </div>
             <!-- like button -->
             <div class="like-btn">
               <div class="content">
                 <span class="like_icon"></span>
-                <div><%= likesCount %> <% if(likesCount>1 || likesCount===0) { %> likes <% } else  {%> like <% } %></div>
                 <% if(!isLiked){ %>
                     <form action="/posts/<%=id%>/like?_method=PUT" method="POST">
                         <button class="button likebtn" type="submit"> Like</button>
@@ -57,7 +58,7 @@
                 <button class="mt-3 button share-button">
                     Share
                 </button>
-                <div><%=noOfViews%> views</div>
+                <div class="mt-3 lead"><span class="badge views-badge"><%=noOfViews%> views</span></div>
               </div>
             </div>
             
