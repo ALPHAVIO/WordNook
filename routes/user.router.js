@@ -157,6 +157,7 @@ router.post(
 								password,
 								email,
 								confirmPassword,
+								isAdmin,
 							},
 						});
 					}
@@ -166,6 +167,7 @@ router.post(
 						userName,
 						password,
 						email: email.toLowerCase(),
+						isAdmin,
 					};
 					if (req.file) {
 						data.photo = req.file.path;
@@ -182,6 +184,7 @@ router.post(
 									userName,
 									email,
 									password,
+									isAdmin,
 								},
 							});
 						}
