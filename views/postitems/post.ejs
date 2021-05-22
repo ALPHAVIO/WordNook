@@ -92,8 +92,8 @@
                         </form>
                     <% } %>
                     <% if(comments[i].replies.length > 0){ %>
-                        <button class="btn btn-primary mt-2" id="reply-toggle">Show Replies</button>
-                        <ul class="replies" id="reply-id">
+                        <button class="btn btn-primary mt-2 reply-toggle">Show Replies</button>
+                        <ul class="replies" id="reply-id-<%= i %>">
                             <% comments[i].replies.forEach((reply) => { %>
                                 <div class="reply py-3 px-2 my-3">
                                     <h5>
