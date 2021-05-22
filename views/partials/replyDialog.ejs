@@ -1,0 +1,23 @@
+<!-- Reply Modal -->
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModalLabel">Replying To <%= name %></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/posts/<%=id%>/comments/<%=i%>/reply" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="reply">Type your reply</label><br>
+                        <input class="form-control" type="text" name="reply" id="reply">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Reply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
