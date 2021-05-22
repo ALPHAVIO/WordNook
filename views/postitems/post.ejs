@@ -77,6 +77,11 @@
                                 <button class="btn btn-flag" title="Flag as Inappropriate" type="submit"><i class="fas fa-flag"></i></button>
                             <% } %>
                         </form>
+                        <% if(isAuthenticated){ %>
+                            <!-- Trigger button for reply popup -->
+                            <button class="btn btn-danger float-end" title="Reply" type="button" data-bs-toggle="modal" data-bs-target="#commentModal"><i class="fas reply-icon"></i></button>
+                            <%- include("../partials/replyDialog", {name: comments[i].name, i:i, id:id}) -%>
+                        <% } %>
                     </h5> 
                     <p class="post-date-font"><%= moment(new Date(comments[i].timestamps*1000)).format("dddd, MMMM Do YYYY, h:mm:ss a") %></p>
                     <hr/>
@@ -85,6 +90,23 @@
                         <form action="/posts/<%=id%>/comments/<%=i%>" method="post">
                             <button class="button  del" type="submit">Delete</button>
                         </form>
+                    <% } %>
+                    <% if(comments[i].replies.length > 0){ %>
+                        <button class="btn btn-primary mt-2 reply-toggle">Show Replies</button>
+                        <ul class="replies" id="reply-id-<%= i %>">
+                            <% comments[i].replies.forEach((reply) => { %>
+                                <div class="reply py-3 px-2 my-3">
+                                    <h5>
+                                        <a href="/author/<%= reply.authorId  %> " class="mb-4">
+                                            <i class="fas fa-user"></i>
+                                            <strong><%= reply.name %></strong>
+                                        </a>
+                                    </h5>
+                                    <hr/>
+                                    <p><%- reply.content %></p>
+                                </div>
+                            <% }) %>
+                        </ul>
                     <% } %>
                 </div>
             <% } %>
@@ -110,6 +132,7 @@
 <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 <script type="text/javascript" src="/js/postScript.js"></script>
 <script type="text/javascript" src="/js/share.js"></script>
+<script type="text/javascript" src="/js/commentReply.js"></script>
 
 <%- include("../partials/footer") -%>
 

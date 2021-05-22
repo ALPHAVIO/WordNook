@@ -321,6 +321,10 @@ a::after {
 .views-badge {
 	background-color: var(--color-primary);
 }
+
+.reply-icon::before {
+	content: '\f3e5';
+}
 /* ------------------------------------------------------------ */
 /* Input boxes and placeholder text styles */
 
@@ -1351,4 +1355,26 @@ svg {
 	background-color: #f2f6f8;
 	border-left: 3px solid var(--color-secondary);
 	border-right: 3px solid var(--color-secondary);
+}
+
+/* Comment reply section */
+
+.reply {
+	border: 0.13rem solid rgb(223, 220, 220);
+	border-radius: 0.4rem;
+	padding: 1.3rem;
+	margin-bottom: 1.3rem;
+	box-shadow: 0rem 0rem 0.07rem 0rem;
+}
+
+.replies {
+	transition: opacity 0.5s ease-out;
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+.show {
+	opacity: 1;
+	height: auto;
 }

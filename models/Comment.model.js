@@ -12,6 +12,7 @@ const commentSchema = {
 		default: Date.now,
 	},
 	flags: Array,
+	replies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
 };
 // Making a MongoDB model for the schema-
 module.exports = mongoose.model('Comment', commentSchema);

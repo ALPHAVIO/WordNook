@@ -49,7 +49,7 @@ router.get(
 		let isAuthor = false;
 		const requestedPostId = req.params.postId;
 		Blog.findOne({ _id: requestedPostId })
-			.populate('comments')
+			.populate({ path: 'comments', populate: { path: 'replies' } })
 			.exec(async (err, post) => {
 				if (!err) {
 					// Check if the user and author of this post are same
@@ -226,6 +226,42 @@ router.post(
 			{ flags: foundPost.comments[commentNum].flags }
 		);
 		res.redirect(`/posts/${requestedPostId}`);
+	}
+);
+
+router.post(
+	'/posts/:postId/comments/:commentNum/reply',
+	auth,
+	async (req, res) => {
+		if (!req.user) {
+			return res.redirect('/log-in');
+		}
+		try {
+			const userId = req.user._id;
+			const currUser = await UserModel.findById(userId);
+			const post = await Blog.findById(req.params.postId);
+			post.comments = post.comments.sort((a, b) =>
+				a.timestamps > b.timestamps
+					? -1
+					: a.timestamps < b.timestamps
+					? 1
+					: 0
+			);
+			const commentId = post.comments[req.params.commentNum];
+			const comment = await Comment.findById(commentId);
+			const newComment = new Comment({
+				content: req.body.reply,
+				name: currUser.userName,
+				authorId: userId,
+			});
+			const doc = await newComment.save();
+			comment.replies.push(doc._id);
+			await comment.save();
+			res.redirect(`/posts/${req.params.postId}`);
+		} catch (e) {
+			console.log(e);
+			return res.redirect('/error');
+		}
 	}
 );
 
