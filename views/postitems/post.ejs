@@ -132,26 +132,7 @@
 <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 <script type="text/javascript" src="/js/postScript.js"></script>
 <script type="text/javascript" src="/js/share.js"></script>
-
-<script>
-    const replyToggleBtn = document.getElementById('reply-toggle');
-    const replyDialog = document.getElementById('reply-id');
-    replyToggleBtn.addEventListener('click', function(e){
-        if(this.innerHTML === "Show Replies"){
-            this.innerHTML = "Hide Replies";
-            showReplies();
-        }else{
-            this.innerHTML = "Show Replies";
-            hideReplies();
-        }
-    })
-    function showReplies(){
-        replyDialog.classList.add('show');
-    }
-    function hideReplies(){
-        replyDialog.classList.remove('show');
-    }
-</script>
+<script type="text/javascript" src="/js/commentReply.js"></script>
 
 <%- include("../partials/footer") -%>
 
