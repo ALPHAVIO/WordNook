@@ -19,6 +19,11 @@
 	--color-text: #e5e7eb;
 }
 
+:is(h1, h2, h3, h4, h5, h6, p) {
+	text-shadow: 1px 1px 1px white;
+	font-weight: bold;
+}
+
 html,
 body {
 	margin: 0;
@@ -34,6 +39,11 @@ body {
 	background-size: cover;
 	color: var(--color-primary);
 	scroll-behavior: smooth;
+}
+
+.outline-text {
+	text-shadow: -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff,
+		1px 1px 0px #fff;
 }
 
 #loader {
@@ -70,15 +80,26 @@ body {
 	backdrop-filter: blur(10px);
 }
 /* -------------------------------------------------- */
-
+#logo {
+	margin-top: -15px;
+	width: 12rem;
+	height: 7rem;
+}
 @media screen and (max-width: 800px) {
 	#logo {
-		max-height: 2.25rem;
-		max-width: 2rem;
-		margin-right: 0.25rem;
+		max-height: 6rem;
+		max-width: 10rem;
 	}
 	.navbar-brand {
 		margin-right: 35vw;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	#logo {
+		margin-top: -5px;
+		max-height: 4rem;
+		max-width: 8rem;
 	}
 }
 
@@ -299,6 +320,10 @@ a::after {
 
 .views-badge {
 	background-color: var(--color-primary);
+}
+
+.reply-icon::before {
+	content: '\f3e5';
 }
 /* ------------------------------------------------------------ */
 /* Input boxes and placeholder text styles */
@@ -973,10 +998,11 @@ input[name='perPage'] {
 }
 
 .testimonials-clean p {
-	color: #7d8285;
+	color: black;
 }
 
 .testimonials-clean h2 {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: bold;
 	margin-bottom: 2.5rem;
 	padding-top: 2.5rem;
@@ -999,6 +1025,7 @@ input[name='perPage'] {
 
 .testimonials-clean .intro p {
 	margin-bottom: 0;
+	font-family: monospace, 'sans-serif';
 }
 
 .testimonials-clean .people {
@@ -1019,7 +1046,7 @@ input[name='perPage'] {
 
 .testimonials-clean .item .box {
 	padding: 1.875rem;
-	background-color: #fff;
+	background-color: #9fc5e8;
 	position: relative;
 }
 
@@ -1032,7 +1059,7 @@ input[name='perPage'] {
 	height: 0;
 	border: 0.938rem solid transparent;
 	border-width: 0.75rem 0.938rem;
-	border-top-color: #fff;
+	border-top-color: #9fc5e8;
 }
 
 .testimonials-clean .item .author {
@@ -1053,6 +1080,7 @@ input[name='perPage'] {
 
 .testimonials-clean .item .description {
 	font-size: 0.938rem;
+	font-family: system-ui, sans-serif;
 	margin-bottom: 0;
 }
 
@@ -1062,10 +1090,6 @@ input[name='perPage'] {
 	float: left;
 	margin-right: 0.75rem;
 	margin-top: -0.313rem;
-}
-
-.testimonial-wall {
-	padding: 3.125rem;
 }
 
 .testimonial-data {
@@ -1327,4 +1351,61 @@ svg {
 	background-color: #f2f6f8;
 	border-left: 3px solid var(--color-secondary);
 	border-right: 3px solid var(--color-secondary);
+}
+
+/* Comment reply section */
+
+.reply {
+	border: 0.13rem solid rgb(223, 220, 220);
+	border-radius: 0.4rem;
+	padding: 1.3rem;
+	margin-bottom: 1.3rem;
+	box-shadow: 0rem 0rem 0.07rem 0rem;
+}
+
+.replies {
+	transition: opacity 0.5s ease-out;
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+.show {
+	opacity: 1;
+	height: auto;
+}
+
+/* testimonial wall styling  */
+
+.blockquote-custom {
+	position: relative;
+	font-size: 1.1rem;
+	background-color: #f2f6f8 !important;
+	font-weight: bold;
+}
+.blockquote-custom-icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: -25px;
+	left: 50px;
+}
+.testimonial-views {
+	color: var(--color-primary);
+}
+.testimonial-author {
+	color: var(--color-secondary) !important;
+	font-size: 1.5rem;
+}
+.testimonial-card-div {
+	width: 60vw;
+}
+.testimonial-card-div:hover {
+	position: relative;
+	z-index: 2;
+	transform: scale(1.1);
 }

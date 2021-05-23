@@ -308,13 +308,17 @@ router.get('/dashboard', auth, async (req, res) => {
 			const allusers = await User.find({});
 			const likedBlogs = await Blog.find({
 				_id: { $in: user.likedPosts },
-			});
+			}).populate('author');
+			const myfollowingBlogs = await Blog.find({
+				author: { $in: user.following },
+			}).populate('author');
 			return res.render('./useritems/dashboard', {
 				user,
 				allusers,
 				posts: blogs,
 				isAuthenticated: !!req.user,
-				likedBlogs: likedBlogs,
+				likedBlogs,
+				myfollowingBlogs,
 			});
 		} catch (error) {
 			return res.redirect('/error');

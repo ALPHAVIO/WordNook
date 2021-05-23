@@ -1,24 +1,25 @@
 <%- include("../partials/header") -%>
 
-<div class="container testimonial-wall">
-    <% if (isAuthenticated) { %>
-        <form action="#testimonial-write">
-            <button class="button pen test-button pos-testimonial-wall-btn1">Write new testimonial</button>
-        </form>
-    <% } %>
-    <h1>Testimonials</h1>
-    <div class="container testimonials-clean testimonial-data">
-        <ol>
-            <% testimonials.forEach(function(testimonial){ %>
-                <div class="container">
-                    <h3><li class="name"><%= testimonial.author %> </h3></li>
-                    <p class="description"><%= testimonial.views %> </p>
-                </div>
-            <% }) %>
-        </ol>
-    </div>
-</div>
-
+<h1 class="heading-centre heading-bold normal-heading-font">Testimonials</h1>
+    <div class="container testimonial-wall">
+        <div class="container">
+            <div class="row">
+                <% testimonials.forEach(function(testimonial){ %>
+                    <div class="col-lg-10 col-sm-12 testimonial-card-div mx-auto my-3">
+                        <div class="blockquote blockquote-custom p-5 shadow rounded">
+                            <div class="blockquote-custom-icon bg-info shadow-sm">
+                            <i class="fa fa-quote-left text-dark"></i></div>
+                            <p class="mb-0 mt-2 font-italic testimonial-views">"<%= testimonial.views %>"</p>
+                            <footer class="blockquote-footer font-weight-bolder pt-1 mt-1 border-top">
+                                <p class="font-weight-bolder testimonial-author font-italic">
+                                    <%= testimonial.author %>
+                                </p>
+                            </footer>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
 <% if (isAuthenticated) { %>
     <%- include("../testimonials/testimonial-write") -%> 
 <% } %>
