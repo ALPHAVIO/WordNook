@@ -3,7 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const cron = require('node-cron');
 const dotenv = require('dotenv');
+const sendNewsletter = require('./middlewares/newsletter');
 
 const PORT = process.env.PORT || 3000;
 const connectDB = require('./config/db');
@@ -52,4 +54,15 @@ app.use('*', (req, res) => {
 app.listen(PORT, () => {
 	// eslint-disable-next-line no-console
 	console.log(`Server started on port: ${PORT}`);
+});
+
+// mails would be send every first day of a month
+// for checking you may change the first parameter to '*/15 * * * * *' so that emails are sent every 15 secs
+cron.schedule(' 0 0 1 * *', () => {
+	sendNewsletter()
+		.then((result) => {
+			if (typeof result !== 'undefined')
+				console.log('Email sent....', result);
+		})
+		.catch((error) => console.log('Error....', error));
 });

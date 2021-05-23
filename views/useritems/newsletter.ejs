@@ -1,0 +1,20 @@
+<div class="conatiner-center dashboard-box" style="width: 31.25rem; padding: 3rem; margin: 6% auto">
+    
+    <div class="text-center">
+
+        <h1 style="margin-bottom: 4rem">NewsLetter</h1>
+
+        <% if (user.subscriptionStatus) { %>
+            <form action="/newsletter/unsubscribe" method="POST">
+                <button type="submit">Click Here to unsubscribe our newsletter</button>
+            </form>
+        <% }else{ %>
+            <form action="/newsletter/subscribe" method="POST">
+                <button type="submit">Click Here to subscribe our newsletter</button>
+            </form>
+        <% } %>
+        
+
+    </div>
+    
+</div>

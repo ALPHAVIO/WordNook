@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Newsletter</title>
+
+    <style>
+
+        hr.solid {
+            border-top: 1px solid #bbb;
+        }
+
+        .main {
+            border: thick solid #0000;
+            border-radius: 5px;
+            background-color: pink;
+            margin-bottom: 3.125rem;
+        }
+
+        .heading {
+            color: grey;
+        }
+
+        .message-to-reader {
+            padding: 1.875rem;
+        }
+
+        .message {
+            color: rebeccapurple;
+        }
+
+        .card {
+            background-color: black;
+            text-align: center;
+            padding: 2rem;
+            color: #e2532f ;
+            margin: auto;
+            width: 43.75rem;
+            border: thick solid #0000;
+            border-radius: 5px;
+        }
+
+        .headers {
+            padding: 0.313rem;
+        }
+    
+        .title {
+            font-weight: bolder;
+        }
+
+        .category {
+            border-radius: 5px;
+            width: fit-content;
+            background-color: #129fb4;
+            padding: .35em .65em;
+            font-size: .75em;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-align: center;
+            margin: auto;
+            vertical-align: baseline;
+            border-radius: .25rem;
+        }
+
+        .card-content {
+            padding: 0.313rem;
+        }
+
+        .card-footer {
+            padding: 0.313rem;
+        }
+
+        .author {
+            color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="message-to-reader">
+            <h1 class="heading">Monthly Newsletter</h1>
+            <p class="message">
+                Hello, <br>
+                We hope you are doing great and had a wonderful month. This email includes the monthly newsletter from our organisation for which
+                you signed. You may take some time out of your busy schedule and read some of our popular blogs.
+                <br>
+                Thanks.
+                <br>
+                APHAVIO
+            </p>
+        </div>
+		
+
+        <div class="card">
+
+            <div class="headers">
+                <h1 class="title">{{ title }}</h1>
+                <div class="category">
+                    {{ category }}
+                </div>
+            </div>
+
+            <hr class="solid">
+
+            <div class="card-content">
+                <p style="text-align: left;">Blog Content:</p>
+                {{ content }}
+            </div>
+
+            <hr class="solid">
+
+            <div class="card-footer">
+                <p class="post-date-font">Posted on {{ timestamps }} </p>
+                <p class="author-name">
+                    By: {{ author }}
+                </p>
+                <p class="stats">Views: {{ views }} Likes: {{ likes }}</p>
+            </div>
+
+        </div>
+
+	</div>
+    
+</body>
+</html>
