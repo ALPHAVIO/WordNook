@@ -1092,10 +1092,6 @@ input[name='perPage'] {
 	margin-top: -0.313rem;
 }
 
-.testimonial-wall {
-	padding: 3.125rem;
-}
-
 .testimonial-data {
 	padding-top: 1.875rem;
 }
@@ -1377,4 +1373,39 @@ svg {
 .show {
 	opacity: 1;
 	height: auto;
+}
+
+/* testimonial wall styling  */
+
+.blockquote-custom {
+	position: relative;
+	font-size: 1.1rem;
+	background-color: #f2f6f8!important;
+	font-weight: bold;
+}
+.blockquote-custom-icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: -25px;
+	left: 50px;
+}
+.testimonial-views{
+	color: var(--color-primary);
+}
+.testimonial-author{
+	color: var(--color-secondary) !important;
+	font-size: 1.5rem;
+}
+.testimonial-card-div{
+	width: 60vw;
+}
+.testimonial-card-div:hover{
+	position: relative;
+    z-index: 2;
+    transform: scale(1.1);
 }
