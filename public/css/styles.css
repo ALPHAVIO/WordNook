@@ -1380,7 +1380,7 @@ svg {
 .blockquote-custom {
 	position: relative;
 	font-size: 1.1rem;
-	background-color: #f2f6f8!important;
+	background-color: #f2f6f8 !important;
 	font-weight: bold;
 }
 .blockquote-custom-icon {
@@ -1394,18 +1394,18 @@ svg {
 	top: -25px;
 	left: 50px;
 }
-.testimonial-views{
+.testimonial-views {
 	color: var(--color-primary);
 }
-.testimonial-author{
+.testimonial-author {
 	color: var(--color-secondary) !important;
 	font-size: 1.5rem;
 }
-.testimonial-card-div{
+.testimonial-card-div {
 	width: 60vw;
 }
-.testimonial-card-div:hover{
+.testimonial-card-div:hover {
 	position: relative;
-    z-index: 2;
-    transform: scale(1.1);
+	z-index: 2;
+	transform: scale(1.1);
 }
