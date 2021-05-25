@@ -15,25 +15,23 @@
                             <h2 class="text-center text-uppercase">Here's what our users have to say.</h2>
                             <p class="text-center text-decoration-underline fs-5">Want to share your experience? Write a testimonial and spread the word.</p>
                         </div>
-                        <% for(let j=0;j<=6;j=j+3) { %>
+                        <% for(let j=0;j<=8;j=j+1) { %>
                             <div class="carousel-item <%= isFirst?'active':'' %> ">
                                 <div class="carousel-inner">
                                     <div class="row people">
-                                        <% for (let i=j; i <j+3; i++ ) { %>
-                                            <div class="col-md-6 col-lg-4 item">
-                                                <div class="box">
+                                        <div class="col-12 item">
+                                            <div class="box">
                                                     <p class="description">
-                                                        <%= testimonial[i].views %>
+                                                        <%= testimonial[j].views %>
                                                     </p>
                                                 </div>
                                                 <div class="author"><img class="rounded-circle"
-                                                        src="https://avatars.dicebear.com/api/male/<%= testimonial[i].author %>.svg?background=%23ffffff">
+                                                        src="https://avatars.dicebear.com/api/male/<%= testimonial[j].author %>.svg?background=%23ffffff">
                                                     <h5 class="name">
-                                                        <%= testimonial[i].author %>
+                                                        <%= testimonial[j].author %>
                                                     </h5>
                                                 </div>
                                             </div>
-                                        <% } %>
                                     </div>
                                 </div>
                             </div>
