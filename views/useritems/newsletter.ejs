@@ -1,4 +1,4 @@
-<div class="conatiner-center dashboard-box" style="width: 31.25rem; padding: 3rem; margin: 6% auto">
+<div class="conatiner-center dashboard-box" style="width: 90%; padding: 3rem; margin: 6%">
     
     <div class="text-center">
 
@@ -6,11 +6,11 @@
 
         <% if (user.subscriptionStatus) { %>
             <form action="/newsletter/unsubscribe" method="POST">
-                <button type="submit">Click Here to unsubscribe our newsletter</button>
+                <button class="btnFrame" style= " font-size: 18px; font-weight: 500;" type="submit">Click Here to unsubscribe our newsletter</button>
             </form>
         <% }else{ %>
             <form action="/newsletter/subscribe" method="POST">
-                <button type="submit">Click Here to subscribe our newsletter</button>
+                <button class="btnFrame" style= " font-size: 18px; font-weight: 500;"  type="submit">Click Here to subscribe our newsletter</button>
             </form>
         <% } %>
         
