@@ -1,19 +1,19 @@
-<div class="conatiner-center dashboard-box" style="width: 90%; padding: 3rem; margin: 6%">
+<div class="conatiner-center dashboard-box newsletter">
     
     <div class="text-center">
 
-        <h1 style="margin-bottom: 4rem">NewsLetter</h1>
+        <h1 style="margin-bottom: 3rem">NewsLetter</h1>
 
         <% if (user.subscriptionStatus) { %>
             <form action="/newsletter/unsubscribe" method="POST">
-                <button class="btnFrame" style= " font-size: 18px; font-weight: 500;" type="submit">Click Here to unsubscribe our newsletter</button>
+                <button class="btnFrame newletterBtn" type="submit">Click Here to unsubscribe our newsletter</button>
             </form>
         <% }else{ %>
             <form action="/newsletter/subscribe" method="POST">
-                <button class="btnFrame" style= " font-size: 18px; font-weight: 500;"  type="submit">Click Here to subscribe our newsletter</button>
+                <button class="btnFrame" type="submit">Click Here to subscribe our newsletter</button>
             </form>
         <% } %>
         
     </div>
-    
 </div>
+<div class="space-bottom"></div>

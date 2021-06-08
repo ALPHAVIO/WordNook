@@ -1396,6 +1396,28 @@ div.scroll {
 	white-space: nowrap;
 }
 
+/* Newsletter sign up styling */
+.newsletter {
+	width: 90%;
+	padding: 3rem; 
+	margin: 6%;
+}
+
+.newsletterBtn {
+	font-size: 18px;
+	font-weight: 500;
+}
+@media (min-width: 760px) {
+	
+	.newsletter {
+		max-width: 45%;
+		margin: auto;
+	}
+	.space-bottom {
+		height: 100px;
+	}
+}
+
 /* Comment reply section */
 
 .reply {
