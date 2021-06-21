@@ -1,3 +1,4 @@
+
 const testimonial = [
 	{
 		views:
@@ -10,7 +11,7 @@ const testimonial = [
 		author: 'Riya Mehra',
 	},
 	{
-		views: 'It is great Platform to share your experience to help others .',
+		views: 'It is great Platform  to share your experience to help others .',
 		author: 'Siya Roy',
 	},
 	{

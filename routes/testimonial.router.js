@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const auth = require('../middlewares/auth');
 const User = require('../models/User.model');
 const testimonials = require('../dummy-data/testimonial');
+const Testimonial = require('../models/Testimonial.model');
 
 const router = express.Router();
 router.use(methodOverride('_method'));
@@ -11,6 +12,14 @@ router.use(bodyParser.json());
 
 // Get request for testimonial-wall
 router.get('/testimonial-wall', auth, async (req, res) => {
+	// fetching all the testimonials from the database
+	const testimonial = await Testimonial.find();
+
+	// adding it to predefined testimonials
+	testimonial.map(function (test) {
+		return testimonials.push(test);
+	});
+
 	res.render('./testimonials/testimonial-wall', {
 		isAuthenticated: !!req.user,
 		testimonials,
@@ -23,10 +32,13 @@ router.post('/testimonial-wall', auth, async (req, res) => {
 	const _id = req.user;
 	const user = await User.findById(_id);
 	const inputAuthor = `${user.firstName} ${user.lastName}`;
-	testimonials.push({
-		views: inputViews,
+	// Adding a new Testimonial in the database
+	const newtestimonial = new Testimonial({
 		author: inputAuthor,
+		views: inputViews,
 	});
+	const com = await newtestimonial.save();
+
 	res.redirect('/testimonial-wall');
 });
 
