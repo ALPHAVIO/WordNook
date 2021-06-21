@@ -35,7 +35,7 @@
 		"netmask": "^2.0.2",
 		"node-cron": "^3.0.0",
 		"node-fetch": "^3.0.0-beta.9",
-		"nodemailer": "^6.6.2",
+		"nodemailer": "^6.6.1",
 		"nodemailer-mailgun-transport": "^2.1.3",
 		"pac-resolver": "^4.2.0"
 	},
@@ -46,7 +46,7 @@
 		]
 	},
 	"devDependencies": {
-		"eslint": "^7.29.0",
+		"eslint": "^7.28.0",
 		"eslint-config-airbnb-base": "^14.2.1",
 		"eslint-config-node": "^4.1.0",
 		"eslint-config-prettier": "^8.3.0",
