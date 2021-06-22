@@ -1078,7 +1078,7 @@ input[name='perPage'] {
 }
 
 .testimonials-clean .people {
-	padding: 3.125rem 0 1.25rem;
+	padding: 2.125rem 0 1.25rem;
 	display: flex;
 	justify-content: center;
 }
@@ -1094,7 +1094,7 @@ input[name='perPage'] {
 }
 
 .testimonials-clean .item .box {
-	padding: 1.875rem;
+	padding: 1.6rem;
 	background-color: #9fc5e8;
 	position: relative;
 }
@@ -1155,8 +1155,7 @@ input[name='perPage'] {
 }
 
 .testimonial-write-div {
-	padding-top: 4rem;
-	padding-bottom: 4rem;
+	padding:4rem auto;
 }
 
 .pos-testimonial-wall-btn1 {
@@ -1455,7 +1454,7 @@ div.scroll {
 	font-size: 1.5rem;
 }
 .testimonial-card-div {
-	width: 60vw;
+	width: 80vw;
 	transition: all 0.5s;
 }
 .testimonial-card-div:hover {
