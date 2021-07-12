@@ -1327,6 +1327,9 @@ svg {
 	padding: 0.3em 0.3em;
 	min-width: 10em;
 	margin-left: 5%;
+	color: var(--color-text);
+	background-color: var(--color-secondary);
+	border: solid 1px var(--color-secondary);
 }
 .alert-success {
 	width: 80%;
