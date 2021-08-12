@@ -575,7 +575,7 @@ input[name='perPage'] {
 	text-align: center;
 }
 .button-cancel:hover {
-	background: var(--color-danger) !important;
+	background: #129fb4 !important;
 }
 
 .test-wall-btn {
@@ -1151,7 +1151,7 @@ input[name='perPage'] {
 }
 
 .testimonial-add-heading {
-	color: white;
+	color: var(--color-primary);
 }
 
 .testimonial-write-div {
@@ -1164,8 +1164,8 @@ input[name='perPage'] {
 }
 
 .pos-testimonial-wall-btn2 {
-	margin-left: 9.563rem;
-	margin-right: 9.563rem;
+	display: block;
+    margin: 0 auto;
 }
 
 .complete {
@@ -1315,19 +1315,6 @@ svg {
 	width: 100%;
 }
 
-#contact-form input[type='email'],
-#contact-form input[type='text'],
-#contact-form textarea {
-	width: 100%;
-	border: 1px solid #ccc;
-	background: #fff;
-	margin: 0 0 5px;
-	padding: 15px;
-	background-color: #f2f6f8;
-	box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
-	border-radius: 2rem;
-}
-
 .send-btn {
 	padding: 0.3em 0.3em;
 	min-width: 10em;
@@ -1462,4 +1449,10 @@ div.scroll {
 	position: relative;
 	z-index: 2;
 	transform: scale(1.1);
+}
+
+@media  (max-width : 495px) {
+ .testimonial-card-div{
+	width: 20.25rem;
+  } 
 }

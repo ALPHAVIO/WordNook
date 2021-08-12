@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+    development_app:
+        build:
+            context: .
+        ports: 
+            - 3000:3000
+        networks: 
+            - wordnook-network
+        environment: 
+            URL: mongodb://mongodb:27017/blogDB
+            SECRET_KEY: AlphaVio
+    mongodb:
+        image: mongo
+        ports: 
+            - 27017:27017
+        networks: 
+            - wordnook-network
+        volumes:
+            - mongodb:/data/db
+            - mongodb_config:/data/configdb
+networks: 
+    wordnook-network:
+        driver: bridge
+volumes:
+    mongodb:
+    mongodb_config:        
+        
