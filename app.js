@@ -1,8 +1,8 @@
 // Acquiring Dependencies-
+// const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cron = require('node-cron');
 
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Connecting to Mongo Database using ODM Mongoose-
 connectDB();
-mongoose.set('useCreateIndex', true);
+// mongoose.set('useCreateIndex', true);
 
 // router for the requests from home page
 app.use(require('./routes/index.router'));

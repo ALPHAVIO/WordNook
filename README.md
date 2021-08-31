@@ -101,6 +101,7 @@ npm install
   ```
   SECRET_KEY = AlphaVio
   URL = mongodb://localhost:27017/wordnookDB
+  NODE_ENV= 'development'
   ```
 <br/>
 

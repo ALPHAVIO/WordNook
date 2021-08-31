@@ -1,10 +1,12 @@
+// eslint-disable-next-line
+const fetch = import('node-fetch');
+
 // requiring dependencies, models and middlewares
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const methodOverride = require('method-override');
-const fetch = require('node-fetch');
 const { stringify } = require('querystring');
 const User = require('../models/User.model');
 const auth = require('../middlewares/auth');
