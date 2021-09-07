@@ -240,8 +240,8 @@ MAILGUN_API_KEY = <your-api-key>
 
 <img align="right" src="assets\event6.PNG" width = "120" height = "100"><b>6. Developer Days</b>
 
-- It is a 5-week long event. It consists of three tracks that are Web Development, Android Development, and UI/UX Design. The event consists of various sessions and challenges. Various swags and prizes will be awarded to the winners and participants.
-
+- The league of Developer Days is a 5-week long Bootcamp + Hackathon event, organized by Developer Days Community consisting of various sessions and challenges including contributions to Open Source Projects, with an aim to encourage students to get familiar with hands-on projects and software development.
+ 
 <hr>
 
 ## Maintainers ✨
