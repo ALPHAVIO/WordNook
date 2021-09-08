@@ -5,6 +5,7 @@ const multer = require('multer');
 const _ = require('lodash');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
 const UserModel = require('../models/User.model');
@@ -382,6 +383,8 @@ router.post('/posts/:postId/delete', auth, async (req, res) => {
 	}
 
 	const requestedPostId = req.params.postId;
+	const blog = await Blog.findOne({ _id: requestedPostId });
+	fs.unlink(blog.photo, () => {});
 	// console.log(requestedPostId)
 	Blog.deleteOne({ _id: requestedPostId, author: user._id })
 		.then(() => {
@@ -405,7 +408,7 @@ router.delete('/posts/:postId/image', auth, async (req, res) => {
 		if (post.author.toString() !== user._id.toString()) {
 			return res.render('404', { isAuthenticated: !!req.user });
 		}
-
+		fs.unlink(post.photo, () => {});
 		post.photo = '';
 		await post.save();
 		res.redirect(`/posts/${req.params.postId}`);
@@ -451,6 +454,7 @@ router.put('/posts/:postId', auth, upload.single('photo'), async (req, res) => {
 		const blog = await Blog.findById({ _id: req.params.postId });
 		const { blogTitle, status, category, blogContent } = req.body.post;
 		if (req.file) {
+			fs.unlink(blog.photo, () => {});
 			blog.photo = req.file.path;
 		}
 		blog.blogTitle = blogTitle;

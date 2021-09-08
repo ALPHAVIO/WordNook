@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const methodOverride = require('method-override');
 const { stringify } = require('querystring');
+const fs = require('fs');
 const User = require('../models/User.model');
 const auth = require('../middlewares/auth');
 const {
@@ -121,6 +122,9 @@ router.post(
 		try {
 			const id = await req.user;
 			const user = await User.findById(id._id);
+			if (req.file) {
+				fs.unlink(user.photo, () => {});
+			}
 			// eslint-disable-next-line
 			updates.forEach((update) => (user[update] = req.body[update]));
 			await user.save();
@@ -442,6 +446,7 @@ router.delete('/profile/:userId/delete', auth, async (req, res) => {
 		return res.render('404', { isAuthenticated: !!req.user });
 
 	const user = await User.findById({ _id: userId });
+	fs.unlink(user.photo, () => {});
 	user.photo = '/images/Default_Profile.jpg';
 	await user.save();
 	res.redirect('/dashboard');
