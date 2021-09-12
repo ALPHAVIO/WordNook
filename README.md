@@ -236,8 +236,12 @@ MAILGUN_API_KEY = <your-api-key>
 
 <img align="right" src="assets\event5.png" width = "120" height = "100"><b>5. Let's Grow More Summer of Code</b>
 
-- Let's Grow More Summer of Code is a one month long Open Source program organized by LetsGrowMore Community to encourage student participation in open source software development under the guidance of mentors from the open source community. 
+- Let's Grow More Summer of Code is a one month long Open Source program organized by LetsGrowMore Community to encourage student participation in open source software development under the guidance of mentors from the open source community.
 
+<img align="right" src="assets\event6.PNG" width = "120" height = "100"><b>6. Developer Days</b>
+
+- The league of Developer Days is a 5-week long Bootcamp + Hackathon event, organized by Developer Days Community consisting of various sessions and challenges including contributions to Open Source Projects, with an aim to encourage students to get familiar with hands-on projects and software development.
+ 
 <hr>
 
 ## Maintainers ✨
