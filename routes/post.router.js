@@ -10,6 +10,7 @@ const auth = require('../middlewares/auth');
 const Blog = require('../models/Blog.model');
 const UserModel = require('../models/User.model');
 const Comment = require('../models/Comment.model');
+const testimonial = require('../dummy-data/testimonial');
 
 // multer setup
 const storage = multer.diskStorage({
@@ -325,6 +326,7 @@ router.post(['/search'], auth, async (req, res) => {
 						perPage: perPage,
 						order: 'new one first',
 						isAuthenticated: !!req.user,
+						testimonial,
 					});
 				}
 			);
